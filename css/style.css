@@ -734,7 +734,7 @@ header {
   gap: 1px;
   margin-top: 56px;
   background: rgba(255, 255, 255, 0.055);
-
+  flex-direction: column;
   flex-wrap: wrap;
 }
 .log-dc {
