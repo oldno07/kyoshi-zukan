@@ -265,6 +265,16 @@ header {
   padding: 4px 10px;
   border: 1px solid;
 }
+.rar-l {
+  color: #f5c542;
+  border-color: #f5c542;
+  background: rgba(245, 197, 66, 0.14);
+}
+.rar-e {
+  color: #a855f7;
+  border-color: #a855f7;
+  background: rgba(168, 85, 247, 0.14);
+}
 .rar-r {
   color: var(--red);
   border-color: var(--red);
