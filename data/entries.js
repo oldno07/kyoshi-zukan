@@ -1,6 +1,7 @@
 window.ENTRIES = [
   {
     no: "001",
+    sort: 10,
     createdAt: "2026-05-13",
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
@@ -24,6 +25,7 @@ window.ENTRIES = [
 
   {
     no: "002",
+    sort: 20,
     createdAt: "2026-05-13",
     rarity: "COMMON",
     rarityClass: "rar-c",
@@ -46,6 +48,7 @@ window.ENTRIES = [
 
   {
     no: "003",
+    sort: 30,
     createdAt: "2026-05-13",
     rarity: "RARE",
     rarityClass: "rar-r",
@@ -69,6 +72,7 @@ window.ENTRIES = [
 
   {
     no: "004",
+    sort: 40,
     createdAt: "2026-05-13",
     rarity: "COMMON",
     rarityClass: "rar-c",
@@ -93,6 +97,7 @@ window.ENTRIES = [
   {
     no: "005",
     createdAt: "2026-05-13",
+    sort: 50,
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_005.png",
@@ -116,6 +121,7 @@ window.ENTRIES = [
 
   {
     no: "006",
+    sort: 60,
     createdAt: "2026-05-13",
     rarity: "RARE",
     rarityClass: "rar-r",
@@ -139,6 +145,7 @@ window.ENTRIES = [
 
   {
     no: "007",
+    sort: 70,
     createdAt: "2026-05-13",
     rarity: "LEGEND",
     rarityClass: "rar-l",
@@ -162,6 +169,7 @@ window.ENTRIES = [
 
   {
     no: "008",
+    sort: 80,
     createdAt: "2026-05-13",
     rarity: "COMMON",
     rarityClass: "rar-c",
@@ -185,6 +193,7 @@ window.ENTRIES = [
 
   {
     no: "009",
+    sort: 90,
     createdAt: "2026-05-13",
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
@@ -207,6 +216,7 @@ window.ENTRIES = [
 
   {
     no: "010",
+    sort: 100,
     createdAt: "2026-05-13",
     rarity: "COMMON",
     rarityClass: "rar-c",
@@ -228,6 +238,7 @@ window.ENTRIES = [
 
   {
     no: "011",
+    sort: 110,
     createdAt: "2026-05-13",
     rarity: "LEGEND",
     rarityClass: "rar-l",
