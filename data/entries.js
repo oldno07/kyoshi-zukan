@@ -257,3 +257,6 @@ window.ENTRIES = [
     statusColor: "#e0b94f",
   },
 ];
+window.getEntryByNo = function (no) {
+  return window.ENTRIES.find((e) => e.no === no);
+};
