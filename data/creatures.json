@@ -1,0 +1,24 @@
+[
+  {
+    "no": "001",
+
+    "rarity": "UNCOMMON",
+    "rarityClass": "rar-uc",
+
+    "image": "images/no_001.png",
+
+    "tag": "BEAST-DOMINANT",
+
+    "nameJa": "スニャグルトゥース",
+    "nameEn": "Snyaggletooth",
+
+    "description": "鋭い鋸歯を持つネコ型鋸歯生物。",
+
+    "habitat": "深林",
+    "size": "166mm",
+    "mobility": "緩慢",
+
+    "status": "● ACTIVE",
+    "statusColor": "var(--g)"
+  }
+]
