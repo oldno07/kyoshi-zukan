@@ -1,27 +1,37 @@
+// URLから no を取得
 const params = new URLSearchParams(window.location.search);
 const no = params.get("no");
 
-const entry = window.getEntryByNo(no);
+// データから該当個体を取得
+const entry = window.ENTRIES.find((e) => e.no === no);
+
+const container = document.getElementById("entry-detail");
 
 if (!entry) {
-  document.getElementById("entry-detail").innerHTML = "Not Found";
+  container.innerHTML = "<p>Not Found</p>";
 } else {
   renderEntry(entry);
 }
 
 function renderEntry(e) {
-  document.getElementById("entry-detail").innerHTML = `
+  container.innerHTML = `
     <div class="entry-card">
+
       <h1>No.${e.no} ${e.jp}</h1>
       <h2>${e.en}</h2>
-      <img src="${e.image}" />
+
+      <img src="${e.image}" alt="${e.jp}" />
+
       <p>${e.desc}</p>
 
       <ul>
-        <li>Habitat: ${e.habitat}</li>
-        <li>Size: ${e.size}</li>
-        <li>Mobility: ${e.mobility}</li>
+        <li>タグ: ${e.tag}</li>
+        <li>生息地: ${e.habitat}</li>
+        <li>サイズ: ${e.size}</li>
+        <li>機動性: ${e.mobility}</li>
+        <li>ステータス: ${e.status}</li>
       </ul>
+
     </div>
   `;
 }
