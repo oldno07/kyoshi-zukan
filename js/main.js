@@ -90,5 +90,7 @@ function setFilter(btn) {
 document.addEventListener("DOMContentLoaded", async () => {
   await initComponents();
 
+  updateEntryCount();
+
   initReveal();
 });
