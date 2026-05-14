@@ -1,72 +1,34 @@
 /* ============================================================
    鋸歯生物図鑑 — main.js
    ============================================================ */
-/* ----------------------------------------------------------
-   0. 図鑑登録数（手動管理）
-   ---------------------------------------------------------- */
-const ENTRY_TOTAL = 5;
-
-function updateEntryCount() {
-  document.querySelectorAll(".entry-total").forEach((el) => {
-    el.textContent = ENTRY_TOTAL.toString().padStart(3, "0");
-  });
-}
 
 /* ----------------------------------------------------------
-   1. Components
+   1. Header / Footer 読み込み
    ---------------------------------------------------------- */
 
-// サブディレクトリ対応
-function getBasePath() {
-  const depth = location.pathname
-    .replace(/\/[^/]*$/, "")
-    .split("/")
-    .filter(Boolean).length;
-
-  return depth > 0 ? "../".repeat(depth) : "./";
-}
-
-// HTML読み込み
-async function loadComponent(selector, url) {
+async function loadComponent(selector, path) {
   const el = document.querySelector(selector);
 
   if (!el) return;
 
   try {
-    const res = await fetch(url);
+    const res = await fetch(path);
 
-    if (!res.ok) throw new Error(res.status);
+    if (!res.ok) {
+      throw new Error(res.status);
+    }
 
     el.innerHTML = await res.text();
-  } catch (e) {
-    console.warn(`Component load failed: ${url}`, e);
+  } catch (err) {
+    console.warn("component load failed:", path, err);
   }
 }
 
-// Header/Footer 初期化
 async function initComponents() {
-  const base = getBasePath();
-
   await Promise.all([
-    loadComponent("#header-placeholder", base + "components/header.html"),
-
-    loadComponent("#footer-placeholder", base + "components/footer.html"),
+    loadComponent("#header-placeholder", "components/header.html"),
+    loadComponent("#footer-placeholder", "components/footer.html"),
   ]);
-
-  highlightCurrentNav();
-}
-
-// 現在ページをハイライト
-function highlightCurrentNav() {
-  const path = location.pathname;
-
-  document.querySelectorAll(".nav-a[data-nav]").forEach((a) => {
-    const nav = a.dataset.nav;
-
-    if (nav === "world" && path.includes("about")) {
-      a.classList.add("current");
-    }
-  });
 }
 
 /* ----------------------------------------------------------
@@ -94,7 +56,7 @@ function initReveal() {
 }
 
 /* ----------------------------------------------------------
-   3. Catalog Filter
+   3. Filter
    ---------------------------------------------------------- */
 
 function setFilter(btn) {
@@ -117,31 +79,16 @@ function setFilter(btn) {
       show = tag.includes("BEAST") || tag.includes("ANIMAL");
     }
 
-    if (show) {
-      card.style.opacity = "1";
-      card.style.transform = "none";
-      card.style.display = "";
-    } else {
-      card.style.opacity = "0";
-      card.style.transform = "translateY(8px)";
-
-      setTimeout(() => {
-        if (card.style.opacity === "0") {
-          card.style.display = "none";
-        }
-      }, 300);
-    }
+    card.style.display = show ? "" : "none";
   });
 }
 
 /* ----------------------------------------------------------
-   5. Init
+   4. Init
    ---------------------------------------------------------- */
 
 document.addEventListener("DOMContentLoaded", async () => {
   await initComponents();
 
   initReveal();
-
-  updateEntryCount();
 });
