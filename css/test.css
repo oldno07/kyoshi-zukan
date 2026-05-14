@@ -1,0 +1,14 @@
+.log-sec::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at top right,
+    rgba(99, 153, 34, 0.1),
+    transparent 40%
+  );
+
+  pointer-events: none;
+}
