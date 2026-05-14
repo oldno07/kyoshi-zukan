@@ -1608,3 +1608,156 @@ footer {
     grid-column: 1 / -1 !important;
   }
 }
+
+/* ============================================================
+   ENTRY — WORLD CONSISTENT UI
+   ============================================================ */
+
+.entry-wrap {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 40px;
+}
+
+/* HERO */
+.entry-hero {
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--br2);
+  margin-bottom: 40px;
+}
+
+.entry-meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--ink3);
+  margin-bottom: 14px;
+}
+
+.entry-tag {
+  color: var(--g);
+}
+
+.entry-title-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.entry-title-en {
+  font-family: "Cinzel", serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--ink3);
+}
+
+/* BODY */
+.entry-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.entry-image {
+  background: var(--bg2);
+  border: 1px solid var(--br2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+}
+
+.entry-image img {
+  max-width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  z-index: 10;
+}
+
+.entry-image::before,
+.entry-image::after {
+  content: "";
+  position: absolute;
+  background: var(--br);
+}
+
+.entry-image::before {
+  width: 1px;
+  height: 100%;
+  left: 50%;
+}
+
+.entry-image::after {
+  height: 1px;
+  width: 100%;
+  top: 50%;
+}
+
+/* INFO */
+.entry-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.entry-section-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--g);
+  border-bottom: 1px solid var(--br2);
+  padding-bottom: 10px;
+}
+
+.entry-desc {
+  font-size: 13px;
+  line-height: 2.2;
+  color: var(--ink2);
+}
+
+/* TABLE */
+.entry-table {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--br2);
+}
+
+.entry-row {
+  display: flex;
+  background: var(--bg);
+  padding: 12px 14px;
+}
+
+.entry-row .k {
+  width: 110px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--ink3);
+}
+
+.entry-row .v {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink);
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .entry-body {
+    grid-template-columns: 1fr;
+  }
+
+  .entry-wrap {
+    padding: 0 22px;
+  }
+
+  .entry-title-jp {
+    font-size: 30px;
+  }
+}

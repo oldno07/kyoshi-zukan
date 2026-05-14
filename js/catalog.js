@@ -1,3 +1,4 @@
+let currentFilter = "ALL";
 function renderCatalog() {
   const grid = document.querySelector(".card-grid");
 
