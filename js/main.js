@@ -123,3 +123,4 @@ async function loadComponent(id, path) {
 }
 
 loadComponent("header", "components/header.html");
+loadComponent("footer", "components/footer.html");
