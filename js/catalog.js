@@ -75,6 +75,10 @@ function renderCatalog() {
       </div>
     `;
 
+    card.addEventListener("click", () => {
+      window.location.href = `entry.html?no=${entry.no}`;
+    });
+
     grid.appendChild(card);
   });
 }
