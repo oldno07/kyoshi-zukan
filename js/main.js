@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 /* ----------------------------------------------------------
-   その他後から消すかも
+   5.components読み込み
    ---------------------------------------------------------- */
 async function loadComponent(id, path) {
   const el = document.getElementById(id);
