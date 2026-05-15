@@ -3,6 +3,11 @@ window.ENTRIES = [
     no: "001",
     sort: 10,
     createdAt: "2026-05-13",
+    plant: 30, // ← バー用（数値）
+    animal: 78,
+    danger: 35,
+    abilities: ["光合成移動", "擬態静止"], // ← 特殊能力
+    notes: "研究者コメントがあればここに", // ← 任意
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
     image: "images/no_001.png",
