@@ -6,14 +6,14 @@ window.ENTRIES = [
     plant: 30, // ← バー用（数値）
     animal: 78,
     danger: 35,
-    abilities: ["光合成移動", "擬態静止"], // ← 特殊能力
-    notes: "研究者コメントがあればここに", // ← 任意
-    rarity: "UNCOMMON",
-    rarityClass: "rar-uc",
+
     image: "images/no_001.png",
     tag: "BEAST-DOMINANT-動物優性型",
     jp: "スニャグルトゥース",
     en: "Snyaggletooth",
+
+    rarity: "UNCOMMON",
+    rarityClass: "rar-uc",
     desc: `
     深林域において確認された鋸歯ネコ型生物。
 
@@ -24,6 +24,8 @@ window.ENTRIES = [
     幾何学的整列または美的秩序に基づく配置である可能性が高い。
     当該構造は防御機能ではなく、個体識別または種内シグナル伝達に関与していると推定される。
   `,
+    abilities: ["光合成移動", "擬態静止"], // ← 特殊能力
+    notes: "研究者コメントがあればここに", // ← 任意
     habitat: "深林",
     size: "166mm",
     mobility: "緩慢",
