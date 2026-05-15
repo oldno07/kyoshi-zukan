@@ -3,6 +3,8 @@
     <span class="sys-badge">SYS_V1.0</span>
     <a href="index.html" class="logo">鋸歯生物図鑑</a>
   </div>
+
+  <!-- デスクトップナビ -->
   <div class="header-right">
     <a href="index.html#catalog" class="nav-a" data-nav="catalog">CATALOG</a>
     <a href="about.html" class="nav-a" data-nav="world">WORLD</a>
@@ -11,4 +13,54 @@
       >ENTRIES: <span id="entry-count-num">...</span></span
     >
   </div>
+
+  <!-- モバイル：ハンバーガーボタン -->
+  <button class="nav-burger" id="nav-burger" aria-label="メニューを開く">
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+  </button>
 </header>
+
+<!-- モバイルメニュー オーバーレイ -->
+<div class="nav-overlay" id="nav-overlay">
+  <div class="nav-overlay-inner">
+    <div class="nav-overlay-header">
+      <span class="nav-overlay-logo">鋸歯生物図鑑</span>
+      <button class="nav-close" id="nav-close" aria-label="メニューを閉じる">
+        ✕
+      </button>
+    </div>
+
+    <nav class="nav-overlay-nav">
+      <a href="index.html#catalog" class="nav-overlay-item" data-nav="catalog">
+        <span class="nav-overlay-no">01</span>
+        <span class="nav-overlay-jp">標本目録</span>
+        <span class="nav-overlay-en">CATALOG</span>
+      </a>
+      <a href="about.html" class="nav-overlay-item" data-nav="world">
+        <span class="nav-overlay-no">02</span>
+        <span class="nav-overlay-jp">世界観</span>
+        <span class="nav-overlay-en">WORLD</span>
+      </a>
+      <a href="index.html#maker" class="nav-overlay-item" data-nav="maker">
+        <span class="nav-overlay-no">03</span>
+        <span class="nav-overlay-jp">作者</span>
+        <span class="nav-overlay-en">MAKER</span>
+      </a>
+    </nav>
+
+    <div class="nav-overlay-footer">
+      <span class="nav-overlay-count"
+        >ENTRIES: <span id="entry-count-num-mobile">...</span></span
+      >
+      <a
+        href="https://www.instagram.com/pelican.works"
+        target="_blank"
+        class="nav-overlay-ig"
+      >
+        @pelican.works
+      </a>
+    </div>
+  </div>
+</div>

@@ -5,14 +5,10 @@
 /* ----------------------------------------------------------
    1. Header / Footer 読み込み
    ---------------------------------------------------------- */
-
 async function loadComponent(selector, path) {
   const el = document.querySelector(selector);
   if (!el) return;
-
   try {
-    // GitHub Pages では相対パスがページの階層に依存するため
-    // ルートからの相対パスを使う
     const res = await fetch(path);
     if (!res.ok) throw new Error(res.status);
     el.innerHTML = await res.text();
@@ -24,40 +20,32 @@ async function loadComponent(selector, path) {
 
 async function initComponents() {
   const base = getBasePath();
+  await loadComponent("#header-placeholder", `${base}components/header.html`);
+  await loadComponent("#footer-placeholder", `${base}components/footer.html`);
 
-  await Promise.all([
-    loadComponent("#header-placeholder", `${base}components/header.html`),
-    loadComponent("#footer-placeholder", `${base}components/footer.html`),
-  ]);
-
-  // header/footer のDOM注入が完了してから実行
+  console.log("[INIT] components done.");
   updateEntryCount();
   setActiveNav();
+  initMobileNav();
 }
 
-/* ----------------------------------------------------------
-   パス解決ユーティリティ
-   index.html, about.html, entry.html はすべてルート直下想定
-   サブディレクトリに置く場合はここを修正
-   ---------------------------------------------------------- */
 function getBasePath() {
-  // ルート直下のファイルから見た components/ への相対パス
   return "./";
 }
 
 /* ----------------------------------------------------------
    2. ENTRYカウント更新
-   header読み込み完了後に呼ぶ
    ---------------------------------------------------------- */
 function updateEntryCount() {
   if (!window.ENTRIES) return;
   const count = window.ENTRIES.length;
 
-  // ヘッダー内のカウント（header.htmlのid）
   const headerEl = document.getElementById("entry-count-num");
   if (headerEl) headerEl.textContent = count;
 
-  // ヒーローSTATSカードのカウント（index.htmlのclass）
+  const mobileEl = document.getElementById("entry-count-num-mobile");
+  if (mobileEl) mobileEl.textContent = count;
+
   document.querySelectorAll(".entry-total").forEach((el) => {
     el.textContent = count;
   });
@@ -65,32 +53,68 @@ function updateEntryCount() {
 
 /* ----------------------------------------------------------
    3. アクティブナビ
-   現在のページURLに応じて .current クラスを付与
    ---------------------------------------------------------- */
 function setActiveNav() {
   const path = window.location.pathname;
-
-  // ページ名を取得（例: "about.html", "index.html", "entry.html"）
   const page = path.split("/").pop() || "index.html";
-
-  // data-nav属性とページ名のマッピング
   const navMap = {
     "index.html": "catalog",
-    "": "catalog", // ルートアクセス
+    "": "catalog",
     "about.html": "world",
-    "entry.html": "catalog", // entryはcatalog配下扱い
+    "entry.html": "catalog",
   };
-
   const current = navMap[page];
   if (!current) return;
 
   document.querySelectorAll(".nav-a[data-nav]").forEach((a) => {
     a.classList.toggle("current", a.dataset.nav === current);
   });
+  document.querySelectorAll(".nav-overlay-item[data-nav]").forEach((a) => {
+    a.classList.toggle("current", a.dataset.nav === current);
+  });
 }
 
 /* ----------------------------------------------------------
-   4. Scroll Reveal
+   4. Mobile Nav
+   ---------------------------------------------------------- */
+function initMobileNav() {
+  const burger = document.getElementById("nav-burger");
+  const overlay = document.getElementById("nav-overlay");
+  const close = document.getElementById("nav-close");
+
+  if (!burger || !overlay) return;
+
+  function openMenu() {
+    burger.classList.add("is-open");
+    overlay.classList.add("is-open");
+    document.body.classList.add("nav-is-open");
+    burger.setAttribute("aria-label", "メニューを閉じる");
+  }
+
+  function closeMenu() {
+    burger.classList.remove("is-open");
+    overlay.classList.remove("is-open");
+    document.body.classList.remove("nav-is-open");
+    burger.setAttribute("aria-label", "メニューを開く");
+  }
+
+  burger.addEventListener("click", () => {
+    overlay.classList.contains("is-open") ? closeMenu() : openMenu();
+  });
+
+  if (close) close.addEventListener("click", closeMenu);
+
+  overlay.querySelectorAll(".nav-overlay-item").forEach((a) => {
+    a.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
+  });
+}
+
+/* ----------------------------------------------------------
+   5. Scroll Reveal
    ---------------------------------------------------------- */
 function initReveal() {
   const obs = new IntersectionObserver(
@@ -104,12 +128,8 @@ function initReveal() {
     },
     { threshold: 0.12 },
   );
-
-  // entry.jsがDOMを生成した後に呼ばれる場合も考慮
-  // MutationObserverで動的追加された.revealも監視
   document.querySelectorAll(".reveal").forEach((r) => obs.observe(r));
 
-  // entry.htmlなど動的生成ページ用: DOM変化を監視して新しい.revealを登録
   const mutObs = new MutationObserver(() => {
     document.querySelectorAll(".reveal:not(.visible)").forEach((r) => {
       obs.observe(r);
@@ -119,7 +139,7 @@ function initReveal() {
 }
 
 /* ----------------------------------------------------------
-   5. Filter（index.html の標本目録）
+   6. Filter
    ---------------------------------------------------------- */
 function setFilter(btn) {
   document
@@ -131,14 +151,12 @@ function setFilter(btn) {
 
   document.querySelectorAll(".ecard").forEach((card) => {
     const tag = (card.querySelector(".ctag")?.textContent || "").toUpperCase();
-
     let show = true;
     if (filter === "PLANT+") {
       show = tag.includes("PLANT") || tag.includes("SUCCULENT");
     } else if (filter === "ANIMAL+") {
       show = tag.includes("BEAST") || tag.includes("ANIMAL");
     }
-
     if (show) {
       card.style.opacity = "1";
       card.style.transform = "none";
@@ -147,7 +165,6 @@ function setFilter(btn) {
       card.style.opacity = "0";
       card.style.transform = "translateY(8px)";
       setTimeout(() => {
-        // 非表示にするが、アニメーション後に
         if (card.style.opacity === "0") card.style.display = "none";
       }, 250);
     }
@@ -155,12 +172,9 @@ function setFilter(btn) {
 }
 
 /* ----------------------------------------------------------
-   6. Init
+   7. Init
    ---------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", async () => {
-  // entries.js は main.js より前に <script> で読まれているので
-  // DOMContentLoaded時点では window.ENTRIES は確実に存在する
-  // → initComponents() でheaderを注入してからカウント更新
   await initComponents();
   initReveal();
 });

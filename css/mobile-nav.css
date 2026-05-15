@@ -1,0 +1,218 @@
+/* ============================================================
+   MOBILE NAV — style.cssの末尾に追記
+   ============================================================ */
+
+/* ハンバーガーボタン（モバイルのみ表示） */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background: transparent;
+  border: 1px solid var(--br2);
+  cursor: crosshair;
+  transition: border-color 0.2s;
+}
+.nav-burger:hover {
+  border-color: var(--g);
+}
+.burger-line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--ink);
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* バーガーが開いている状態 */
+.nav-burger.is-open .burger-line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.nav-burger.is-open .burger-line:nth-child(2) {
+  opacity: 0;
+}
+.nav-burger.is-open .burger-line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* オーバーレイ全体 */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+
+  /* 初期状態：非表示 */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+.nav-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* オーバーレイ内部レイアウト */
+.nav-overlay-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+/* オーバーレイ ヘッダー行 */
+.nav-overlay-header {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 22px;
+  border-bottom: 1px solid var(--br2);
+  flex-shrink: 0;
+}
+.nav-overlay-logo {
+  font-family: "Shippori Mincho", serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.nav-close {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--br2);
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink3);
+  cursor: crosshair;
+  transition: all 0.2s;
+}
+.nav-close:hover {
+  border-color: var(--g);
+  color: var(--g);
+}
+
+/* ナビリンク一覧 */
+.nav-overlay-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--br2);
+  overflow-y: auto;
+}
+.nav-overlay-item {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 22px;
+  text-decoration: none;
+  border-bottom: 1px solid var(--br);
+  transition: background 0.2s;
+  position: relative;
+}
+.nav-overlay-item:last-child {
+  border-bottom: none;
+}
+.nav-overlay-item:hover {
+  background: var(--bg2);
+}
+.nav-overlay-item.current {
+  background: var(--gp);
+}
+.nav-overlay-item.current::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--g);
+}
+.nav-overlay-no {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--ink3);
+}
+.nav-overlay-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.nav-overlay-en {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--ink3);
+}
+
+/* オーバーレイ フッター */
+.nav-overlay-footer {
+  padding: 20px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+.nav-overlay-count {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--ink3);
+}
+.nav-overlay-ig {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--ink3);
+  text-decoration: none;
+  border-bottom: 1px solid var(--br2);
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+.nav-overlay-ig:hover {
+  color: var(--g);
+  border-color: var(--g);
+}
+
+/* グリッド線の装飾 */
+.nav-overlay-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--br) 1px, transparent 1px),
+    linear-gradient(90deg, var(--br) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* モバイルでのみ表示 */
+@media (max-width: 900px) {
+  .nav-burger {
+    display: flex;
+  }
+}
+
+/* body scroll lock（JS側でクラスを付与） */
+body.nav-is-open {
+  overflow: hidden;
+}
