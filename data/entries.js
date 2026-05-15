@@ -172,7 +172,7 @@ window.ENTRIES = [
     plant: 15,
     animal: 95,
     danger: 90,
-    notes: "",
+    notes: "細かなことは不明だが、とにかくキンタマがでかい。アガベスト",
     rarity: "LEGEND",
     rarityClass: "rar-l",
     image: "images/no_006.png",
@@ -198,7 +198,8 @@ window.ENTRIES = [
     plant: 60,
     animal: 60,
     danger: 40,
-    notes: "",
+    notes:
+      "空を飛ぶネコ型生物を発見した。空中適応のためか、体表が空色スペクトルを強く呈している。にゃんだほー。アガベスト",
     rarity: "uncommon",
     rarityClass: "rar-uc",
     image: "images/no_007.png",
@@ -238,7 +239,8 @@ window.ENTRIES = [
     plant: 70,
     animal: 85,
     danger: 55,
-    notes: "",
+    notes:
+      "草を食べるトカゲのような生き物を発見した。体表が葉っぱのような質感をしている。爬虫類までもが植物の特性を兼ね備えている。アガベスト",
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_008.png",
@@ -277,7 +279,8 @@ window.ENTRIES = [
     plant: 35,
     animal: 80,
     danger: 30,
-    notes: "",
+    notes:
+      "クマがいると思い逃げようとしたが、どうやらこれも鋸歯生物の一種のようだ。クマのような見た目をしているが、常に二足歩行をし、集団生活をおこなっている。アガベスト",
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_009.png",
