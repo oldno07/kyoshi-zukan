@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — 標本未発見 | 鋸歯生物図鑑</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Share+Tech+Mono&family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile-nav.css">
+  <style>
+    .notfound-wrap {
+      min-height: calc(100vh - 52px);
+      margin-top: 52px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--br2);
+    }
+
+    /* 左：エラー情報 */
+    .nf-left {
+      padding: 72px 56px;
+      border-right: 1px solid var(--br2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+    .nf-left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--br) 1px, transparent 1px),
+        linear-gradient(90deg, var(--br) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .nf-left > * { position: relative; z-index: 1; }
+
+    .nf-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .3em;
+      color: var(--red);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nf-label::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--red);
+    }
+
+    .nf-code {
+      font-family: var(--mono);
+      font-size: clamp(80px, 12vw, 140px);
+      font-weight: 400;
+      line-height: 1;
+      color: var(--bg3);
+      letter-spacing: -.04em;
+      margin-bottom: 4px;
+      /* グリッチ風アニメーション */
+      animation: glitch 4s ease-in-out infinite;
+    }
+    @keyframes glitch {
+      0%, 90%, 100% { transform: none; opacity: 1; }
+      91% { transform: translateX(2px); opacity: .9; }
+      92% { transform: translateX(-2px); opacity: .95; }
+      93% { transform: none; opacity: 1; }
+    }
+
+    .nf-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      margin-bottom: 8px;
+    }
+    .nf-title-en {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: .35em;
+      color: var(--ink3);
+      margin-bottom: 40px;
+    }
+
+    .nf-desc {
+      font-size: 13px;
+      line-height: 2.4;
+      color: var(--ink2);
+      max-width: 380px;
+      margin-bottom: 48px;
+    }
+
+    .nf-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* 右：ビューワー風の空白 */
+    .nf-right {
+      background: var(--bg2);
+      display: flex;
+      flex-direction: column;
+    }
+    .nf-viewer-hd {
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--br2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg);
+    }
+    .nf-viewer-id {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .2em;
+      color: var(--ink3);
+    }
+    .nf-viewer-status {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .2em;
+      color: var(--red);
+      border: 1px solid var(--red);
+      background: var(--redp);
+      padding: 4px 10px;
+      animation: blink 1.5s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .4; }
+    }
+
+    .nf-viewer-body {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* レティクル */
+    .nf-viewer-body::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 240px; height: 240px;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(216,90,48,.15);
+      border-radius: 50%;
+    }
+    .nf-viewer-body::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 160px; height: 160px;
+      transform: translate(-50%, -50%);
+      border: 1px dashed rgba(216,90,48,.1);
+      border-radius: 50%;
+    }
+
+    .nf-unknown {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      animation: flt 5s ease-in-out infinite;
+    }
+    @keyframes flt {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .nf-unknown-icon {
+      width: 120px;
+      height: 120px;
+      border: 1px solid var(--br2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: var(--bg3);
+      position: relative;
+      background: var(--bg);
+    }
+    /* スキャンライン */
+    .nf-unknown-icon::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(216,90,48,.5), transparent);
+      animation: scan 2s ease-in-out infinite;
+    }
+    @keyframes scan {
+      0%   { top: 0%;   opacity: .8; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    .nf-unknown-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .25em;
+      color: var(--ink3);
+    }
+
+    /* コーナーマーク（赤ver） */
+    .nf-cm {
+      position: absolute;
+      width: 18px; height: 18px;
+      border-color: var(--red);
+      border-style: solid;
+      opacity: .3;
+    }
+    .nf-cm-tl { top: 28px; left: 28px; border-width: 1px 0 0 1px; }
+    .nf-cm-tr { top: 28px; right: 28px; border-width: 1px 1px 0 0; }
+    .nf-cm-bl { bottom: 72px; left: 28px; border-width: 0 0 1px 1px; }
+    .nf-cm-br { bottom: 72px; right: 28px; border-width: 0 1px 1px 0; }
+
+    .nf-viewer-ft {
+      padding: 14px 28px;
+      border-top: 1px solid var(--br2);
+      background: var(--bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nf-viewer-ft-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .15em;
+      color: var(--ink3);
+    }
+    .nf-viewer-ft-val {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .15em;
+      color: var(--red);
+    }
+
+    /* SYS DIVIDER */
+    .nf-sys {
+      display: flex;
+      border-top: 1px solid var(--br2);
+      border-bottom: 1px solid var(--br2);
+      background: var(--bg2);
+    }
+    .nf-sys-dc {
+      flex: 1;
+      padding: 11px 36px;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .22em;
+      color: var(--ink3);
+      border-right: 1px solid var(--br2);
+    }
+    .nf-sys-dc:last-child { border-right: none; }
+    .nf-sys-dc span { color: var(--red); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .notfound-wrap {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .nf-left {
+        padding: 44px 22px;
+        border-right: none;
+        border-bottom: 1px solid var(--br2);
+      }
+      .nf-right { min-height: 300px; }
+      .nf-sys { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <div class="notfound-wrap">
+
+    <!-- 左：エラー情報 -->
+    <div class="nf-left">
+      <div class="nf-label">ERROR / 記録エラー</div>
+      <div class="nf-code">404</div>
+      <h1 class="nf-title">標本<br>未発見</h1>
+      <div class="nf-title-en">SPECIMEN NOT FOUND</div>
+      <p class="nf-desc">
+        指定されたURLに対応する標本記録が存在しません。<br>
+        当該個体は未採集、もしくは記録が消失した可能性があります。<br>
+        目録から再検索してください。
+      </p>
+      <div class="nf-actions">
+        <a href="index.html" class="btn btn-p">← 目録に戻る</a>
+        <a href="about.html" class="btn btn-o">世界観を読む</a>
+      </div>
+    </div>
+
+    <!-- 右：ビューワー -->
+    <div class="nf-right">
+      <div class="nf-viewer-hd">
+        <span class="nf-viewer-id">ENTRY ??? — NOT FOUND</span>
+        <span class="nf-viewer-status">● ERROR</span>
+      </div>
+      <div class="nf-viewer-body">
+        <div class="nf-cm nf-cm-tl"></div>
+        <div class="nf-cm nf-cm-tr"></div>
+        <div class="nf-cm nf-cm-bl"></div>
+        <div class="nf-cm nf-cm-br"></div>
+
+        <div class="nf-unknown">
+          <div class="nf-unknown-icon">?</div>
+          <span class="nf-unknown-label">SPECIMEN_MISSING</span>
+        </div>
+      </div>
+      <div class="nf-viewer-ft">
+        <span class="nf-viewer-ft-label">STATUS</span>
+        <span class="nf-viewer-ft-val">RECORD_NOT_FOUND</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SYS DIVIDER -->
+  <div class="nf-sys">
+    <div class="nf-sys-dc">CODE: <span>404</span></div>
+    <div class="nf-sys-dc">TYPE: <span>NOT_FOUND</span></div>
+    <div class="nf-sys-dc">RECORD: <span>MISSING</span></div>
+    <div class="nf-sys-dc">ACTION: <span>RETURN_TO_CATALOG</span></div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="data/entries.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
