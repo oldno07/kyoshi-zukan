@@ -6,7 +6,8 @@ window.ENTRIES = [
     plant: 30,
     animal: 78,
     danger: 35,
-    notes: "",
+    notes:
+      "こんな動物を見るのは初めてだ。いや、植物のようでもある。どういった生命体なのだろうか、随時記録していきたいと思う。アガベスト",
     image: "images/no_001.png",
     tag: "BEAST-DOMINANT-動物優性型",
     jp: "スニャグルトゥース",
@@ -38,7 +39,8 @@ window.ENTRIES = [
     plant: 10,
     animal: 85,
     danger: 20,
-    notes: "",
+    notes:
+      "植物と動物の特性を併せ持つ、非常に興味深い生命体のようだ。サンプルを捕獲しようとしたら向こうから擦り寄ってきた。今後の研究が楽しみだ。アガベスト",
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_002.png",
@@ -72,7 +74,8 @@ window.ENTRIES = [
     plant: 20,
     animal: 80,
     danger: 25,
-    notes: "",
+    notes:
+      "少しわかったことがある。この生き物はストレスを感じると赤くなるようだ。何にストレスを感じるのか、引き続き観察していきたい。アガベスト",
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
     image: "images/no_003.png",
@@ -104,7 +107,8 @@ window.ENTRIES = [
     plant: 40,
     animal: 70,
     danger: 15,
-    notes: "",
+    notes:
+      "植物の特性を持ちながら、動物的な行動も示す、非常に興味深い生き物だ。私はこの生物群のことを「鋸歯生物」と呼称することにした。アガベスト",
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_004.png",
@@ -135,7 +139,8 @@ window.ENTRIES = [
     plant: 25,
     animal: 90,
     danger: 60,
-    notes: "",
+    notes:
+      "驚いた。ネコ型生物以外にも、ゴリラのような個体を密林の奥深くで発見した。どのような進化を遂げてきたのだろうか。頭部に見えるのはホリダの葉っぱのように見える。アガベスト",
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_005.png",
