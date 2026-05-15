@@ -1,16 +1,14 @@
 let currentFilter = "ALL";
+
 function renderCatalog() {
   const grid = document.querySelector(".card-grid");
-
   if (!grid || !window.ENTRIES) return;
 
   grid.innerHTML = "";
 
   window.ENTRIES.forEach((entry, index) => {
     const card = document.createElement("div");
-
     card.className = "ecard reveal";
-
     card.style.display = "";
     card.style.opacity = "1";
     card.style.transform = "none";
@@ -22,7 +20,6 @@ function renderCatalog() {
     card.innerHTML = `
       <div class="ct">
         <span class="cno">No.${entry.no}</span>
-
         <span class="rarity ${entry.rarityClass}">
           ${entry.rarity}
         </span>
@@ -33,45 +30,29 @@ function renderCatalog() {
       </div>
 
       <div class="cbody">
-
         <div class="ctag">${entry.tag}</div>
-
         <div class="cnm-jp">${entry.jp}</div>
-
         <div class="cnm-en">${entry.en}</div>
-
-        <p class="cdesc">
-          ${entry.desc}
-        </p>
-
+        <p class="cdesc">${entry.desc}</p>
         <div class="cdata">
-
           <div class="dc">
             <div class="dk">HABITAT</div>
             <div class="dv">${entry.habitat}</div>
           </div>
-
           <div class="dc">
             <div class="dk">SIZE</div>
             <div class="dv">${entry.size}</div>
           </div>
-
           <div class="dc">
             <div class="dk">MOBILITY</div>
             <div class="dv">${entry.mobility}</div>
           </div>
-
           <div class="dc">
             <div class="dk">STATUS</div>
-
-            <div
-              class="dv"
-              style="color:${entry.statusColor}"
-            >
+            <div class="dv" style="color:${entry.statusColor}">
               ${entry.status}
             </div>
           </div>
-
         </div>
       </div>
     `;
@@ -84,16 +65,12 @@ function renderCatalog() {
   });
 }
 
-/* 登録数更新 */
-function updateEntryCount() {
-  const total = window.ENTRIES.length;
-
+document.addEventListener("DOMContentLoaded", () => {
+  renderCatalog();
+  // updateEntryCount は main.js が担当
+  // .entry-total の更新だけここで行う
+  const total = window.ENTRIES?.length ?? 0;
   document.querySelectorAll(".entry-total").forEach((el) => {
     el.textContent = total.toString().padStart(3, "0");
   });
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  renderCatalog();
-  updateEntryCount();
 });
