@@ -8,12 +8,7 @@ const entry = window.ENTRIES?.find((e) => String(e.no) === no);
 const container = document.getElementById("entry-detail");
 
 if (!entry) {
-  container.innerHTML = `
-    <div class="ed-notfound">
-      <div class="ed-nf-code">404</div>
-      <div class="ed-nf-msg">SPECIMEN NOT FOUND</div>
-      <a href="index.html" class="btn btn-o" style="margin-top:24px;">← 目録に戻る</a>
-    </div>`;
+  window.location.href = "/404.html";
 } else {
   renderEntry(entry);
   initAnimations();
