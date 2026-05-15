@@ -50,12 +50,17 @@ function getBasePath() {
    header読み込み完了後に呼ぶ
    ---------------------------------------------------------- */
 function updateEntryCount() {
-  const el = document.getElementById("entry-count-num");
-  console.log("[COUNT] el:", el, "| ENTRIES:", window.ENTRIES?.length);
-  if (!el) return;
   if (!window.ENTRIES) return;
-  el.textContent = window.ENTRIES.length;
-  console.log("[COUNT] set to:", el.textContent);
+  const count = window.ENTRIES.length;
+
+  // ヘッダー内のカウント（header.htmlのid）
+  const headerEl = document.getElementById("entry-count-num");
+  if (headerEl) headerEl.textContent = count;
+
+  // ヒーローSTATSカードのカウント（index.htmlのclass）
+  document.querySelectorAll(".entry-total").forEach((el) => {
+    el.textContent = count;
+  });
 }
 
 /* ----------------------------------------------------------
