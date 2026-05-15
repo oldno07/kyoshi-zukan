@@ -3,15 +3,14 @@ window.ENTRIES = [
     no: "001",
     sort: 10,
     createdAt: "2026-05-13",
-    plant: 30, // ← バー用（数値）
+    plant: 30,
     animal: 78,
     danger: 35,
-
+    notes: "",
     image: "images/no_001.png",
     tag: "BEAST-DOMINANT-動物優性型",
     jp: "スニャグルトゥース",
     en: "Snyaggletooth",
-
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
     desc: `
@@ -24,8 +23,7 @@ window.ENTRIES = [
     幾何学的整列または美的秩序に基づく配置である可能性が高い。
     当該構造は防御機能ではなく、個体識別または種内シグナル伝達に関与していると推定される。
   `,
-    abilities: ["光合成移動", "擬態静止"], // ← 特殊能力
-    notes: "", // ← 任意
+    abilities: ["シャドーステイシス", "ねむりうごき"],
     habitat: "深林",
     size: "166mm",
     mobility: "緩慢",
@@ -37,6 +35,10 @@ window.ENTRIES = [
     no: "002",
     sort: 20,
     createdAt: "2026-05-13",
+    plant: 10,
+    animal: 85,
+    danger: 20,
+    notes: "",
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_002.png",
@@ -55,6 +57,7 @@ window.ENTRIES = [
 さらに、外部投与された液体栄養因子に対して一時的な活動性上昇を示すが、
 これは恒常的代謝変化ではなく、刺激応答性の反射的現象と考えられる。
   `,
+    abilities: ["フォトクロマティクス", "ひかりかんじょう"],
     habitat: "岩場",
     size: "184mm",
     mobility: "夜間活性",
@@ -66,6 +69,10 @@ window.ENTRIES = [
     no: "003",
     sort: 30,
     createdAt: "2026-05-13",
+    plant: 20,
+    animal: 80,
+    danger: 25,
+    notes: "",
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
     image: "images/no_003.png",
@@ -82,6 +89,7 @@ window.ENTRIES = [
     当該変化は防御反応というよりも、
     環境情報の視覚的出力機構として機能している可能性が高い。
   `,
+    abilities: ["ストレスカラーシフト", "あかいろはんのう"],
     habitat: "スポットライト直下",
     size: "144mm",
     mobility: "夜間活性",
@@ -93,6 +101,10 @@ window.ENTRIES = [
     no: "004",
     sort: 100,
     createdAt: "2026-05-13",
+    plant: 40,
+    animal: 70,
+    danger: 15,
+    notes: "",
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_004.png",
@@ -108,6 +120,7 @@ window.ENTRIES = [
     形態変化よりも恒常性維持に適応資源を配分する戦略を持つと推定され、
     環境変動に対して構造的安定性を維持する能力が特徴である。
   `,
+    abilities: ["エコシステムアダプト", "かんきょうてきおう"],
     habitat: "森林",
     size: "172mm",
     mobility: "夜間活性",
@@ -119,6 +132,10 @@ window.ENTRIES = [
     no: "005",
     sort: 50,
     createdAt: "2026-05-13",
+    plant: 25,
+    animal: 90,
+    danger: 60,
+    notes: "",
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_005.png",
@@ -135,16 +152,22 @@ window.ENTRIES = [
     微細な角度変化を通じて個体状態を外部へ伝達する機能を持つ可能性がある。
     当該機構は非言語的な生理シグナル伝達系として分類される。
   `,
+    abilities: ["マッスルビルダー", "おもみしずめ"],
     habitat: "密林深部",
     size: "2.4m",
     mobility: "重量型",
     status: "● STABLE",
     statusColor: "var(--g)",
   },
+
   {
     no: "006",
     sort: 60,
     createdAt: "2026-05-13",
+    plant: 15,
+    animal: 95,
+    danger: 90,
+    notes: "",
     rarity: "LEGEND",
     rarityClass: "rar-l",
     image: "images/no_006.png",
@@ -155,16 +178,22 @@ window.ENTRIES = [
       めちゃくちゃキンタマがでかい悪魔。<br>
       めちゃくちゃキンタマがデカい。
     `,
+    abilities: ["オーバーリバランス", "りょくばくぞうふく"],
     habitat: "禁域森林",
     size: "4.1m",
     mobility: "群体統率",
     status: "● MONARCH",
     statusColor: "#e0b94f",
   },
+
   {
     no: "007",
     sort: 70,
     createdAt: "2026-05-13",
+    plant: 60,
+    animal: 60,
+    danger: 40,
+    notes: "",
     rarity: "uncommon",
     rarityClass: "rar-uc",
     image: "images/no_007.png",
@@ -189,16 +218,22 @@ window.ENTRIES = [
     一時的に浮遊安定性が向上する傾向が記録されているが、
     因果関係については未だ検証段階にある。
   `,
+    abilities: ["エアロバランサー", "かぜのり"],
     habitat: "領空",
     size: "160mm",
     mobility: "高速飛行",
     status: "● MONARCH",
     statusColor: "#e0b94f",
   },
+
   {
     no: "008",
     sort: 80,
     createdAt: "2026-05-13",
+    plant: 70,
+    animal: 85,
+    danger: 55,
+    notes: "",
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_008.png",
@@ -222,16 +257,22 @@ window.ENTRIES = [
 周囲の植物構造へ同化するような擬態行動を示すことが多い。
 
 `,
+    abilities: ["リーフアーマーフュージョン", "しょくぶつどうか"],
     habitat: "草原",
     size: "248mm",
     mobility: "俊敏",
     status: "● ACTIVE",
     statusColor: "var(--g)",
   },
+
   {
     no: "009",
     sort: 90,
     createdAt: "2026-05-13",
+    plant: 35,
+    animal: 80,
+    danger: 30,
+    notes: "",
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_009.png",
@@ -246,6 +287,7 @@ window.ENTRIES = [
       威圧感のある立ち姿が重視されることが
       近年の研究で明らかになっている。
     `,
+    abilities: ["スウォームコンダクト", "なかまよび"],
     habitat: "針葉密林",
     size: "1.8m",
     mobility: "群行型",
@@ -257,6 +299,10 @@ window.ENTRIES = [
     no: "010",
     sort: 100,
     createdAt: "2026-05-13",
+    plant: 20,
+    animal: 95,
+    danger: 85,
+    notes: "",
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_010.png",
@@ -270,6 +316,7 @@ window.ENTRIES = [
       背中の顔が多いほど 群れ内で高い地位を持つ。 また、
       雌個体からの人気も極めて高いことが 生態観測記録に残されている。
     `,
+    abilities: ["ハイパーインシデント", "きょうかかいろ"],
     habitat: "争域地帯",
     size: "2.7m",
     mobility: "重装型",
@@ -281,6 +328,10 @@ window.ENTRIES = [
     no: "011",
     sort: 110,
     createdAt: "2026-05-13",
+    plant: 15,
+    animal: 95,
+    danger: 95,
+    notes: "",
     rarity: "EPIC",
     rarityClass: "rar-e",
     image: "images/no_011.png",
@@ -294,6 +345,7 @@ window.ENTRIES = [
       周囲の生態系へ甚大な影響を与える。 なお、 野生下で遭遇した場合は
       直ちに引き返すべきとされている。
     `,
+    abilities: ["コロニーオーバーライド", "しはいどうちょう"],
     habitat: "禁域森林",
     size: "4.1m",
     mobility: "群体統率",
@@ -305,6 +357,10 @@ window.ENTRIES = [
     no: "012",
     sort: 120,
     createdAt: "2026-05-14",
+    plant: 80,
+    animal: 85,
+    danger: 40,
+    notes: "",
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
     image: "images/no_012.png",
@@ -326,16 +382,22 @@ window.ENTRIES = [
 むしろ、群落の“移動する保護層”として機能している可能性が示唆される。
 
 `,
+    abilities: ["クロロコンダクター", "どしょくれんどう"],
     habitat: "草原地帯",
     size: "2.1m",
     mobility: "重量型",
     status: "● ACTIVE",
     statusColor: "var(--g)",
   },
+
   {
     no: "013",
     sort: 130,
     createdAt: "2026-05-13",
+    plant: 20,
+    animal: 95,
+    danger: 80,
+    notes: "",
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_013.png",
@@ -358,16 +420,22 @@ window.ENTRIES = [
 動物と植物の境界概念を揺るがす象徴種として分類されている。
 
 `,
+    abilities: ["ハイドロモジュレーター", "みずあつばいそう"],
     habitat: "深海域",
     size: "18m+",
     mobility: "浮遊型",
     status: "● MYTHIC",
     statusColor: "#e0b94f",
   },
+
   {
     no: "014",
     sort: 140,
     createdAt: "2026-05-14",
+    plant: 25,
+    animal: 90,
+    danger: 75,
+    notes: "",
     rarity: "uncommon",
     rarityClass: "rar-uc",
     image: "images/no_014.png",
@@ -394,17 +462,23 @@ window.ENTRIES = [
 通常の排出行動ではなく、深海圧環境の再調整プロセスである可能性が示唆されている。
 
 `,
+    abilities: ["ディープシンクアダプト", "しんかいどうか"],
     habitat: "深海域",
     size: "18m級",
     mobility: "遊泳型",
     status: "● MONITOR",
     statusColor: "#e0b94f",
   },
+
   {
     no: "015",
     sort: 150,
     createdAt: "2026-05-14",
-    rarity: "rare",
+    plant: 5,
+    animal: 95,
+    danger: 95,
+    notes: "",
+    rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_015.png",
     tag: "AQUATIC-SUCCULENT HYBRID",
@@ -425,16 +499,22 @@ window.ENTRIES = [
 深海鋸歯生態系における極限適応の到達点と位置付けている。
 
 `,
+    abilities: ["メタルバイオシフト", "まてりあるへんか"],
     habitat: "深海域",
     size: "18m+",
     mobility: "浮遊型",
     status: "● MONARCH",
     statusColor: "#e0b94f",
   },
+
   {
     no: "016",
     sort: 160,
     createdAt: "2026-05-14",
+    plant: 10,
+    animal: 98,
+    danger: 100,
+    notes: "",
     rarity: "LEGEND",
     rarityClass: "rar-l",
     image: "images/no_016.png",
@@ -458,16 +538,22 @@ window.ENTRIES = [
 深海生態系における半ば神話的存在として扱われている。
 
 `,
+    abilities: ["オーロラミネラルフロー", "こうたくばいぞう"],
     habitat: "深海域",
     size: "18m+",
     mobility: "浮遊型",
     status: "● STABLE",
     statusColor: "var(--g)",
   },
+
   {
     no: "017",
     sort: 170,
     createdAt: "2026-05-14",
+    plant: 55,
+    animal: 75,
+    danger: 35,
+    notes: "",
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
     image: "images/no_017.png",
@@ -489,16 +575,22 @@ window.ENTRIES = [
 本種は環境の豊かさを可視化する指標生物としても扱われている。
 
 `,
+    abilities: ["センサリーフラクタル", "ひかりきょうかん"],
     habitat: "草原地帯",
     size: "100mm",
     mobility: "緩慢",
     status: "● ACTIVE",
     statusColor: "var(--g)",
   },
+
   {
     no: "018",
     sort: 180,
     createdAt: "2026-05-14",
+    plant: 30,
+    animal: 85,
+    danger: 70,
+    notes: "",
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_018.png",
@@ -524,16 +616,22 @@ window.ENTRIES = [
 単なる機械生命体ではなく、何らかの意思残留体である可能性も示唆されている。
 
 `,
+    abilities: ["メカノイドレジスト", "かんせいざんぞう"],
     habitat: "境界地帯",
     size: "2.6m",
     mobility: "機械歩行型",
     status: "● MONITOR",
     statusColor: "#e0b94f",
   },
+
   {
     no: "019",
     sort: 190,
     createdAt: "2026-05-14",
+    plant: 25,
+    animal: 88,
+    danger: 50,
+    notes: "",
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
     image: "images/no_019.png",
@@ -557,16 +655,22 @@ window.ENTRIES = [
 この挙動は捕食回避だけでなく、仲間間の位置情報伝達にも利用されている可能性がある。
 
 `,
+    abilities: ["エラスティックフォーム", "はんぱつしんどう"],
     habitat: "沿岸域",
     size: "12m〜18m",
     mobility: "遊泳型",
     status: "● STABLE",
     statusColor: "var(--g)",
   },
+
   {
     no: "020",
     sort: 200,
     createdAt: "2026-05-14",
+    plant: 70,
+    animal: 70,
+    danger: 40,
+    notes: "",
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_020.png",
@@ -588,6 +692,7 @@ window.ENTRIES = [
     乾燥周期と湿潤周期の反復により成長速度が大きく変動するため、
     本種は環境変動の記録媒体としても扱われている。
   `,
+    abilities: ["デザートストレージコア", "みずほぞん"],
     habitat: "乾燥地帯",
     size: "212mm",
     mobility: "緩慢",
@@ -610,7 +715,9 @@ window.ENTRIES = [
       水切れが近づくと急速に軟化し、 極端に機嫌が悪化する。 なお、
       尻尾や手足に見える部位は 歩行器官ではなく“根”であることが、
       近年の研究で明らかになっている。
-    `,
+  `,
+    abilities: ["塊根弾性変形", "水分依存機嫌変動"],
+    notes: "乾燥ストレス応答個体。",
     habitat: "乾燥地帯",
     size: "212mm",
     mobility: "緩慢",
