@@ -1762,3 +1762,77 @@ footer {
     font-size: 30px;
   }
 }
+/* ============================================================
+   HERO SHOP WRAP — ヒーローのSTORES導線
+   ============================================================ */
+#hero-shop-wrap {
+  border-top: 1px solid var(--br2);
+}
+
+.hero-shop-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 28px;
+  background: var(--ink);
+  text-decoration: none;
+  transition: background 0.2s;
+  cursor: crosshair;
+}
+.hero-shop-btn:hover {
+  background: var(--g);
+}
+.hero-shop-btn--top {
+  background: var(--bg2);
+  border-top: 1px solid var(--br2);
+}
+.hero-shop-btn--top:hover {
+  background: var(--gp);
+}
+.hero-shop-btn--top .hero-shop-label {
+  color: var(--ink);
+}
+.hero-shop-btn--top .hero-shop-en {
+  color: var(--g);
+}
+
+.hero-shop-label {
+  font-family: "Shippori Mincho", serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #f0f0e8;
+  margin-bottom: 3px;
+}
+.hero-shop-en {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: rgba(224, 224, 216, 0.5);
+}
+.hero-shop-price {
+  font-family: var(--mono);
+  font-size: 20px;
+  color: #f0f0e8;
+  letter-spacing: -0.01em;
+}
+
+.hero-shop-soldout {
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg2);
+  border-top: 1px solid var(--br2);
+}
+.hero-shop-soldout-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--ink3);
+  text-decoration: line-through;
+}
+.hero-shop-soldout-name {
+  font-family: "Shippori Mincho", serif;
+  font-size: 13px;
+  color: var(--ink3);
+}

@@ -30,6 +30,38 @@ window.ENTRIES = [
     mobility: "緩慢",
     status: "● ACTIVE",
     statusColor: "var(--g)",
+    shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
+    price: "",
+    soldOut: true, // 完売時は true に変えるだけ
+    variants: [
+      {
+        id: "001-a",
+        label: "フチネコ種",
+        labelEn: "Fuchi-Neko Type",
+        image: "images/no_001_a.png",
+        shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
+        price: 5000,
+        soldOut: true,
+      },
+      {
+        id: "001-b",
+        label: "寝そべり種",
+        labelEn: "Sitting Type",
+        image: "images/no_001_b.png",
+        shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
+        price: 3000,
+        soldOut: true,
+      },
+      {
+        id: "001-c",
+        label: "招き猫種",
+        labelEn: "Maneki Type",
+        image: "images/no_001_c.png",
+        shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
+        price: 5000,
+        soldOut: true,
+      },
+    ],
   },
 
   {
@@ -65,6 +97,38 @@ window.ENTRIES = [
     mobility: "夜間活性",
     status: "● ACTIVE",
     statusColor: "var(--g)",
+    shopUrl: "https://agavest.stores.jp/items/6a07e6cca30c09e1667757ee",
+    price: "5000",
+    soldOut: true, // 完売時は true に変えるだけ
+    variants: [
+      {
+        id: "002-a",
+        label: "フチネコ種",
+        labelEn: "Fuchi-Neko Type",
+        image: "images/no_002_a.png",
+        shopUrl: "https://agavest.stores.jp/items/6a07e6cca30c09e1667757ee",
+        price: 5000,
+        soldOut: true,
+      },
+      {
+        id: "002-b",
+        label: "寝そべり種",
+        labelEn: "Sitting Type",
+        image: "images/no_002_b.png",
+        shopUrl: "https://agavest.stores.jp/items/6a07e6cca30c09e1667757ee",
+        price: 3000,
+        soldOut: true,
+      },
+      {
+        id: "002-c",
+        label: "招き猫種",
+        labelEn: "Maneki Type",
+        image: "images/no_002_c.png",
+        shopUrl: "https://agavest.stores.jp/items/6a07e6cca30c09e1667757ee",
+        price: 5000,
+        soldOut: true,
+      },
+    ],
   },
 
   {
@@ -98,6 +162,9 @@ window.ENTRIES = [
     mobility: "夜間活性",
     status: "● ACTIVE",
     statusColor: "var(--g)",
+    shopUrl: "https://agavest.stores.jp/items/6a080c2e9797c79a78b9a4f0",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 
   {
@@ -130,6 +197,9 @@ window.ENTRIES = [
     mobility: "夜間活性",
     status: "● ACTIVE",
     statusColor: "var(--g)",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 
   {
@@ -163,6 +233,9 @@ window.ENTRIES = [
     mobility: "重量型",
     status: "● STABLE",
     statusColor: "var(--g)",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 
   {
@@ -189,6 +262,9 @@ window.ENTRIES = [
     mobility: "群体統率",
     status: "● MONARCH",
     statusColor: "#e0b94f",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 
   {
@@ -226,6 +302,9 @@ window.ENTRIES = [
     mobility: "高速飛行",
     status: "● MONARCH",
     statusColor: "#e0b94f",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 
   {
@@ -266,6 +345,9 @@ window.ENTRIES = [
     mobility: "俊敏",
     status: "● ACTIVE",
     statusColor: "var(--g)",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 
   {
@@ -306,6 +388,9 @@ window.ENTRIES = [
     mobility: "群行型",
     status: "● STABLE",
     statusColor: "var(--g)",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 
   {
@@ -346,6 +431,9 @@ window.ENTRIES = [
     mobility: "重装型",
     status: "● AGITATED",
     statusColor: "#d65a5a",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 
   {
@@ -385,6 +473,9 @@ window.ENTRIES = [
     mobility: "群体統率",
     status: "● MONARCH",
     statusColor: "#e0b94f",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 
   {
@@ -422,6 +513,9 @@ window.ENTRIES = [
     mobility: "重量型",
     status: "● ACTIVE",
     statusColor: "var(--g)",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 
   {
@@ -461,6 +555,9 @@ window.ENTRIES = [
     mobility: "浮遊型",
     status: "● MYTHIC",
     statusColor: "#e0b94f",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 
   {
@@ -499,6 +596,9 @@ window.ENTRIES = [
     mobility: "遊泳型",
     status: "● MONITOR",
     statusColor: "#e0b94f",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
   {
     no: "015",
@@ -537,6 +637,9 @@ window.ENTRIES = [
     mobility: "浮遊型",
     status: "● MONARCH",
     statusColor: "#e0b94f",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 
   {
@@ -577,6 +680,9 @@ window.ENTRIES = [
     mobility: "浮遊型",
     status: "● STABLE",
     statusColor: "var(--g)",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 
   {
@@ -616,6 +722,9 @@ window.ENTRIES = [
     mobility: "緩慢",
     status: "● ACTIVE",
     statusColor: "var(--g)",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 
   {
@@ -654,6 +763,9 @@ window.ENTRIES = [
     mobility: "機械歩行型",
     status: "● MONITOR",
     statusColor: "#e0b94f",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 
   {
@@ -692,6 +804,9 @@ window.ENTRIES = [
     mobility: "遊泳型",
     status: "● STABLE",
     statusColor: "var(--g)",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 
   {
@@ -730,6 +845,9 @@ window.ENTRIES = [
     mobility: "緩慢",
     status: "● THIRSTY",
     statusColor: "#d6b85a",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 
   {
@@ -768,5 +886,8 @@ window.ENTRIES = [
     mobility: "緩慢",
     status: "● THIRSTY",
     statusColor: "#d6b85a",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
   },
 ];

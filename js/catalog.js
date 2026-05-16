@@ -1,5 +1,10 @@
-let currentFilter = "ALL";
+/* ============================================================
+   鋸歯生物図鑑 — catalog.js
+   ============================================================ */
 
+/* ----------------------------------------------------------
+   1. カタログ レンダリング
+   ---------------------------------------------------------- */
 function renderCatalog() {
   const grid = document.querySelector(".card-grid");
   if (!grid || !window.ENTRIES) return;
@@ -24,11 +29,9 @@ function renderCatalog() {
           ${entry.rarity}
         </span>
       </div>
-
       <div class="cillus">
         <img src="${entry.image}" alt="${entry.jp}" />
       </div>
-
       <div class="cbody">
         <div class="ctag">${entry.tag}</div>
         <div class="cnm-jp">${entry.jp}</div>
@@ -65,10 +68,96 @@ function renderCatalog() {
   });
 }
 
+/* ----------------------------------------------------------
+   2. ヒーロービューワー ランダム表示
+   ---------------------------------------------------------- */
+function renderHeroViewer() {
+  if (!window.ENTRIES || window.ENTRIES.length === 0) return;
+
+  // ランダムに1体選ぶ
+  const pick =
+    window.ENTRIES[Math.floor(Math.random() * window.ENTRIES.length)];
+
+  // 画像
+  const img = document.querySelector(".sp-float img");
+  if (img) {
+    img.src = pick.image;
+    img.alt = pick.jp;
+  }
+
+  // ENTRY No. ラベル
+  const spId = document.querySelector(".sp-id");
+  if (spId) spId.textContent = `ENTRY No.${pick.no} — FEATURED`;
+
+  // レアリティバッジ
+  const rarBadge = document.querySelector(".sp-hd .rarity");
+  if (rarBadge) {
+    rarBadge.className = `rarity ${pick.rarityClass}`;
+    rarBadge.textContent = `★ ${pick.rarity}`;
+  }
+
+  // 名前
+  const nmJp = document.querySelector(".sp-nm-jp");
+  const nmEn = document.querySelector(".sp-nm-en");
+  if (nmJp) nmJp.textContent = pick.jp;
+  if (nmEn) nmEn.textContent = `${pick.en} / No.${pick.no}`;
+
+  // ステータスバー（PLANT / ANIMAL / DANGER の順）
+  const bars = document.querySelectorAll(".sp-ft .bar-f");
+  const vals = [pick.plant ?? 0, pick.animal ?? 0, pick.danger ?? 0];
+  bars.forEach((bar, i) => {
+    bar.style.width = `${vals[i]}%`;
+  });
+
+  // ビューワークリックでentry詳細へ
+  const viewer = document.querySelector(".sp-view");
+  const spFt = document.querySelector(".sp-ft");
+  [viewer, spFt].forEach((el) => {
+    if (!el) return;
+    el.style.cursor = "crosshair";
+    el.addEventListener("click", () => {
+      window.location.href = `entry.html?no=${pick.no}`;
+    });
+  });
+
+  // STORES導線を更新
+  const shopWrap = document.getElementById("hero-shop-wrap");
+  if (!shopWrap) return;
+
+  if (pick.soldOut) {
+    shopWrap.innerHTML = `
+      <div class="hero-shop-soldout">
+        <span class="hero-shop-soldout-label">SOLD OUT</span>
+        <span class="hero-shop-soldout-name">${pick.jp}</span>
+      </div>`;
+  } else if (pick.shopUrl) {
+    shopWrap.innerHTML = `
+      <a href="${pick.shopUrl}" target="_blank" class="hero-shop-btn">
+        <div>
+          <div class="hero-shop-label">この個体を購入する</div>
+          <div class="hero-shop-en">BUY ON STORES ↗</div>
+        </div>
+        ${pick.price ? `<div class="hero-shop-price">¥${Number(pick.price).toLocaleString()}</div>` : ""}
+      </a>`;
+  } else {
+    shopWrap.innerHTML = `
+      <a href="https://agavest.stores.jp" target="_blank" class="hero-shop-btn hero-shop-btn--top">
+        <div>
+          <div class="hero-shop-label">ショップで購入する</div>
+          <div class="hero-shop-en">AGAVEST STORES ↗</div>
+        </div>
+      </a>`;
+  }
+}
+
+/* ----------------------------------------------------------
+   3. Init
+   ---------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
   renderCatalog();
-  // updateEntryCount は main.js が担当
-  // .entry-total の更新だけここで行う
+  renderHeroViewer();
+
+  // .entry-total の更新（main.jsのupdateEntryCountと役割分担）
   const total = window.ENTRIES?.length ?? 0;
   document.querySelectorAll(".entry-total").forEach((el) => {
     el.textContent = total.toString().padStart(3, "0");
