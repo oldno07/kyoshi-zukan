@@ -1509,7 +1509,8 @@ footer {
     grid-template-columns: 1fr;
   }
   .hero-r {
-    display: none;
+    display: flex; /* none → flex */
+    min-height: 360px; /* この行を追加 */
   }
   .hero-l {
     padding: 44px 22px;
