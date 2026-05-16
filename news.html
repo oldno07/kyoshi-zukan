@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEWS — 鋸歯生物図鑑</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Share+Tech+Mono&family=Cinzel:wght@400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile-nav.css">
+  <style>
+
+    /* ===== PAGE HERO ===== */
+    .news-hero {
+      margin-top: 52px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--br2);
+    }
+    .news-hero-l {
+      padding: 64px 56px;
+      border-right: 1px solid var(--br2);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      min-height: 280px;
+    }
+    .news-hero-l::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--br) 1px, transparent 1px),
+        linear-gradient(90deg, var(--br) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .news-hero-l > * { position: relative; z-index: 1; }
+
+    .news-hero-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .3em;
+      color: var(--g);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .news-hero-label::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--g);
+    }
+    .news-hero-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: 8px;
+    }
+    .news-hero-en {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: .35em;
+      color: var(--ink3);
+    }
+    .news-hero-r {
+      padding: 64px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .news-hero-desc {
+      font-size: 13px;
+      line-height: 2.4;
+      color: var(--ink2);
+    }
+
+    /* ===== FILTER ===== */
+    .news-filter {
+      display: flex;
+      border-bottom: 1px solid var(--br2);
+      background: var(--bg2);
+      overflow-x: auto;
+    }
+    .news-flt-btn {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .22em;
+      padding: 13px 24px;
+      border: none;
+      border-right: 1px solid var(--br2);
+      background: transparent;
+      color: var(--ink3);
+      cursor: crosshair;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    .news-flt-btn:hover,
+    .news-flt-btn.active {
+      color: var(--g);
+      background: var(--gp);
+    }
+
+    /* ===== NEWS LIST ===== */
+    .news-body {
+      padding: 64px 40px;
+    }
+
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--br2);
+      border: 1px solid var(--br2);
+    }
+
+    .news-item {
+      background: var(--bg);
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      transition: background .2s;
+    }
+    .news-item:hover { background: var(--bg2); }
+
+    /* 左：画像 or タイプカラム */
+    .news-item-left {
+      border-right: 1px solid var(--br2);
+      display: flex;
+      flex-direction: column;
+    }
+    .news-item-img {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      min-height: 160px;
+      background: var(--bg2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .news-item-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 24px;
+    }
+    .news-item-img::before,
+    .news-item-img::after {
+      content: '';
+      position: absolute;
+      background: var(--br);
+    }
+    .news-item-img::before { width: 1px; height: 100%; left: 50%; }
+    .news-item-img::after  { height: 1px; width: 100%; top: 50%; }
+
+    .news-item-no-img {
+      flex: 1;
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg2);
+      font-family: var(--mono);
+      font-size: 28px;
+      color: var(--bg3);
+      position: relative;
+    }
+    .news-item-no-img::before,
+    .news-item-no-img::after {
+      content: '';
+      position: absolute;
+      background: var(--br);
+    }
+    .news-item-no-img::before { width: 1px; height: 100%; left: 50%; }
+    .news-item-no-img::after  { height: 1px; width: 100%; top: 50%; }
+
+    .news-item-meta {
+      padding: 12px 16px;
+      border-top: 1px solid var(--br2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* 右：テキスト */
+    .news-item-right {
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .news-item-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .news-date {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .18em;
+      color: var(--ink3);
+    }
+    .news-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+    .news-body-text {
+      font-size: 13px;
+      line-height: 2.2;
+      color: var(--ink2);
+    }
+
+    /* イベント詳細テーブル */
+    .news-event-table {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--br2);
+      border: 1px solid var(--br2);
+      margin-top: 4px;
+    }
+    .news-event-row {
+      display: flex;
+      background: var(--bg);
+      padding: 8px 14px;
+      align-items: baseline;
+      gap: 16px;
+    }
+    .news-event-k {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .18em;
+      color: var(--ink3);
+      width: 80px;
+      flex-shrink: 0;
+    }
+    .news-event-v {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink);
+    }
+
+    .news-item-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .2em;
+      color: var(--g);
+      text-decoration: none;
+      border: 1px solid var(--g);
+      background: var(--gp);
+      padding: 8px 16px;
+      align-self: flex-start;
+      transition: all .2s;
+      margin-top: 4px;
+    }
+    .news-item-link:hover {
+      background: var(--g);
+      color: var(--bg);
+    }
+
+    /* タイプバッジ */
+    .type-badge {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .15em;
+      padding: 2px 8px;
+      border: 1px solid;
+    }
+    .type-new   { color: var(--g);   border-color: var(--g);   background: var(--gp);   }
+    .type-event { color: var(--amb); border-color: var(--amb); background: var(--ambp); }
+    .type-shop  { color: var(--red); border-color: var(--red); background: var(--redp); }
+    .type-info  { color: var(--ink3); border-color: var(--br2); background: var(--bg2); }
+
+    /* イベントステータスバッジ */
+    .event-status {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .15em;
+      padding: 2px 8px;
+      border: 1px solid;
+    }
+    .status-upcoming { color: var(--amb); border-color: var(--amb); background: var(--ambp); }
+    .status-ongoing  {
+      color: var(--g); border-color: var(--g); background: var(--gp);
+      animation: blink 1.5s ease-in-out infinite;
+    }
+    .status-ended    { color: var(--ink3); border-color: var(--br2); background: var(--bg2); }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .5; }
+    }
+
+    /* 空状態 */
+    .news-empty {
+      padding: 80px 40px;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .25em;
+      color: var(--ink3);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .news-hero { grid-template-columns: 1fr; }
+      .news-hero-l {
+        padding: 44px 22px 32px;
+        border-right: none;
+        border-bottom: 1px solid var(--br2);
+        min-height: auto;
+      }
+      .news-hero-r { padding: 28px 22px 44px; }
+      .news-body { padding: 44px 22px; }
+      .news-item { grid-template-columns: 1fr; }
+      .news-item-left { border-right: none; border-bottom: 1px solid var(--br2); }
+      .news-item-img, .news-item-no-img { min-height: 200px; }
+      .news-item-right { padding: 20px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <!-- PAGE HERO -->
+  <div class="news-hero">
+    <div class="news-hero-l">
+      <div class="breadcrumb">
+        <a href="index.html">HOME</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>NEWS</span>
+      </div>
+      <div class="news-hero-label">FIELD REPORT / 活動記録</div>
+      <h1 class="news-hero-title">NEWS</h1>
+      <div class="news-hero-en">LATEST REPORTS</div>
+    </div>
+    <div class="news-hero-r">
+      <p class="news-hero-desc">
+        新作フィギュアの完成報告、イベント出展情報、通販開始のお知らせなど、Pelican Worksの最新活動を記録しています。
+      </p>
+    </div>
+  </div>
+
+  <!-- SYS DIVIDER -->
+  <div class="sys-div">
+    <div class="sys-dc">STATUS: <span>ACTIVE</span></div>
+    <div class="sys-dc">COLLECTOR: <span>PELICAN WORKS</span></div>
+    <div class="sys-dc">TOTAL: <span id="news-total">—</span></div>
+    <div class="sys-dc">LATEST: <span id="news-latest">—</span></div>
+  </div>
+
+  <!-- FILTER -->
+  <div class="news-filter">
+    <button class="news-flt-btn active" data-filter="ALL">ALL</button>
+    <button class="news-flt-btn" data-filter="new">NEW FIGURE</button>
+    <button class="news-flt-btn" data-filter="event">EVENT</button>
+    <button class="news-flt-btn" data-filter="shop">SHOP</button>
+  </div>
+
+  <!-- NEWS LIST -->
+  <div class="news-body">
+    <div class="news-list" id="news-list"></div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="data/entries.js"></script>
+  <script src="data/news.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    /* ============================================================
+       News レンダリング
+       ============================================================ */
+    const TYPE_LABEL = {
+      new:   "NEW FIGURE",
+      event: "EVENT",
+      shop:  "SHOP",
+      info:  "INFO",
+    };
+    const STATUS_LABEL = {
+      upcoming: "開催予定",
+      ongoing:  "開催中",
+      ended:    "終了",
+    };
+
+    function renderNews(filter = "ALL") {
+      const list = document.getElementById("news-list");
+      if (!list || !window.NEWS) return;
+
+      const items = filter === "ALL"
+        ? window.NEWS
+        : window.NEWS.filter((n) => n.type === filter);
+
+      if (items.length === 0) {
+        list.innerHTML = `<div class="news-empty">— 該当する記録がありません —</div>`;
+        return;
+      }
+
+      list.innerHTML = items.map((n) => {
+        // 左カラム：画像 or アイコン
+        const leftImg = n.image
+          ? `<div class="news-item-img"><img src="${n.image}" alt="${n.title}"></div>`
+          : `<div class="news-item-no-img">${
+              n.type === "event" ? "⬡" : n.type === "shop" ? "▷" : "★"
+            }</div>`;
+
+        // タイプバッジ
+        const typeBadge = `<span class="type-badge type-${n.type}">${TYPE_LABEL[n.type] ?? n.type}</span>`;
+
+        // イベントステータスバッジ
+        const statusBadge = n.status
+          ? `<span class="event-status status-${n.status}">${STATUS_LABEL[n.status]}</span>`
+          : "";
+
+        // イベント詳細テーブル
+        const eventTable = (n.type === "event" && (n.venue || n.eventDate || n.booth))
+          ? `<div class="news-event-table">
+              ${n.eventDate ? `<div class="news-event-row"><span class="news-event-k">DATE</span><span class="news-event-v">${n.eventDate}</span></div>` : ""}
+              ${n.venue     ? `<div class="news-event-row"><span class="news-event-k">VENUE</span><span class="news-event-v">${n.venue}</span></div>` : ""}
+              ${n.booth     ? `<div class="news-event-row"><span class="news-event-k">BOOTH</span><span class="news-event-v">${n.booth}</span></div>` : ""}
+            </div>`
+          : "";
+
+        // リンクボタン
+        const linkBtn = n.link
+          ? `<a href="${n.link}" class="news-item-link" ${n.link.startsWith("http") ? 'target="_blank"' : ""}>${n.linkLabel ?? "詳細を見る"} →</a>`
+          : "";
+
+        return `
+          <div class="news-item reveal" data-type="${n.type}">
+            <div class="news-item-left">
+              ${leftImg}
+              <div class="news-item-meta">
+                ${typeBadge}
+                ${statusBadge}
+              </div>
+            </div>
+            <div class="news-item-right">
+              <div class="news-item-header">
+                <span class="news-date">${n.date}</span>
+              </div>
+              <div class="news-title">${n.title}</div>
+              <p class="news-body-text">${n.body}</p>
+              ${eventTable}
+              ${linkBtn}
+            </div>
+          </div>`;
+      }).join("");
+
+      // reveal を再登録
+      document.querySelectorAll(".news-item.reveal:not(.visible)").forEach((el) => {
+        el.classList.add("visible");
+      });
+    }
+
+    function updateNewsMeta() {
+      if (!window.NEWS) return;
+      const totalEl  = document.getElementById("news-total");
+      const latestEl = document.getElementById("news-latest");
+      if (totalEl)  totalEl.textContent  = window.NEWS.length;
+      if (latestEl) latestEl.textContent = window.NEWS[0]?.date ?? "—";
+    }
+
+    // フィルターボタン
+    document.querySelectorAll(".news-flt-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".news-flt-btn").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderNews(btn.dataset.filter);
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderNews();
+      updateNewsMeta();
+    });
+  </script>
+</body>
+</html>
