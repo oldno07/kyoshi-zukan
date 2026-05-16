@@ -99,34 +99,16 @@ window.ENTRIES = [
     statusColor: "var(--g)",
     shopUrl: "https://agavest.stores.jp/items/6a07e6cca30c09e1667757ee",
     price: "5000",
-    soldOut: true, // 完売時は true に変えるだけ
+    soldOut: false, // 完売時は true に変えるだけ
     variants: [
       {
         id: "002-a",
         label: "フチネコ種",
         labelEn: "Fuchi-Neko Type",
         image: "images/no_002_a.png",
-        shopUrl: "https://agavest.stores.jp/items/6a07e6cca30c09e1667757ee",
+        shopUrl: "",
         price: 5000,
-        soldOut: true,
-      },
-      {
-        id: "002-b",
-        label: "寝そべり種",
-        labelEn: "Sitting Type",
-        image: "images/no_002_b.png",
-        shopUrl: "https://agavest.stores.jp/items/6a07e6cca30c09e1667757ee",
-        price: 3000,
-        soldOut: true,
-      },
-      {
-        id: "002-c",
-        label: "招き猫種",
-        labelEn: "Maneki Type",
-        image: "images/no_002_c.png",
-        shopUrl: "https://agavest.stores.jp/items/6a07e6cca30c09e1667757ee",
-        price: 5000,
-        soldOut: true,
+        soldOut: false,
       },
     ],
   },
@@ -165,6 +147,17 @@ window.ENTRIES = [
     shopUrl: "https://agavest.stores.jp/items/6a080c2e9797c79a78b9a4f0",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
+    variants: [
+      {
+        id: "003-a",
+        label: "フチネコ種",
+        labelEn: "Fuchi-Neko Type",
+        image: "images/no_003_a.png",
+        shopUrl: "",
+        price: 5000,
+        soldOut: false,
+      },
+    ],
   },
 
   {
@@ -200,6 +193,26 @@ window.ENTRIES = [
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
+    variants: [
+      {
+        id: "004-a",
+        label: "フチネコ種",
+        labelEn: "Fuchi-Neko Type",
+        image: "images/no_004_a.png",
+        shopUrl: "",
+        price: 5000,
+        soldOut: false,
+      },
+      {
+        id: "004-b",
+        label: "デブネコ種",
+        labelEn: "Debu-Neko Type",
+        image: "images/no_004_b.png",
+        shopUrl: "",
+        price: 5000,
+        soldOut: false,
+      },
+    ],
   },
 
   {
