@@ -874,8 +874,8 @@ window.ENTRIES = [
     rarityClass: "rar-c",
     image: "images/no_021.png",
     tag: "SUCCULENT-TYPE",
-    jp: "グラねっこ",
-    en: "Granekko",
+    jp: "グラキリス（ねこ種）",
+    en: "GraciRis (Cat Type)",
     desc: `
   乾燥地帯に生息する、
   ネコ型塊根鋸歯生物。  
