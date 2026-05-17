@@ -895,9 +895,9 @@ window.ENTRIES = [
   {
     no: "021",
     sort: 210,
-    createdAt: "2026-05-16",
+    createdAt: "2026-05-17",
     plant: 75,
-    animal: 70,
+    animal: 20,
     danger: 15,
     rarity: "COMMON",
     rarityClass: "rar-c",
@@ -924,7 +924,7 @@ window.ENTRIES = [
     notes:
       "見た目は完全にネコだが、触れると塊根植物に近い弾力を持っていた。水分状態によって機嫌が極端に変化するらしく、水切れ直前には明確な威嚇反応を示した。アガベスト <br>命名者：@miyamoyo0520",
     habitat: "乾燥地帯",
-    size: "212mm",
+    size: "112mm",
     mobility: "緩慢",
     status: "● THIRSTY",
     statusColor: "#d6b85a",
