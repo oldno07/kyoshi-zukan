@@ -384,6 +384,24 @@ footer {
   letter-spacing: -0.02em;
   margin-bottom: 8px;
 }
+.h-title-wrap {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.h-title-zukan {
+  font-family: "Shippori Mincho", serif;
+  font-size: clamp(100px, 13vw, 140px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
 .h-en {
   font-family: "Cinzel", serif;
   font-size: 12px;

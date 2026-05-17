@@ -820,6 +820,35 @@ window.ENTRIES = [
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
+    variants: [
+      {
+        id: "019-a",
+        label: "さくら種",
+        labelEn: "Sakura Type",
+        image: "images/no_019_a.png",
+        shopUrl: "",
+        price: "",
+        soldOut: false,
+      },
+      {
+        id: "019-b",
+        label: "もち種",
+        labelEn: "Mochi Type",
+        image: "images/no_019_b.png",
+        shopUrl: "",
+        price: "",
+        soldOut: false,
+      },
+      {
+        id: "019-c",
+        label: "よもぎ種",
+        labelEn: "Yomogi Type",
+        image: "images/no_019_c.png",
+        shopUrl: "",
+        price: "",
+        soldOut: false,
+      },
+    ],
   },
 
   {
@@ -874,8 +903,8 @@ window.ENTRIES = [
     rarityClass: "rar-c",
     image: "images/no_021.png",
     tag: "SUCCULENT-TYPE",
-    jp: "グラキリス（ねこ種）",
-    en: "GraciRis (Cat Type)",
+    jp: "グニャキリス",
+    en: "Gnya Kiris",
     desc: `
   乾燥地帯に生息する、
   ネコ型塊根鋸歯生物。  
@@ -893,7 +922,7 @@ window.ENTRIES = [
 `,
     abilities: ["塊根弾性変形", "水分依存機嫌変動"],
     notes:
-      "見た目は完全にネコだが、触れると塊根植物に近い弾力を持っていた。水分状態によって機嫌が極端に変化するらしく、水切れ直前には明確な威嚇反応を示した。アガベスト",
+      "見た目は完全にネコだが、触れると塊根植物に近い弾力を持っていた。水分状態によって機嫌が極端に変化するらしく、水切れ直前には明確な威嚇反応を示した。アガベスト <br>命名者：@miyamoyo0520",
     habitat: "乾燥地帯",
     size: "212mm",
     mobility: "緩慢",

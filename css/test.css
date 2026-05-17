@@ -12,19 +12,3 @@
 
   pointer-events: none;
 }
-.h-title-wrap {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 8px;
-}
-
-.h-title-zukan {
-  font-family: "Shippori Mincho", serif;
-  font-size: clamp(100px, 15vw, 150px);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  color: var(--ink);
-  margin-bottom: 16px;
-}
