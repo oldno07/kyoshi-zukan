@@ -1,3 +1,36 @@
+/* ----------------------------------------------------------
+   0. トップページ ニュース表示（最新3件）
+   ---------------------------------------------------------- */
+function renderTopNews() {
+  const list = document.getElementById("top-news-list");
+  if (!list || !window.NEWS) return;
+
+  const TYPE_LABEL = {
+    new:   "NEW",
+    event: "EVENT",
+    shop:  "SHOP",
+    info:  "INFO",
+  };
+
+  const items = window.NEWS.slice(0, 3);
+
+  list.innerHTML = items.map((n) => {
+    const href = n.link ?? "news.html";
+    const isExternal = href.startsWith("http");
+    const target = isExternal ? 'target="_blank"' : "";
+
+    return `
+      <a href="${href}" ${target} class="top-news-item">
+        <span class="top-news-date">${n.date}</span>
+        <span class="top-news-type">
+          <span class="type-badge type-${n.type}">${TYPE_LABEL[n.type] ?? n.type}</span>
+        </span>
+        <span class="top-news-title">${n.title}</span>
+        <span class="top-news-arrow">→</span>
+      </a>`;
+  }).join("");
+}
+
 /* ============================================================
    鋸歯生物図鑑 — catalog.js
    ============================================================ */
@@ -75,8 +108,7 @@ function renderHeroViewer() {
   if (!window.ENTRIES || window.ENTRIES.length === 0) return;
 
   // ランダムに1体選ぶ
-  const pick =
-    window.ENTRIES[Math.floor(Math.random() * window.ENTRIES.length)];
+  const pick = window.ENTRIES[Math.floor(Math.random() * window.ENTRIES.length)];
 
   // 画像
   const img = document.querySelector(".sp-float img");
@@ -111,7 +143,7 @@ function renderHeroViewer() {
 
   // ビューワークリックでentry詳細へ
   const viewer = document.querySelector(".sp-view");
-  const spFt = document.querySelector(".sp-ft");
+  const spFt   = document.querySelector(".sp-ft");
   [viewer, spFt].forEach((el) => {
     if (!el) return;
     el.style.cursor = "crosshair";
@@ -156,6 +188,7 @@ function renderHeroViewer() {
 document.addEventListener("DOMContentLoaded", () => {
   renderCatalog();
   renderHeroViewer();
+  renderTopNews();
 
   // .entry-total の更新（main.jsのupdateEntryCountと役割分担）
   const total = window.ENTRIES?.length ?? 0;

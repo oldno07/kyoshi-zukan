@@ -570,7 +570,135 @@ footer {
   color: var(--ink3);
   margin-top: 2px;
 }
+/* ============================================================
+   TOP NEWS（index.htmlのSYS DIVIDER直下）
+   ============================================================ */
+.top-news {
+  border-bottom: 1px solid var(--br2);
+}
 
+.top-news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 40px;
+  border-bottom: 1px solid var(--br2);
+  background: var(--bg2);
+}
+.top-news-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.top-news-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: var(--ink3);
+}
+.top-news-more {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--g);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.top-news-more:hover {
+  opacity: 0.6;
+}
+
+.top-news-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.top-news-item {
+  display: grid;
+  grid-template-columns: 140px 80px 1fr auto;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--br);
+  text-decoration: none;
+  transition: background 0.2s;
+  cursor: crosshair;
+}
+.top-news-item:last-child {
+  border-bottom: none;
+}
+.top-news-item:hover {
+  background: var(--bg2);
+}
+
+.top-news-date {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--ink3);
+  padding: 16px 24px 16px 40px;
+  border-right: 1px solid var(--br);
+}
+.top-news-type {
+  padding: 16px 16px;
+  border-right: 1px solid var(--br);
+  display: flex;
+  align-items: center;
+}
+.top-news-title {
+  font-family: "Shippori Mincho", serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 16px 24px;
+}
+.top-news-arrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink3);
+  padding: 16px 40px 16px 0;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.top-news-item:hover .top-news-arrow {
+  opacity: 1;
+}
+
+/* type badge 小サイズ */
+.top-news-item .type-badge {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  padding: 2px 6px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .top-news-header {
+    padding: 12px 22px;
+  }
+  .top-news-item {
+    grid-template-columns: 1fr auto;
+    gap: 0;
+  }
+  .top-news-date {
+    display: none;
+  }
+  .top-news-type {
+    display: none;
+  }
+  .top-news-title {
+    padding: 14px 16px 14px 22px;
+  }
+  .top-news-arrow {
+    padding-right: 22px;
+    opacity: 1;
+  }
+}
+.top-news-pulse {
+  display: flex;
+}
 /* ============================================================
    INDEX — CATALOG
    ============================================================ */
