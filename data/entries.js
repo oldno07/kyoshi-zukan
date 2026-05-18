@@ -942,7 +942,7 @@ window.ENTRIES = [
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_022.png",
-    tag: "SUCCULENT-TYPE",
+    tag: "beast-dominant",
     jp: "ブーファメ（仮）",
     en: "Boophame",
     desc: `
