@@ -6,20 +6,21 @@ function renderTopNews() {
   if (!list || !window.NEWS) return;
 
   const TYPE_LABEL = {
-    new:   "NEW",
+    new: "NEW",
     event: "EVENT",
-    shop:  "SHOP",
-    info:  "INFO",
+    shop: "SHOP",
+    info: "INFO",
   };
 
   const items = window.NEWS.slice(0, 3);
 
-  list.innerHTML = items.map((n) => {
-    const href = n.link ?? "news.html";
-    const isExternal = href.startsWith("http");
-    const target = isExternal ? 'target="_blank"' : "";
+  list.innerHTML = items
+    .map((n) => {
+      const href = n.link ?? "news.html";
+      const isExternal = href.startsWith("http");
+      const target = isExternal ? 'target="_blank"' : "";
 
-    return `
+      return `
       <a href="${href}" ${target} class="top-news-item">
         <span class="top-news-date">${n.date}</span>
         <span class="top-news-type">
@@ -28,7 +29,8 @@ function renderTopNews() {
         <span class="top-news-title">${n.title}</span>
         <span class="top-news-arrow">→</span>
       </a>`;
-  }).join("");
+    })
+    .join("");
 }
 
 /* ============================================================
@@ -36,15 +38,56 @@ function renderTopNews() {
    ============================================================ */
 
 /* ----------------------------------------------------------
-   1. カタログ レンダリング
+   1. カタログ ソート & レンダリング
    ---------------------------------------------------------- */
+
+const RARITY_RANK = {
+  LEGENDARY: 5,
+  EPIC: 4,
+  RARE: 3,
+  UNCOMMON: 2,
+  COMMON: 1,
+};
+
+let currentSort = "sort"; // デフォルト：No.順
+
+function sortEntries(entries, sortKey) {
+  const arr = [...entries];
+  switch (sortKey) {
+    case "new":
+      return arr.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    case "old":
+      return arr.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+    case "rarity":
+      return arr.sort(
+        (a, b) =>
+          (RARITY_RANK[b.rarity?.toUpperCase()] ?? 0) -
+          (RARITY_RANK[a.rarity?.toUpperCase()] ?? 0),
+      );
+    case "sort":
+    default:
+      return arr.sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0));
+  }
+}
+
+function setSort(btn) {
+  document
+    .querySelectorAll(".sort-btn")
+    .forEach((b) => b.classList.remove("active"));
+  btn.classList.add("active");
+  currentSort = btn.dataset.sort;
+  renderCatalog();
+}
+
 function renderCatalog() {
   const grid = document.querySelector(".card-grid");
   if (!grid || !window.ENTRIES) return;
 
   grid.innerHTML = "";
 
-  window.ENTRIES.forEach((entry, index) => {
+  const sorted = sortEntries(window.ENTRIES, currentSort);
+
+  sorted.forEach((entry, index) => {
     const card = document.createElement("div");
     card.className = "ecard reveal";
     card.style.display = "";
@@ -108,7 +151,8 @@ function renderHeroViewer() {
   if (!window.ENTRIES || window.ENTRIES.length === 0) return;
 
   // ランダムに1体選ぶ
-  const pick = window.ENTRIES[Math.floor(Math.random() * window.ENTRIES.length)];
+  const pick =
+    window.ENTRIES[Math.floor(Math.random() * window.ENTRIES.length)];
 
   // 画像
   const img = document.querySelector(".sp-float img");
@@ -143,7 +187,7 @@ function renderHeroViewer() {
 
   // ビューワークリックでentry詳細へ
   const viewer = document.querySelector(".sp-view");
-  const spFt   = document.querySelector(".sp-ft");
+  const spFt = document.querySelector(".sp-ft");
   [viewer, spFt].forEach((el) => {
     if (!el) return;
     el.style.cursor = "crosshair";

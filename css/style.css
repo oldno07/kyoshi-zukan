@@ -583,7 +583,8 @@ footer {
   align-items: center;
   padding: 14px 40px;
   border-bottom: 1px solid var(--br2);
-  background: var(--bg2);
+  background: var(--bg);
+  border-top: 2px solid var(--ink);
 }
 .top-news-left {
   display: flex;
@@ -698,6 +699,74 @@ footer {
 }
 .top-news-pulse {
   display: flex;
+}
+/* ============================================================
+   CATALOG CONTROLS（フィルター＋ソート）
+   ============================================================ */
+.catalog-controls {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.controls-sep {
+  width: 1px;
+  height: 20px;
+  background: var(--br2);
+  margin: 0 12px;
+}
+
+.sort-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sort-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--ink3);
+  margin-right: 4px;
+}
+
+.sort-btn {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  padding: 5px 11px;
+  border: 1px solid var(--br2);
+  background: transparent;
+  color: var(--ink3);
+  cursor: crosshair;
+  transition: all 0.2s;
+}
+.sort-btn:hover,
+.sort-btn.active {
+  border-color: var(--ink2);
+  color: var(--ink);
+  background: var(--bg2);
+}
+
+@media (max-width: 900px) {
+  .sec-hd {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .catalog-controls {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0;
+  }
+  .controls-sep {
+    display: none;
+  }
+  .sort-row {
+    flex-wrap: wrap;
+  }
 }
 /* ============================================================
    INDEX — CATALOG
