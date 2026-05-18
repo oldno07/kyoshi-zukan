@@ -249,7 +249,7 @@ function renderHeroViewer() {
       <a href="https://agavest.stores.jp" target="_blank" class="hero-shop-btn hero-shop-btn--top">
         <div>
           <div class="hero-shop-label">ショップで購入する</div>
-          <div class="hero-shop-en">AGAVEST STORES ↗</div>
+          <div class="hero-shop-en">4K WORKS STORES ↗</div>
         </div>
       </a>`;
   }
