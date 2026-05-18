@@ -212,39 +212,62 @@
           <h2 class="sec-title">標本目録</h2>
         </div>
 
-        <!-- フィルター＋ソート -->
         <div class="catalog-controls">
           <!-- フィルター -->
-          <div class="flt-row">
-            <button class="flt-btn active" onclick="setFilter(this)">
-              ALL
-            </button>
-            <button class="flt-btn" onclick="setFilter(this)">PLANT+</button>
-            <button class="flt-btn" onclick="setFilter(this)">ANIMAL+</button>
+          <div class="ctrl-group">
+            <span class="ctrl-group-label">FILTER</span>
+            <div class="flt-row">
+              <button
+                class="flt-btn active"
+                data-filter="ALL"
+                onclick="setFilter(this)"
+              >
+                ALL
+              </button>
+              <button
+                class="flt-btn"
+                data-filter="PLANT+"
+                onclick="setFilter(this)"
+              >
+                PLANT
+              </button>
+              <button
+                class="flt-btn"
+                data-filter="ANIMAL+"
+                onclick="setFilter(this)"
+              >
+                ANIMAL
+              </button>
+            </div>
           </div>
 
-          <!-- 区切り -->
           <div class="controls-sep"></div>
 
           <!-- ソート -->
-          <div class="sort-row">
-            <span class="sort-label">SORT</span>
-            <button
-              class="sort-btn active"
-              data-sort="sort"
-              onclick="setSort(this)"
-            >
-              No.
-            </button>
-            <button class="sort-btn" data-sort="new" onclick="setSort(this)">
-              新着
-            </button>
-            <button class="sort-btn" data-sort="old" onclick="setSort(this)">
-              古い順
-            </button>
-            <button class="sort-btn" data-sort="rarity" onclick="setSort(this)">
-              RARITY
-            </button>
+          <div class="ctrl-group">
+            <span class="ctrl-group-label">SORT</span>
+            <div class="sort-row">
+              <button
+                class="sort-btn active"
+                data-sort="sort"
+                onclick="setSort(this)"
+              >
+                No.
+              </button>
+              <button class="sort-btn" data-sort="new" onclick="setSort(this)">
+                新着
+              </button>
+              <button class="sort-btn" data-sort="old" onclick="setSort(this)">
+                古い順
+              </button>
+              <button
+                class="sort-btn"
+                data-sort="rarity"
+                onclick="setSort(this)"
+              >
+                RARITY
+              </button>
+            </div>
           </div>
         </div>
       </div>

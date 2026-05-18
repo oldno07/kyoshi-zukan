@@ -697,9 +697,7 @@ footer {
     opacity: 1;
   }
 }
-.top-news-pulse {
-  display: flex;
-}
+
 /* ============================================================
    CATALOG CONTROLS（フィルター＋ソート）
    ============================================================ */
@@ -711,37 +709,71 @@ footer {
   justify-content: flex-end;
 }
 
+/* ラベル付きグループ */
+.ctrl-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ctrl-group-label {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.25em;
+  color: var(--ink3);
+  opacity: 0.6;
+}
+
 .controls-sep {
   width: 1px;
-  height: 20px;
+  align-self: stretch;
   background: var(--br2);
-  margin: 0 12px;
+  margin: 0 16px;
 }
 
-.sort-row {
+/* フィルターボタン */
+.flt-row {
   display: flex;
-  align-items: center;
   gap: 4px;
 }
-
-.sort-label {
+.flt-btn {
   font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.2em;
-  color: var(--ink3);
-  margin-right: 4px;
-}
-
-.sort-btn {
-  font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.15em;
-  padding: 5px 11px;
+  padding: 8px 14px;
+  min-height: 44px;
   border: 1px solid var(--br2);
   background: transparent;
   color: var(--ink3);
   cursor: crosshair;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+}
+.flt-btn:hover,
+.flt-btn.active {
+  border-color: var(--g);
+  color: var(--g);
+  background: var(--gp);
+}
+
+/* ソートボタン */
+.sort-row {
+  display: flex;
+  gap: 4px;
+}
+.sort-btn {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  padding: 8px 14px;
+  min-height: 44px;
+  border: 1px solid var(--br2);
+  background: transparent;
+  color: var(--ink3);
+  cursor: crosshair;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
 }
 .sort-btn:hover,
 .sort-btn.active {
@@ -750,24 +782,39 @@ footer {
   background: var(--bg2);
 }
 
+/* モバイル */
 @media (max-width: 900px) {
   .sec-hd {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 20px;
   }
   .catalog-controls {
     width: 100%;
     justify-content: flex-start;
-    gap: 0;
+    flex-direction: column;
+    gap: 12px;
   }
   .controls-sep {
     display: none;
   }
+  .ctrl-group {
+    width: 100%;
+  }
+  .flt-row,
   .sort-row {
-    flex-wrap: wrap;
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+  .flt-btn,
+  .sort-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 10px 8px;
+    font-size: 10px;
   }
 }
+
 /* ============================================================
    INDEX — CATALOG
    ============================================================ */

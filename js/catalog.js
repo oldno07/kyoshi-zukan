@@ -50,6 +50,7 @@ const RARITY_RANK = {
 };
 
 let currentSort = "sort"; // デフォルト：No.順
+let currentFilter = "ALL"; // デフォルト：全表示
 
 function sortEntries(entries, sortKey) {
   const arr = [...entries];
@@ -87,7 +88,20 @@ function renderCatalog() {
 
   const sorted = sortEntries(window.ENTRIES, currentSort);
 
-  sorted.forEach((entry, index) => {
+  // フィルター適用
+  const filtered =
+    currentFilter === "ALL"
+      ? sorted
+      : sorted.filter((entry) => {
+          const tag = (entry.tag || "").toUpperCase();
+          if (currentFilter === "PLANT+")
+            return tag.includes("PLANT") || tag.includes("SUCCULENT");
+          if (currentFilter === "ANIMAL+")
+            return tag.includes("BEAST") || tag.includes("ANIMAL");
+          return true;
+        });
+
+  filtered.forEach((entry, index) => {
     const card = document.createElement("div");
     card.className = "ecard reveal";
     card.style.display = "";
