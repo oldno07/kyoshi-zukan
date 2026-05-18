@@ -70,6 +70,21 @@ function sortEntries(entries, sortKey) {
       return arr.sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0));
   }
 }
+function setFilter(btn) {
+  // すべてのフィルターボタンから active を削除
+  document
+    .querySelectorAll(".flt-btn")
+    .forEach((b) => b.classList.remove("active"));
+
+  // クリックしたボタンを active に
+  btn.classList.add("active");
+
+  // 現在のフィルターを更新
+  currentFilter = btn.dataset.filter;
+
+  // カタログを再描画
+  renderCatalog();
+}
 
 function setSort(btn) {
   document

@@ -162,7 +162,7 @@ window.ENTRIES = [
 
   {
     no: "004",
-    sort: 100,
+    sort: 40,
     createdAt: "2026-05-13",
     plant: 40,
     animal: 70,
@@ -933,19 +933,19 @@ window.ENTRIES = [
     soldOut: false, // 完売時は true に変えるだけ
   },
   {
-  no: "022",
-  sort: 220,
-  createdAt: "2026-05-17",
-  plant: 92,
-  animal: 65,
-  danger: 18,
-  rarity: "RARE",
-  rarityClass: "rar-r",
-  image: "images/no_022.png",
-  tag: "SUCCULENT-TYPE",
-  jp: "ブーファメ（仮）",
-  en: "Boophame",
-  desc: `
+    no: "022",
+    sort: 220,
+    createdAt: "2026-05-17",
+    plant: 92,
+    animal: 65,
+    danger: 18,
+    rarity: "RARE",
+    rarityClass: "rar-r",
+    image: "images/no_022.png",
+    tag: "SUCCULENT-TYPE",
+    jp: "ブーファメ（仮）",
+    en: "Boophame",
+    desc: `
   乾燥岩場地帯にて確認された、
   亀型塊根鋸歯生物。  
 
@@ -962,16 +962,16 @@ window.ENTRIES = [
   葉状甲羅を閉じるように収束させ、
   全身を岩石状へ擬態する行動が確認されている。
 `,
-  abilities: ["リーフシェルディフェンス", "かくれこうら"],
-  notes:
-    "遠目には完全に植物だった。しかし近づいた瞬間、岩だと思っていた塊がゆっくり動き出した。甲羅部分はブーファンの葉そのもので構成されており、乾燥時には完全に閉じて休眠状態へ入るらしい。アガベスト",
-  habitat: "乾燥岩場",
-  size: "320mm",
-  mobility: "超緩慢",
-  status: "● DORMANT",
-  statusColor: "#d6b85a",
-  shopUrl: "",
-  price: "",
-  soldOut: false, // 完売時は true に変えるだけ
-},
+    abilities: ["リーフシェルディフェンス", "かくれこうら"],
+    notes:
+      "遠目には完全に植物だった。しかし近づいた瞬間、岩だと思っていた塊がゆっくり動き出した。甲羅部分はブーファンの葉そのもので構成されており、乾燥時には完全に閉じて休眠状態へ入るらしい。アガベスト",
+    habitat: "乾燥岩場",
+    size: "320mm",
+    mobility: "超緩慢",
+    status: "● DORMANT",
+    statusColor: "#d6b85a",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
+  },
 ];
