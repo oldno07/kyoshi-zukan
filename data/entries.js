@@ -31,7 +31,7 @@ window.ENTRIES = [
     status: "● ACTIVE",
     statusColor: "var(--g)",
     shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
-    price: "3000",
+    price: "4000",
     soldOut: false, // 完売時は true に変えるだけ
     variants: [
       {
@@ -41,7 +41,7 @@ window.ENTRIES = [
         image: "images/no_001_a.png",
         shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
         price: 4000,
-        soldOut: true,
+        soldOut: false,
       },
       {
         id: "001-b",
@@ -50,7 +50,7 @@ window.ENTRIES = [
         image: "images/no_001_b.png",
         shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
         price: 3000,
-        soldOut: false,
+        soldOut: true,
       },
       {
         id: "001-c",
@@ -59,7 +59,7 @@ window.ENTRIES = [
         image: "images/no_001_c.png",
         shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
         price: 3000,
-        soldOut: false,
+        soldOut: true,
       },
     ],
   },
