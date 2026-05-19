@@ -42,7 +42,7 @@ function renderTopNews() {
    ---------------------------------------------------------- */
 
 const RARITY_RANK = {
-  LEGENDARY: 5,
+  LEGEND: 5,
   EPIC: 4,
   RARE: 3,
   UNCOMMON: 2,
