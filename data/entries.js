@@ -1,60 +1,5 @@
 window.ENTRIES = [
   {
-    no: "004",
-    sort: 40,
-    createdAt: "2026-05-13",
-    plant: 40,
-    animal: 70,
-    danger: 15,
-    notes:
-      "植物の特性を持ちながら、動物的な行動も示す、非常に興味深い生き物だ。私はこの生物群のことを「鋸歯生物」と呼称することにした。アガベスト",
-    rarity: "COMMON",
-    rarityClass: "rar-c",
-    image: "images/no_004.png",
-    tag: "BEAST-DOMINANT",
-    jp: "にゃガベ チタノタ",
-    en: "NyAgabe titanota",
-    desc: `
-    鋸歯生物群における広域分布型基礎個体。
-
-    本種は特定環境への特化適応を示さず、
-    森林・乾燥地・人工環境においても安定した生存が確認されている。
-
-    形態変化よりも恒常性維持に適応資源を配分する戦略を持つと推定され、
-    環境変動に対して構造的安定性を維持する能力が特徴である。
-  `,
-    abilities: ["エコシステムアダプト", "かんきょうてきおう"],
-    habitat: "森林",
-    size: "172mm",
-    mobility: "夜間活性",
-    status: "● ACTIVE",
-    statusColor: "var(--g)",
-    shopUrl: "",
-    price: "",
-    soldOut: false, // 完売時は true に変えるだけ
-    variants: [
-      {
-        id: "004-a",
-        label: "フチネコ種",
-        labelEn: "Fuchi-Neko Type",
-        image: "images/no_004_a.png",
-        shopUrl: "",
-        price: 5000,
-        soldOut: false,
-      },
-      {
-        id: "004-b",
-        label: "デブネコ種",
-        labelEn: "Debu-Neko Type",
-        image: "images/no_004_b.png",
-        shopUrl: "",
-        price: 5000,
-        soldOut: false,
-      },
-    ],
-  },
-
-  {
     no: "001",
     sort: 10,
     createdAt: "2026-05-13",
@@ -208,6 +153,60 @@ window.ENTRIES = [
         label: "フチネコ種",
         labelEn: "Fuchi-Neko Type",
         image: "images/no_003_a.png",
+        shopUrl: "",
+        price: 5000,
+        soldOut: false,
+      },
+    ],
+  },
+  {
+    no: "004",
+    sort: 40,
+    createdAt: "2026-05-13",
+    plant: 40,
+    animal: 70,
+    danger: 15,
+    notes:
+      "植物の特性を持ちながら、動物的な行動も示す、非常に興味深い生き物だ。私はこの生物群のことを「鋸歯生物」と呼称することにした。アガベスト",
+    rarity: "COMMON",
+    rarityClass: "rar-c",
+    image: "images/no_004.png",
+    tag: "BEAST-DOMINANT",
+    jp: "にゃガベ チタノタ",
+    en: "NyAgabe titanota",
+    desc: `
+    鋸歯生物群における広域分布型基礎個体。
+
+    本種は特定環境への特化適応を示さず、
+    森林・乾燥地・人工環境においても安定した生存が確認されている。
+
+    形態変化よりも恒常性維持に適応資源を配分する戦略を持つと推定され、
+    環境変動に対して構造的安定性を維持する能力が特徴である。
+  `,
+    abilities: ["エコシステムアダプト", "かんきょうてきおう"],
+    habitat: "森林",
+    size: "172mm",
+    mobility: "夜間活性",
+    status: "● ACTIVE",
+    statusColor: "var(--g)",
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
+    variants: [
+      {
+        id: "004-a",
+        label: "フチネコ種",
+        labelEn: "Fuchi-Neko Type",
+        image: "images/no_004_a.png",
+        shopUrl: "",
+        price: 5000,
+        soldOut: false,
+      },
+      {
+        id: "004-b",
+        label: "デブネコ種",
+        labelEn: "Debu-Neko Type",
+        image: "images/no_004_b.png",
         shopUrl: "",
         price: 5000,
         soldOut: false,
@@ -904,7 +903,7 @@ window.ENTRIES = [
     image: "images/no_021.png",
     tag: "SUCCULENT-TYPE",
     jp: "グニャキリス",
-    en: "Gnya Kiris",
+    en: "Gnyacilius",
     desc: `
   乾燥地帯に生息する、
   ネコ型塊根鋸歯生物。  
@@ -943,7 +942,9 @@ window.ENTRIES = [
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_022.png",
+
     tag: "beast-dominant",
+
     jp: "ブーファメ（仮）",
     en: "Boophame",
     desc: `
