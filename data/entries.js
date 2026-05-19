@@ -30,17 +30,17 @@ window.ENTRIES = [
     mobility: "緩慢",
     status: "● ACTIVE",
     statusColor: "var(--g)",
-    shopUrl: "",
-    price: "",
-    soldOut: true, // 完売時は true に変えるだけ
+    shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
+    price: "3000",
+    soldOut: false, // 完売時は true に変えるだけ
     variants: [
       {
         id: "001-a",
         label: "フチネコ種",
         labelEn: "Fuchi-Neko Type",
         image: "images/no_001_a.png",
-        shopUrl: "",
-        price: 5000,
+        shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
+        price: 4000,
         soldOut: true,
       },
       {
@@ -48,7 +48,7 @@ window.ENTRIES = [
         label: "寝そべり種",
         labelEn: "Sitting Type",
         image: "images/no_001_b.png",
-        shopUrl: "",
+        shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
         price: 3000,
         soldOut: false,
       },
@@ -57,8 +57,8 @@ window.ENTRIES = [
         label: "招き猫種",
         labelEn: "Maneki Type",
         image: "images/no_001_c.png",
-        shopUrl: "",
-        price: 5000,
+        shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
+        price: 3000,
         soldOut: false,
       },
     ],
@@ -927,8 +927,8 @@ window.ENTRIES = [
     mobility: "緩慢",
     status: "● THIRSTY",
     statusColor: "#d6b85a",
-    shopUrl: "",
-    price: "",
+    shopUrl: "https://agavest.stores.jp/items/6a097130e843879f6a4f6c2a",
+    price: "2500",
     soldOut: false, // 完売時は true に変えるだけ
   },
   {
