@@ -292,6 +292,14 @@ function renderEntry(e) {
    ANIMATIONS
    ============================================================ */
 function initAnimations() {
+  document.querySelectorAll('a[target="_blank"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      gtag("event", "outbound_click", {
+        link_url: link.href,
+        link_text: link.innerText.trim(),
+      });
+    });
+  });
   const obs = new IntersectionObserver(
     (entries) => {
       entries.forEach((e) => {
