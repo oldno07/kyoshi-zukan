@@ -31,7 +31,7 @@ window.ENTRIES = [
     status: "● ACTIVE",
     statusColor: "var(--g)",
     shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
-    price: "",
+    price: "4000",
     soldOut: false, // 完売時は true に変えるだけ
     variants: [
       {
