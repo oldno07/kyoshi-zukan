@@ -31,7 +31,7 @@ window.ENTRIES = [
     status: "● ACTIVE",
     statusColor: "var(--g)",
     shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
-    price: "4000",
+    price: "",
     soldOut: false, // 完売時は true に変えるだけ
     variants: [
       {
@@ -40,7 +40,7 @@ window.ENTRIES = [
         labelEn: "Fuchi-Neko Type",
         image: "images/no_001_a.png",
         shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
-        price: 4000,
+        price: "",
         soldOut: false,
       },
       {
@@ -49,7 +49,7 @@ window.ENTRIES = [
         labelEn: "Sitting Type",
         image: "images/no_001_b.png",
         shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
-        price: 3000,
+        price: "",
         soldOut: false,
       },
       {
@@ -58,7 +58,7 @@ window.ENTRIES = [
         labelEn: "Maneki Type",
         image: "images/no_001_c.png",
         shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
-        price: 3000,
+        price: "",
         soldOut: false,
       },
     ],
