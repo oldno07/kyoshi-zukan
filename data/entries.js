@@ -935,6 +935,7 @@ window.ENTRIES = [
   {
     no: "022",
     sort: 220,
+    hidden: true, //
     createdAt: "2026-05-19",
     plant: 92,
     animal: 65,

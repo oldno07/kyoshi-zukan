@@ -67,8 +67,6 @@ function sortEntries(entries, sortKey) {
       );
     case "random":
       return arr.sort(() => Math.random() - 0.5);
-    case "random":
-      return arr.sort(() => Math.random() - 0.5);
     case "sort":
     default:
       return arr.sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0));
@@ -93,17 +91,22 @@ function renderCatalog() {
   const sorted = sortEntries(window.ENTRIES, currentSort);
 
   // フィルター適用
-  const filtered =
-    currentFilter === "ALL"
-      ? sorted
-      : sorted.filter((entry) => {
-          const tag = (entry.tag || "").toUpperCase();
-          if (currentFilter === "PLANT+")
-            return tag.includes("PLANT") || tag.includes("SUCCULENT");
-          if (currentFilter === "ANIMAL+")
-            return tag.includes("BEAST") || tag.includes("ANIMAL");
-          return true;
-        });
+  const filtered = sorted.filter((entry) => {
+    if (currentFilter === "ALL") return true;
+
+    const tag = (entry.tag || "").toUpperCase();
+
+    switch (currentFilter) {
+      case "PLANT+":
+        return tag.includes("PLANT") || tag.includes("SUCCULENT");
+
+      case "ANIMAL+":
+        return tag.includes("BEAST") || tag.includes("ANIMAL");
+
+      default:
+        return true;
+    }
+  });
 
   filtered.forEach((entry, index) => {
     const card = document.createElement("div");
@@ -251,6 +254,17 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCatalog();
   renderHeroViewer();
   renderTopNews();
+
+  window.setFilter = function (btn) {
+    document
+      .querySelectorAll(".flt-btn")
+      .forEach((b) => b.classList.remove("active"));
+
+    btn.classList.add("active");
+
+    currentFilter = btn.dataset.filter;
+    renderCatalog();
+  };
 
   // .entry-total の更新（main.jsのupdateEntryCountと役割分担）
   const total = window.ENTRIES?.length ?? 0;
