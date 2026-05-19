@@ -42,7 +42,7 @@ function renderTopNews() {
    ---------------------------------------------------------- */
 
 const RARITY_RANK = {
-  LEGEND: 5,
+  LEGENDARY: 5,
   EPIC: 4,
   RARE: 3,
   UNCOMMON: 2,
@@ -65,25 +65,14 @@ function sortEntries(entries, sortKey) {
           (RARITY_RANK[b.rarity?.toUpperCase()] ?? 0) -
           (RARITY_RANK[a.rarity?.toUpperCase()] ?? 0),
       );
+    case "random":
+      return arr.sort(() => Math.random() - 0.5);
+    case "random":
+      return arr.sort(() => Math.random() - 0.5);
     case "sort":
     default:
       return arr.sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0));
   }
-}
-function setFilter(btn) {
-  // すべてのフィルターボタンから active を削除
-  document
-    .querySelectorAll(".flt-btn")
-    .forEach((b) => b.classList.remove("active"));
-
-  // クリックしたボタンを active に
-  btn.classList.add("active");
-
-  // 現在のフィルターを更新
-  currentFilter = btn.dataset.filter;
-
-  // カタログを再描画
-  renderCatalog();
 }
 
 function setSort(btn) {
@@ -249,7 +238,7 @@ function renderHeroViewer() {
       <a href="https://agavest.stores.jp" target="_blank" class="hero-shop-btn hero-shop-btn--top">
         <div>
           <div class="hero-shop-label">ショップで購入する</div>
-          <div class="hero-shop-en">4K WORKS STORES ↗</div>
+          <div class="hero-shop-en">AGAVEST STORES ↗</div>
         </div>
       </a>`;
   }
