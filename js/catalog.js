@@ -164,7 +164,6 @@ function renderCatalog() {
       </div>
       <div class="cillus">
         <img src="${entry.image || "images/unknown.png"}" alt="${entry.jp || "Unknown"}" onerror="this.src='images/unknown.png'; this.onerror=null;" />
-        ${isNew ? '<div class="discovery-sparkle"></div>' : ''}
       </div>
       <div class="cbody">
         <div class="ctag">${entry.tag || "UNKNOWN"}</div>
