@@ -18,6 +18,16 @@
 
 window.NEWS = [
   {
+    id: "002",
+    date: "2026-05-19",
+    type: "shop",
+    title: "No.001 スニャグルトゥース — 譲渡会",
+    body: "スニャグルトゥースの復刻譲渡会を鋸歯生物譲渡局にて開始しました。個体数に限りがありますのでお早めにどうぞ。",
+    image: "images/no_001.png",
+    link: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
+    linkLabel: "購入ページへ",
+  },
+  {
     id: "004",
     date: "2026-05-13",
     type: "new",
