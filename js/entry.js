@@ -31,6 +31,10 @@ if (!container) {
       <a href="index.html" class="btn btn-o" style="margin-top:24px;">← 目録に戻る</a>
     </div>`;
 } else {
+  // Mark entry as viewed when detail page is opened
+  if (window.markAsViewed) {
+    window.markAsViewed(entry.no);
+  }
   renderEntry(entry);
   initAnimations();
 }

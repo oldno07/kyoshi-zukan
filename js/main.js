@@ -38,7 +38,7 @@ function getBasePath() {
 }
 
 /* ----------------------------------------------------------
-   2. ENTRYカウント更新
+   2. ENTRYカウント更新 & コレクション進捗
    ---------------------------------------------------------- */
 function updateEntryCount() {
   if (!window.ENTRIES || !Array.isArray(window.ENTRIES)) {
@@ -56,6 +56,70 @@ function updateEntryCount() {
   document.querySelectorAll(".entry-total").forEach((el) => {
     el.textContent = count;
   });
+
+  updateCollectionProgress();
+}
+
+// コレクション進捗管理
+function getViewedEntries() {
+  try {
+    const viewed = localStorage.getItem('kyoshi_viewed_entries');
+    return viewed ? JSON.parse(viewed) : [];
+  } catch (e) {
+    console.warn('[WARN] Failed to read localStorage:', e);
+    return [];
+  }
+}
+
+function markAsViewed(entryNo) {
+  try {
+    const viewed = getViewedEntries();
+    if (!viewed.includes(entryNo)) {
+      viewed.push(entryNo);
+      localStorage.setItem('kyoshi_viewed_entries', JSON.stringify(viewed));
+      updateCollectionProgress();
+      return true; // 新規発見
+    }
+    return false; // 既に閲覧済み
+  } catch (e) {
+    console.warn('[WARN] Failed to write localStorage:', e);
+    return false;
+  }
+}
+
+function updateCollectionProgress() {
+  const viewed = getViewedEntries();
+  const total = window.ENTRIES?.length || 0;
+  const viewedCount = viewed.length;
+  const percentage = total > 0 ? Math.round((viewedCount / total) * 100) : 0;
+
+  // ヘッダーの進捗表示を更新
+  const progressEl = document.getElementById('collection-progress');
+  if (progressEl) {
+    progressEl.textContent = `${viewedCount}/${total}`;
+  }
+
+  const percentageEl = document.getElementById('collection-percentage');
+  if (percentageEl) {
+    percentageEl.textContent = `${percentage}%`;
+  }
+
+  // モバイルの進捗表示を更新
+  const mobileProgressEl = document.getElementById('collection-progress-mobile');
+  if (mobileProgressEl) {
+    mobileProgressEl.textContent = `${viewedCount}/${total}`;
+  }
+
+  const mobilePercentageEl = document.getElementById('collection-percentage-mobile');
+  if (mobilePercentageEl) {
+    mobilePercentageEl.textContent = `${percentage}%`;
+  }
+
+  // プログレスバーの幅を更新
+  const progressBar = document.getElementById('collection-bar-fill');
+  if (progressBar) {
+    progressBar.style.width = `${percentage}%`;
+  }
 }
 
 /* ----------------------------------------------------------

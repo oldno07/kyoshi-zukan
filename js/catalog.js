@@ -149,15 +149,22 @@ function renderCatalog() {
       card.style.transitionDelay = `${index * 0.1}s`;
     }
 
+    // Check if this entry has been viewed
+    const viewed = window.getViewedEntries ? window.getViewedEntries() : [];
+    const isViewed = viewed.includes(entry.no);
+    const isNew = !isViewed;
+
     card.innerHTML = `
       <div class="ct">
         <span class="cno">No.${entry.no || "???"}</span>
         <span class="rarity ${entry.rarityClass || "rar-c"}">
           ${entry.rarity || "COMMON"}
         </span>
+        ${isNew ? '<span class="discovery-badge">NEW</span>' : ''}
       </div>
       <div class="cillus">
         <img src="${entry.image || "images/unknown.png"}" alt="${entry.jp || "Unknown"}" onerror="this.src='images/unknown.png'; this.onerror=null;" />
+        ${isNew ? '<div class="discovery-sparkle"></div>' : ''}
       </div>
       <div class="cbody">
         <div class="ctag">${entry.tag || "UNKNOWN"}</div>
@@ -188,7 +195,32 @@ function renderCatalog() {
     `;
 
     card.addEventListener("click", () => {
+      // Mark as viewed when clicked
+      if (window.markAsViewed) {
+        const wasNew = window.markAsViewed(entry.no);
+        if (wasNew) {
+          // Trigger discovery animation
+          card.classList.add('discovering');
+        }
+      }
       window.location.href = `entry.html?no=${entry.no}`;
+    });
+
+    // Add 3D tilt effect
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / 10;
+      const rotateY = (centerX - x) / 10;
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
     });
 
     grid.appendChild(card);
