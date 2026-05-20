@@ -3,7 +3,14 @@
    ---------------------------------------------------------- */
 function renderTopNews() {
   const list = document.getElementById("top-news-list");
-  if (!list || !window.NEWS) return;
+  if (!list) {
+    console.warn("[WARN] top-news-list element not found");
+    return;
+  }
+  if (!window.NEWS || !Array.isArray(window.NEWS)) {
+    console.warn("[WARN] NEWS data is invalid or missing");
+    return;
+  }
 
   const TYPE_LABEL = {
     new: "NEW",
@@ -53,12 +60,24 @@ let currentSort = "sort"; // デフォルト：No.順
 let currentFilter = "ALL"; // デフォルト：全表示
 
 function sortEntries(entries, sortKey) {
+  if (!entries || !Array.isArray(entries)) {
+    console.warn("[WARN] sortEntries received invalid data");
+    return [];
+  }
   const arr = [...entries];
   switch (sortKey) {
     case "new":
-      return arr.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      return arr.sort((a, b) => {
+        const dateA = new Date(a.createdAt || 0);
+        const dateB = new Date(b.createdAt || 0);
+        return dateB - dateA;
+      });
     case "old":
-      return arr.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+      return arr.sort((a, b) => {
+        const dateA = new Date(a.createdAt || 0);
+        const dateB = new Date(b.createdAt || 0);
+        return dateA - dateB;
+      });
     case "rarity":
       return arr.sort(
         (a, b) =>
@@ -84,7 +103,18 @@ function setSort(btn) {
 
 function renderCatalog() {
   const grid = document.querySelector(".card-grid");
-  if (!grid || !window.ENTRIES) return;
+  if (!grid) {
+    console.warn("[WARN] .card-grid element not found");
+    return;
+  }
+  if (!window.ENTRIES || !Array.isArray(window.ENTRIES)) {
+    console.warn("[WARN] ENTRIES data is invalid or missing");
+    grid.innerHTML = `<div style="padding: 40px; text-align: center; color: var(--ink3); font-family: var(--mono);">
+      ⚠ DATA LOAD ERROR<br>
+      標本データの読み込みに失敗しました
+    </div>`;
+    return;
+  }
 
   grid.innerHTML = "";
 
@@ -121,36 +151,36 @@ function renderCatalog() {
 
     card.innerHTML = `
       <div class="ct">
-        <span class="cno">No.${entry.no}</span>
-        <span class="rarity ${entry.rarityClass}">
-          ${entry.rarity}
+        <span class="cno">No.${entry.no || "???"}</span>
+        <span class="rarity ${entry.rarityClass || "rar-c"}">
+          ${entry.rarity || "COMMON"}
         </span>
       </div>
       <div class="cillus">
-        <img src="${entry.image}" alt="${entry.jp}" />
+        <img src="${entry.image || "images/unknown.png"}" alt="${entry.jp || "Unknown"}" onerror="this.src='images/unknown.png'; this.onerror=null;" />
       </div>
       <div class="cbody">
-        <div class="ctag">${entry.tag}</div>
-        <div class="cnm-jp">${entry.jp}</div>
-        <div class="cnm-en">${entry.en}</div>
-        <p class="cdesc">${entry.desc}</p>
+        <div class="ctag">${entry.tag || "UNKNOWN"}</div>
+        <div class="cnm-jp">${entry.jp || "名称不明"}</div>
+        <div class="cnm-en">${entry.en || "Unknown"}</div>
+        <p class="cdesc">${entry.desc || "記録なし"}</p>
         <div class="cdata">
           <div class="dc">
             <div class="dk">HABITAT</div>
-            <div class="dv">${entry.habitat}</div>
+            <div class="dv">${entry.habitat || "—"}</div>
           </div>
           <div class="dc">
             <div class="dk">SIZE</div>
-            <div class="dv">${entry.size}</div>
+            <div class="dv">${entry.size || "—"}</div>
           </div>
           <div class="dc">
             <div class="dk">MOBILITY</div>
-            <div class="dv">${entry.mobility}</div>
+            <div class="dv">${entry.mobility || "—"}</div>
           </div>
           <div class="dc">
             <div class="dk">STATUS</div>
-            <div class="dv" style="color:${entry.statusColor}">
-              ${entry.status}
+            <div class="dv" style="color:${entry.statusColor || "var(--g)"}">
+              ${entry.status || "—"}
             </div>
           </div>
         </div>
@@ -169,7 +199,10 @@ function renderCatalog() {
    2. ヒーロービューワー ランダム表示
    ---------------------------------------------------------- */
 function renderHeroViewer() {
-  if (!window.ENTRIES || window.ENTRIES.length === 0) return;
+  if (!window.ENTRIES || !Array.isArray(window.ENTRIES) || window.ENTRIES.length === 0) {
+    console.warn("[WARN] ENTRIES data is invalid or empty for hero viewer");
+    return;
+  }
 
   // ランダムに1体選ぶ
   const pick =
@@ -178,32 +211,36 @@ function renderHeroViewer() {
   // 画像
   const img = document.querySelector(".sp-float img");
   if (img) {
-    img.src = pick.image;
-    img.alt = pick.jp;
+    img.src = pick.image || "images/unknown.png";
+    img.alt = pick.jp || "Unknown";
+    img.onerror = function() {
+      this.src = "images/unknown.png";
+      this.onerror = null;
+    };
   }
 
   // ENTRY No. ラベル
   const spId = document.querySelector(".sp-id");
-  if (spId) spId.textContent = `ENTRY No.${pick.no} — FEATURED`;
+  if (spId) spId.textContent = `ENTRY No.${pick.no || "???"} — FEATURED`;
 
   // レアリティバッジ
   const rarBadge = document.querySelector(".sp-hd .rarity");
   if (rarBadge) {
-    rarBadge.className = `rarity ${pick.rarityClass}`;
-    rarBadge.textContent = `★ ${pick.rarity}`;
+    rarBadge.className = `rarity ${pick.rarityClass || "rar-c"}`;
+    rarBadge.textContent = `★ ${pick.rarity || "COMMON"}`;
   }
 
   // 名前
   const nmJp = document.querySelector(".sp-nm-jp");
   const nmEn = document.querySelector(".sp-nm-en");
-  if (nmJp) nmJp.textContent = pick.jp;
-  if (nmEn) nmEn.textContent = `${pick.en} / No.${pick.no}`;
+  if (nmJp) nmJp.textContent = pick.jp || "名称不明";
+  if (nmEn) nmEn.textContent = `${pick.en || "Unknown"} / No.${pick.no || "???"}`;
 
   // ステータスバー（PLANT / ANIMAL / DANGER の順）
   const bars = document.querySelectorAll(".sp-ft .bar-f");
   const vals = [pick.plant ?? 0, pick.animal ?? 0, pick.danger ?? 0];
   bars.forEach((bar, i) => {
-    bar.style.width = `${vals[i]}%`;
+    if (bar) bar.style.width = `${vals[i]}%`;
   });
 
   // ビューワークリックでentry詳細へ

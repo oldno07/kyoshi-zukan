@@ -288,7 +288,7 @@ window.ENTRIES = [
     danger: 0,
     notes:
       "空を飛ぶネコ型生物を発見した。空中適応のためか、体表が空色スペクトルを強く呈している。にゃんだほー。アガベスト",
-    rarity: "UNCOMMON",
+    rarity: "uncommon",
     rarityClass: "rar-uc",
     image: "images/no_007.png",
     tag: "BEAST-DOMINANT",
@@ -412,14 +412,16 @@ window.ENTRIES = [
     plant: 20,
     animal: 95,
     danger: 85,
-    notes:
-      "群れから異様な視線を感じ、振り返ると背中に\"顔\"を持つ個体がこちらを見ていた。どうやら別個体を取り込みながら成長するらしい。観察中、背部の顔同士が同時に瞬きを行う現象を確認した。なにこれ怖い。アガベスト",
+    notes: "",
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_010.png",
     tag: "BEAST-DOMINANT",
     jp: "フィリグリズリーデビル",
     en: "Filigrizzly Devil",
+    notes:
+      "群れから異様な視線を感じ、振り返ると背中に“顔”を持つ個体がこちらを見ていた。どうやら別個体を取り込みながら成長するらしい。観察中、背部の顔同士が同時に瞬きを行う現象を確認した。なにこれ怖い。アガベスト",
+
     desc: `
    群体競争環境下において発生した、
   フィリグリズリー系統の変異鋸歯個体。  
@@ -941,7 +943,7 @@ window.ENTRIES = [
     rarityClass: "rar-r",
     image: "images/no_022.png",
 
-    tag: "BEAST-DOMINANT",
+    tag: "beast-dominant",
 
     jp: "ブーファメ（仮）",
     en: "Boophame",

@@ -52,7 +52,7 @@ window.NEWS = [
     linkLabel: null,
   },
   {
-    id: "005",
+    id: "002",
     date: "2026-05-01",
     type: "shop",
     title: "No.001 スニャグルトゥース — 譲渡会",

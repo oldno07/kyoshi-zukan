@@ -10,11 +10,15 @@ async function loadComponent(selector, path) {
   if (!el) return;
   try {
     const res = await fetch(path);
-    if (!res.ok) throw new Error(res.status);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     el.innerHTML = await res.text();
     console.log("[OK] loaded:", path, "| ENTRIES:", window.ENTRIES?.length);
   } catch (err) {
-    console.warn("component load failed:", path, err);
+    console.error("component load failed:", path, err);
+    el.innerHTML = `<div style="padding: 20px; color: var(--red); font-family: var(--mono); font-size: 12px;">
+      ⚠ COMPONENT LOAD FAILED: ${path}<br>
+      ${err.message}
+    </div>`;
   }
 }
 
@@ -37,7 +41,10 @@ function getBasePath() {
    2. ENTRYカウント更新
    ---------------------------------------------------------- */
 function updateEntryCount() {
-  if (!window.ENTRIES) return;
+  if (!window.ENTRIES || !Array.isArray(window.ENTRIES)) {
+    console.warn("[WARN] ENTRIES data is invalid or missing");
+    return;
+  }
   const count = window.ENTRIES.length;
 
   const headerEl = document.getElementById("entry-count-num");
@@ -142,6 +149,10 @@ function initReveal() {
    6. Filter
    ---------------------------------------------------------- */
 function setFilter(btn) {
+  if (!btn) {
+    console.warn("[WARN] setFilter called with null button");
+    return;
+  }
   document
     .querySelectorAll(".flt-btn")
     .forEach((b) => b.classList.remove("active"));
