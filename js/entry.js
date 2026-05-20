@@ -7,11 +7,27 @@ const no = params.get("no");
 const entry = window.ENTRIES?.find((e) => String(e.no) === no);
 const container = document.getElementById("entry-detail");
 
-if (!entry) {
+if (!container) {
+  console.error("[ERROR] entry-detail container not found");
+  document.body.innerHTML = `<div style="padding: 40px; text-align: center; color: var(--red); font-family: var(--mono);">
+    ⚠ PAGE LOAD ERROR<br>
+    コンテナ要素が見つかりません
+  </div>`;
+} else if (!window.ENTRIES || !Array.isArray(window.ENTRIES)) {
+  console.error("[ERROR] ENTRIES data is invalid or missing");
+  container.innerHTML = `
+    <div class="ed-notfound">
+      <div class="ed-nf-code">500</div>
+      <div class="ed-nf-msg">DATA LOAD ERROR</div>
+      <p style="margin-top: 16px; color: var(--ink3);">標本データの読み込みに失敗しました</p>
+      <a href="index.html" class="btn btn-o" style="margin-top:24px;">← 目録に戻る</a>
+    </div>`;
+} else if (!entry) {
   container.innerHTML = `
     <div class="ed-notfound">
       <div class="ed-nf-code">404</div>
       <div class="ed-nf-msg">SPECIMEN NOT FOUND</div>
+      <p style="margin-top: 16px; color: var(--ink3);">No.${no || "???"} の標本は見つかりませんでした</p>
       <a href="index.html" class="btn btn-o" style="margin-top:24px;">← 目録に戻る</a>
     </div>`;
 } else {
@@ -23,6 +39,7 @@ if (!entry) {
    SHOP PANEL（バリアントなし個体用）
    ============================================================ */
 function shopPanel(e) {
+  if (!e) return "";
   if (!e.shopUrl && !e.soldOut) return "";
 
   if (e.soldOut) {
@@ -47,7 +64,7 @@ function shopPanel(e) {
    VARIANTS SECTION
    ============================================================ */
 function variantsSection(e) {
-  if (!e.variants || e.variants.length === 0) return "";
+  if (!e || !e.variants || !Array.isArray(e.variants) || e.variants.length === 0) return "";
 
   const cards = e.variants
     .map((v, i) => {
@@ -66,12 +83,12 @@ function variantsSection(e) {
       return `
       <div class="vr-card reveal" style="transition-delay:${i * 0.08}s">
         <div class="vr-img-wrap">
-          <img src="${v.image}" alt="${e.jp} — ${v.label}"
-               onerror="this.src='images/unknown.png'">
-          <div class="vr-id">No.${v.id}</div>
+          <img src="${v.image || "images/unknown.png"}" alt="${e.jp || "Unknown"} — ${v.label || "Variant"}"
+               onerror="this.src='images/unknown.png'; this.onerror=null;">
+          <div class="vr-id">No.${v.id || "???"}</div>
         </div>
         <div class="vr-body">
-          <div class="vr-label">${v.label}</div>
+          <div class="vr-label">${v.label || "名称不明"}</div>
           <div class="vr-label-en">${v.labelEn ?? ""}</div>
           ${v.desc ? `<p class="vr-desc">${v.desc}</p>` : ""}
           ${shopHtml}
@@ -96,7 +113,12 @@ function variantsSection(e) {
    RENDER
    ============================================================ */
 function renderEntry(e) {
-  document.title = `${e.jp} — 鋸歯生物図鑑`;
+  if (!e) {
+    console.error("[ERROR] renderEntry called with null entry");
+    return;
+  }
+
+  document.title = `${e.jp || "名称不明"} — 鋸歯生物図鑑`;
 
   const rarClass =
     {
@@ -143,19 +165,19 @@ function renderEntry(e) {
 
   const all = window.ENTRIES ?? [];
   const idx = all.findIndex((x) => String(x.no) === no);
-  const prev = all[idx - 1];
-  const next = all[idx + 1];
+  const prev = idx > 0 ? all[idx - 1] : null;
+  const next = idx < all.length - 1 ? all[idx + 1] : null;
   const prevHtml = prev
     ? `<a href="entry.html?no=${prev.no}" class="ed-nav-btn">
          <span class="ed-nav-dir">← PREV</span>
-         <span class="ed-nav-nm">${prev.jp}</span>
+         <span class="ed-nav-nm">${prev.jp || "名称不明"}</span>
          <span class="ed-nav-en">No.${String(prev.no).padStart(3, "0")}</span>
        </a>`
     : `<div class="ed-nav-btn ed-nav-empty">— 先頭の標本 —</div>`;
   const nextHtml = next
     ? `<a href="entry.html?no=${next.no}" class="ed-nav-btn ed-nav-right">
          <span class="ed-nav-dir">NEXT →</span>
-         <span class="ed-nav-nm">${next.jp}</span>
+         <span class="ed-nav-nm">${next.jp || "名称不明"}</span>
          <span class="ed-nav-en">No.${String(next.no).padStart(3, "0")}</span>
        </a>`
     : `<div class="ed-nav-btn ed-nav-right ed-nav-empty">— 最後の標本 —</div>`;
@@ -178,11 +200,11 @@ function renderEntry(e) {
       <div class="ed-hero-l">
         <div class="ed-hero-meta reveal">
           <span class="rarity ${rarClass}">${e.rarity ?? "COMMON"}</span>
-          <span class="ed-hero-no">No.${String(e.no).padStart(3, "0")}</span>
+          <span class="ed-hero-no">No.${String(e.no || "???").padStart(3, "0")}</span>
         </div>
-        <h1 class="ed-hero-jp reveal">${e.jp}</h1>
-        <div class="ed-hero-en reveal">${e.en}</div>
-        <div class="ed-hero-tag reveal">${e.tag ?? ""}</div>
+        <h1 class="ed-hero-jp reveal">${e.jp || "名称不明"}</h1>
+        <div class="ed-hero-en reveal">${e.en || "Unknown"}</div>
+        <div class="ed-hero-tag reveal">${e.tag ?? "UNKNOWN"}</div>
         <div class="ed-bars reveal">${bars}</div>
       </div>
       <div class="ed-hero-r">
@@ -191,8 +213,8 @@ function renderEntry(e) {
           <div class="cm cm-tl"></div><div class="cm cm-tr"></div>
           <div class="cm cm-bl"></div><div class="cm cm-br"></div>
           <div class="ed-scan-line"></div>
-          <img class="ed-img sp-float" src="${e.image}" alt="${e.jp}"
-               onerror="this.src='images/unknown.png'"/>
+          <img class="ed-img sp-float" src="${e.image || "images/unknown.png"}" alt="${e.jp || "Unknown"}"
+               onerror="this.src='images/unknown.png'; this.onerror=null;"/>
           <div class="ed-viewer-label">SPECIMEN_VIEW</div>
         </div>
       </div>
@@ -200,7 +222,7 @@ function renderEntry(e) {
 
     <!-- SYS DIVIDER -->
     <div class="sys-div">
-      <div class="sys-dc">ID: <span>ENTRY_${String(e.no).padStart(3, "0")}</span></div>
+      <div class="sys-dc">ID: <span>ENTRY_${String(e.no || "???").padStart(3, "0")}</span></div>
       <div class="sys-dc">TYPE: <span>${e.tag ?? "—"}</span></div>
       <div class="sys-dc">HABITAT: <span>${e.habitat ?? "—"}</span></div>
       <div class="sys-dc">STATUS: <span>${e.status ?? "—"}</span></div>
@@ -237,7 +259,7 @@ function renderEntry(e) {
               (a) => `
             <div class="ed-ability-row">
               <span class="ed-ability-ic">⬡</span>
-              <span class="ed-ability-txt">${a}</span>
+              <span class="ed-ability-txt">${a || "—"}</span>
             </div>`,
             )
             .join("")}
