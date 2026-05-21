@@ -203,17 +203,21 @@ function renderEntry(e, source = 'MAIN') {
   const prev = idx > 0 ? all[idx - 1] : null;
   const next = idx < all.length - 1 ? all[idx + 1] : null;
 
+  // Check if prev/next entries have missing state
+  const prevMissing = prev?.missingState && ['DATA_LOST', 'ACCESS_DENIED', 'REDACTED'].includes(prev.missingState);
+  const nextMissing = next?.missingState && ['DATA_LOST', 'ACCESS_DENIED', 'REDACTED'].includes(next.missingState);
+
   const prevHtml = prev
     ? `<a href="entry.html?no=${prev.no}${isEx ? '&ex=true' : ''}" class="ed-nav-btn">
          <span class="ed-nav-dir">← PREV</span>
-         <span class="ed-nav-nm">${isMissing ? "UNKNOWN ENTITY" : (prev.jp || "名称不明")}</span>
+         <span class="ed-nav-nm">${prevMissing ? "UNKNOWN ENTITY" : (prev.jp || "名称不明")}</span>
          <span class="ed-nav-en">${isEx ? 'EX-' : 'No.'}${String(prev.no).padStart(3, "0")}</span>
        </a>`
     : `<div class="ed-nav-btn ed-nav-empty">— 先頭の標本 —</div>`;
   const nextHtml = next
     ? `<a href="entry.html?no=${next.no}${isEx ? '&ex=true' : ''}" class="ed-nav-btn ed-nav-right">
          <span class="ed-nav-dir">NEXT →</span>
-         <span class="ed-nav-nm">${isMissing ? "UNKNOWN ENTITY" : (next.jp || "名称不明")}</span>
+         <span class="ed-nav-nm">${nextMissing ? "UNKNOWN ENTITY" : (next.jp || "名称不明")}</span>
          <span class="ed-nav-en">${isEx ? 'EX-' : 'No.'}${String(next.no).padStart(3, "0")}</span>
        </a>`
     : `<div class="ed-nav-btn ed-nav-right ed-nav-empty">— 最後の標本 —</div>`;
@@ -357,6 +361,9 @@ function renderEntry(e, source = 'MAIN') {
    ANIMATIONS
    ============================================================ */
 function initAnimations() {
+  // Terminal feedback on page load
+  showTerminalFeedbackOnLoad();
+
   document.querySelectorAll('a[target="_blank"]').forEach((link) => {
     link.addEventListener("click", () => {
       gtag("event", "outbound_click", {
@@ -391,4 +398,43 @@ function initAnimations() {
   if (scanLine) {
     setTimeout(() => scanLine.classList.add("ed-scan-done"), 1200);
   }
+}
+
+/* Terminal feedback on page load */
+function showTerminalFeedbackOnLoad() {
+  const overlay = document.getElementById("terminal-feedback");
+  const messageEl = document.getElementById("terminal-message");
+  const statusEl = document.getElementById("terminal-status");
+
+  if (!overlay || !messageEl || !statusEl) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const entryNo = params.get("no");
+
+  // Determine message based on entry state
+  let message = "ENTRY OPENED";
+  let status = entryNo ? `NO.${entryNo.padStart(3, "0")}` : "UNKNOWN";
+
+  // Check if this is a missing/forbidden entry
+  const entryData = findEntry(entryNo);
+  if (entryData && entryData.entry) {
+    if (entryData.entry.missingState) {
+      message = "DATA CORRUPTED";
+      status = entryData.entry.missingState;
+    } else if (entryData.entry.classification === "FORBIDDEN") {
+      message = "RESTRICTED ACCESS";
+      status = "CLASSIFICATION: FORBIDDEN";
+    } else if (entryData.entry.rarity === "LEGEND") {
+      message = "LEGENDARY DATA";
+      status = "HIGH PRIORITY";
+    }
+  }
+
+  messageEl.textContent = message;
+  statusEl.textContent = status;
+  overlay.classList.add("active");
+
+  setTimeout(() => {
+    overlay.classList.remove("active");
+  }, 800);
 }
