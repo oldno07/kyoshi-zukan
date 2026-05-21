@@ -1,19 +1,38 @@
-window.ENTRIES = [
+// ============================================================
+// SAWTOOTH CREATURE OBSERVATION DATABASE
+// Research Institution Record System
+// ============================================================
+
+// Main catalog entries (001-999)
+window.MAIN_ENTRIES = [
   {
+    // Basic identification
     no: "001",
     sort: 10,
     createdAt: "2026-05-13",
+    firstObserved: "2026-05-13",
+
+    // Classification system
+    species: "Snyaggletooth",
+    lineage: "BEAST-DOMINANT",
+    dangerClass: "OBSERVE",
+    classification: "SAFE",
+
+    // Biological stats (0-100)
     plant: 30,
     animal: 78,
     danger: 35,
-    notes:
-      "こんな動物を見るのは初めてだ。いや、植物のようでもある。どういった生命体なのだろうか、随時記録していきたいと思う。アガベスト",
-    image: "images/no_001.png",
+
+    // Display info
     tag: "BEAST-DOMINANT-動物優性型",
     jp: "スニャグルトゥース",
     en: "Snyaggletooth",
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
+
+    // Detailed description
+    notes:
+      "こんな動物を見るのは初めてだ。いや、植物のようでもある。どういった生命体なのだろうか、随時記録していきたいと思う。アガベスト",
     desc: `
     深林域において確認された鋸歯ネコ型生物。
 
@@ -24,15 +43,25 @@ window.ENTRIES = [
     幾何学的整列または美的秩序に基づく配置である可能性が高い。
     当該構造は防御機能ではなく、個体識別または種内シグナル伝達に関与していると推定される。
   `,
+
+    // Abilities and traits
     abilities: ["シャドーステイシス", "ねむりうごき"],
+
+    // Habitat and physical traits
     habitat: "深林",
     size: "166mm",
     mobility: "緩慢",
+
+    // Status
     status: "● ACTIVE",
     statusColor: "var(--g)",
+
+    // Shop information
     shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
     price: "4000",
     soldOut: false, // 完売時は true に変えるだけ
+
+    // Variants
     variants: [
       {
         id: "001-a",
@@ -62,6 +91,9 @@ window.ENTRIES = [
         soldOut: false,
       },
     ],
+
+    // Image
+    image: "images/no_001.png",
   },
 
   {
@@ -977,3 +1009,203 @@ window.ENTRIES = [
     soldOut: false, // 完売時は true に変えるだけ
   },
 ];
+
+// EX catalog entries (EX-001~)
+// Special observation entries - separated from main lineage
+window.EX_ENTRIES = [
+  // Example EX entry - Special observation
+  {
+    // Basic identification
+    no: "001",
+    sort: 1000,
+    createdAt: "2026-05-17",
+    firstObserved: "2026-05-17",
+
+    // Classification system
+    species: "Collaboration Variant",
+    lineage: "SPECIAL-OBSERVATION",
+    dangerClass: "OBSERVE",
+    classification: "SAFE",
+
+    // Biological stats (0-100)
+    plant: 50,
+    animal: 50,
+    danger: 10,
+
+    // Display info
+    tag: "COLLABORATION-VARIANT",
+    jp: "コラボ変異体",
+    en: "Collaboration Variant",
+    rarity: "LEGEND",
+    rarityClass: "rar-l",
+
+    // Detailed description
+    notes: "外部因子による変異個体。通常系統とは分離して管理。",
+    desc: `
+    外部要因によって発生した特殊変異個体。
+
+    本個体は通常の鋸歯生物とは異なる進化経路を経ており、
+    外部からの影響（コラボレーション等）によって
+    独自の形態を獲得した。
+
+    LIMITED OBSERVATION状態として分類され、
+    通常系統とは別個のカテゴリで管理される。
+  `,
+
+    // Abilities and traits
+    abilities: ["外部変異", "限定観測"],
+
+    // Habitat and physical traits
+    habitat: "特殊環境",
+    size: "—",
+    mobility: "—",
+
+    // Status
+    status: "● LIMITED",
+    statusColor: "#a855f7",
+
+    // Shop information
+    shopUrl: "",
+    price: "",
+    soldOut: false,
+
+    // Variants
+    variants: [],
+
+    // Image
+    image: "images/unknown.png",
+  },
+];
+
+// Missing number entries (intentional worldbuilding)
+// These represent DATA_LOST, ACCESS_DENIED, REDACTED states
+window.MISSING_ENTRIES = [
+  {
+    no: "022",
+    sort: 220,
+    createdAt: "2026-05-17",
+    firstObserved: "2026-05-17",
+
+    // Missing number state (intentional worldbuilding)
+    missingState: "DATA_LOST",
+
+    // Classification system
+    species: "Unknown",
+    lineage: "UNKNOWN",
+    dangerClass: "UNKNOWN",
+    classification: "SAFE",
+
+    // Biological stats (0-100)
+    plant: 0,
+    animal: 0,
+    danger: 0,
+
+    // Display info
+    tag: "UNKNOWN",
+    jp: "——",
+    en: "UNKNOWN ENTITY",
+    rarity: "UNKNOWN",
+    rarityClass: "rar-c",
+
+    // Detailed description
+    notes: "",
+    desc: "記録なし",
+
+    // Abilities and traits
+    abilities: [],
+
+    // Habitat and physical traits
+    habitat: "—",
+    size: "—",
+    mobility: "—",
+
+    // Status
+    status: "——",
+    statusColor: "var(--ink3)",
+
+    // Shop information
+    shopUrl: "",
+    price: "",
+    soldOut: false,
+
+    // Variants
+    variants: [],
+
+    // Image
+    image: "images/unknown.png",
+  },
+];
+
+// ============================================================
+// DATA VALIDATION
+// ============================================================
+
+function validateDatabase() {
+  const errors = [];
+  const warnings = [];
+
+  // Check for duplicate IDs within each array
+  function checkDuplicates(entries, arrayName) {
+    const seen = new Set();
+    entries.forEach((entry, index) => {
+      if (!entry.no) {
+        errors.push(`${arrayName}[${index}]: Missing 'no' field`);
+        return;
+      }
+      if (seen.has(entry.no)) {
+        errors.push(`${arrayName}: Duplicate ID '${entry.no}' found`);
+      }
+      seen.add(entry.no);
+    });
+  }
+
+  checkDuplicates(window.MAIN_ENTRIES, 'MAIN_ENTRIES');
+  checkDuplicates(window.EX_ENTRIES, 'EX_ENTRIES');
+  checkDuplicates(window.MISSING_ENTRIES, 'MISSING_ENTRIES');
+
+  // Check for required fields
+  function checkRequiredFields(entries, arrayName) {
+    const requiredFields = ['no', 'sort', 'createdAt', 'jp', 'en', 'rarity', 'desc'];
+    entries.forEach((entry, index) => {
+      requiredFields.forEach(field => {
+        if (entry[field] === undefined || entry[field] === null) {
+          errors.push(`${arrayName}[${index}]: Missing required field '${field}'`);
+        }
+      });
+    });
+  }
+
+  checkRequiredFields(window.MAIN_ENTRIES, 'MAIN_ENTRIES');
+  checkRequiredFields(window.EX_ENTRIES, 'EX_ENTRIES');
+
+  // Check for missing state entries (intentional worldbuilding)
+  window.MISSING_ENTRIES.forEach((entry, index) => {
+    if (!entry.missingState) {
+      warnings.push(`MISSING_ENTRIES[${index}]: Missing 'missingState' field (should be DATA_LOST, ACCESS_DENIED, or REDACTED)`);
+    }
+  });
+
+  // Output validation results
+  if (errors.length > 0) {
+    console.error('[DATABASE VALIDATION ERROR]:');
+    errors.forEach(err => console.error('  -', err));
+  }
+
+  if (warnings.length > 0) {
+    console.warn('[DATABASE VALIDATION WARNING]:');
+    warnings.forEach(warn => console.warn('  -', warn));
+  }
+
+  if (errors.length === 0 && warnings.length === 0) {
+    console.log('[DATABASE VALIDATION]: All checks passed');
+  }
+
+  return { errors, warnings };
+}
+
+// Run validation on load
+validateDatabase();
+
+// Legacy compatibility - merge all entries for existing code
+// This will be removed once all code is updated to use separate arrays
+window.ENTRIES = [...window.MAIN_ENTRIES, ...window.EX_ENTRIES, ...window.MISSING_ENTRIES];

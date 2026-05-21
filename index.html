@@ -68,6 +68,15 @@
   <body>
     <div id="header-placeholder"></div>
 
+    <!-- DISCOVERY OVERLAY -->
+    <div class="discovery-overlay" id="discovery-overlay">
+      <div class="discovery-content">
+        <div class="discovery-scan-line"></div>
+        <div class="discovery-title">NEW CREATURE DISCOVERED</div>
+        <div class="discovery-subtitle">ENTRY UNLOCKED</div>
+      </div>
+    </div>
+
     <!-- HERO -->
     <section class="hero">
       <div class="hero-l">
@@ -86,9 +95,10 @@
             </div>
           </div>
           <div class="stat-c">
-            <div class="stat-lbl">HABITAT-生息</div>
-            <div class="stat-v" style="font-size: 14px; padding-top: 3px">
-              不明
+            <div class="stat-lbl">DISCOVERY RATE</div>
+            <div class="stat-v">
+              <span class="discovery-rate" id="hero-discovery-rate">0/0</span>
+              <span class="discovery-percent" id="hero-discovery-percent">0%</span>
             </div>
           </div>
           <div class="stat-c">
@@ -280,6 +290,17 @@
                 RARITY
               </button>
             </div>
+          </div>
+
+          <div class="controls-sep"></div>
+
+          <!-- UNKNOWN SIGNAL -->
+          <div class="ctrl-group">
+            <span class="ctrl-group-label">SIGNAL</span>
+            <button class="unknown-signal-btn" onclick="observeRandomSignal()">
+              <span class="signal-icon">◈</span>
+              <span>UNKNOWN SIGNAL</span>
+            </button>
           </div>
         </div>
       </div>

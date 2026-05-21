@@ -286,6 +286,135 @@ footer {
   background: var(--gp);
 }
 
+/* Classification badges */
+.classification {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  padding: 3px 8px;
+  border: 1px solid;
+  display: inline-block;
+}
+.cls-safe {
+  color: var(--g);
+  border-color: var(--g);
+  background: var(--gp);
+}
+.cls-observe {
+  color: var(--amb);
+  border-color: var(--amb);
+  background: var(--ambp);
+}
+.cls-danger {
+  color: var(--red);
+  border-color: var(--red);
+  background: var(--redp);
+}
+.cls-forbidden {
+  color: #a855f7;
+  border-color: #a855f7;
+  background: rgba(168, 85, 247, 0.14);
+}
+
+/* Missing number states */
+.missing-state {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  padding: 3px 8px;
+  border: 1px solid;
+  display: inline-block;
+}
+.missing-data-lost {
+  color: var(--ink3);
+  border-color: var(--ink3);
+  background: var(--bg3);
+}
+.missing-access-denied {
+  color: var(--red);
+  border-color: var(--red);
+  background: var(--redp);
+}
+.missing-redacted {
+  color: var(--amb);
+  border-color: var(--amb);
+  background: var(--ambp);
+}
+
+/* Silhouette effect for unknown entries */
+.cillus.silhouette img {
+  filter: brightness(0) contrast(1.2);
+  opacity: 0.3;
+}
+
+.cillus.silhouette::after {
+  content: 'NO DATA';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: var(--ink3);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Silhouette effect for entry detail page */
+.ed-viewer.silhouette img {
+  filter: brightness(0) contrast(1.2);
+  opacity: 0.3;
+}
+
+.ed-viewer.silhouette::after {
+  content: 'NO DATA';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  color: var(--ink3);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* EX System - Special observation entries */
+.ex-badge {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: #a855f7;
+  background: rgba(168, 85, 247, 0.14);
+  border: 1px solid #a855f7;
+  padding: 2px 6px;
+  display: inline-block;
+}
+
+.ecard[data-ex="true"] {
+  border-left: 3px solid #a855f7;
+}
+
+.ecard[data-ex="true"]:hover {
+  border-left: 3px solid #a855f7;
+  box-shadow: 0 8px 32px rgba(168, 85, 247, 0.3), 0 0 0 1px rgba(168, 85, 247, 0.4);
+}
+
+.ex-cno {
+  color: #a855f7;
+  font-weight: 700;
+}
+
+.limited-observation {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.15em;
+  color: var(--ink3);
+  margin-top: 4px;
+}
+
 /* Buttons */
 .btn {
   font-family: var(--mono);
@@ -502,6 +631,20 @@ footer {
   font-family: var(--mono);
   font-size: 20px;
   color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.discovery-rate {
+  color: var(--g);
+  font-weight: 700;
+}
+.discovery-percent {
+  font-size: 12px;
+  color: var(--ink3);
+  background: var(--gp);
+  padding: 2px 6px;
+  border: 1px solid var(--g);
 }
 .stat-u {
   font-size: 10px;
@@ -852,6 +995,61 @@ footer {
   background: var(--bg2);
 }
 
+/* UNKNOWN SIGNAL Button */
+.unknown-signal-btn {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  padding: 8px 16px;
+  min-height: 44px;
+  border: 1px solid var(--red);
+  background: var(--redp);
+  color: var(--red);
+  cursor: crosshair;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.unknown-signal-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(216, 90, 48, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.unknown-signal-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.unknown-signal-btn:hover {
+  background: var(--red);
+  color: var(--bg);
+  box-shadow: 0 0 20px rgba(216, 90, 48, 0.4);
+  transform: translateY(-2px);
+}
+
+.signal-icon {
+  font-size: 14px;
+  animation: signal-pulse 2s ease-in-out infinite;
+}
+
+@keyframes signal-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
 /* モバイル */
 @media (max-width: 900px) {
   .sec-hd {
@@ -921,13 +1119,56 @@ footer {
 }
 .ecard {
   background: var(--bg);
-  transition: background 0.2s;
+  transition: all 0.3s ease;
   cursor: crosshair;
   display: flex;
   flex-direction: column;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  position: relative;
+  overflow: hidden;
 }
+
+.ecard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(99, 153, 34, 0.03) 50%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ecard:hover::before {
+  opacity: 1;
+}
+
 .ecard:hover {
   background: var(--bg2);
+  transform: translateY(-4px) rotateX(2deg);
+  box-shadow: 0 8px 24px rgba(17, 17, 16, 0.12), 0 0 0 1px rgba(99, 153, 34, 0.1);
+}
+
+/* Rarity-based glow effects */
+.ecard[data-rarity="LEGEND"]:hover {
+  box-shadow: 0 8px 32px rgba(245, 197, 66, 0.2), 0 0 0 1px rgba(245, 197, 66, 0.3);
+}
+
+.ecard[data-rarity="EPIC"]:hover {
+  box-shadow: 0 8px 32px rgba(168, 85, 247, 0.2), 0 0 0 1px rgba(168, 85, 247, 0.3);
+}
+
+.ecard[data-rarity="RARE"]:hover {
+  box-shadow: 0 8px 32px rgba(216, 90, 48, 0.2), 0 0 0 1px rgba(216, 90, 48, 0.3);
+}
+
+.ecard[data-rarity="UNCOMMON"]:hover {
+  box-shadow: 0 8px 32px rgba(186, 117, 23, 0.15), 0 0 0 1px rgba(186, 117, 23, 0.2);
+}
+
+.ecard[data-rarity="COMMON"]:hover {
+  box-shadow: 0 8px 32px rgba(59, 109, 17, 0.15), 0 0 0 1px rgba(59, 109, 17, 0.2);
 }
 
 /* Discovery Badge */
@@ -969,6 +1210,133 @@ footer {
     box-shadow: 0 0 0 0 rgba(99, 153, 34, 0);
   }
 }
+
+/* ============================================================
+   DISCOVERY ANIMATIONS - Glitch, Scan, Unlock
+   ============================================================ */
+
+/* Glitch effect */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+    filter: hue-rotate(90deg);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+    filter: hue-rotate(180deg);
+  }
+  60% {
+    transform: translate(2px, 2px);
+    filter: hue-rotate(270deg);
+  }
+  80% {
+    transform: translate(2px, -2px);
+    filter: hue-rotate(360deg);
+  }
+  100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+}
+
+/* Scan line effect */
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+/* Unlock flash effect */
+@keyframes unlock {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Data recovered text animation */
+@keyframes data-recover {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.5em;
+  }
+  50% {
+    opacity: 1;
+    letter-spacing: 0.2em;
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 0.15em;
+  }
+}
+
+/* Discovery overlay */
+.discovery-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 17, 16, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.discovery-overlay.active {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.discovery-content {
+  text-align: center;
+  color: var(--g);
+  font-family: var(--mono);
+}
+
+.discovery-title {
+  font-size: 24px;
+  letter-spacing: 0.3em;
+  margin-bottom: 20px;
+  animation: glitch 0.5s ease-in-out;
+}
+
+.discovery-subtitle {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--ink3);
+  animation: data-recover 0.8s ease-out 0.3s both;
+}
+
+.discovery-scan-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: var(--g);
+  animation: scan 1s ease-in-out infinite;
+  opacity: 0.5;
+}
 .ct {
   padding: 14px 18px 11px;
   border-bottom: 1px solid var(--br);
@@ -976,12 +1344,25 @@ footer {
   justify-content: space-between;
   align-items: center;
   background-color: #f5f5f5;
+  gap: 8px;
+}
+
+.ct-badges {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 .cno {
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 0.2em;
   color: var(--ink3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 .cillus {
   width: 100%;
