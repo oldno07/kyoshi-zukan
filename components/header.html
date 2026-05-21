@@ -13,9 +13,13 @@
     <a href="https://agavest.stores.jp" target="_blank" class="nav-a nav-shop"
       >SHOP ↗</a
     >
-    <span class="entry-count"
-      >ENTRIES: <span id="entry-count-num">...</span></span
-    >
+    <div class="collection-progress-wrapper">
+      <span class="collection-progress-label">DISCOVERED</span>
+      <span class="collection-progress-value" id="collection-progress">0/0</span>
+      <div class="collection-progress-bar">
+        <div class="collection-progress-fill" id="collection-bar-fill"></div>
+      </div>
+    </div>
   </div>
 
   <!-- モバイル：ハンバーガーボタン -->
@@ -72,6 +76,11 @@
       <span class="nav-overlay-count"
         >ENTRIES: <span id="entry-count-num-mobile">...</span></span
       >
+      <div class="nav-overlay-progress">
+        <span class="nav-overlay-progress-label">DISCOVERED</span>
+        <span class="nav-overlay-progress-value" id="collection-progress-mobile">0/0</span>
+        <span class="nav-overlay-progress-percent" id="collection-percentage-mobile">0%</span>
+      </div>
       <a
         href="https://www.instagram.com/pelican.works"
         target="_blank"

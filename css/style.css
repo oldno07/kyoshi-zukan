@@ -56,6 +56,109 @@ body::after {
 }
 
 /* ============================================================
+   TERMINAL ATMOSPHERE - Global Scan Line & CRT Effects
+   ============================================================ */
+
+/* Global scan line overlay - Very subtle */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.01) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 9998;
+  animation: scanline-move 12s linear infinite;
+}
+
+@keyframes scanline-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+/* Weak pulse animation for live elements */
+.live-pulse {
+  animation: weak-pulse 3s ease-in-out infinite;
+}
+
+@keyframes weak-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Live signal indicator - Very subtle */
+.signal-indicator {
+  position: relative;
+}
+
+.signal-indicator::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--g);
+  border-radius: 50%;
+  animation: signal-blink 3s ease-in-out infinite;
+}
+
+@keyframes signal-blink {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+}
+
+/* Micro glitch effect - Removed for realistic terminal feel */
+
+/* Data corruption effect for missing data - Very subtle */
+.data-corrupted {
+  position: relative;
+  overflow: hidden;
+}
+
+.data-corrupted::before {
+  content: "████████";
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  color: var(--ink3);
+  font-family: var(--mono);
+  font-size: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: corruption-flicker 6s ease-in-out infinite;
+}
+
+@keyframes corruption-flicker {
+  0%, 100% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.5;
+  }
+  30% {
+    opacity: 0;
+  }
+}
+
+/* ============================================================
    HEADER
    ============================================================ */
 header {
@@ -117,6 +220,76 @@ header {
   color: var(--ink3);
   border: 1px solid var(--br2);
   padding: 4px 12px;
+}
+
+/* Collection Progress Bar */
+.collection-progress-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border: 1px solid var(--br2);
+  background: var(--bg);
+}
+
+.collection-progress-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: var(--ink3);
+}
+
+.collection-progress-value {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--g);
+  font-weight: 700;
+}
+
+.collection-progress-bar {
+  width: 60px;
+  height: 4px;
+  background: var(--bg3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.collection-progress-fill {
+  height: 100%;
+  background: var(--g);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+/* Mobile Progress Display */
+.nav-overlay-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: var(--bg2);
+  border-radius: 4px;
+}
+
+.nav-overlay-progress-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: var(--ink3);
+}
+
+.nav-overlay-progress-value {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--g);
+  font-weight: 700;
+}
+
+.nav-overlay-progress-percent {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink3);
 }
 
 /* ============================================================
@@ -214,6 +387,177 @@ footer {
   color: var(--g);
   border-color: var(--g);
   background: var(--gp);
+}
+
+/* Classification badges */
+.classification {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  padding: 3px 8px;
+  border: 1px solid;
+  display: inline-block;
+}
+.cls-safe {
+  color: var(--g);
+  border-color: var(--g);
+  background: var(--gp);
+}
+.cls-observe {
+  color: var(--amb);
+  border-color: var(--amb);
+  background: var(--ambp);
+}
+.cls-danger {
+  color: var(--red);
+  border-color: var(--red);
+  background: var(--redp);
+}
+.cls-forbidden {
+  color: #a855f7;
+  border-color: #a855f7;
+  background: rgba(168, 85, 247, 0.14);
+}
+
+/* Missing number states */
+.missing-state {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  padding: 3px 8px;
+  border: 1px solid;
+  display: inline-block;
+}
+.missing-data-lost {
+  color: var(--ink3);
+  border-color: var(--ink3);
+  background: var(--bg3);
+}
+.missing-access-denied {
+  color: var(--red);
+  border-color: var(--red);
+  background: var(--redp);
+}
+.missing-redacted {
+  color: var(--amb);
+  border-color: var(--amb);
+  background: var(--ambp);
+}
+
+/* Silhouette effect for unknown entries - Enhanced */
+.cillus.silhouette img {
+  filter: brightness(0) contrast(1.2);
+  opacity: 0.25;
+}
+
+.cillus.silhouette::after {
+  content: 'NO VISUAL DATA';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  color: var(--ink3);
+  background: rgba(255, 255, 255, 0.92);
+  animation: data-flicker 3s ease-in-out infinite;
+}
+
+@keyframes data-flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+/* Silhouette effect for entry detail page - Enhanced */
+.ed-viewer.silhouette img {
+  filter: brightness(0) contrast(1.2);
+  opacity: 0.25;
+}
+
+.ed-viewer.silhouette::after {
+  content: 'NO VISUAL DATA';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.35em;
+  color: var(--ink3);
+  background: rgba(255, 255, 255, 0.95);
+  animation: data-flicker 3s ease-in-out infinite;
+}
+
+/* Signal lost effect */
+.signal-lost::after {
+  content: 'SIGNAL LOST';
+}
+
+/* Redacted effect */
+.redacted::after {
+  content: 'REDACTED';
+}
+
+/* Data corruption overlay for missing states */
+.missing-data-lost .cillus::after {
+  content: 'DATA LOST';
+  animation: corruption-flicker 2s ease-in-out infinite;
+}
+
+.missing-access-denied .cillus::after {
+  content: 'ACCESS DENIED';
+  color: var(--red);
+  animation: access-denied-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes access-denied-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* EX System - Special observation entries */
+.ex-badge {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: #a855f7;
+  background: rgba(168, 85, 247, 0.14);
+  border: 1px solid #a855f7;
+  padding: 2px 6px;
+  display: inline-block;
+}
+
+.ecard[data-ex="true"] {
+  border-left: 3px solid #a855f7;
+}
+
+.ecard[data-ex="true"]:hover {
+  border-left: 3px solid #a855f7;
+  box-shadow: 0 8px 32px rgba(168, 85, 247, 0.3), 0 0 0 1px rgba(168, 85, 247, 0.4);
+}
+
+.ex-cno {
+  color: #a855f7;
+  font-weight: 700;
+}
+
+.limited-observation {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.15em;
+  color: var(--ink3);
+  margin-top: 4px;
 }
 
 /* Buttons */
@@ -432,6 +776,20 @@ footer {
   font-family: var(--mono);
   font-size: 20px;
   color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.discovery-rate {
+  color: var(--g);
+  font-weight: 700;
+}
+.discovery-percent {
+  font-size: 12px;
+  color: var(--ink3);
+  background: var(--gp);
+  padding: 2px 6px;
+  border: 1px solid var(--g);
 }
 .stat-u {
   font-size: 10px;
@@ -782,6 +1140,61 @@ footer {
   background: var(--bg2);
 }
 
+/* UNKNOWN SIGNAL Button */
+.unknown-signal-btn {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  padding: 8px 16px;
+  min-height: 44px;
+  border: 1px solid var(--red);
+  background: var(--redp);
+  color: var(--red);
+  cursor: crosshair;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.unknown-signal-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(216, 90, 48, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.unknown-signal-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.unknown-signal-btn:hover {
+  background: var(--red);
+  color: var(--bg);
+  box-shadow: 0 0 20px rgba(216, 90, 48, 0.4);
+  transform: translateY(-2px);
+}
+
+.signal-icon {
+  font-size: 14px;
+  animation: signal-pulse 2s ease-in-out infinite;
+}
+
+@keyframes signal-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
 /* モバイル */
 @media (max-width: 900px) {
   .sec-hd {
@@ -851,13 +1264,374 @@ footer {
 }
 .ecard {
   background: var(--bg);
-  transition: background 0.2s;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: crosshair;
   display: flex;
   flex-direction: column;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Scan line effect on cards */
+.ecard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 40%,
+    rgba(99, 153, 34, 0.04) 50%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ecard:hover::before {
+  opacity: 1;
+}
+
+/* Scan line animation on hover - Very subtle */
+.ecard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(99, 153, 34, 0.1),
+    transparent
+  );
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ecard:hover::after {
+  opacity: 1;
+  animation: card-scan 2s ease-in-out;
+}
+
+@keyframes card-scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(600px);
+  }
+}
+
 .ecard:hover {
   background: var(--bg2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(17, 17, 16, 0.08);
+}
+
+/* Rarity-based glow effects - Very subtle for realistic feel */
+.ecard[data-rarity="LEGEND"]:hover {
+  box-shadow: 0 4px 16px rgba(245, 197, 66, 0.12);
+}
+
+.ecard[data-rarity="EPIC"]:hover {
+  box-shadow: 0 4px 16px rgba(168, 85, 247, 0.12);
+}
+
+.ecard[data-rarity="RARE"]:hover {
+  box-shadow: 0 4px 16px rgba(216, 90, 48, 0.1);
+}
+
+.ecard[data-rarity="UNCOMMON"]:hover {
+  box-shadow: 0 4px 16px rgba(186, 117, 23, 0.08);
+}
+
+.ecard[data-rarity="COMMON"]:hover {
+  box-shadow: 0 4px 16px rgba(59, 109, 17, 0.08);
+}
+
+/* Special effects for forbidden classification - Very subtle */
+.ecard[data-classification="FORBIDDEN"]::before {
+  background: linear-gradient(
+    135deg,
+    transparent 40%,
+    rgba(168, 85, 247, 0.03) 50%,
+    transparent 60%
+  );
+}
+
+.ecard[data-classification="FORBIDDEN"]:hover {
+  box-shadow: 0 4px 16px rgba(168, 85, 247, 0.12);
+}
+
+.ecard[data-classification="FORBIDDEN"]:hover::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(168, 85, 247, 0.15),
+    transparent
+  );
+}
+
+/* Discovery Badge */
+.discovery-badge {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: var(--g);
+  background: var(--gp);
+  border: 1px solid var(--g);
+  padding: 2px 6px;
+  animation: pulse-badge 2s ease-in-out infinite;
+}
+
+@keyframes pulse-badge {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+/* Discovery Animation on Click */
+.ecard.discovering {
+  animation: discovery-flash 0.6s ease-out;
+}
+
+@keyframes discovery-flash {
+  0% {
+    box-shadow: 0 0 0 0 rgba(99, 153, 34, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 20px rgba(99, 153, 34, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(99, 153, 34, 0);
+  }
+}
+
+/* ============================================================
+   DISCOVERY ANIMATIONS - Glitch, Scan, Unlock
+   ============================================================ */
+
+/* Glitch effect */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+    filter: hue-rotate(90deg);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+    filter: hue-rotate(180deg);
+  }
+  60% {
+    transform: translate(2px, 2px);
+    filter: hue-rotate(270deg);
+  }
+  80% {
+    transform: translate(2px, -2px);
+    filter: hue-rotate(360deg);
+  }
+  100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+}
+
+/* Scan line effect */
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+/* Unlock flash effect */
+@keyframes unlock {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Data recovered text animation */
+@keyframes data-recover {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.5em;
+  }
+  50% {
+    opacity: 1;
+    letter-spacing: 0.2em;
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 0.15em;
+  }
+}
+
+/* Discovery overlay */
+.discovery-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 17, 16, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.discovery-overlay.active {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.discovery-content {
+  text-align: center;
+  color: var(--g);
+  font-family: var(--mono);
+}
+
+.discovery-title {
+  font-size: 24px;
+  letter-spacing: 0.3em;
+  margin-bottom: 20px;
+  animation: glitch 0.5s ease-in-out;
+}
+
+.discovery-subtitle {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--ink3);
+  animation: data-recover 0.8s ease-out 0.3s both;
+}
+
+.discovery-scan-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: var(--g);
+  animation: scan 1s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+/* Terminal Feedback Overlay */
+.terminal-feedback {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 17, 16, 0.98);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.terminal-feedback.active {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.terminal-feedback-content {
+  text-align: center;
+  color: var(--g);
+  font-family: var(--mono);
+  position: relative;
+}
+
+.terminal-feedback-scan {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--g), transparent);
+  animation: terminal-scan 2s ease-in-out infinite;
+}
+
+@keyframes terminal-scan {
+  0% {
+    transform: translateX(-50%) translateY(-40px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(-50%) translateY(40px);
+    opacity: 0;
+  }
+}
+
+.terminal-feedback-message {
+  font-size: 18px;
+  letter-spacing: 0.3em;
+  margin-bottom: 12px;
+  animation: terminal-glitch 0.4s ease-in-out;
+}
+
+.terminal-feedback-status {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--ink3);
+  animation: terminal-status 0.6s ease-out 0.2s both;
+}
+
+@keyframes terminal-glitch {
+  0% {
+    transform: translate(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes terminal-status {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.4em;
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 0.2em;
+  }
 }
 .ct {
   padding: 14px 18px 11px;
@@ -866,12 +1640,28 @@ footer {
   justify-content: space-between;
   align-items: center;
   background-color: #f5f5f5;
+  gap: 8px;
 }
+
+.ct-badges {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Emphasize entry number - primary information */
 .cno {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.2em;
-  color: var(--ink3);
+  color: var(--ink);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 .cillus {
   width: 100%;
@@ -916,7 +1706,7 @@ footer {
 .ctag {
   display: inline-block;
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 8px;
   letter-spacing: 0.12em;
   color: var(--g);
   background: var(--gp);
@@ -924,25 +1714,34 @@ footer {
   padding: 2px 7px;
   margin-bottom: 9px;
 }
+
+/* Emphasize Japanese name - primary information */
 .cnm-jp {
   font-family: "Shippori Mincho", serif;
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 700;
   margin-bottom: 2px;
+  color: var(--ink);
 }
+
+/* De-emphasize English name - secondary information */
 .cnm-en {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 9px;
   letter-spacing: 0.14em;
   color: var(--ink3);
   margin-bottom: 12px;
+  opacity: 0.7;
 }
+
+/* De-emphasize description - tertiary information */
 .cdesc {
-  font-size: 12px;
-  line-height: 1.9;
-  color: var(--ink2);
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--ink3);
   margin-bottom: 14px;
   flex: 1;
+  opacity: 0.8;
 }
 .cdata {
   display: grid;
@@ -959,17 +1758,46 @@ footer {
 .dc:hover {
   background: var(--bg2);
 }
+
+/* De-emphasize data labels - secondary information */
 .dk {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 8px;
   letter-spacing: 0.13em;
   color: var(--ink3);
   margin-bottom: 2px;
+  opacity: 0.6;
 }
+
+/* De-emphasize data values - secondary information */
 .dv {
   font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink);
+  font-size: 10px;
+  color: var(--ink2);
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Live pulse indicator for active status - Very subtle */
+.live-pulse-indicator {
+  width: 3px;
+  height: 3px;
+  background: var(--g);
+  border-radius: 50%;
+  animation: live-pulse 3s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
 }
 
 /* ============================================================

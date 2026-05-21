@@ -101,86 +101,121 @@ function setSort(btn) {
   renderCatalog();
 }
 
+// Helper function to safely get field value
+function getField(entry, field, defaultValue = "—") {
+  const value = entry[field];
+  if (value === undefined || value === null || value === "") {
+    return defaultValue;
+  }
+  return value;
+}
+
+// Helper function to check if entry has intentional missing state
+function hasIntentionalMissingState(entry) {
+  return entry.missingState && ['DATA_LOST', 'ACCESS_DENIED', 'REDACTED'].includes(entry.missingState);
+}
+
 function renderCatalog() {
   const grid = document.querySelector(".card-grid");
-  if (!grid) {
-    console.warn("[WARN] .card-grid element not found");
-    return;
-  }
-  if (!window.ENTRIES || !Array.isArray(window.ENTRIES)) {
-    console.warn("[WARN] ENTRIES data is invalid or missing");
-    grid.innerHTML = `<div style="padding: 40px; text-align: center; color: var(--ink3); font-family: var(--mono);">
-      ⚠ DATA LOAD ERROR<br>
-      標本データの読み込みに失敗しました
-    </div>`;
-    return;
-  }
 
   grid.innerHTML = "";
 
-  const sorted = sortEntries(window.ENTRIES, currentSort);
+  // Use MAIN_ENTRIES for main catalog, EX_ENTRIES are handled separately
+  let entries = window.MAIN_ENTRIES || [];
 
-  // フィルター適用
-  const filtered = sorted.filter((entry) => {
-    if (currentFilter === "ALL") return true;
+  // Filter
+  if (currentFilter !== "ALL") {
+    entries = entries.filter((entry) => {
+      const tag = (entry.tag || "").toUpperCase();
+      const filter = currentFilter.toUpperCase();
+      return tag.includes(filter);
+    });
+  }
 
-    const tag = (entry.tag || "").toUpperCase();
+  // Sort
+  if (currentSort === "sort") {
+    entries.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+  } else if (currentSort === "new") {
+    entries.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  } else if (currentSort === "random") {
+    entries.sort(() => Math.random() - 0.5);
+  } else if (currentSort === "rarity") {
+    const rarityOrder = { LEGEND: 1, EPIC: 2, RARE: 3, UNCOMMON: 4, COMMON: 5 };
+    entries.sort((a, b) => {
+      const ra = rarityOrder[a.rarity?.toUpperCase()] || 99;
+      const rb = rarityOrder[b.rarity?.toUpperCase()] || 99;
+      return ra - rb;
+    });
+  }
 
-    switch (currentFilter) {
-      case "PLANT+":
-        return tag.includes("PLANT") || tag.includes("SUCCULENT");
-
-      case "ANIMAL+":
-        return tag.includes("BEAST") || tag.includes("ANIMAL");
-
-      default:
-        return true;
-    }
-  });
-
-  filtered.forEach((entry, index) => {
+  entries.forEach((entry, index) => {
     const card = document.createElement("div");
     card.className = "ecard reveal";
     card.style.display = "";
     card.style.opacity = "1";
     card.style.transform = "none";
+    card.setAttribute('data-rarity', getField(entry, 'rarity', 'COMMON').toUpperCase());
+    card.setAttribute('data-classification', getField(entry, 'classification', 'SAFE').toUpperCase());
+    card.setAttribute('data-ex', 'false'); // Main catalog entries are not EX
 
     if (index > 0) {
       card.style.transitionDelay = `${index * 0.1}s`;
     }
 
+    // Check if this entry has been viewed
+    const viewed = window.getViewedEntries ? window.getViewedEntries() : [];
+    const isViewed = viewed.includes(entry.no);
+    const isNew = !isViewed;
+
+    // Handle intentional missing states (worldbuilding only)
+    const isMissing = hasIntentionalMissingState(entry);
+    const silhouetteClass = isMissing ? 'silhouette' : '';
+    const missingBadge = isMissing ? `<span class="missing-state missing-${entry.missingState.toLowerCase().replace('_', '-')}">${entry.missingState}</span>` : '';
+
+    // Add missing state class to card for CSS targeting
+    if (isMissing) {
+      card.classList.add(`missing-${entry.missingState.toLowerCase().replace('_', '-')}`);
+    }
+
     card.innerHTML = `
       <div class="ct">
-        <span class="cno">No.${entry.no || "???"}</span>
-        <span class="rarity ${entry.rarityClass || "rar-c"}">
-          ${entry.rarity || "COMMON"}
+        <span class="cno">No.${getField(entry, 'no', '???')}
+          ${entry.classification ? `<span class="classification cls-${entry.classification.toLowerCase()}">${entry.classification}</span>` : ''}
+          ${isNew && !isMissing ? '<span class="discovery-badge">NEW</span>' : ''}
         </span>
+        <div class="ct-badges">
+          <span class="rarity ${entry.rarityClass || "rar-c"}">
+            ${getField(entry, 'rarity', 'COMMON')}
+          </span>
+          ${missingBadge}
+        </div>
       </div>
-      <div class="cillus">
-        <img src="${entry.image || "images/unknown.png"}" alt="${entry.jp || "Unknown"}" onerror="this.src='images/unknown.png'; this.onerror=null;" />
+      <div class="cillus ${silhouetteClass}">
+        <img src="${getField(entry, 'image', 'images/unknown.png')}" alt="${getField(entry, 'jp', 'Unknown')}" onerror="this.src='images/unknown.png'; this.onerror=null;" />
       </div>
       <div class="cbody">
-        <div class="ctag">${entry.tag || "UNKNOWN"}</div>
-        <div class="cnm-jp">${entry.jp || "名称不明"}</div>
-        <div class="cnm-en">${entry.en || "Unknown"}</div>
-        <p class="cdesc">${entry.desc || "記録なし"}</p>
+        <div class="ctag">${getField(entry, 'tag', 'UNKNOWN')}</div>
+        <div class="cnm-jp">${isMissing ? "——" : getField(entry, 'jp', '名称不明')}</div>
+        <div class="cnm-en">${isMissing ? "UNKNOWN ENTITY" : getField(entry, 'en', 'Unknown')}</div>
+        <p class="cdesc">${isMissing ? "記録なし" : getField(entry, 'desc', '記録なし')}</p>
         <div class="cdata">
           <div class="dc">
             <div class="dk">HABITAT</div>
-            <div class="dv">${entry.habitat || "—"}</div>
+            <div class="dv">${isMissing ? "██████" : getField(entry, 'habitat', '—')}</div>
           </div>
           <div class="dc">
             <div class="dk">SIZE</div>
-            <div class="dv">${entry.size || "—"}</div>
+            <div class="dv">${isMissing ? "██████" : getField(entry, 'size', '—')}</div>
           </div>
           <div class="dc">
             <div class="dk">MOBILITY</div>
-            <div class="dv">${entry.mobility || "—"}</div>
+            <div class="dv">${isMissing ? "██████" : getField(entry, 'mobility', '—')}</div>
           </div>
           <div class="dc">
             <div class="dk">STATUS</div>
-            <div class="dv" style="color:${entry.statusColor || "var(--g)"}">
-              ${entry.status || "—"}
+            <div class="dv" style="color:${isMissing ? "var(--ink3)" : (entry.statusColor || "var(--g)")}">
+              ${isMissing ? "——" : getField(entry, 'status', '—')}
+              ${!isMissing && entry.status && entry.status.includes('ACTIVE') ? '<span class="live-pulse-indicator"></span>' : ''}
             </div>
           </div>
         </div>
@@ -188,6 +223,15 @@ function renderCatalog() {
     `;
 
     card.addEventListener("click", () => {
+      // Mark as viewed when clicked
+      if (window.markAsViewed) {
+        const wasNew = window.markAsViewed(entry.no);
+        if (wasNew) {
+          // Trigger discovery animation
+          card.classList.add('discovering');
+          showDiscoveryOverlay(entry.no);
+        }
+      }
       window.location.href = `entry.html?no=${entry.no}`;
     });
 
@@ -285,7 +329,54 @@ function renderHeroViewer() {
 }
 
 /* ----------------------------------------------------------
-   3. Init
+   3. UNKNOWN SIGNAL - Random Observation
+   ---------------------------------------------------------- */
+function observeRandomSignal() {
+  // Use MAIN_ENTRIES for random observation
+  const entries = window.MAIN_ENTRIES || [];
+  if (!Array.isArray(entries) || entries.length === 0) {
+    console.warn("[WARN] No entries available for random observation");
+    return;
+  }
+
+  // Show terminal feedback
+  showTerminalFeedback("UNKNOWN SIGNAL", "SEARCHING...");
+
+  // Pick a random entry after a brief delay
+  setTimeout(() => {
+    const randomEntry = entries[Math.floor(Math.random() * entries.length)];
+
+    // Update feedback with found entry
+    showTerminalFeedback("SIGNAL ACQUIRED", `NO.${randomEntry.no.padStart(3, "0")}`);
+
+    // Navigate to the entry after another brief delay
+    setTimeout(() => {
+      window.location.href = `entry.html?no=${randomEntry.no}`;
+    }, 400);
+  }, 600);
+}
+
+/* ----------------------------------------------------------
+   4. Terminal Feedback System
+   ---------------------------------------------------------- */
+function showTerminalFeedback(message, status = "PROCESSING") {
+  const overlay = document.getElementById("terminal-feedback");
+  const messageEl = document.getElementById("terminal-message");
+  const statusEl = document.getElementById("terminal-status");
+
+  if (!overlay || !messageEl || !statusEl) return;
+
+  messageEl.textContent = message;
+  statusEl.textContent = status;
+  overlay.classList.add("active");
+
+  setTimeout(() => {
+    overlay.classList.remove("active");
+  }, 800);
+}
+
+/* ----------------------------------------------------------
+   5. Init
    ---------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
   renderCatalog();
@@ -307,5 +398,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const total = window.ENTRIES?.length ?? 0;
   document.querySelectorAll(".entry-total").forEach((el) => {
     el.textContent = total.toString().padStart(3, "0");
+  });
+
+  // Add terminal feedback to card clicks
+  document.querySelectorAll(".ecard").forEach((card) => {
+    card.addEventListener("click", () => {
+      const entryNo = card.querySelector(".cno")?.textContent;
+      if (entryNo) {
+        showTerminalFeedback(`ENTRY OPENED`, `NO.${entryNo.replace("No.", "")}`);
+      }
+    });
   });
 });

@@ -38,17 +38,13 @@ function getBasePath() {
 }
 
 /* ----------------------------------------------------------
-   2. ENTRYカウント更新
+   2. ENTRYカウント更新 & コレクション進捗
    ---------------------------------------------------------- */
 function updateEntryCount() {
-  if (!window.ENTRIES || !Array.isArray(window.ENTRIES)) {
-    console.warn("[WARN] ENTRIES data is invalid or missing");
-    return;
-  }
-  const count = window.ENTRIES.length;
-
-  const headerEl = document.getElementById("entry-count-num");
-  if (headerEl) headerEl.textContent = count;
+  // Count only main entries, EX entries are separate
+  const count = window.MAIN_ENTRIES?.length || 0;
+  const el = document.getElementById("entry-count-num");
+  if (el) el.textContent = count;
 
   const mobileEl = document.getElementById("entry-count-num-mobile");
   if (mobileEl) mobileEl.textContent = count;
@@ -56,6 +52,121 @@ function updateEntryCount() {
   document.querySelectorAll(".entry-total").forEach((el) => {
     el.textContent = count;
   });
+
+  updateCollectionProgress();
+}
+
+// ============================================================
+// DISCOVERY SYSTEM - localStorage with three states
+// ============================================================
+const DISCOVERY_STATES = {
+  UNKNOWN: 'UNKNOWN',
+  DISCOVERED: 'DISCOVERED',
+  RESTRICTED: 'RESTRICTED'
+};
+
+function getDiscoveryData() {
+  try {
+    const data = localStorage.getItem('kyoshi_discovery_data');
+    return data ? JSON.parse(data) : {};
+  } catch (e) {
+    console.warn('[WARN] Failed to read discovery data:', e);
+    return {};
+  }
+}
+
+function setDiscoveryData(data) {
+  try {
+    localStorage.setItem('kyoshi_discovery_data', JSON.stringify(data));
+  } catch (e) {
+    console.warn('[WARN] Failed to write discovery data:', e);
+  }
+}
+
+function getDiscoveryState(entryNo) {
+  const data = getDiscoveryData();
+  return data[entryNo] || DISCOVERY_STATES.UNKNOWN;
+}
+
+function setDiscoveryState(entryNo, state) {
+  const data = getDiscoveryData();
+  data[entryNo] = state;
+  setDiscoveryData(data);
+  updateCollectionProgress();
+}
+
+// Legacy compatibility - mark as discovered
+function markAsViewed(entryNo) {
+  const currentState = getDiscoveryState(entryNo);
+  if (currentState === DISCOVERY_STATES.UNKNOWN) {
+    setDiscoveryState(entryNo, DISCOVERY_STATES.DISCOVERED);
+    return true; // 新規発見
+  }
+  return false; // 既に発見済み
+}
+
+function getViewedEntries() {
+  const data = getDiscoveryData();
+  return Object.keys(data).filter(no => data[no] !== DISCOVERY_STATES.UNKNOWN);
+}
+
+// Show discovery overlay animation
+function showDiscoveryOverlay(entryNo) {
+  const overlay = document.getElementById('discovery-overlay');
+  if (!overlay) return;
+
+  overlay.classList.add('active');
+
+  // Auto-hide after 2 seconds
+  setTimeout(() => {
+    overlay.classList.remove('active');
+  }, 2000);
+}
+
+function updateCollectionProgress() {
+  const viewed = getViewedEntries();
+  const total = window.MAIN_ENTRIES?.length || 0;
+  const viewedCount = viewed.length;
+  const percentage = total > 0 ? Math.round((viewedCount / total) * 100) : 0;
+
+  // ヘッダーの進捗表示を更新
+  const progressEl = document.getElementById('collection-progress');
+  if (progressEl) {
+    progressEl.textContent = `${viewedCount}/${total}`;
+  }
+
+  const percentageEl = document.getElementById('collection-percentage');
+  if (percentageEl) {
+    percentageEl.textContent = `${percentage}%`;
+  }
+
+  // モバイルの進捗表示を更新
+  const mobileProgressEl = document.getElementById('collection-progress-mobile');
+  if (mobileProgressEl) {
+    mobileProgressEl.textContent = `${viewedCount}/${total}`;
+  }
+
+  const mobilePercentageEl = document.getElementById('collection-percentage-mobile');
+  if (mobilePercentageEl) {
+    mobilePercentageEl.textContent = `${percentage}%`;
+  }
+
+  // プログレスバーの幅を更新
+  const progressBar = document.getElementById('collection-bar-fill');
+  if (progressBar) {
+    progressBar.style.width = `${percentage}%`;
+  }
+
+  // ヒーローセクションのDISCOVERY RATEを更新
+  const heroDiscoveryRate = document.getElementById('hero-discovery-rate');
+  if (heroDiscoveryRate) {
+    heroDiscoveryRate.textContent = `${viewedCount}/${total}`;
+  }
+
+  const heroDiscoveryPercent = document.getElementById('hero-discovery-percent');
+  if (heroDiscoveryPercent) {
+    heroDiscoveryPercent.textContent = `${percentage}%`;
+  }
 }
 
 /* ----------------------------------------------------------

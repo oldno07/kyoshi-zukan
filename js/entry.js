@@ -4,7 +4,28 @@
 
 const params = new URLSearchParams(window.location.search);
 const no = params.get("no");
-const entry = window.ENTRIES?.find((e) => String(e.no) === no);
+const isEx = params.get("ex") === "true";
+
+// Search across all entry arrays
+function findEntry(entryNo) {
+  // Check MAIN_ENTRIES first
+  const mainEntry = window.MAIN_ENTRIES?.find((e) => String(e.no) === entryNo);
+  if (mainEntry) return { entry: mainEntry, source: 'MAIN' };
+
+  // Check EX_ENTRIES
+  const exEntry = window.EX_ENTRIES?.find((e) => String(e.no) === entryNo);
+  if (exEntry) return { entry: exEntry, source: 'EX' };
+
+  // Check MISSING_ENTRIES
+  const missingEntry = window.MISSING_ENTRIES?.find((e) => String(e.no) === entryNo);
+  if (missingEntry) return { entry: missingEntry, source: 'MISSING' };
+
+  return null;
+}
+
+const entryData = findEntry(no);
+const entry = entryData?.entry;
+const entrySource = entryData?.source;
 const container = document.getElementById("entry-detail");
 
 if (!container) {
@@ -13,7 +34,7 @@ if (!container) {
     ⚠ PAGE LOAD ERROR<br>
     コンテナ要素が見つかりません
   </div>`;
-} else if (!window.ENTRIES || !Array.isArray(window.ENTRIES)) {
+} else if (!window.MAIN_ENTRIES || !Array.isArray(window.MAIN_ENTRIES)) {
   console.error("[ERROR] ENTRIES data is invalid or missing");
   container.innerHTML = `
     <div class="ed-notfound">
@@ -31,7 +52,11 @@ if (!container) {
       <a href="index.html" class="btn btn-o" style="margin-top:24px;">← 目録に戻る</a>
     </div>`;
 } else {
-  renderEntry(entry);
+  // Mark entry as viewed when detail page is opened (only for main entries)
+  if (window.markAsViewed && entrySource === 'MAIN') {
+    window.markAsViewed(entry.no);
+  }
+  renderEntry(entry, entrySource);
   initAnimations();
 }
 
@@ -112,13 +137,22 @@ function variantsSection(e) {
 /* ============================================================
    RENDER
    ============================================================ */
-function renderEntry(e) {
+function renderEntry(e, source = 'MAIN') {
   if (!e) {
     console.error("[ERROR] renderEntry called with null entry");
     return;
   }
 
-  document.title = `${e.jp || "名称不明"} — 鋸歯生物図鑑`;
+  // Determine the appropriate array for navigation
+  const entriesArray = source === 'EX' ? window.EX_ENTRIES :
+                       source === 'MISSING' ? window.MISSING_ENTRIES :
+                       window.MAIN_ENTRIES;
+
+  // Handle intentional missing state (worldbuilding)
+  const isMissing = e.missingState && ['DATA_LOST', 'ACCESS_DENIED', 'REDACTED'].includes(e.missingState);
+  const isEx = source === 'EX';
+
+  document.title = `${isMissing ? "UNKNOWN ENTITY" : (e.jp || "名称不明")} — 鋸歯生物図鑑`;
 
   const rarClass =
     {
@@ -163,24 +197,33 @@ function renderEntry(e) {
     )
     .join("");
 
-  const all = window.ENTRIES ?? [];
+  // Navigation within the same array
+  const all = entriesArray ?? [];
   const idx = all.findIndex((x) => String(x.no) === no);
   const prev = idx > 0 ? all[idx - 1] : null;
   const next = idx < all.length - 1 ? all[idx + 1] : null;
+
+  // Check if prev/next entries have missing state
+  const prevMissing = prev?.missingState && ['DATA_LOST', 'ACCESS_DENIED', 'REDACTED'].includes(prev.missingState);
+  const nextMissing = next?.missingState && ['DATA_LOST', 'ACCESS_DENIED', 'REDACTED'].includes(next.missingState);
+
   const prevHtml = prev
-    ? `<a href="entry.html?no=${prev.no}" class="ed-nav-btn">
+    ? `<a href="entry.html?no=${prev.no}${isEx ? '&ex=true' : ''}" class="ed-nav-btn">
          <span class="ed-nav-dir">← PREV</span>
-         <span class="ed-nav-nm">${prev.jp || "名称不明"}</span>
-         <span class="ed-nav-en">No.${String(prev.no).padStart(3, "0")}</span>
+         <span class="ed-nav-nm">${prevMissing ? "UNKNOWN ENTITY" : (prev.jp || "名称不明")}</span>
+         <span class="ed-nav-en">${isEx ? 'EX-' : 'No.'}${String(prev.no).padStart(3, "0")}</span>
        </a>`
     : `<div class="ed-nav-btn ed-nav-empty">— 先頭の標本 —</div>`;
   const nextHtml = next
-    ? `<a href="entry.html?no=${next.no}" class="ed-nav-btn ed-nav-right">
+    ? `<a href="entry.html?no=${next.no}${isEx ? '&ex=true' : ''}" class="ed-nav-btn ed-nav-right">
          <span class="ed-nav-dir">NEXT →</span>
-         <span class="ed-nav-nm">${next.jp || "名称不明"}</span>
-         <span class="ed-nav-en">No.${String(next.no).padStart(3, "0")}</span>
+         <span class="ed-nav-nm">${nextMissing ? "UNKNOWN ENTITY" : (next.jp || "名称不明")}</span>
+         <span class="ed-nav-en">${isEx ? 'EX-' : 'No.'}${String(next.no).padStart(3, "0")}</span>
        </a>`
     : `<div class="ed-nav-btn ed-nav-right ed-nav-empty">— 最後の標本 —</div>`;
+
+  const entryPrefix = isEx ? 'EX-' : 'No.';
+  const entryId = `${entryPrefix}${String(e.no || "???").padStart(3, "0")}`;
 
   container.innerHTML = `
 
@@ -190,9 +233,9 @@ function renderEntry(e) {
       <div class="ed-strip-path">
         <span>HOME</span><span class="ed-strip-sep">/</span>
         <span>CATALOG</span><span class="ed-strip-sep">/</span>
-        <span style="color:var(--ink)">No.${String(e.no).padStart(3, "0")}</span>
+        <span style="color:var(--ink)">${entryId}</span>
       </div>
-      <span class="ed-strip-id">ENTRY_${String(e.no).padStart(3, "0")}</span>
+      <span class="ed-strip-id">ENTRY_${entryId.replace('-', '_')}</span>
     </div>
 
     <!-- HERO -->
@@ -200,20 +243,22 @@ function renderEntry(e) {
       <div class="ed-hero-l">
         <div class="ed-hero-meta reveal">
           <span class="rarity ${rarClass}">${e.rarity ?? "COMMON"}</span>
-          <span class="ed-hero-no">No.${String(e.no || "???").padStart(3, "0")}</span>
+          ${isEx ? '<span class="ex-badge">EX</span>' : ''}
+          ${isMissing ? `<span class="missing-state missing-${e.missingState.toLowerCase().replace('_', '-')}">${e.missingState}</span>` : ''}
+          <span class="ed-hero-no">${entryId}</span>
         </div>
-        <h1 class="ed-hero-jp reveal">${e.jp || "名称不明"}</h1>
-        <div class="ed-hero-en reveal">${e.en || "Unknown"}</div>
+        <h1 class="ed-hero-jp reveal">${isMissing ? "——" : (e.jp || "名称不明")}</h1>
+        <div class="ed-hero-en reveal">${isMissing ? "UNKNOWN ENTITY" : (e.en || "Unknown")}</div>
         <div class="ed-hero-tag reveal">${e.tag ?? "UNKNOWN"}</div>
-        <div class="ed-bars reveal">${bars}</div>
+        ${!isMissing ? `<div class="ed-bars reveal">${bars}</div>` : ''}
       </div>
       <div class="ed-hero-r">
-        <div class="ed-viewer">
+        <div class="ed-viewer ${isMissing ? 'silhouette' : ''}">
           <div class="reticle"></div>
           <div class="cm cm-tl"></div><div class="cm cm-tr"></div>
           <div class="cm cm-bl"></div><div class="cm cm-br"></div>
           <div class="ed-scan-line"></div>
-          <img class="ed-img sp-float" src="${e.image || "images/unknown.png"}" alt="${e.jp || "Unknown"}"
+          <img class="ed-img sp-float" src="${e.image || "images/unknown.png"}" alt="${isMissing ? "UNKNOWN ENTITY" : (e.jp || "Unknown")}"
                onerror="this.src='images/unknown.png'; this.onerror=null;"/>
           <div class="ed-viewer-label">SPECIMEN_VIEW</div>
         </div>
@@ -222,10 +267,10 @@ function renderEntry(e) {
 
     <!-- SYS DIVIDER -->
     <div class="sys-div">
-      <div class="sys-dc">ID: <span>ENTRY_${String(e.no || "???").padStart(3, "0")}</span></div>
+      <div class="sys-dc">ID: <span>ENTRY_${entryId.replace('-', '_')}</span></div>
       <div class="sys-dc">TYPE: <span>${e.tag ?? "—"}</span></div>
-      <div class="sys-dc">HABITAT: <span>${e.habitat ?? "—"}</span></div>
-      <div class="sys-dc">STATUS: <span>${e.status ?? "—"}</span></div>
+      <div class="sys-dc">HABITAT: <span>${isMissing ? "—" : (e.habitat ?? "—")}</span></div>
+      <div class="sys-dc">STATUS: <span>${isMissing ? "——" : (e.status ?? "—")}</span></div>
     </div>
 
     <!-- BODY -->
@@ -234,14 +279,15 @@ function renderEntry(e) {
       <div class="ed-col-main">
         <div class="ed-block reveal">
           <div class="ed-block-label">FIELD NOTES / 観察記録</div>
-          <p class="ed-desc">${e.desc ?? "記録なし"}</p>
+          <p class="ed-desc">${isMissing ? "記録なし" : (e.desc ?? "記録なし")}</p>
         </div>
+        ${!isMissing ? `
         <div class="ed-block reveal">
           <div class="ed-block-label">SPECIMEN DATA</div>
           <div class="entry-table">${rows}</div>
-        </div>
+        </div>` : ''}
         ${
-          e.notes
+          e.notes && !isMissing
             ? `
         <div class="ed-block reveal">
           <div class="ed-block-label">RESEARCHER NOTE</div>
@@ -251,6 +297,7 @@ function renderEntry(e) {
         }
       </div>
 
+      ${!isMissing ? `
       <div class="ed-col-side">
         <div class="ed-panel reveal">
           <div class="ed-panel-title">ABILITY / 特殊能力</div>
@@ -291,11 +338,11 @@ function renderEntry(e) {
           <p class="ed-panel-sub">鋸歯生物が生きる世界の記録</p>
           <span class="ed-panel-arrow">→</span>
         </a>
-      </div>
+      </div>` : ''}
     </div>
 
     <!-- VARIANTS（バリアントがある個体のみ表示） -->
-    ${variantsSection(e)}
+    ${!isMissing ? variantsSection(e) : ''}
 
     <!-- PREV / NEXT -->
     <div class="ed-nav">
@@ -314,6 +361,9 @@ function renderEntry(e) {
    ANIMATIONS
    ============================================================ */
 function initAnimations() {
+  // Terminal feedback on page load
+  showTerminalFeedbackOnLoad();
+
   document.querySelectorAll('a[target="_blank"]').forEach((link) => {
     link.addEventListener("click", () => {
       gtag("event", "outbound_click", {
@@ -348,4 +398,43 @@ function initAnimations() {
   if (scanLine) {
     setTimeout(() => scanLine.classList.add("ed-scan-done"), 1200);
   }
+}
+
+/* Terminal feedback on page load */
+function showTerminalFeedbackOnLoad() {
+  const overlay = document.getElementById("terminal-feedback");
+  const messageEl = document.getElementById("terminal-message");
+  const statusEl = document.getElementById("terminal-status");
+
+  if (!overlay || !messageEl || !statusEl) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const entryNo = params.get("no");
+
+  // Determine message based on entry state
+  let message = "ENTRY OPENED";
+  let status = entryNo ? `NO.${entryNo.padStart(3, "0")}` : "UNKNOWN";
+
+  // Check if this is a missing/forbidden entry
+  const entryData = findEntry(entryNo);
+  if (entryData && entryData.entry) {
+    if (entryData.entry.missingState) {
+      message = "DATA CORRUPTED";
+      status = entryData.entry.missingState;
+    } else if (entryData.entry.classification === "FORBIDDEN") {
+      message = "RESTRICTED ACCESS";
+      status = "CLASSIFICATION: FORBIDDEN";
+    } else if (entryData.entry.rarity === "LEGEND") {
+      message = "LEGENDARY DATA";
+      status = "HIGH PRIORITY";
+    }
+  }
+
+  messageEl.textContent = message;
+  statusEl.textContent = status;
+  overlay.classList.add("active");
+
+  setTimeout(() => {
+    overlay.classList.remove("active");
+  }, 800);
 }
