@@ -357,6 +357,9 @@ function renderEntry(e, source = 'MAIN') {
    ANIMATIONS
    ============================================================ */
 function initAnimations() {
+  // Terminal feedback on page load
+  showTerminalFeedbackOnLoad();
+
   document.querySelectorAll('a[target="_blank"]').forEach((link) => {
     link.addEventListener("click", () => {
       gtag("event", "outbound_click", {
@@ -391,4 +394,43 @@ function initAnimations() {
   if (scanLine) {
     setTimeout(() => scanLine.classList.add("ed-scan-done"), 1200);
   }
+}
+
+/* Terminal feedback on page load */
+function showTerminalFeedbackOnLoad() {
+  const overlay = document.getElementById("terminal-feedback");
+  const messageEl = document.getElementById("terminal-message");
+  const statusEl = document.getElementById("terminal-status");
+
+  if (!overlay || !messageEl || !statusEl) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const entryNo = params.get("no");
+
+  // Determine message based on entry state
+  let message = "ENTRY OPENED";
+  let status = entryNo ? `NO.${entryNo.padStart(3, "0")}` : "UNKNOWN";
+
+  // Check if this is a missing/forbidden entry
+  const entryData = findEntry(entryNo);
+  if (entryData && entryData.entry) {
+    if (entryData.entry.missingState) {
+      message = "DATA CORRUPTED";
+      status = entryData.entry.missingState;
+    } else if (entryData.entry.classification === "FORBIDDEN") {
+      message = "RESTRICTED ACCESS";
+      status = "CLASSIFICATION: FORBIDDEN";
+    } else if (entryData.entry.rarity === "LEGEND") {
+      message = "LEGENDARY DATA";
+      status = "HIGH PRIORITY";
+    }
+  }
+
+  messageEl.textContent = message;
+  statusEl.textContent = status;
+  overlay.classList.add("active");
+
+  setTimeout(() => {
+    overlay.classList.remove("active");
+  }, 800);
 }

@@ -155,6 +155,7 @@ function renderCatalog() {
     card.style.opacity = "1";
     card.style.transform = "none";
     card.setAttribute('data-rarity', getField(entry, 'rarity', 'COMMON').toUpperCase());
+    card.setAttribute('data-classification', getField(entry, 'classification', 'SAFE').toUpperCase());
     card.setAttribute('data-ex', 'false'); // Main catalog entries are not EX
 
     if (index > 0) {
@@ -170,6 +171,11 @@ function renderCatalog() {
     const isMissing = hasIntentionalMissingState(entry);
     const silhouetteClass = isMissing ? 'silhouette' : '';
     const missingBadge = isMissing ? `<span class="missing-state missing-${entry.missingState.toLowerCase().replace('_', '-')}">${entry.missingState}</span>` : '';
+
+    // Add missing state class to card for CSS targeting
+    if (isMissing) {
+      card.classList.add(`missing-${entry.missingState.toLowerCase().replace('_', '-')}`);
+    }
 
     card.innerHTML = `
       <div class="ct">
@@ -195,20 +201,21 @@ function renderCatalog() {
         <div class="cdata">
           <div class="dc">
             <div class="dk">HABITAT</div>
-            <div class="dv">${isMissing ? "—" : getField(entry, 'habitat', '—')}</div>
+            <div class="dv">${isMissing ? "██████" : getField(entry, 'habitat', '—')}</div>
           </div>
           <div class="dc">
             <div class="dk">SIZE</div>
-            <div class="dv">${isMissing ? "—" : getField(entry, 'size', '—')}</div>
+            <div class="dv">${isMissing ? "██████" : getField(entry, 'size', '—')}</div>
           </div>
           <div class="dc">
             <div class="dk">MOBILITY</div>
-            <div class="dv">${isMissing ? "—" : getField(entry, 'mobility', '—')}</div>
+            <div class="dv">${isMissing ? "██████" : getField(entry, 'mobility', '—')}</div>
           </div>
           <div class="dc">
             <div class="dk">STATUS</div>
             <div class="dv" style="color:${isMissing ? "var(--ink3)" : (entry.statusColor || "var(--g)")}">
               ${isMissing ? "——" : getField(entry, 'status', '—')}
+              ${!isMissing && entry.status && entry.status.includes('ACTIVE') ? '<span class="live-pulse-indicator"></span>' : ''}
             </div>
           </div>
         </div>
@@ -332,15 +339,44 @@ function observeRandomSignal() {
     return;
   }
 
-  // Pick a random entry
-  const randomEntry = entries[Math.floor(Math.random() * entries.length)];
+  // Show terminal feedback
+  showTerminalFeedback("UNKNOWN SIGNAL", "SEARCHING...");
 
-  // Navigate to the entry
-  window.location.href = `entry.html?no=${randomEntry.no}`;
+  // Pick a random entry after a brief delay
+  setTimeout(() => {
+    const randomEntry = entries[Math.floor(Math.random() * entries.length)];
+
+    // Update feedback with found entry
+    showTerminalFeedback("SIGNAL ACQUIRED", `NO.${randomEntry.no.padStart(3, "0")}`);
+
+    // Navigate to the entry after another brief delay
+    setTimeout(() => {
+      window.location.href = `entry.html?no=${randomEntry.no}`;
+    }, 400);
+  }, 600);
 }
 
 /* ----------------------------------------------------------
-   4. Init
+   4. Terminal Feedback System
+   ---------------------------------------------------------- */
+function showTerminalFeedback(message, status = "PROCESSING") {
+  const overlay = document.getElementById("terminal-feedback");
+  const messageEl = document.getElementById("terminal-message");
+  const statusEl = document.getElementById("terminal-status");
+
+  if (!overlay || !messageEl || !statusEl) return;
+
+  messageEl.textContent = message;
+  statusEl.textContent = status;
+  overlay.classList.add("active");
+
+  setTimeout(() => {
+    overlay.classList.remove("active");
+  }, 800);
+}
+
+/* ----------------------------------------------------------
+   5. Init
    ---------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
   renderCatalog();
@@ -362,5 +398,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const total = window.ENTRIES?.length ?? 0;
   document.querySelectorAll(".entry-total").forEach((el) => {
     el.textContent = total.toString().padStart(3, "0");
+  });
+
+  // Add terminal feedback to card clicks
+  document.querySelectorAll(".ecard").forEach((card) => {
+    card.addEventListener("click", () => {
+      const entryNo = card.querySelector(".cno")?.textContent;
+      if (entryNo) {
+        showTerminalFeedback(`ENTRY OPENED`, `NO.${entryNo.replace("No.", "")}`);
+      }
+    });
   });
 });
