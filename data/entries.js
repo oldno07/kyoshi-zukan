@@ -3,6 +3,84 @@
 // Research Institution Record System
 // ============================================================
 
+/*
+【エントリーデータの使い方】
+
+各エントリーオブジェクトには以下のプロパティを設定します：
+
+【基本情報】
+- no: エントリー番号（文字列、例: "001"）
+- sort: ソート用数値（表示順序）
+- createdAt: 作成日（YYYY-MM-DD）
+- firstObserved: 初回観測日（YYYY-MM-DD）
+
+【分類システム】
+- species: 種名（英語）
+- lineage: 系統（例: "BEAST-DOMINANT", "PLANT-DOMINANT"）
+- dangerClass: 危険度クラス（例: "OBSERVE", "CAUTION", "DANGER"）
+- classification: 分類（例: "SAFE", "FORBIDDEN"）
+
+【生物ステータス（0-100）】
+- plant: 植物性（0-100）
+- animal: 動物性（0-100）
+- danger: 危険度（0-100）
+
+【表示情報】
+- tag: タグ（例: "BEAST-DOMINANT-動物優性型"）
+- jp: 日本語名
+- en: 英語名
+- rarity: レアリティ（"LEGEND", "EPIC", "RARE", "UNCOMMON", "COMMON"）
+- rarityClass: レアリティCSSクラス（"rar-l", "rar-e", "rar-r", "rar-uc", "rar-c"）
+
+【詳細情報】
+- notes: 研究者メモ
+- desc: 詳細説明
+- abilities: 特殊能力の配列（例: ["シャドーステイシス", "ねむりうごき"]）
+- habitat: 生息地
+- size: サイズ
+- mobility: 機動性
+- status: ステータス（例: "● ACTIVE"）
+- statusColor: ステータスの色（CSSカラーコード）
+
+【ショップ情報】
+- shopUrl: ショップURL
+- price: 価格
+- soldOut: 完売フラグ（true/false）
+- variants: バリエーション配列（個体バリエーションがある場合）
+
+【画像】
+- image: 画像パス（例: "images/no_001.png"）
+
+【欠損データ設定（ワールドビルディング用）】
+- missingState: 欠損状態を設定すると、以下の効果が自動適用されます：
+  * "DATA_LOST": データ消失状態、"DATA LOST"バッジ表示
+  * "ACCESS_DENIED": アクス拒否状態、"ACCESS DENIED"バッジ表示（赤色パルス）
+  * "REDACTED": 機密解除状態、"REDACTED"バッジ表示
+  * "SIGNAL_LOST": シグナル消失状態、"SIGNAL LOST"バッジ表示
+
+欠損状態を設定すると：
+- 画像がシルエット表示になり、"NO VISUAL DATA"と表示
+- 生息地、サイズ、機動性フィールドに"██████"が表示
+- 日本語名が"——"、英語名が"UNKNOWN ENTITY"に変更
+- 欠損状態バッジが表示
+- 対応するCSSクラスが自動追加（例: missing-data-lost）
+
+【使用例】
+{
+  no: "050",
+  sort: 50,
+  createdAt: "2024-01-15",
+  plant: false,
+  animal: true,
+  danger: 5,
+  rarity: "LEGEND",
+  rarityClass: "rar-l",
+  classification: "FORBIDDEN",
+  // 欠損状態を設定
+  missingState: "ACCESS_DENIED"
+}
+*/
+
 // Main catalog entries (001-999)
 window.MAIN_ENTRIES = [
   {
@@ -520,6 +598,7 @@ window.MAIN_ENTRIES = [
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
+    missingState: "DATA_LOST"// 欠損状態を設定
   },
 
   {
@@ -1007,7 +1086,10 @@ window.MAIN_ENTRIES = [
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
+    missingState: "ACCESS_DENIED"// 欠損状態を設定
   },
+  
+
 ];
 
 // EX catalog entries (EX-001~)

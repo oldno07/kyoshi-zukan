@@ -203,17 +203,21 @@ function renderEntry(e, source = 'MAIN') {
   const prev = idx > 0 ? all[idx - 1] : null;
   const next = idx < all.length - 1 ? all[idx + 1] : null;
 
+  // Check if prev/next entries have missing state
+  const prevMissing = prev?.missingState && ['DATA_LOST', 'ACCESS_DENIED', 'REDACTED'].includes(prev.missingState);
+  const nextMissing = next?.missingState && ['DATA_LOST', 'ACCESS_DENIED', 'REDACTED'].includes(next.missingState);
+
   const prevHtml = prev
     ? `<a href="entry.html?no=${prev.no}${isEx ? '&ex=true' : ''}" class="ed-nav-btn">
          <span class="ed-nav-dir">← PREV</span>
-         <span class="ed-nav-nm">${isMissing ? "UNKNOWN ENTITY" : (prev.jp || "名称不明")}</span>
+         <span class="ed-nav-nm">${prevMissing ? "UNKNOWN ENTITY" : (prev.jp || "名称不明")}</span>
          <span class="ed-nav-en">${isEx ? 'EX-' : 'No.'}${String(prev.no).padStart(3, "0")}</span>
        </a>`
     : `<div class="ed-nav-btn ed-nav-empty">— 先頭の標本 —</div>`;
   const nextHtml = next
     ? `<a href="entry.html?no=${next.no}${isEx ? '&ex=true' : ''}" class="ed-nav-btn ed-nav-right">
          <span class="ed-nav-dir">NEXT →</span>
-         <span class="ed-nav-nm">${isMissing ? "UNKNOWN ENTITY" : (next.jp || "名称不明")}</span>
+         <span class="ed-nav-nm">${nextMissing ? "UNKNOWN ENTITY" : (next.jp || "名称不明")}</span>
          <span class="ed-nav-en">${isEx ? 'EX-' : 'No.'}${String(next.no).padStart(3, "0")}</span>
        </a>`
     : `<div class="ed-nav-btn ed-nav-right ed-nav-empty">— 最後の標本 —</div>`;
