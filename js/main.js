@@ -257,9 +257,61 @@ function initReveal() {
 }
 
 /* ----------------------------------------------------------
-   7. Init
+   7. Site Config Application
+   ---------------------------------------------------------- */
+function applySiteConfig() {
+  if (!window.SITE_CONFIG) {
+    console.warn('[WARN] SITE_CONFIG not found');
+    return;
+  }
+
+  const config = window.SITE_CONFIG;
+
+  // Apply version to header
+  const versionEl = document.getElementById('sys-version');
+  if (versionEl) {
+    versionEl.textContent = `SYS_V${config.version}`;
+  }
+
+  // Apply to sys-divider elements
+  const statusEl = document.getElementById('sys-status');
+  if (statusEl) {
+    statusEl.textContent = config.status;
+  }
+
+  const regionEl = document.getElementById('sys-region');
+  if (regionEl) {
+    regionEl.textContent = config.region;
+  }
+
+  const collectorEl = document.getElementById('sys-collector');
+  if (collectorEl) {
+    collectorEl.textContent = config.collector;
+  }
+
+  const lastUpdateEl = document.getElementById('sys-last-update');
+  if (lastUpdateEl) {
+    lastUpdateEl.textContent = config.lastUpdate;
+  }
+
+  const docTypeEl = document.getElementById('sys-doc-type');
+  if (docTypeEl) {
+    docTypeEl.textContent = config.docType;
+  }
+
+  const classificationEl = document.getElementById('sys-classification');
+  if (classificationEl) {
+    classificationEl.textContent = config.classification;
+  }
+
+  console.log('[CONFIG] Site config applied:', config);
+}
+
+/* ----------------------------------------------------------
+   8. Init
    ---------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", async () => {
   await initComponents();
   initReveal();
+  applySiteConfig();
 });
