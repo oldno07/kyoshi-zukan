@@ -704,11 +704,15 @@ footer {
 }
 
 .hero-video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   /* Fallback background if video fails */
   background: linear-gradient(135deg, #1a1a18 0%, #2d2d2a 100%);
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
 /* Layer 2: Darkening & Saturation Overlay */
@@ -719,20 +723,6 @@ footer {
   background: rgba(17, 17, 16, 0.65);
   /* Slightly reduce saturation through overlay */
   backdrop-filter: saturate(0.85);
-  /* Smooth loop transition animation */
-  animation: loop-fade 8s ease-in-out infinite;
-}
-
-@keyframes loop-fade {
-  0%, 45% {
-    opacity: 1;
-  }
-  50%, 55% {
-    opacity: 0.85;
-  }
-  60%, 100% {
-    opacity: 1;
-  }
 }
 
 /* Layer 3: Noise Overlay */

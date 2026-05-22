@@ -294,9 +294,57 @@ function setFilter(btn) {
 }
 
 /* ----------------------------------------------------------
-   7. Init
+   7. Video Fade for Smooth Looping (Using ended event)
+   ---------------------------------------------------------- */
+function initVideoCrossfade() {
+  const video = document.querySelector('.hero-video-main');
+
+  if (!video) {
+    console.warn('[Video Fade] Video not found');
+    return;
+  }
+
+  console.log('[Video Fade] Initializing...');
+
+  // Remove loop attribute to handle looping manually
+  video.removeAttribute('loop');
+
+  const fadeDuration = 500; // 500ms fade
+
+  function handleVideoEnd() {
+    console.log('[Video Fade] Video ended, starting fade');
+
+    // Fade out
+    video.style.transition = `opacity ${fadeDuration}ms ease`;
+    video.style.opacity = '0';
+
+    // After fade out, reset and fade in
+    setTimeout(() => {
+      video.currentTime = 0;
+      video.play().then(() => {
+        console.log('[Video Fade] Video restarted');
+        // Fade in
+        video.style.opacity = '1';
+      }).catch(e => console.warn('[Video Fade] Restart failed:', e));
+    }, fadeDuration);
+  }
+
+  video.addEventListener('loadedmetadata', () => {
+    console.log('[Video Fade] Video duration:', video.duration.toFixed(2), 'seconds');
+  });
+
+  video.addEventListener('ended', handleVideoEnd);
+
+  video.play().then(() => {
+    console.log('[Video Fade] Video playing');
+  }).catch(e => console.warn('[Video Fade] Play failed:', e));
+}
+
+/* ----------------------------------------------------------
+   8. Init
    ---------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", async () => {
   await initComponents();
   initReveal();
+  initVideoCrossfade();
 });
