@@ -427,6 +427,7 @@ window.MAIN_ENTRIES = [
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
+    missingState:"SIGNAL_LOST",
   },
 
   {
