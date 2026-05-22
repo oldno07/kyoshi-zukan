@@ -128,6 +128,11 @@ function renderCatalog() {
     entries = entries.filter((entry) => {
       const tag = (entry.tag || "").toUpperCase();
       const filter = currentFilter.toUpperCase();
+      if (filter === "PLANT+") {
+        return tag.includes("PLANT") || tag.includes("SUCCULENT");
+      } else if (filter === "ANIMAL+") {
+        return tag.includes("BEAST") || tag.includes("ANIMAL");
+      }
       return tag.includes(filter);
     });
   }
