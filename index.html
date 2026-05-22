@@ -86,124 +86,115 @@
       </div>
     </div>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-l">
-        <div class="entry-lbl">FIELD OBSERVATION LOG — PELICAN WORKS</div>
-        <h1 class="h-title-wrap">
-          <span class="h-title">鋸歯<br />生物</span>
-          <span class="h-title-zukan">図鑑</span>
-        </h1>
-        <p class="h-en">KYOSHI SEIBUTSU ZUKAN</p>
+    <!-- HERO - OBSERVATION ARCHIVE -->
+    <section class="hero-archive">
+      <!-- Layer 1: Video Background -->
+      <div class="hero-video-layer">
+        <video
+          class="hero-video hero-video-main"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster=""
+        >
+          <source src="/images/hero-video.mp4" type="video/mp4" />
+        </video>
+      </div>
 
-        <div class="hero-stats">
-          <div class="stat-c">
-            <div class="stat-lbl">ENTRIES-個体</div>
-            <div class="stat-v">
-              <span class="entry-total"></span><span class="stat-u">体</span>
+      <!-- Layer 2: Darkening & Saturation Overlay -->
+      <div class="hero-darken-overlay"></div>
+
+      <!-- Layer 3: Noise Overlay -->
+      <div class="hero-noise-overlay"></div>
+
+      <!-- Layer 4: Glass Blur Overlay -->
+      <div class="hero-glass-overlay"></div>
+
+      <!-- Layer 5: Text Content -->
+      <div class="hero-content-layer">
+        <div class="hero-archive-container">
+          <!-- Main Title -->
+          <div class="hero-title-group">
+            <div class="hero-label">OBSERVATION ARCHIVE SYSTEM</div>
+            <h1 class="hero-main-title">
+              <span class="hero-title-en">KYOSHI CREATURE ARCHIVE</span>
+              <span class="hero-title-jp">鋸歯生物図鑑</span>
+            </h1>
+            <p class="hero-subtitle">
+              FIELD OBSERVATION LOG — PELICAN WORKS
+            </p>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="hero-stats-grid">
+            <div class="hero-stat-item">
+              <div class="hero-stat-label">ENTRIES</div>
+              <div class="hero-stat-value">
+                <span class="entry-total"></span><span class="hero-stat-unit">SPECIMENS</span>
+              </div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-label">DISCOVERY</div>
+              <div class="hero-stat-value">
+                <span class="discovery-rate" id="hero-discovery-rate">0/0</span>
+                <span class="discovery-percent" id="hero-discovery-percent">0%</span>
+              </div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-label">MATERIAL</div>
+              <div class="hero-stat-value">RESIN CLAY</div>
             </div>
           </div>
-          <div class="stat-c">
-            <div class="stat-lbl">DISCOVERY RATE</div>
-            <div class="stat-v">
-              <span class="discovery-rate" id="hero-discovery-rate">0/0</span>
-              <span class="discovery-percent" id="hero-discovery-percent">0%</span>
-            </div>
+
+          <!-- Description -->
+          <p class="hero-description">
+            動物と植物の境界が溶け合う場所に、鋸歯生物は息づいている。<br />
+            光合成しながら移動し、根を張りながら眼を持つ。<br />
+            既存の分類学が届かぬ生命の、記録と標本。
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="hero-cta-row">
+            <a href="#catalog" class="btn btn-p">
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                <rect x="1" y="1" width="3.5" height="3.5" stroke="currentColor" stroke-width="1" />
+                <rect x="6.5" y="1" width="3.5" height="3.5" stroke="currentColor" stroke-width="1" />
+                <rect x="1" y="6.5" width="3.5" height="3.5" stroke="currentColor" stroke-width="1" />
+                <rect x="6.5" y="6.5" width="3.5" height="3.5" stroke="currentColor" stroke-width="1" />
+              </svg>
+              ARCHIVE ACCESS
+            </a>
+            <a href="about.html" class="btn btn-o">WORLDVIEW →</a>
           </div>
-          <div class="stat-c">
-            <div class="stat-lbl">MATERIAL-構成</div>
-            <div class="stat-v" style="font-size: 13px; padding-top: 3px">
-              樹脂粘土
-            </div>
-          </div>
-        </div>
-        <p class="h-desc">
-          動物と植物の境界が溶け合う場所に、鋸歯生物は息づいている。<br />光合成しながら移動し、根を張りながら眼を持つ。<br />既存の分類学が届かぬ生命の、記録と標本。
-        </p>
-        <div class="cta-row">
-          <a href="#catalog" class="btn btn-p">
-            <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-              <rect
-                x="1"
-                y="1"
-                width="3.5"
-                height="3.5"
-                stroke="currentColor"
-                stroke-width="1"
-              />
-              <rect
-                x="6.5"
-                y="1"
-                width="3.5"
-                height="3.5"
-                stroke="currentColor"
-                stroke-width="1"
-              />
-              <rect
-                x="1"
-                y="6.5"
-                width="3.5"
-                height="3.5"
-                stroke="currentColor"
-                stroke-width="1"
-              />
-              <rect
-                x="6.5"
-                y="6.5"
-                width="3.5"
-                height="3.5"
-                stroke="currentColor"
-                stroke-width="1"
-              />
-            </svg>
-            図鑑を開く
-          </a>
-          <a href="about.html" class="btn btn-o">世界観 →</a>
         </div>
       </div>
 
-      <div class="hero-r">
-        <div class="sp-hd">
-          <span class="sp-id">ENTRY No.001 — FEATURED</span>
-          <span class="rarity rar-uc">★ UNCOMMON </span>
+      <!-- Layer 6: Small UI Elements -->
+      <div class="hero-ui-layer">
+        <!-- Top Left -->
+        <div class="hero-ui-element hero-ui-tl">
+          <div class="hero-ui-label">ARCHIVE</div>
+          <div class="hero-ui-value">RECORD</div>
         </div>
-        <div class="sp-view">
-          <div class="reticle"></div>
-          <div class="cm cm-tl"></div>
-          <div class="cm cm-tr"></div>
-          <div class="cm cm-bl"></div>
-          <div class="cm cm-br"></div>
-          <div class="sp-float">
-            <img src="images/no_001.png" alt="スニャグルトゥース" />
-          </div>
+
+        <!-- Top Right -->
+        <div class="hero-ui-element hero-ui-tr">
+          <div class="hero-ui-label">LOCATION</div>
+          <div class="hero-ui-value">GREENHOUSE-04</div>
         </div>
-        <div class="sp-ft">
-          <div>
-            <div class="sp-nm-jp">スニャグルトゥース</div>
-            <div class="sp-nm-en">Snyaggletooth / No.001</div>
-          </div>
-          <div class="bars">
-            <div class="bar-row">
-              <span class="bar-k">PLANT</span>
-              <div class="bar-t">
-                <div class="bar-f" style="width: 30%"></div>
-              </div>
-            </div>
-            <div class="bar-row">
-              <span class="bar-k">ANIMAL</span>
-              <div class="bar-t">
-                <div class="bar-f a" style="width: 78%"></div>
-              </div>
-            </div>
-            <div class="bar-row">
-              <span class="bar-k">DANGER</span>
-              <div class="bar-t">
-                <div class="bar-f d" style="width: 35%"></div>
-              </div>
-            </div>
-          </div>
+
+        <!-- Bottom Left -->
+        <div class="hero-ui-element hero-ui-bl">
+          <div class="hero-ui-label">MODE</div>
+          <div class="hero-ui-value">OBSERVATION</div>
         </div>
-        <div id="hero-shop-wrap"></div>
+
+        <!-- Bottom Right -->
+        <div class="hero-ui-element hero-ui-br">
+          <div class="hero-ui-label">SPECIMEN</div>
+          <div class="hero-ui-value">NO.001</div>
+        </div>
       </div>
     </section>
 
@@ -212,7 +203,7 @@
       <div class="sys-dc">STATUS: <span>ACTIVE</span></div>
       <div class="sys-dc">REGION: <span>UNKNOWN</span></div>
       <div class="sys-dc">COLLECTOR: <span>PELICAN WORKS</span></div>
-      <div class="sys-dc">LAST UPDATE: <span>2026.05.13</span></div>
+      <div class="sys-dc">LAST UPDATE: <span>2026.05.22</span></div>
     </div>
 
     <!-- LATEST NEWS -->
@@ -381,7 +372,7 @@
         </div>
         <div class="log-dc">
           <div class="log-dk">MEDIUM</div>
-          <div class="log-dv">RESIN CLA</div>
+          <div class="log-dv">RESIN CLAY</div>
         </div>
         <div class="log-dc">
           <div class="log-dk">CLASSIFICATION</div>
@@ -389,7 +380,7 @@
         </div>
         <div class="log-dc">
           <div class="log-dk">COLLECTOR</div>
-          <div class="log-dv">AGAVEST</div>
+          <div class="log-dv">PELICAN WORKS</div>
         </div>
       </div>
     </section>

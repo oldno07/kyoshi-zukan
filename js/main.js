@@ -257,43 +257,6 @@ function initReveal() {
 }
 
 /* ----------------------------------------------------------
-   6. Filter
-   ---------------------------------------------------------- */
-function setFilter(btn) {
-  if (!btn) {
-    console.warn("[WARN] setFilter called with null button");
-    return;
-  }
-  document
-    .querySelectorAll(".flt-btn")
-    .forEach((b) => b.classList.remove("active"));
-  btn.classList.add("active");
-
-  const filter = btn.textContent.trim();
-
-  document.querySelectorAll(".ecard").forEach((card) => {
-    const tag = (card.querySelector(".ctag")?.textContent || "").toUpperCase();
-    let show = true;
-    if (filter === "PLANT+") {
-      show = tag.includes("PLANT") || tag.includes("SUCCULENT");
-    } else if (filter === "ANIMAL+") {
-      show = tag.includes("BEAST") || tag.includes("ANIMAL");
-    }
-    if (show) {
-      card.style.opacity = "1";
-      card.style.transform = "none";
-      card.style.display = "";
-    } else {
-      card.style.opacity = "0";
-      card.style.transform = "translateY(8px)";
-      setTimeout(() => {
-        if (card.style.opacity === "0") card.style.display = "none";
-      }, 250);
-    }
-  });
-}
-
-/* ----------------------------------------------------------
    7. Init
    ---------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", async () => {
