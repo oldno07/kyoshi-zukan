@@ -1151,6 +1151,7 @@ window.MAIN_ENTRIES = [
 
     // Image
     image: "images/no_023.png",
+    missingState: "", // 欠損状態を設定
   },
 ];
 
