@@ -427,7 +427,7 @@ window.MAIN_ENTRIES = [
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-    missingState:"SIGNAL_LOST",
+    missingState: "SIGNAL_LOST",
   },
 
   {
@@ -599,7 +599,7 @@ window.MAIN_ENTRIES = [
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-    missingState: "DATA_LOST"// 欠損状態を設定
+    missingState: "DATA_LOST", // 欠損状態を設定
   },
 
   {
@@ -1087,10 +1087,85 @@ window.MAIN_ENTRIES = [
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-    missingState: "ACCESS_DENIED"// 欠損状態を設定
+    missingState: "ACCESS_DENIED", // 欠損状態を設定
   },
-  
+  {
+    // Basic identification
+    no: "023",
+    sort: 230,
+    createdAt: "2026-05-23",
+    firstObserved: "2026-05-23",
 
+    // Classification system
+    species: "Staghorn Moss",
+    lineage: "MOSS-SYMBIOSIS",
+    dangerClass: "CAUTION",
+    classification: "SAFE",
+
+    // Biological stats (0-100)
+    plant: 74,
+    animal: 91,
+    danger: 68,
+
+    // Display info
+    tag: "Beast-Dominant",
+    jp: "ビカクシダ種(名称未定)",
+    en: "No name",
+    rarity: "RARE",
+    rarityClass: "rar-r",
+
+    // Detailed description
+    notes:
+      "初観測時、倒木と完全に同化していたため生物だと認識できなかった。角状器官の表面には複数の苔類群が定着しており、移動後も周囲には高湿度状態が残存していた。なお、こちらの視線に反応した瞬間、明確な威嚇姿勢を確認している。アガベスト",
+
+    desc: `
+    湿潤森林地帯にて確認された大型鋸歯生物。
+
+    頭部にはヘラジカを思わせる巨大な角状器官を形成しているが、
+    その実態はビカクシダ系統の葉状組織が変異・硬質化したものである。
+
+    角状器官の表面には広範囲に苔類群が定着しており、
+    本種はこれら共生苔との複雑な湿度循環関係を構築している。
+    苔層は単なる付着物ではなく、
+    体表湿度の維持・有機物分解・擬態補助を担う外部器官として機能している可能性が高い。
+
+    特に降雨後には苔層が急速に活性化し、
+    個体全体が“移動する森林断片”のような外観へ変化することが確認されている。
+
+    また、ビカクシダ特有の貯水葉構造は、
+    本種において腰部へ装着されたホルダー状器官へと進化している。
+    内部には高湿度下で生成された水分および有機堆積物が蓄積され、
+    長時間の巡回行動時における水分維持機構として利用されていると推定される。
+
+    通常時の行動性は低いが、
+    縄張りへ侵入した外来個体に対しては極めて高い攻撃性を示す。
+    交戦時には角状葉器官を大きく展開し、
+    苔胞子を周囲へ散布しながら突進する行動が観測されている。
+  `,
+
+    // Abilities and traits
+    abilities: ["胞子散布", "湿度循環", "擬態静止", "苔類共生"],
+
+    // Habitat and physical traits
+    habitat: "湿潤森林",
+    size: "3.4m",
+    mobility: "突進型",
+
+    // Status
+    status: "● AGITATED",
+    statusColor: "#d65a5a",
+
+    // Shop information
+    shopUrl: "",
+    price: "",
+    soldOut: false,
+
+    // Variants
+    variants: [],
+
+    // Image
+    image: "images/no_023.png",
+  },
 ];
 
 // EX catalog entries (EX-001~)
@@ -1242,45 +1317,57 @@ function validateDatabase() {
     });
   }
 
-  checkDuplicates(window.MAIN_ENTRIES, 'MAIN_ENTRIES');
-  checkDuplicates(window.EX_ENTRIES, 'EX_ENTRIES');
-  checkDuplicates(window.MISSING_ENTRIES, 'MISSING_ENTRIES');
+  checkDuplicates(window.MAIN_ENTRIES, "MAIN_ENTRIES");
+  checkDuplicates(window.EX_ENTRIES, "EX_ENTRIES");
+  checkDuplicates(window.MISSING_ENTRIES, "MISSING_ENTRIES");
 
   // Check for required fields
   function checkRequiredFields(entries, arrayName) {
-    const requiredFields = ['no', 'sort', 'createdAt', 'jp', 'en', 'rarity', 'desc'];
+    const requiredFields = [
+      "no",
+      "sort",
+      "createdAt",
+      "jp",
+      "en",
+      "rarity",
+      "desc",
+    ];
     entries.forEach((entry, index) => {
-      requiredFields.forEach(field => {
+      requiredFields.forEach((field) => {
         if (entry[field] === undefined || entry[field] === null) {
-          errors.push(`${arrayName}[${index}]: Missing required field '${field}'`);
+          errors.push(
+            `${arrayName}[${index}]: Missing required field '${field}'`,
+          );
         }
       });
     });
   }
 
-  checkRequiredFields(window.MAIN_ENTRIES, 'MAIN_ENTRIES');
-  checkRequiredFields(window.EX_ENTRIES, 'EX_ENTRIES');
+  checkRequiredFields(window.MAIN_ENTRIES, "MAIN_ENTRIES");
+  checkRequiredFields(window.EX_ENTRIES, "EX_ENTRIES");
 
   // Check for missing state entries (intentional worldbuilding)
   window.MISSING_ENTRIES.forEach((entry, index) => {
     if (!entry.missingState) {
-      warnings.push(`MISSING_ENTRIES[${index}]: Missing 'missingState' field (should be DATA_LOST, ACCESS_DENIED, or REDACTED)`);
+      warnings.push(
+        `MISSING_ENTRIES[${index}]: Missing 'missingState' field (should be DATA_LOST, ACCESS_DENIED, or REDACTED)`,
+      );
     }
   });
 
   // Output validation results
   if (errors.length > 0) {
-    console.error('[DATABASE VALIDATION ERROR]:');
-    errors.forEach(err => console.error('  -', err));
+    console.error("[DATABASE VALIDATION ERROR]:");
+    errors.forEach((err) => console.error("  -", err));
   }
 
   if (warnings.length > 0) {
-    console.warn('[DATABASE VALIDATION WARNING]:');
-    warnings.forEach(warn => console.warn('  -', warn));
+    console.warn("[DATABASE VALIDATION WARNING]:");
+    warnings.forEach((warn) => console.warn("  -", warn));
   }
 
   if (errors.length === 0 && warnings.length === 0) {
-    console.log('[DATABASE VALIDATION]: All checks passed');
+    console.log("[DATABASE VALIDATION]: All checks passed");
   }
 
   return { errors, warnings };
@@ -1291,4 +1378,8 @@ validateDatabase();
 
 // Legacy compatibility - merge all entries for existing code
 // This will be removed once all code is updated to use separate arrays
-window.ENTRIES = [...window.MAIN_ENTRIES, ...window.EX_ENTRIES, ...window.MISSING_ENTRIES];
+window.ENTRIES = [
+  ...window.MAIN_ENTRIES,
+  ...window.EX_ENTRIES,
+  ...window.MISSING_ENTRIES,
+];
