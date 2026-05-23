@@ -112,7 +112,10 @@ function getField(entry, field, defaultValue = "—") {
 
 // Helper function to check if entry has intentional missing state
 function hasIntentionalMissingState(entry) {
-  return entry.missingState && ['DATA_LOST', 'ACCESS_DENIED', 'REDACTED'].includes(entry.missingState);
+  return (
+    entry.missingState &&
+    ["DATA_LOST", "ACCESS_DENIED", "REDACTED"].includes(entry.missingState)
+  );
 }
 
 function renderCatalog() {
@@ -159,9 +162,15 @@ function renderCatalog() {
     card.style.display = "";
     card.style.opacity = "1";
     card.style.transform = "none";
-    card.setAttribute('data-rarity', getField(entry, 'rarity', 'COMMON').toUpperCase());
-    card.setAttribute('data-classification', getField(entry, 'classification', 'SAFE').toUpperCase());
-    card.setAttribute('data-ex', 'false'); // Main catalog entries are not EX
+    card.setAttribute(
+      "data-rarity",
+      getField(entry, "rarity", "COMMON").toUpperCase(),
+    );
+    card.setAttribute(
+      "data-classification",
+      getField(entry, "classification", "SAFE").toUpperCase(),
+    );
+    card.setAttribute("data-ex", "false"); // Main catalog entries are not EX
 
     if (index > 0) {
       card.style.transitionDelay = `${index * 0.1}s`;
@@ -174,53 +183,66 @@ function renderCatalog() {
 
     // Handle intentional missing states (worldbuilding only)
     const isMissing = hasIntentionalMissingState(entry);
-    const silhouetteClass = isMissing ? 'silhouette' : '';
-    const missingBadge = isMissing ? `<span class="missing-state missing-${entry.missingState.toLowerCase().replace('_', '-')}">${entry.missingState}</span>` : '';
+    const silhouetteClass = isMissing ? "silhouette" : "";
+    const missingBadge = isMissing
+      ? `<span class="missing-state missing-${entry.missingState.toLowerCase().replace("_", "-")}">${entry.missingState}</span>`
+      : "";
 
     // Add missing state class to card for CSS targeting
     if (isMissing) {
-      card.classList.add(`missing-${entry.missingState.toLowerCase().replace('_', '-')}`);
+      card.classList.add(
+        `missing-${entry.missingState.toLowerCase().replace("_", "-")}`,
+      );
     }
+
+    // Truncate description to 150 characters
+    const fullDesc = isMissing
+      ? "記録なし"
+      : getField(entry, "desc", "記録なし");
+    const truncatedDesc =
+      fullDesc.length > 150 ? fullDesc.substring(0, 150) + "..." : fullDesc;
+    const needsReadMore = fullDesc.length > 150 && !isMissing;
 
     card.innerHTML = `
       <div class="ct">
-        <span class="cno">No.${getField(entry, 'no', '???')}
-          ${entry.classification ? `<span class="classification cls-${entry.classification.toLowerCase()}">${entry.classification}</span>` : ''}
-          ${isNew && !isMissing ? '<span class="discovery-badge">NEW</span>' : ''}
+        <span class="cno">No.${getField(entry, "no", "???")}
+          ${entry.classification ? `<span class="classification cls-${entry.classification.toLowerCase()}">${entry.classification}</span>` : ""}
+          ${isNew && !isMissing ? '<span class="discovery-badge">NEW</span>' : ""}
         </span>
         <div class="ct-badges">
           <span class="rarity ${entry.rarityClass || "rar-c"}">
-            ${getField(entry, 'rarity', 'COMMON')}
+            ${getField(entry, "rarity", "COMMON")}
           </span>
           ${missingBadge}
         </div>
       </div>
       <div class="cillus ${silhouetteClass}">
-        <img src="${getField(entry, 'image', 'images/unknown.png')}" alt="${getField(entry, 'jp', 'Unknown')}" onerror="this.src='images/unknown.png'; this.onerror=null;" />
+        <img src="${getField(entry, "image", "images/unknown.png")}" alt="${getField(entry, "jp", "Unknown")}" onerror="this.src='images/unknown.png'; this.onerror=null;" />
       </div>
       <div class="cbody">
-        <div class="ctag">${getField(entry, 'tag', 'UNKNOWN')}</div>
-        <div class="cnm-jp">${isMissing ? "——" : getField(entry, 'jp', '名称不明')}</div>
-        <div class="cnm-en">${isMissing ? "UNKNOWN ENTITY" : getField(entry, 'en', 'Unknown')}</div>
-        <p class="cdesc">${isMissing ? "記録なし" : getField(entry, 'desc', '記録なし')}</p>
+        <div class="ctag">${getField(entry, "tag", "UNKNOWN")}</div>
+        <div class="cnm-jp">${isMissing ? "——" : getField(entry, "jp", "名称不明")}</div>
+        <div class="cnm-en">${isMissing ? "UNKNOWN ENTITY" : getField(entry, "en", "Unknown")}</div>
+        <p class="cdesc">${truncatedDesc}</p>
+        ${needsReadMore ? `<a href="entry.html?no=${entry.no}" class="read-more">続きを読む →</a>` : ""}
         <div class="cdata">
           <div class="dc">
             <div class="dk">HABITAT</div>
-            <div class="dv">${isMissing ? "██████" : getField(entry, 'habitat', '—')}</div>
+            <div class="dv">${isMissing ? "██████" : getField(entry, "habitat", "—")}</div>
           </div>
           <div class="dc">
             <div class="dk">SIZE</div>
-            <div class="dv">${isMissing ? "██████" : getField(entry, 'size', '—')}</div>
+            <div class="dv">${isMissing ? "██████" : getField(entry, "size", "—")}</div>
           </div>
           <div class="dc">
             <div class="dk">MOBILITY</div>
-            <div class="dv">${isMissing ? "██████" : getField(entry, 'mobility', '—')}</div>
+            <div class="dv">${isMissing ? "██████" : getField(entry, "mobility", "—")}</div>
           </div>
           <div class="dc">
             <div class="dk">STATUS</div>
-            <div class="dv" style="color:${isMissing ? "var(--ink3)" : (entry.statusColor || "var(--g)")}">
-              ${isMissing ? "——" : getField(entry, 'status', '—')}
-              ${!isMissing && entry.status && entry.status.includes('ACTIVE') ? '<span class="live-pulse-indicator"></span>' : ''}
+            <div class="dv" style="color:${isMissing ? "var(--ink3)" : entry.statusColor || "var(--g)"}">
+              ${isMissing ? "——" : getField(entry, "status", "—")}
+              ${!isMissing && entry.status && entry.status.includes("ACTIVE") ? '<span class="live-pulse-indicator"></span>' : ""}
             </div>
           </div>
         </div>
@@ -233,7 +255,7 @@ function renderCatalog() {
         const wasNew = window.markAsViewed(entry.no);
         if (wasNew) {
           // Trigger discovery animation
-          card.classList.add('discovering');
+          card.classList.add("discovering");
           showDiscoveryOverlay(entry.no);
         }
       }
@@ -248,7 +270,11 @@ function renderCatalog() {
    2. ヒーロービューワー ランダム表示
    ---------------------------------------------------------- */
 function renderHeroViewer() {
-  if (!window.ENTRIES || !Array.isArray(window.ENTRIES) || window.ENTRIES.length === 0) {
+  if (
+    !window.ENTRIES ||
+    !Array.isArray(window.ENTRIES) ||
+    window.ENTRIES.length === 0
+  ) {
     console.warn("[WARN] ENTRIES data is invalid or empty for hero viewer");
     return;
   }
@@ -262,7 +288,7 @@ function renderHeroViewer() {
   if (img) {
     img.src = pick.image || "images/unknown.png";
     img.alt = pick.jp || "Unknown";
-    img.onerror = function() {
+    img.onerror = function () {
       this.src = "images/unknown.png";
       this.onerror = null;
     };
@@ -283,7 +309,8 @@ function renderHeroViewer() {
   const nmJp = document.querySelector(".sp-nm-jp");
   const nmEn = document.querySelector(".sp-nm-en");
   if (nmJp) nmJp.textContent = pick.jp || "名称不明";
-  if (nmEn) nmEn.textContent = `${pick.en || "Unknown"} / No.${pick.no || "???"}`;
+  if (nmEn)
+    nmEn.textContent = `${pick.en || "Unknown"} / No.${pick.no || "???"}`;
 
   // ステータスバー（PLANT / ANIMAL / DANGER の順）
   const bars = document.querySelectorAll(".sp-ft .bar-f");
@@ -352,7 +379,10 @@ function observeRandomSignal() {
     const randomEntry = entries[Math.floor(Math.random() * entries.length)];
 
     // Update feedback with found entry
-    showTerminalFeedback("SIGNAL ACQUIRED", `NO.${randomEntry.no.padStart(3, "0")}`);
+    showTerminalFeedback(
+      "SIGNAL ACQUIRED",
+      `NO.${randomEntry.no.padStart(3, "0")}`,
+    );
 
     // Navigate to the entry after another brief delay
     setTimeout(() => {
@@ -410,7 +440,10 @@ document.addEventListener("DOMContentLoaded", () => {
     card.addEventListener("click", () => {
       const entryNo = card.querySelector(".cno")?.textContent;
       if (entryNo) {
-        showTerminalFeedback(`ENTRY OPENED`, `NO.${entryNo.replace("No.", "")}`);
+        showTerminalFeedback(
+          `ENTRY OPENED`,
+          `NO.${entryNo.replace("No.", "")}`,
+        );
       }
     });
   });
