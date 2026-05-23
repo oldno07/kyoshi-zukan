@@ -19,7 +19,16 @@ function renderTopNews() {
     info: "INFO",
   };
 
-  const items = window.NEWS.slice(0, 3);
+  // Pin event items with status != "ended" to the top
+  const pinnedItems = window.NEWS.filter(
+    (n) => n.type === "event" && n.status !== "ended",
+  );
+  const otherItems = window.NEWS.filter(
+    (n) => !(n.type === "event" && n.status !== "ended"),
+  );
+  const sortedItems = [...pinnedItems, ...otherItems];
+
+  const items = sortedItems.slice(0, 3);
 
   list.innerHTML = items
     .map((n) => {

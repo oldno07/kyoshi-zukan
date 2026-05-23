@@ -102,7 +102,7 @@ window.MAIN_ENTRIES = [
     danger: 35,
 
     // Display info
-    tag: "BEAST-DOMINANT-動物優性型",
+    tag: "BEAST-DOMINANT",
     jp: "スニャグルトゥース",
     en: "Snyaggletooth",
     rarity: "UNCOMMON",
@@ -135,8 +135,8 @@ window.MAIN_ENTRIES = [
     statusColor: "var(--g)",
 
     // Shop information
-    shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
-    price: "4000",
+    shopUrl: "",
+    price: "",
     soldOut: false, // 完売時は true に変えるだけ
 
     // Variants

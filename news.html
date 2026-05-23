@@ -431,7 +431,9 @@
     <!-- SYS DIVIDER -->
     <div class="sys-div">
       <div class="sys-dc">STATUS: <span id="sys-status">ACTIVE</span></div>
-      <div class="sys-dc">COLLECTOR: <span id="sys-collector">PELICAN WORKS</span></div>
+      <div class="sys-dc">
+        COLLECTOR: <span id="sys-collector">PELICAN WORKS</span>
+      </div>
       <div class="sys-dc">TOTAL: <span id="news-total">—</span></div>
       <div class="sys-dc">LATEST: <span id="news-latest">—</span></div>
     </div>
@@ -475,10 +477,21 @@
         const list = document.getElementById("news-list");
         if (!list || !window.NEWS) return;
 
-        const items =
+        let items =
           filter === "ALL"
             ? window.NEWS
             : window.NEWS.filter((n) => n.type === filter);
+
+        // Pin event items with status != "ended" to the top
+        if (filter === "ALL" || filter === "event") {
+          const pinnedItems = items.filter(
+            (n) => n.type === "event" && n.status !== "ended",
+          );
+          const otherItems = items.filter(
+            (n) => !(n.type === "event" && n.status !== "ended"),
+          );
+          items = [...pinnedItems, ...otherItems];
+        }
 
         if (items.length === 0) {
           list.innerHTML = `<div class="news-empty">— 該当する記録がありません —</div>`;
