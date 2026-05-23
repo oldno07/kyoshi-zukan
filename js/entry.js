@@ -10,15 +10,17 @@ const isEx = params.get("ex") === "true";
 function findEntry(entryNo) {
   // Check MAIN_ENTRIES first
   const mainEntry = window.MAIN_ENTRIES?.find((e) => String(e.no) === entryNo);
-  if (mainEntry) return { entry: mainEntry, source: 'MAIN' };
+  if (mainEntry) return { entry: mainEntry, source: "MAIN" };
 
   // Check EX_ENTRIES
   const exEntry = window.EX_ENTRIES?.find((e) => String(e.no) === entryNo);
-  if (exEntry) return { entry: exEntry, source: 'EX' };
+  if (exEntry) return { entry: exEntry, source: "EX" };
 
   // Check MISSING_ENTRIES
-  const missingEntry = window.MISSING_ENTRIES?.find((e) => String(e.no) === entryNo);
-  if (missingEntry) return { entry: missingEntry, source: 'MISSING' };
+  const missingEntry = window.MISSING_ENTRIES?.find(
+    (e) => String(e.no) === entryNo,
+  );
+  if (missingEntry) return { entry: missingEntry, source: "MISSING" };
 
   return null;
 }
@@ -53,7 +55,7 @@ if (!container) {
     </div>`;
 } else {
   // Mark entry as viewed when detail page is opened (only for main entries)
-  if (window.markAsViewed && entrySource === 'MAIN') {
+  if (window.markAsViewed && entrySource === "MAIN") {
     window.markAsViewed(entry.no);
   }
   renderEntry(entry, entrySource);
@@ -86,10 +88,55 @@ function shopPanel(e) {
 }
 
 /* ============================================================
+   GALLERY SECTION
+   ============================================================ */
+function gallerySection(e) {
+  if (!e || !e.gallery || !Array.isArray(e.gallery) || e.gallery.length === 0)
+    return "";
+
+  const validGallery = e.gallery.filter((g) => g.image && g.image !== "");
+  if (validGallery.length === 0) return "";
+
+  const cards = validGallery
+    .map((g, i) => {
+      return `
+      <div class="gallery-card reveal" style="transition-delay:${i * 0.06}s">
+        <div class="gallery-img-wrap">
+          <img src="${g.image || "images/unknown.png"}" alt="${g.title || "Gallery Image"}"
+               onerror="this.src='images/unknown.png'; this.onerror=null;">
+        </div>
+        <div class="gallery-info">
+          <div class="gallery-title">${g.title || "名称不明"}</div>
+          <div class="gallery-title-en">${g.titleEn ?? ""}</div>
+          ${g.description ? `<div class="gallery-desc">${g.description}</div>` : ""}
+        </div>
+      </div>`;
+    })
+    .join("");
+
+  return `
+    <div class="ed-gallery reveal">
+      <div class="ed-gallery-header">
+        <div class="ed-block-label">OBSERVATION GALLERY / 観察ギャラリー</div>
+        <span class="ed-gallery-count">${validGallery.length} PHOTOS</span>
+      </div>
+      <div class="ed-gallery-grid">
+        ${cards}
+      </div>
+    </div>`;
+}
+
+/* ============================================================
    VARIANTS SECTION
    ============================================================ */
 function variantsSection(e) {
-  if (!e || !e.variants || !Array.isArray(e.variants) || e.variants.length === 0) return "";
+  if (
+    !e ||
+    !e.variants ||
+    !Array.isArray(e.variants) ||
+    e.variants.length === 0
+  )
+    return "";
 
   const cards = e.variants
     .map((v, i) => {
@@ -137,22 +184,27 @@ function variantsSection(e) {
 /* ============================================================
    RENDER
    ============================================================ */
-function renderEntry(e, source = 'MAIN') {
+function renderEntry(e, source = "MAIN") {
   if (!e) {
     console.error("[ERROR] renderEntry called with null entry");
     return;
   }
 
   // Determine the appropriate array for navigation
-  const entriesArray = source === 'EX' ? window.EX_ENTRIES :
-                       source === 'MISSING' ? window.MISSING_ENTRIES :
-                       window.MAIN_ENTRIES;
+  const entriesArray =
+    source === "EX"
+      ? window.EX_ENTRIES
+      : source === "MISSING"
+        ? window.MISSING_ENTRIES
+        : window.MAIN_ENTRIES;
 
   // Handle intentional missing state (worldbuilding)
-  const isMissing = e.missingState && ['DATA_LOST', 'ACCESS_DENIED', 'REDACTED'].includes(e.missingState);
-  const isEx = source === 'EX';
+  const isMissing =
+    e.missingState &&
+    ["DATA_LOST", "ACCESS_DENIED", "REDACTED"].includes(e.missingState);
+  const isEx = source === "EX";
 
-  document.title = `${isMissing ? "UNKNOWN ENTITY" : (e.jp || "名称不明")} — 鋸歯生物図鑑`;
+  document.title = `${isMissing ? "UNKNOWN ENTITY" : e.jp || "名称不明"} — 鋸歯生物図鑑`;
 
   const rarClass =
     {
@@ -204,25 +256,29 @@ function renderEntry(e, source = 'MAIN') {
   const next = idx < all.length - 1 ? all[idx + 1] : null;
 
   // Check if prev/next entries have missing state
-  const prevMissing = prev?.missingState && ['DATA_LOST', 'ACCESS_DENIED', 'REDACTED'].includes(prev.missingState);
-  const nextMissing = next?.missingState && ['DATA_LOST', 'ACCESS_DENIED', 'REDACTED'].includes(next.missingState);
+  const prevMissing =
+    prev?.missingState &&
+    ["DATA_LOST", "ACCESS_DENIED", "REDACTED"].includes(prev.missingState);
+  const nextMissing =
+    next?.missingState &&
+    ["DATA_LOST", "ACCESS_DENIED", "REDACTED"].includes(next.missingState);
 
   const prevHtml = prev
-    ? `<a href="entry.html?no=${prev.no}${isEx ? '&ex=true' : ''}" class="ed-nav-btn">
+    ? `<a href="entry.html?no=${prev.no}${isEx ? "&ex=true" : ""}" class="ed-nav-btn">
          <span class="ed-nav-dir">← PREV</span>
-         <span class="ed-nav-nm">${prevMissing ? "UNKNOWN ENTITY" : (prev.jp || "名称不明")}</span>
-         <span class="ed-nav-en">${isEx ? 'EX-' : 'No.'}${String(prev.no).padStart(3, "0")}</span>
+         <span class="ed-nav-nm">${prevMissing ? "UNKNOWN ENTITY" : prev.jp || "名称不明"}</span>
+         <span class="ed-nav-en">${isEx ? "EX-" : "No."}${String(prev.no).padStart(3, "0")}</span>
        </a>`
     : `<div class="ed-nav-btn ed-nav-empty">— 先頭の標本 —</div>`;
   const nextHtml = next
-    ? `<a href="entry.html?no=${next.no}${isEx ? '&ex=true' : ''}" class="ed-nav-btn ed-nav-right">
+    ? `<a href="entry.html?no=${next.no}${isEx ? "&ex=true" : ""}" class="ed-nav-btn ed-nav-right">
          <span class="ed-nav-dir">NEXT →</span>
-         <span class="ed-nav-nm">${nextMissing ? "UNKNOWN ENTITY" : (next.jp || "名称不明")}</span>
-         <span class="ed-nav-en">${isEx ? 'EX-' : 'No.'}${String(next.no).padStart(3, "0")}</span>
+         <span class="ed-nav-nm">${nextMissing ? "UNKNOWN ENTITY" : next.jp || "名称不明"}</span>
+         <span class="ed-nav-en">${isEx ? "EX-" : "No."}${String(next.no).padStart(3, "0")}</span>
        </a>`
     : `<div class="ed-nav-btn ed-nav-right ed-nav-empty">— 最後の標本 —</div>`;
 
-  const entryPrefix = isEx ? 'EX-' : 'No.';
+  const entryPrefix = isEx ? "EX-" : "No.";
   const entryId = `${entryPrefix}${String(e.no || "???").padStart(3, "0")}`;
 
   container.innerHTML = `
@@ -235,7 +291,7 @@ function renderEntry(e, source = 'MAIN') {
         <span>CATALOG</span><span class="ed-strip-sep">/</span>
         <span style="color:var(--ink)">${entryId}</span>
       </div>
-      <span class="ed-strip-id">ENTRY_${entryId.replace('-', '_')}</span>
+      <span class="ed-strip-id">ENTRY_${entryId.replace("-", "_")}</span>
     </div>
 
     <!-- HERO -->
@@ -243,22 +299,22 @@ function renderEntry(e, source = 'MAIN') {
       <div class="ed-hero-l">
         <div class="ed-hero-meta reveal">
           <span class="rarity ${rarClass}">${e.rarity ?? "COMMON"}</span>
-          ${isEx ? '<span class="ex-badge">EX</span>' : ''}
-          ${isMissing ? `<span class="missing-state missing-${e.missingState.toLowerCase().replace('_', '-')}">${e.missingState}</span>` : ''}
+          ${isEx ? '<span class="ex-badge">EX</span>' : ""}
+          ${isMissing ? `<span class="missing-state missing-${e.missingState.toLowerCase().replace("_", "-")}">${e.missingState}</span>` : ""}
           <span class="ed-hero-no">${entryId}</span>
         </div>
-        <h1 class="ed-hero-jp reveal">${isMissing ? "——" : (e.jp || "名称不明")}</h1>
-        <div class="ed-hero-en reveal">${isMissing ? "UNKNOWN ENTITY" : (e.en || "Unknown")}</div>
+        <h1 class="ed-hero-jp reveal">${isMissing ? "——" : e.jp || "名称不明"}</h1>
+        <div class="ed-hero-en reveal">${isMissing ? "UNKNOWN ENTITY" : e.en || "Unknown"}</div>
         <div class="ed-hero-tag reveal">${e.tag ?? "UNKNOWN"}</div>
-        ${!isMissing ? `<div class="ed-bars reveal">${bars}</div>` : ''}
+        ${!isMissing ? `<div class="ed-bars reveal">${bars}</div>` : ""}
       </div>
       <div class="ed-hero-r">
-        <div class="ed-viewer ${isMissing ? 'silhouette' : ''}">
+        <div class="ed-viewer ${isMissing ? "silhouette" : ""}">
           <div class="reticle"></div>
           <div class="cm cm-tl"></div><div class="cm cm-tr"></div>
           <div class="cm cm-bl"></div><div class="cm cm-br"></div>
           <div class="ed-scan-line"></div>
-          <img class="ed-img sp-float" src="${e.image || "images/unknown.png"}" alt="${isMissing ? "UNKNOWN ENTITY" : (e.jp || "Unknown")}"
+          <img class="ed-img sp-float" src="${e.image || "images/unknown.png"}" alt="${isMissing ? "UNKNOWN ENTITY" : e.jp || "Unknown"}"
                onerror="this.src='images/unknown.png'; this.onerror=null;"/>
           <div class="ed-viewer-label">SPECIMEN_VIEW</div>
         </div>
@@ -267,7 +323,7 @@ function renderEntry(e, source = 'MAIN') {
 
     <!-- SYS DIVIDER -->
     <div class="sys-div">
-      <div class="sys-dc">ID: <span>ENTRY_${entryId.replace('-', '_')}</span></div>
+      <div class="sys-dc">ID: <span>ENTRY_${entryId.replace("-", "_")}</span></div>
       <div class="sys-dc">TYPE: <span>${e.tag ?? "—"}</span></div>
       <div class="sys-dc">HABITAT: <span>${isMissing ? "—" : (e.habitat ?? "—")}</span></div>
       <div class="sys-dc">STATUS: <span>${isMissing ? "——" : (e.status ?? "—")}</span></div>
@@ -277,15 +333,20 @@ function renderEntry(e, source = 'MAIN') {
     <div class="ed-body">
 
       <div class="ed-col-main">
+        ${!isMissing ? gallerySection(e) : ""}
         <div class="ed-block reveal">
           <div class="ed-block-label">FIELD NOTES / 観察記録</div>
           <p class="ed-desc">${isMissing ? "記録なし" : (e.desc ?? "記録なし")}</p>
         </div>
-        ${!isMissing ? `
+        ${
+          !isMissing
+            ? `
         <div class="ed-block reveal">
           <div class="ed-block-label">SPECIMEN DATA</div>
           <div class="entry-table">${rows}</div>
-        </div>` : ''}
+        </div>`
+            : ""
+        }
         ${
           e.notes && !isMissing
             ? `
@@ -297,7 +358,9 @@ function renderEntry(e, source = 'MAIN') {
         }
       </div>
 
-      ${!isMissing ? `
+      ${
+        !isMissing
+          ? `
       <div class="ed-col-side">
         <div class="ed-panel reveal">
           <div class="ed-panel-title">ABILITY / 特殊能力</div>
@@ -338,11 +401,13 @@ function renderEntry(e, source = 'MAIN') {
           <p class="ed-panel-sub">鋸歯生物が生きる世界の記録</p>
           <span class="ed-panel-arrow">→</span>
         </a>
-      </div>` : ''}
+      </div>`
+          : ""
+      }
     </div>
 
     <!-- VARIANTS（バリアントがある個体のみ表示） -->
-    ${!isMissing ? variantsSection(e) : ''}
+    ${!isMissing ? variantsSection(e) : ""}
 
     <!-- PREV / NEXT -->
     <div class="ed-nav">

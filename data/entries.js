@@ -102,7 +102,7 @@ window.MAIN_ENTRIES = [
     danger: 35,
 
     // Display info
-    tag: "BEAST-DOMINANT-動物優性型",
+    tag: "BEAST-DOMINANT",
     jp: "スニャグルトゥース",
     en: "Snyaggletooth",
     rarity: "UNCOMMON",
@@ -135,8 +135,8 @@ window.MAIN_ENTRIES = [
     statusColor: "var(--g)",
 
     // Shop information
-    shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
-    price: "4000",
+    shopUrl: "",
+    price: "",
     soldOut: false, // 完売時は true に変えるだけ
 
     // Variants
@@ -172,6 +172,28 @@ window.MAIN_ENTRIES = [
 
     // Image
     image: "images/no_001.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "成長段階：幼体",
+        titleEn: "Growth Stage: Juvenile",
+        description: "孵化後3ヶ月の個体",
+      },
+      {
+        image: "",
+        title: "成長段階：成体",
+        titleEn: "Growth Stage: Adult",
+        description: "成熟期の個体",
+      },
+      {
+        image: "",
+        title: "生息環境",
+        titleEn: "Habitat",
+        description: "深林域での観察記録",
+      },
+    ],
   },
 
   {
@@ -186,6 +208,17 @@ window.MAIN_ENTRIES = [
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_002.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "ブラックにゃんこブルー",
     en: "Black Nyanko Blue",
@@ -235,6 +268,17 @@ window.MAIN_ENTRIES = [
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
     image: "images/no_003.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "レッドキャットミーズル",
     en: "Red Cat meezle",
@@ -281,6 +325,17 @@ window.MAIN_ENTRIES = [
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_004.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "にゃガベ チタノタ",
     en: "NyAgabe titanota",
@@ -336,6 +391,17 @@ window.MAIN_ENTRIES = [
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_005.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "ゴリラホリダ",
     en: "Gorillahorrida",
@@ -371,6 +437,17 @@ window.MAIN_ENTRIES = [
     rarity: "LEGEND",
     rarityClass: "rar-l",
     image: "images/no_006.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "キンタ魔丸",
     en: "GoldenBall Magan",
@@ -401,6 +478,17 @@ window.MAIN_ENTRIES = [
     rarity: "uncommon",
     rarityClass: "rar-uc",
     image: "images/no_007.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "スカイブルーニャンダホー",
     en: "Sky Blue Nyanda Ho",
@@ -427,7 +515,7 @@ window.MAIN_ENTRIES = [
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-    missingState:"SIGNAL_LOST",
+    missingState: "SIGNAL_LOST",
   },
 
   {
@@ -442,6 +530,17 @@ window.MAIN_ENTRIES = [
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_008.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "アガベカブトトカゲ",
     en: "Agave Kabutotokage",
@@ -485,6 +584,17 @@ window.MAIN_ENTRIES = [
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_009.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "フィリグリズリー",
     en: "Filigrizzly",
@@ -527,6 +637,17 @@ window.MAIN_ENTRIES = [
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_010.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "フィリグリズリーデビル",
     en: "Filigrizzly Devil",
@@ -571,6 +692,17 @@ window.MAIN_ENTRIES = [
     rarity: "EPIC",
     rarityClass: "rar-e",
     image: "images/no_011.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "フィリグリズリーモナーク",
     en: "Filigrizzly Monarch",
@@ -599,7 +731,7 @@ window.MAIN_ENTRIES = [
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-    missingState: "DATA_LOST"// 欠損状態を設定
+    missingState: "DATA_LOST", // 欠損状態を設定
   },
 
   {
@@ -614,6 +746,17 @@ window.MAIN_ENTRIES = [
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
     image: "images/no_012.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "緑犀牛",
     en: "Green Rhino",
@@ -654,6 +797,17 @@ window.MAIN_ENTRIES = [
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_013.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "AQUATIC-SUCCULENT HYBRID",
     jp: "白鯨",
     en: "Hakugei White Cetus",
@@ -696,6 +850,17 @@ window.MAIN_ENTRIES = [
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
     image: "images/no_014.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "黒鯨",
     en: "Kokugei Black Cetus",
@@ -736,6 +901,17 @@ window.MAIN_ENTRIES = [
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_015.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "AQUATIC-SUCCULENT HYBRID",
     jp: "メタル白鯨",
     en: "Metal Hakugei Cetus",
@@ -778,6 +954,17 @@ window.MAIN_ENTRIES = [
     rarity: "LEGEND",
     rarityClass: "rar-l",
     image: "images/no_016.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "AQUATIC-SUCCULENT HYBRID",
     jp: "金鯨",
     en: "Kingei Golden Cetus",
@@ -821,6 +1008,17 @@ window.MAIN_ENTRIES = [
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
     image: "images/no_017.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "ライオンズニャーン",
     en: "Lions Nyaan",
@@ -863,6 +1061,17 @@ window.MAIN_ENTRIES = [
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_018.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "MECHA-BEAST-JOINT",
     jp: "鋸歯機獣ゴリボーグ",
     en: "Goriborg Serrate Beast",
@@ -904,6 +1113,17 @@ window.MAIN_ENTRIES = [
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
     image: "images/no_019.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "AQUATIC-SUCCULENT HYBRID",
     jp: "もち鯨",
     en: "Mochi Cetus",
@@ -974,6 +1194,17 @@ window.MAIN_ENTRIES = [
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_020.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "SUCCULENT-TYPE",
     jp: "グラキりす",
     en: "Graci Ris",
@@ -1013,6 +1244,17 @@ window.MAIN_ENTRIES = [
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_021.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "SUCCULENT-TYPE",
     jp: "グニャキリス",
     en: "Gnyacilius",
@@ -1055,6 +1297,16 @@ window.MAIN_ENTRIES = [
     rarityClass: "rar-r",
     image: "images/no_022.png",
 
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "beast-dominant",
 
     jp: "ブーファメ（仮）",
@@ -1087,10 +1339,101 @@ window.MAIN_ENTRIES = [
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-    missingState: "ACCESS_DENIED"// 欠損状態を設定
+    missingState: "ACCESS_DENIED", // 欠損状態を設定
   },
-  
+  {
+    // Basic identification
+    no: "023",
+    sort: 230,
+    createdAt: "2026-05-23",
+    firstObserved: "2026-05-23",
 
+    // Classification system
+    species: "Staghorn Moss",
+    lineage: "MOSS-SYMBIOSIS",
+    dangerClass: "CAUTION",
+    classification: "SAFE",
+
+    // Biological stats (0-100)
+    plant: 74,
+    animal: 91,
+    danger: 68,
+
+    // Display info
+    tag: "Beast-Dominant",
+    jp: "ビカクシダ種(名称未定)",
+    en: "No name",
+    rarity: "RARE",
+    rarityClass: "rar-r",
+
+    // Detailed description
+    notes:
+      "初観測時、倒木と完全に同化していたため生物だと認識できなかった。角状器官の表面には複数の苔類群が定着しており、移動後も周囲には高湿度状態が残存していた。なお、こちらの視線に反応した瞬間、明確な威嚇姿勢を確認している。アガベスト",
+
+    desc: `
+湿潤森林地帯にて確認された大型鋸歯生物。
+頭部にはヘラジカを思わせる巨大な角状器官を形成しているが、その実態はビカクシダ系統の葉状組織が変異・硬質化したものである。
+
+角状器官の表面には広範囲に苔類群が定着しており、本種はこれら共生苔との複雑な湿度循環関係を構築している。苔層は単なる付着物ではなく、体表湿度の維持・有機物分解・擬態補助を担う外部器官として機能している可能性が高い。
+
+また、ビカクシダ特有の貯水葉構造は、本種において腰部へ装着されたホルダー状器官へと進化している。内部には水分や有機堆積物が蓄積されており、長時間の巡回行動時における水分維持機構として利用されていると推定される。
+
+通常時の行動性は低いが、縄張りへ侵入した外来個体に対しては極めて高い攻撃性を示す。交戦時には角状葉器官を大きく展開し、苔胞子を周囲へ散布しながら突進する行動が観測されている。
+  `,
+
+    // Abilities and traits
+    abilities: ["擬態ステイシス", "苔類共生"],
+
+    // Habitat and physical traits
+    habitat: "湿潤森林",
+    size: "3.4m",
+    mobility: "突進型",
+
+    // Status
+    status: "● AGITATED",
+    statusColor: "#d65a5a",
+
+    // Shop information
+    shopUrl: "",
+    price: "",
+    soldOut: false,
+
+    // Variants
+    variants: [],
+
+    // Image
+    image: "images/no_023.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "images/no_023_01.png",
+        title: "角状器官周辺",
+        titleEn: "",
+        description: "角状器官の表面には広範囲に苔類群が定着し、共生関係を形成",
+      },
+      {
+        image: "images/no_023_02.png",
+        title: "貯水葉構造",
+        titleEn: "",
+        description: "ビカクシダ特有の貯水葉構造は、腰部のホルダー状器官へ進化",
+      },
+      {
+        image: "images/no_023_03.png",
+        title: "成長段階：成体",
+        titleEn: "",
+        description: "角状器官が完全に発達し、苔類群との共生関係が成熟",
+      },
+      {
+        image: "images/no_023_04.png",
+        title: "脚部特長は偶蹄目",
+        titleEn: "",
+        description: "脚部先端は偶蹄目に近い二分構造を形成している",
+      },
+    ],
+
+    missingState: "", // 欠損状態を設定
+  },
 ];
 
 // EX catalog entries (EX-001~)
@@ -1157,6 +1500,16 @@ window.EX_ENTRIES = [
 
     // Image
     image: "images/unknown.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
   },
 ];
 
@@ -1216,6 +1569,16 @@ window.MISSING_ENTRIES = [
 
     // Image
     image: "images/unknown.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
   },
 ];
 
@@ -1242,45 +1605,57 @@ function validateDatabase() {
     });
   }
 
-  checkDuplicates(window.MAIN_ENTRIES, 'MAIN_ENTRIES');
-  checkDuplicates(window.EX_ENTRIES, 'EX_ENTRIES');
-  checkDuplicates(window.MISSING_ENTRIES, 'MISSING_ENTRIES');
+  checkDuplicates(window.MAIN_ENTRIES, "MAIN_ENTRIES");
+  checkDuplicates(window.EX_ENTRIES, "EX_ENTRIES");
+  checkDuplicates(window.MISSING_ENTRIES, "MISSING_ENTRIES");
 
   // Check for required fields
   function checkRequiredFields(entries, arrayName) {
-    const requiredFields = ['no', 'sort', 'createdAt', 'jp', 'en', 'rarity', 'desc'];
+    const requiredFields = [
+      "no",
+      "sort",
+      "createdAt",
+      "jp",
+      "en",
+      "rarity",
+      "desc",
+    ];
     entries.forEach((entry, index) => {
-      requiredFields.forEach(field => {
+      requiredFields.forEach((field) => {
         if (entry[field] === undefined || entry[field] === null) {
-          errors.push(`${arrayName}[${index}]: Missing required field '${field}'`);
+          errors.push(
+            `${arrayName}[${index}]: Missing required field '${field}'`,
+          );
         }
       });
     });
   }
 
-  checkRequiredFields(window.MAIN_ENTRIES, 'MAIN_ENTRIES');
-  checkRequiredFields(window.EX_ENTRIES, 'EX_ENTRIES');
+  checkRequiredFields(window.MAIN_ENTRIES, "MAIN_ENTRIES");
+  checkRequiredFields(window.EX_ENTRIES, "EX_ENTRIES");
 
   // Check for missing state entries (intentional worldbuilding)
   window.MISSING_ENTRIES.forEach((entry, index) => {
     if (!entry.missingState) {
-      warnings.push(`MISSING_ENTRIES[${index}]: Missing 'missingState' field (should be DATA_LOST, ACCESS_DENIED, or REDACTED)`);
+      warnings.push(
+        `MISSING_ENTRIES[${index}]: Missing 'missingState' field (should be DATA_LOST, ACCESS_DENIED, or REDACTED)`,
+      );
     }
   });
 
   // Output validation results
   if (errors.length > 0) {
-    console.error('[DATABASE VALIDATION ERROR]:');
-    errors.forEach(err => console.error('  -', err));
+    console.error("[DATABASE VALIDATION ERROR]:");
+    errors.forEach((err) => console.error("  -", err));
   }
 
   if (warnings.length > 0) {
-    console.warn('[DATABASE VALIDATION WARNING]:');
-    warnings.forEach(warn => console.warn('  -', warn));
+    console.warn("[DATABASE VALIDATION WARNING]:");
+    warnings.forEach((warn) => console.warn("  -", warn));
   }
 
   if (errors.length === 0 && warnings.length === 0) {
-    console.log('[DATABASE VALIDATION]: All checks passed');
+    console.log("[DATABASE VALIDATION]: All checks passed");
   }
 
   return { errors, warnings };
@@ -1291,4 +1666,8 @@ validateDatabase();
 
 // Legacy compatibility - merge all entries for existing code
 // This will be removed once all code is updated to use separate arrays
-window.ENTRIES = [...window.MAIN_ENTRIES, ...window.EX_ENTRIES, ...window.MISSING_ENTRIES];
+window.ENTRIES = [
+  ...window.MAIN_ENTRIES,
+  ...window.EX_ENTRIES,
+  ...window.MISSING_ENTRIES,
+];

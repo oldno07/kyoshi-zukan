@@ -18,14 +18,24 @@
 
 window.NEWS = [
   {
-    id: "002",
-    date: "2026-05-19",
-    type: "shop",
-    title: "No.001 スニャグルトゥース — 譲渡会",
-    body: "スニャグルトゥースの復刻譲渡会を鋸歯生物譲渡局にて開始しました。個体数に限りがありますのでお早めにどうぞ。",
-    image: "images/no_001.png",
-    link: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db",
-    linkLabel: "購入ページへ",
+    id: "006",
+    date: "2026-05-23",
+    type: "new",
+    title: "No.023 ビカクシダ系統種 — 発見",
+    body: "湿潤森林地帯にて大型個体を確認。角状器官周辺に異常な苔類活性を観測。",
+    image: "images/no_023.png",
+    link: "entry.html?no=023",
+    linkLabel: "図鑑で見る",
+  },
+  {
+    id: "005",
+    date: "2026-05-14",
+    type: "new",
+    title: "No.022 ブーファンハイマンソイデス系統種 — 発見",
+    body: "ブーファンハイマンソイデス種の長期休眠行動を観測。現在も活動反応なし。",
+    image: "images/no_022.png",
+    link: "entry.html?no=022",
+    linkLabel: "図鑑で見る",
   },
   {
     id: "004",

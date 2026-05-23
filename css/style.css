@@ -90,7 +90,8 @@ body::before {
 }
 
 @keyframes weak-pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -114,7 +115,8 @@ body::before {
 }
 
 @keyframes signal-blink {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -147,7 +149,8 @@ body::before {
 }
 
 @keyframes corruption-flicker {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0;
   }
   15% {
@@ -451,7 +454,7 @@ footer {
 }
 
 .cillus.silhouette::after {
-  content: 'NO VISUAL DATA';
+  content: "NO VISUAL DATA";
   position: absolute;
   inset: 0;
   display: flex;
@@ -466,7 +469,8 @@ footer {
 }
 
 @keyframes data-flicker {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -481,7 +485,7 @@ footer {
 }
 
 .ed-viewer.silhouette::after {
-  content: 'NO VISUAL DATA';
+  content: "NO VISUAL DATA";
   position: absolute;
   inset: 0;
   display: flex;
@@ -497,28 +501,29 @@ footer {
 
 /* Signal lost effect */
 .signal-lost::after {
-  content: 'SIGNAL LOST';
+  content: "SIGNAL LOST";
 }
 
 /* Redacted effect */
 .redacted::after {
-  content: 'REDACTED';
+  content: "REDACTED";
 }
 
 /* Data corruption overlay for missing states */
 .missing-data-lost .cillus::after {
-  content: 'DATA LOST';
+  content: "DATA LOST";
   animation: corruption-flicker 2s ease-in-out infinite;
 }
 
 .missing-access-denied .cillus::after {
-  content: 'ACCESS DENIED';
+  content: "ACCESS DENIED";
   color: var(--red);
   animation: access-denied-pulse 1.5s ease-in-out infinite;
 }
 
 @keyframes access-denied-pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -544,7 +549,9 @@ footer {
 
 .ecard[data-ex="true"]:hover {
   border-left: 3px solid #a855f7;
-  box-shadow: 0 8px 32px rgba(168, 85, 247, 0.3), 0 0 0 1px rgba(168, 85, 247, 0.4);
+  box-shadow:
+    0 8px 32px rgba(168, 85, 247, 0.3),
+    0 0 0 1px rgba(168, 85, 247, 0.4);
 }
 
 .ex-cno {
@@ -965,7 +972,8 @@ footer {
 }
 
 @keyframes rec-blink {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -1615,10 +1623,15 @@ footer {
 }
 
 .unknown-signal-btn::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(216, 90, 48, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(216, 90, 48, 0.2),
+    transparent
+  );
   transform: translateX(-100%);
   transition: transform 0.6s ease;
 }
@@ -1640,7 +1653,8 @@ footer {
 }
 
 @keyframes signal-pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -1731,7 +1745,7 @@ footer {
 
 /* Scan line effect on cards */
 .ecard::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -1752,7 +1766,7 @@ footer {
 
 /* Scan line animation on hover - Very subtle */
 .ecard::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -1848,7 +1862,8 @@ footer {
 }
 
 @keyframes pulse-badge {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -2198,6 +2213,20 @@ footer {
   flex: 1;
   opacity: 0.8;
 }
+
+/* Read more link - positioned in bottom right */
+.read-more {
+  font-size: 10px;
+  color: var(--g);
+  text-decoration: none;
+  align-self: flex-end;
+  margin-bottom: 8px;
+  font-family: var(--mono);
+  transition: color 0.2s ease;
+}
+.read-more:hover {
+  color: var(--g2);
+}
 .cdata {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2245,7 +2274,8 @@ footer {
 }
 
 @keyframes live-pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
