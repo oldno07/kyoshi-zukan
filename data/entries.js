@@ -176,19 +176,19 @@ window.MAIN_ENTRIES = [
     // Gallery
     gallery: [
       {
-        image: "images/no_001.png",
+        image: "",
         title: "成長段階：幼体",
         titleEn: "Growth Stage: Juvenile",
         description: "孵化後3ヶ月の個体",
       },
       {
-        image: "images/no_001_a.png",
+        image: "",
         title: "成長段階：成体",
         titleEn: "Growth Stage: Adult",
         description: "成熟期の個体",
       },
       {
-        image: "images/no_001_b.png",
+        image: "",
         title: "生息環境",
         titleEn: "Habitat",
         description: "深林域での観察記録",
@@ -1407,10 +1407,28 @@ window.MAIN_ENTRIES = [
     // Gallery
     gallery: [
       {
-        image: "",
-        title: "",
+        image: "images/no_023_01.png",
+        title: "角状器官周辺",
         titleEn: "",
-        description: "",
+        description: "角状器官の表面には広範囲に苔類群が定着し、共生関係を形成",
+      },
+      {
+        image: "images/no_023_02.png",
+        title: "貯水葉構造",
+        titleEn: "",
+        description: "ビカクシダ特有の貯水葉構造は、腰部のホルダー状器官へ進化",
+      },
+      {
+        image: "images/no_023_03.png",
+        title: "成長段階：成体",
+        titleEn: "",
+        description: "角状器官が完全に発達し、苔類群との共生関係が成熟",
+      },
+      {
+        image: "images/no_023_04.png",
+        title: "脚部特長は偶蹄目",
+        titleEn: "",
+        description: "脚部先端は偶蹄目に近い二分構造を形成している",
       },
     ],
 
