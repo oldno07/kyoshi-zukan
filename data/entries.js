@@ -172,6 +172,28 @@ window.MAIN_ENTRIES = [
 
     // Image
     image: "images/no_001.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "images/no_001.png",
+        title: "成長段階：幼体",
+        titleEn: "Growth Stage: Juvenile",
+        description: "孵化後3ヶ月の個体",
+      },
+      {
+        image: "images/no_001_a.png",
+        title: "成長段階：成体",
+        titleEn: "Growth Stage: Adult",
+        description: "成熟期の個体",
+      },
+      {
+        image: "images/no_001_b.png",
+        title: "生息環境",
+        titleEn: "Habitat",
+        description: "深林域での観察記録",
+      },
+    ],
   },
 
   {
@@ -186,6 +208,17 @@ window.MAIN_ENTRIES = [
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_002.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "ブラックにゃんこブルー",
     en: "Black Nyanko Blue",
@@ -235,6 +268,17 @@ window.MAIN_ENTRIES = [
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
     image: "images/no_003.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "レッドキャットミーズル",
     en: "Red Cat meezle",
@@ -281,6 +325,17 @@ window.MAIN_ENTRIES = [
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_004.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "にゃガベ チタノタ",
     en: "NyAgabe titanota",
@@ -336,6 +391,17 @@ window.MAIN_ENTRIES = [
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_005.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "ゴリラホリダ",
     en: "Gorillahorrida",
@@ -371,6 +437,17 @@ window.MAIN_ENTRIES = [
     rarity: "LEGEND",
     rarityClass: "rar-l",
     image: "images/no_006.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "キンタ魔丸",
     en: "GoldenBall Magan",
@@ -401,6 +478,17 @@ window.MAIN_ENTRIES = [
     rarity: "uncommon",
     rarityClass: "rar-uc",
     image: "images/no_007.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "スカイブルーニャンダホー",
     en: "Sky Blue Nyanda Ho",
@@ -442,6 +530,17 @@ window.MAIN_ENTRIES = [
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_008.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "アガベカブトトカゲ",
     en: "Agave Kabutotokage",
@@ -485,6 +584,17 @@ window.MAIN_ENTRIES = [
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_009.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "フィリグリズリー",
     en: "Filigrizzly",
@@ -527,6 +637,17 @@ window.MAIN_ENTRIES = [
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_010.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "フィリグリズリーデビル",
     en: "Filigrizzly Devil",
@@ -571,6 +692,17 @@ window.MAIN_ENTRIES = [
     rarity: "EPIC",
     rarityClass: "rar-e",
     image: "images/no_011.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "フィリグリズリーモナーク",
     en: "Filigrizzly Monarch",
@@ -614,6 +746,17 @@ window.MAIN_ENTRIES = [
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
     image: "images/no_012.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "緑犀牛",
     en: "Green Rhino",
@@ -654,6 +797,17 @@ window.MAIN_ENTRIES = [
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_013.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "AQUATIC-SUCCULENT HYBRID",
     jp: "白鯨",
     en: "Hakugei White Cetus",
@@ -696,6 +850,17 @@ window.MAIN_ENTRIES = [
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
     image: "images/no_014.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "黒鯨",
     en: "Kokugei Black Cetus",
@@ -736,6 +901,17 @@ window.MAIN_ENTRIES = [
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_015.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "AQUATIC-SUCCULENT HYBRID",
     jp: "メタル白鯨",
     en: "Metal Hakugei Cetus",
@@ -778,6 +954,17 @@ window.MAIN_ENTRIES = [
     rarity: "LEGEND",
     rarityClass: "rar-l",
     image: "images/no_016.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "AQUATIC-SUCCULENT HYBRID",
     jp: "金鯨",
     en: "Kingei Golden Cetus",
@@ -821,6 +1008,17 @@ window.MAIN_ENTRIES = [
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
     image: "images/no_017.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "BEAST-DOMINANT",
     jp: "ライオンズニャーン",
     en: "Lions Nyaan",
@@ -863,6 +1061,17 @@ window.MAIN_ENTRIES = [
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_018.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "MECHA-BEAST-JOINT",
     jp: "鋸歯機獣ゴリボーグ",
     en: "Goriborg Serrate Beast",
@@ -904,6 +1113,17 @@ window.MAIN_ENTRIES = [
     rarity: "UNCOMMON",
     rarityClass: "rar-uc",
     image: "images/no_019.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "AQUATIC-SUCCULENT HYBRID",
     jp: "もち鯨",
     en: "Mochi Cetus",
@@ -974,6 +1194,17 @@ window.MAIN_ENTRIES = [
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_020.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "SUCCULENT-TYPE",
     jp: "グラキりす",
     en: "Graci Ris",
@@ -1013,6 +1244,17 @@ window.MAIN_ENTRIES = [
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_021.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     tag: "SUCCULENT-TYPE",
     jp: "グニャキリス",
     en: "Gnyacilius",
@@ -1054,6 +1296,16 @@ window.MAIN_ENTRIES = [
     rarity: "RARE",
     rarityClass: "rar-r",
     image: "images/no_022.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
 
     tag: "beast-dominant",
 
@@ -1151,6 +1403,17 @@ window.MAIN_ENTRIES = [
 
     // Image
     image: "images/no_023.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     missingState: "", // 欠損状態を設定
   },
 ];
@@ -1219,6 +1482,16 @@ window.EX_ENTRIES = [
 
     // Image
     image: "images/unknown.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
   },
 ];
 
@@ -1278,6 +1551,16 @@ window.MISSING_ENTRIES = [
 
     // Image
     image: "images/unknown.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
   },
 ];
 

@@ -553,6 +553,162 @@
 }
 
 /* ============================================================
+   GALLERY SECTION
+   ============================================================ */
+.ed-gallery {
+  padding: 0 0 48px 0;
+}
+
+.ed-gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--br2);
+}
+
+.ed-gallery-count {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--ink3);
+}
+
+/* Gallery Grid */
+.ed-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1px;
+  background: var(--br2);
+  border: 1px solid var(--br2);
+}
+
+.gallery-card {
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  cursor: crosshair;
+  transition: background 0.2s;
+}
+
+.gallery-card:hover {
+  background: var(--bg2);
+}
+
+/* Image area */
+.gallery-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--bg2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--br);
+}
+
+.gallery-img-wrap::before,
+.gallery-img-wrap::after {
+  content: "";
+  position: absolute;
+  background: var(--br);
+}
+
+.gallery-img-wrap::before {
+  width: 1px;
+  height: 100%;
+  left: 50%;
+}
+
+.gallery-img-wrap::after {
+  height: 1px;
+  width: 100%;
+  top: 50%;
+}
+
+.gallery-img-wrap img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.gallery-card:hover .gallery-img-wrap img {
+  transform: scale(1.05);
+}
+
+/* Info area */
+.gallery-info {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gallery-title {
+  font-family: "Shippori Mincho", serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.gallery-title-en {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: var(--ink3);
+  margin-bottom: 6px;
+}
+
+.gallery-desc {
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--ink2);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .ed-gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .ed-gallery {
+    padding: 0 0 36px 0;
+  }
+
+  .ed-gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--br2);
+    border: 1px solid var(--br2);
+  }
+
+  .gallery-card {
+    scroll-snap-align: start;
+  }
+
+  .gallery-img-wrap {
+    aspect-ratio: 1 / 1;
+  }
+
+  .gallery-img-wrap img {
+    width: 85%;
+    height: 85%;
+  }
+
+  .gallery-card:hover .gallery-img-wrap img {
+    transform: none;
+  }
+}
+
+/* ============================================================
    VARIANTS SECTION
    ============================================================ */
 .ed-variants {
