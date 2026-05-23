@@ -60,26 +60,26 @@ function updateEntryCount() {
 // DISCOVERY SYSTEM - localStorage with three states
 // ============================================================
 const DISCOVERY_STATES = {
-  UNKNOWN: 'UNKNOWN',
-  DISCOVERED: 'DISCOVERED',
-  RESTRICTED: 'RESTRICTED'
+  UNKNOWN: "UNKNOWN",
+  DISCOVERED: "DISCOVERED",
+  RESTRICTED: "RESTRICTED",
 };
 
 function getDiscoveryData() {
   try {
-    const data = localStorage.getItem('kyoshi_discovery_data');
+    const data = localStorage.getItem("kyoshi_discovery_data");
     return data ? JSON.parse(data) : {};
   } catch (e) {
-    console.warn('[WARN] Failed to read discovery data:', e);
+    console.warn("[WARN] Failed to read discovery data:", e);
     return {};
   }
 }
 
 function setDiscoveryData(data) {
   try {
-    localStorage.setItem('kyoshi_discovery_data', JSON.stringify(data));
+    localStorage.setItem("kyoshi_discovery_data", JSON.stringify(data));
   } catch (e) {
-    console.warn('[WARN] Failed to write discovery data:', e);
+    console.warn("[WARN] Failed to write discovery data:", e);
   }
 }
 
@@ -107,19 +107,21 @@ function markAsViewed(entryNo) {
 
 function getViewedEntries() {
   const data = getDiscoveryData();
-  return Object.keys(data).filter(no => data[no] !== DISCOVERY_STATES.UNKNOWN);
+  return Object.keys(data).filter(
+    (no) => data[no] !== DISCOVERY_STATES.UNKNOWN,
+  );
 }
 
 // Show discovery overlay animation
 function showDiscoveryOverlay(entryNo) {
-  const overlay = document.getElementById('discovery-overlay');
+  const overlay = document.getElementById("discovery-overlay");
   if (!overlay) return;
 
-  overlay.classList.add('active');
+  overlay.classList.add("active");
 
   // Auto-hide after 2 seconds
   setTimeout(() => {
-    overlay.classList.remove('active');
+    overlay.classList.remove("active");
   }, 2000);
 }
 
@@ -130,40 +132,46 @@ function updateCollectionProgress() {
   const percentage = total > 0 ? Math.round((viewedCount / total) * 100) : 0;
 
   // ヘッダーの進捗表示を更新
-  const progressEl = document.getElementById('collection-progress');
+  const progressEl = document.getElementById("collection-progress");
   if (progressEl) {
     progressEl.textContent = `${viewedCount}/${total}`;
   }
 
-  const percentageEl = document.getElementById('collection-percentage');
+  const percentageEl = document.getElementById("collection-percentage");
   if (percentageEl) {
     percentageEl.textContent = `${percentage}%`;
   }
 
   // モバイルの進捗表示を更新
-  const mobileProgressEl = document.getElementById('collection-progress-mobile');
+  const mobileProgressEl = document.getElementById(
+    "collection-progress-mobile",
+  );
   if (mobileProgressEl) {
     mobileProgressEl.textContent = `${viewedCount}/${total}`;
   }
 
-  const mobilePercentageEl = document.getElementById('collection-percentage-mobile');
+  const mobilePercentageEl = document.getElementById(
+    "collection-percentage-mobile",
+  );
   if (mobilePercentageEl) {
     mobilePercentageEl.textContent = `${percentage}%`;
   }
 
   // プログレスバーの幅を更新
-  const progressBar = document.getElementById('collection-bar-fill');
+  const progressBar = document.getElementById("collection-bar-fill");
   if (progressBar) {
     progressBar.style.width = `${percentage}%`;
   }
 
   // ヒーローセクションのDISCOVERY RATEを更新
-  const heroDiscoveryRate = document.getElementById('hero-discovery-rate');
+  const heroDiscoveryRate = document.getElementById("hero-discovery-rate");
   if (heroDiscoveryRate) {
     heroDiscoveryRate.textContent = `${viewedCount}/${total}`;
   }
 
-  const heroDiscoveryPercent = document.getElementById('hero-discovery-percent');
+  const heroDiscoveryPercent = document.getElementById(
+    "hero-discovery-percent",
+  );
   if (heroDiscoveryPercent) {
     heroDiscoveryPercent.textContent = `${percentage}%`;
   }
@@ -261,50 +269,56 @@ function initReveal() {
    ---------------------------------------------------------- */
 function applySiteConfig() {
   if (!window.SITE_CONFIG) {
-    console.warn('[WARN] SITE_CONFIG not found');
+    console.warn("[WARN] SITE_CONFIG not found");
     return;
   }
 
   const config = window.SITE_CONFIG;
 
   // Apply version to header
-  const versionEl = document.getElementById('sys-version');
+  const versionEl = document.getElementById("sys-version");
   if (versionEl) {
     versionEl.textContent = `SYS_V${config.version}`;
   }
 
+  // Apply version to footer
+  const footerVersionEl = document.getElementById("footer-version");
+  if (footerVersionEl) {
+    footerVersionEl.textContent = `KYOSHI_SEIBUTSU_ZUKAN_v${config.version}`;
+  }
+
   // Apply to sys-divider elements
-  const statusEl = document.getElementById('sys-status');
+  const statusEl = document.getElementById("sys-status");
   if (statusEl) {
     statusEl.textContent = config.status;
   }
 
-  const regionEl = document.getElementById('sys-region');
+  const regionEl = document.getElementById("sys-region");
   if (regionEl) {
     regionEl.textContent = config.region;
   }
 
-  const collectorEl = document.getElementById('sys-collector');
+  const collectorEl = document.getElementById("sys-collector");
   if (collectorEl) {
     collectorEl.textContent = config.collector;
   }
 
-  const lastUpdateEl = document.getElementById('sys-last-update');
+  const lastUpdateEl = document.getElementById("sys-last-update");
   if (lastUpdateEl) {
     lastUpdateEl.textContent = config.lastUpdate;
   }
 
-  const docTypeEl = document.getElementById('sys-doc-type');
+  const docTypeEl = document.getElementById("sys-doc-type");
   if (docTypeEl) {
     docTypeEl.textContent = config.docType;
   }
 
-  const classificationEl = document.getElementById('sys-classification');
+  const classificationEl = document.getElementById("sys-classification");
   if (classificationEl) {
     classificationEl.textContent = config.classification;
   }
 
-  console.log('[CONFIG] Site config applied:', config);
+  console.log("[CONFIG] Site config applied:", config);
 }
 
 /* ----------------------------------------------------------
