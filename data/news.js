@@ -18,10 +18,20 @@
 
 window.NEWS = [
   {
+    id: "007",
+    date: "2026-05-24",
+    type: "new",
+    title: "No.024 ビカクウシ — 発見",
+    body: "牛型のビカク系個体を発見。",
+    image: "images/no_024.png",
+    link: "entry.html?no=024",
+    linkLabel: "図鑑で見る",
+  },
+  {
     id: "006",
     date: "2026-05-23",
     type: "new",
-    title: "No.023 ビカクシダ系統種 — 発見",
+    title: "No.023 美角鹿（ビカクシカ） — 発見",
     body: "湿潤森林地帯にて大型個体を確認。角状器官周辺に異常な苔類活性を観測。",
     image: "images/no_023.png",
     link: "entry.html?no=023",
