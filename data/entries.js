@@ -51,6 +51,13 @@
 【画像】
 - image: 画像パス（例: "images/no_001.png"）
 
+【観測動画】
+- videos: 観測動画配列（YouTube埋め込み用）
+  - youtubeId: YouTube動画ID（例: "dQw4w9WgXcQ"）
+  - title: 動画タイトル（観測ログ形式）
+  - observedAt: 観測日時（YYYY-MM-DD）
+  - duration: 動画長（秒数、例: 60）
+
 【欠損データ設定（ワールドビルディング用）】
 - missingState: 欠損状態を設定すると、以下の効果が自動適用されます：
   * "DATA_LOST": データ消失状態、"DATA LOST"バッジ表示
@@ -192,6 +199,16 @@ window.MAIN_ENTRIES = [
         title: "生息環境",
         titleEn: "Habitat",
         description: "深林域での観察記録",
+      },
+    ],
+
+    // Observation Videos
+    videos: [
+      {
+        youtubeId: "R_BYUPtk_lE",
+        title: "Unknown Species Detected Near Prestera Habitat",
+        observedAt: "2026-05-23",
+        duration: 60,
       },
     ],
   },
@@ -1433,6 +1450,15 @@ window.MAIN_ENTRIES = [
     ],
 
     missingState: "", // 欠損状態を設定
+    // Observation Videos
+    videos: [
+      {
+        youtubeId: "NrEHuSjY4CQ",
+        title: "Creating Specimen #023 | Classification Pending",
+        observedAt: "2026-05-23",
+        duration: "",
+      },
+    ],
   },
 ];
 
