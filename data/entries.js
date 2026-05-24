@@ -453,6 +453,7 @@ window.MAIN_ENTRIES = [
     animal: 95,
     danger: 90,
     notes: "めちゃくちゃキンタマがでかい。アガベスト",
+
     rarity: "LEGEND",
     rarityClass: "rar-l",
     image: "images/no_006.png",
@@ -474,6 +475,7 @@ window.MAIN_ENTRIES = [
       めちゃくちゃキンタマがでかい悪魔。<br>
       めちゃくちゃキンタマがデカい。
     `,
+    namer: "@craft_seventy",
     abilities: ["オーバーリバランス", "りょくばくぞうふく"],
     habitat: "禁域森林",
     size: "4.1m",
@@ -525,6 +527,7 @@ window.MAIN_ENTRIES = [
       “着地保持行動”が観測されることがあり、
       これは休息時の重力再同期プロセスと考えられている。  
   `,
+    namer: "@fukuboo",
     abilities: ["エアロバランサー", "かぜのり"],
     habitat: "領空",
     size: "160mm",
@@ -598,6 +601,7 @@ window.MAIN_ENTRIES = [
     plant: 35,
     animal: 80,
     danger: 30,
+    namer: "@craft_seventy",
     notes:
       "クマがいると思い逃げようとしたが、どうやらこれも鋸歯生物の一種のようだ。クマのような見た目をしているが、常に二足歩行をし、集団生活をおこなっている。アガベスト",
     rarity: "COMMON",
@@ -1351,6 +1355,7 @@ window.MAIN_ENTRIES = [
     abilities: ["リーフシェルディフェンス", "かくれこうら"],
     notes:
       "遠目には完全に植物だった。しかし近づいた瞬間、岩だと思っていた塊がゆっくり動き出した。甲羅部分はブーファンの葉そのもので構成されており、乾燥時には完全に閉じて休眠状態へ入るらしい。アガベスト",
+
     habitat: "乾燥岩場",
     size: "320mm",
     mobility: "超緩慢",
@@ -1361,6 +1366,7 @@ window.MAIN_ENTRIES = [
     soldOut: false, // 完売時は true に変えるだけ
     missingState: "ACCESS_DENIED", // 欠損状態を設定
   },
+
   {
     // Basic identification
     no: "023",
@@ -1381,8 +1387,8 @@ window.MAIN_ENTRIES = [
 
     // Display info
     tag: "Beast-Dominant",
-    jp: "ビカクシダ種(名称未定)",
-    en: "No name",
+    jp: "美角鹿 -ビカクシカ-",
+    en: "Beautiful Horn Deer",
     rarity: "RARE",
     rarityClass: "rar-r",
 
@@ -1400,7 +1406,7 @@ window.MAIN_ENTRIES = [
 
 通常時の行動性は低いが、縄張りへ侵入した外来個体に対しては極めて高い攻撃性を示す。交戦時には角状葉器官を大きく展開し、苔胞子を周囲へ散布しながら突進する行動が観測されている。
   `,
-
+    namer: "@miyamoto0520",
     // Abilities and traits
     abilities: ["擬態ステイシス", "苔類共生"],
 
@@ -1438,17 +1444,24 @@ window.MAIN_ENTRIES = [
         titleEn: "",
         description: "ビカクシダ特有の貯水葉構造は、腰部のホルダー状器官へ進化",
       },
+
       {
         image: "images/no_023_03.png",
-        title: "成長段階：成体",
-        titleEn: "",
-        description: "角状器官が完全に発達し、苔類群との共生関係が成熟",
-      },
-      {
-        image: "images/no_023_04.png",
         title: "脚部特長は偶蹄目",
         titleEn: "",
         description: "脚部先端は偶蹄目に近い二分構造を形成している",
+      },
+      {
+        image: "images/no_023_04.png",
+        title: "成長段階：幼体",
+        titleEn: "",
+        description: "角状器官は未発達であり、見た目は若干、馬に似ている",
+      },
+      {
+        image: "images/no_023_05.png",
+        title: "成長段階：成体",
+        titleEn: "",
+        description: "角状器官が完全に発達し、苔類群との共生関係が成熟",
       },
     ],
 
@@ -1462,6 +1475,99 @@ window.MAIN_ENTRIES = [
         duration: "",
       },
     ],
+  },
+
+  {
+    // Basic identification
+    no: "024",
+    sort: 240,
+    createdAt: "2026-05-24",
+    firstObserved: "2026-05-24",
+
+    // Classification system
+    species: "Staghorn Moss",
+    lineage: "MOSS-SYMBIOSIS",
+    dangerClass: "CAUTION",
+    classification: "SAFE",
+
+    // Biological stats (0-100)
+    plant: 44,
+    animal: 60,
+    danger: 3,
+
+    // Display info
+    tag: "Beast-Dominant",
+    jp: "ビカクウシ",
+    en: "Bicacu Cow",
+    rarity: "common",
+    rarityClass: "rar-c",
+
+    // Detailed description
+    notes:
+      "ビカクシカ系幼体の標本化作業中、群れの中で明らかに異なる個体を確認した。体格や脚部構造はむしろ水牛に近い。アガベスト",
+
+    desc: `
+      湿地帯や森林の浅瀬付近で確認される、ウシ型の大型鋸歯生物。
+
+  ビカクシカ系統の幼体選別中に偶然発見された個体であり、当初は異常成長した近縁種だと考えられていた。しかし観測を続けるうちに、骨格構造や行動傾向が大きく異なる独立種である可能性が高まっている。
+
+  頭部にはビカクシダ由来とみられる巨大な角状葉を持ち、その隙間には常に苔や小型植物が繁殖している。特に湿度の高い朝方には、頭部から霧のような水蒸気を発する様子が確認されている。
+
+  巨大な体格に反して動きはゆったりとしており、水辺に半身だけ浸かったまま長時間静止していることも多い。その姿から、一部地域では“沼の岩”と誤認されることもある。
+  `,
+    namer: "@fukuboo",
+    // Abilities and traits
+    abilities: ["鹿擬態", "らくれん"],
+
+    // Habitat and physical traits
+    habitat: "湿潤森林",
+    size: "1.8m",
+    mobility: "重量突進型",
+
+    // Status
+    status: "● STABLE",
+    statusColor: "var(--g)",
+
+    // Shop information
+    shopUrl: "",
+    price: "",
+    soldOut: false,
+
+    // Variants
+    variants: [],
+
+    // Image
+    image: "images/no_024.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "images/no_024_01.png",
+        title: "角状器官周辺",
+        titleEn: "",
+        description: "角状器官の表面には広範囲に苔類群が定着し、共生関係を形成",
+      },
+      {
+        image: "images/no_024_02.png",
+        title: "貯水葉構造",
+        titleEn: "",
+        description: "ビカクシダ特有の貯水葉構造は、腰部のホルダー状器官へ進化",
+      },
+      {
+        image: "images/no_024_03.png",
+        title: "成長段階：成体",
+        titleEn: "",
+        description: "角状器官が完全に発達し、苔類群との共生関係が成熟",
+      },
+      {
+        image: "images/no_024_04.png",
+        title: "脚部特長は偶蹄目",
+        titleEn: "",
+        description: "脚部先端は偶蹄目に近い二分構造を形成している",
+      },
+    ],
+
+    missingState: "", // 欠損状態を設定
   },
 ];
 
