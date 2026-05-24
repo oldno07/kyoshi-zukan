@@ -119,7 +119,7 @@ window.MAIN_ENTRIES = [
     // Detailed description
     notes:
       "こんな動物を見るのは初めてだ。いや、植物のようでもある。どういった生命体なのだろうか、随時記録していきたいと思う。アガベスト",
-    namer: "@aga.vest",
+
     desc: `
     深林域において確認された鋸歯ネコ型生物。
 
@@ -1293,14 +1293,15 @@ window.MAIN_ENTRIES = [
   水分吸収を担う根系構造である可能性が示唆されている。
 `,
     abilities: ["塊根弾性変形", "水分依存機嫌変動"],
+    namer: "@miyamoyo0520",
     notes:
-      "見た目は完全にネコだが、触れると塊根植物に近い弾力を持っていた。水分状態によって機嫌が極端に変化するらしく、水切れ直前には明確な威嚇反応を示した。アガベスト <br>命名者：@miyamoyo0520",
+      "見た目は完全にネコだが、触れると塊根植物に近い弾力を持っていた。水分状態によって機嫌が極端に変化するらしく、水切れ直前には明確な威嚇反応を示した。アガベスト ",
     habitat: "乾燥地帯",
     size: "112mm",
     mobility: "緩慢",
     status: "● THIRSTY",
     statusColor: "#d6b85a",
-    shopUrl: "https://agavest.stores.jp/items/6a097130e843879f6a4f6c2a",
+    shopUrl: "",
     price: "2500",
     soldOut: false, // 完売時は true に変えるだけ
   },
