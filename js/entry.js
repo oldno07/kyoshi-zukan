@@ -127,6 +127,62 @@ function gallerySection(e) {
 }
 
 /* ============================================================
+   VIDEO SIDEBAR SECTION
+   ============================================================ */
+function videoSidebarSection(e) {
+  if (!e || !e.videos || !Array.isArray(e.videos) || e.videos.length === 0)
+    return "";
+
+  const displayVideos = e.videos.slice(0, 5); // Max 5 videos
+  const hasMore = e.videos.length > 5;
+
+  const videoCards = displayVideos
+    .map((v, i) => {
+      return `
+      <div class="video-card reveal" style="transition-delay:${i * 0.06}s">
+        <div class="video-thumb-wrap">
+          <iframe
+            class="video-iframe"
+            src="https://www.youtube.com/embed/${v.youtubeId}?rel=0"
+            title="${v.title || "Observation Video"}"
+            loading="lazy"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-title">${v.title || "観測記録"}</div>
+          <div class="video-meta">
+            <span class="video-date">${v.observedAt || "—"}</span>
+            ${v.duration ? `<span class="video-duration">${Math.floor(v.duration / 60)}:${String(v.duration % 60).padStart(2, "0")}</span>` : ""}
+          </div>
+        </div>
+      </div>`;
+    })
+    .join("");
+
+  return `
+    <div class="ed-video-sidebar reveal">
+      <div class="ed-video-sidebar-header">
+        <div class="ed-block-label">RELATED OBSERVATIONS</div>
+        <span class="ed-video-count">${e.videos.length} VIDEOS</span>
+      </div>
+      <div class="ed-video-list">
+        ${videoCards}
+      </div>
+      ${
+        hasMore
+          ? `
+      <div class="ed-video-more">
+        <span class="ed-video-more-link">LOAD MORE →</span>
+      </div>`
+          : ""
+      }
+    </div>`;
+}
+
+/* ============================================================
    VARIANTS SECTION
    ============================================================ */
 function variantsSection(e) {
@@ -395,7 +451,17 @@ function renderEntry(e, source = "MAIN") {
             </div>
           </div>
         </div>
+        ${
+          e.namer
+            ? `
+        <div class="ed-panel reveal">
+          <div class="ed-panel-title">NAMER / 命名研究員</div>
+          <div class="ed-namer">${e.namer}</div>
+        </div>`
+            : ""
+        }
         ${shopPanel(e)}
+        ${videoSidebarSection(e)}
         <a href="about.html" class="ed-panel ed-panel-link reveal">
           <div class="ed-panel-title">WORLD / 世界観</div>
           <p class="ed-panel-sub">鋸歯生物が生きる世界の記録</p>

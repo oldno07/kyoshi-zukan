@@ -34,6 +34,7 @@
 
 【詳細情報】
 - notes: 研究者メモ
+- namer: 命名研究員（例: "@aga.vest"）
 - desc: 詳細説明
 - abilities: 特殊能力の配列（例: ["シャドーステイシス", "ねむりうごき"]）
 - habitat: 生息地
@@ -50,6 +51,13 @@
 
 【画像】
 - image: 画像パス（例: "images/no_001.png"）
+
+【観測動画】
+- videos: 観測動画配列（YouTube埋め込み用）
+  - youtubeId: YouTube動画ID（例: "dQw4w9WgXcQ"）
+  - title: 動画タイトル（観測ログ形式）
+  - observedAt: 観測日時（YYYY-MM-DD）
+  - duration: 動画長（秒数、例: 60）
 
 【欠損データ設定（ワールドビルディング用）】
 - missingState: 欠損状態を設定すると、以下の効果が自動適用されます：
@@ -111,6 +119,7 @@ window.MAIN_ENTRIES = [
     // Detailed description
     notes:
       "こんな動物を見るのは初めてだ。いや、植物のようでもある。どういった生命体なのだろうか、随時記録していきたいと思う。アガベスト",
+
     desc: `
     深林域において確認された鋸歯ネコ型生物。
 
@@ -192,6 +201,16 @@ window.MAIN_ENTRIES = [
         title: "生息環境",
         titleEn: "Habitat",
         description: "深林域での観察記録",
+      },
+    ],
+
+    // Observation Videos
+    videos: [
+      {
+        youtubeId: "R_BYUPtk_lE",
+        title: "Unknown Species Detected Near Prestera Habitat",
+        observedAt: "2026-05-23",
+        duration: 60,
       },
     ],
   },
@@ -1274,14 +1293,15 @@ window.MAIN_ENTRIES = [
   水分吸収を担う根系構造である可能性が示唆されている。
 `,
     abilities: ["塊根弾性変形", "水分依存機嫌変動"],
+    namer: "@miyamoyo0520",
     notes:
-      "見た目は完全にネコだが、触れると塊根植物に近い弾力を持っていた。水分状態によって機嫌が極端に変化するらしく、水切れ直前には明確な威嚇反応を示した。アガベスト <br>命名者：@miyamoyo0520",
+      "見た目は完全にネコだが、触れると塊根植物に近い弾力を持っていた。水分状態によって機嫌が極端に変化するらしく、水切れ直前には明確な威嚇反応を示した。アガベスト ",
     habitat: "乾燥地帯",
     size: "112mm",
     mobility: "緩慢",
     status: "● THIRSTY",
     statusColor: "#d6b85a",
-    shopUrl: "https://agavest.stores.jp/items/6a097130e843879f6a4f6c2a",
+    shopUrl: "",
     price: "2500",
     soldOut: false, // 完売時は true に変えるだけ
   },
@@ -1433,6 +1453,15 @@ window.MAIN_ENTRIES = [
     ],
 
     missingState: "", // 欠損状態を設定
+    // Observation Videos
+    videos: [
+      {
+        youtubeId: "NrEHuSjY4CQ",
+        title: "Creating Specimen #023 | Classification Pending",
+        observedAt: "2026-05-23",
+        duration: "",
+      },
+    ],
   },
 ];
 
