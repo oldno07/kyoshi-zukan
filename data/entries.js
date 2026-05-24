@@ -452,7 +452,8 @@ window.MAIN_ENTRIES = [
     plant: 15,
     animal: 95,
     danger: 90,
-    notes: "めちゃくちゃキンタマがでかい。アガベスト",
+    notes:
+      "ある日荒野を歩いていると、私はそれを見つけました。あまりにも大きなキンタマを持つそいつに私は名付けました。キンタ魔丸。その名の通り。恐ろしくデカいです。クラフトセブンティ",
 
     rarity: "LEGEND",
     rarityClass: "rar-l",
@@ -475,7 +476,7 @@ window.MAIN_ENTRIES = [
       めちゃくちゃキンタマがでかい悪魔。<br>
       めちゃくちゃキンタマがデカい。
     `,
-    // namer: "@craft_seventy",
+    namer: "@craft_seventy",
     abilities: ["オーバーリバランス", "りょくばくぞうふく"],
     habitat: "禁域森林",
     size: "4.1m",
@@ -601,7 +602,7 @@ window.MAIN_ENTRIES = [
     plant: 35,
     animal: 80,
     danger: 30,
-    // namer: "@craft_seventy",
+    namer: "@craft_seventy",
     notes:
       "クマがいると思い逃げようとしたが、どうやらこれも鋸歯生物の一種のようだ。クマのような見た目をしているが、常に二足歩行をし、集団生活をおこなっている。アガベスト",
     rarity: "COMMON",
