@@ -475,7 +475,7 @@ window.MAIN_ENTRIES = [
       めちゃくちゃキンタマがでかい悪魔。<br>
       めちゃくちゃキンタマがデカい。
     `,
-    namer: "@craft_seventy",
+    // namer: "@craft_seventy",
     abilities: ["オーバーリバランス", "りょくばくぞうふく"],
     habitat: "禁域森林",
     size: "4.1m",
@@ -601,7 +601,7 @@ window.MAIN_ENTRIES = [
     plant: 35,
     animal: 80,
     danger: 30,
-    namer: "@craft_seventy",
+    // namer: "@craft_seventy",
     notes:
       "クマがいると思い逃げようとしたが、どうやらこれも鋸歯生物の一種のようだ。クマのような見た目をしているが、常に二足歩行をし、集団生活をおこなっている。アガベスト",
     rarity: "COMMON",
@@ -1491,8 +1491,8 @@ window.MAIN_ENTRIES = [
     classification: "SAFE",
 
     // Biological stats (0-100)
-    plant: 44,
-    animal: 60,
+    plant: 34,
+    animal: 55,
     danger: 3,
 
     // Display info
@@ -1543,27 +1543,9 @@ window.MAIN_ENTRIES = [
     gallery: [
       {
         image: "images/no_024_01.png",
-        title: "角状器官周辺",
+        title: "どう見ても鹿じゃない",
         titleEn: "",
-        description: "角状器官の表面には広範囲に苔類群が定着し、共生関係を形成",
-      },
-      {
-        image: "images/no_024_02.png",
-        title: "貯水葉構造",
-        titleEn: "",
-        description: "ビカクシダ特有の貯水葉構造は、腰部のホルダー状器官へ進化",
-      },
-      {
-        image: "images/no_024_03.png",
-        title: "成長段階：成体",
-        titleEn: "",
-        description: "角状器官が完全に発達し、苔類群との共生関係が成熟",
-      },
-      {
-        image: "images/no_024_04.png",
-        title: "脚部特長は偶蹄目",
-        titleEn: "",
-        description: "脚部先端は偶蹄目に近い二分構造を形成している",
+        description: "ビカクシカとは違う種であることが判明した。",
       },
     ],
 
