@@ -451,6 +451,15 @@ function renderEntry(e, source = "MAIN") {
             </div>
           </div>
         </div>
+        ${
+          e.namer
+            ? `
+        <div class="ed-panel reveal">
+          <div class="ed-panel-title">NAMER / 命名研究員</div>
+          <div class="ed-namer">${e.namer}</div>
+        </div>`
+            : ""
+        }
         ${shopPanel(e)}
         ${videoSidebarSection(e)}
         <a href="about.html" class="ed-panel ed-panel-link reveal">

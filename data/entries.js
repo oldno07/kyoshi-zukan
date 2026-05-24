@@ -34,6 +34,7 @@
 
 【詳細情報】
 - notes: 研究者メモ
+- namer: 命名研究員（例: "@aga.vest"）
 - desc: 詳細説明
 - abilities: 特殊能力の配列（例: ["シャドーステイシス", "ねむりうごき"]）
 - habitat: 生息地
@@ -118,6 +119,7 @@ window.MAIN_ENTRIES = [
     // Detailed description
     notes:
       "こんな動物を見るのは初めてだ。いや、植物のようでもある。どういった生命体なのだろうか、随時記録していきたいと思う。アガベスト",
+    namer: "@aga.vest",
     desc: `
     深林域において確認された鋸歯ネコ型生物。
 
