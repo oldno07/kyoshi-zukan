@@ -593,6 +593,7 @@ window.MAIN_ENTRIES = [
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
+    missingState: "DATA_LOST", // 欠損状態を設定
   },
 
   {
@@ -755,7 +756,7 @@ window.MAIN_ENTRIES = [
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-    missingState: "DATA_LOST", // 欠損状態を設定
+    
   },
 
   {
