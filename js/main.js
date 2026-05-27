@@ -411,12 +411,115 @@ function initMobileFooterScroll() {
 }
 
 /* ----------------------------------------------------------
-   10. Init
+   10. Mobile Footer State Management - 状態別UI切り替え
+   ---------------------------------------------------------- */
+function detectPageMode() {
+  const path = window.location.pathname;
+  const filename = path.split('/').pop();
+
+  if (filename === 'about.html' || filename === 'about') {
+    return 'about';
+  } else if (filename === 'entry.html' || filename === 'entry') {
+    return 'detail';
+  } else {
+    return 'index';
+  }
+}
+
+function updateMobileFooterByState() {
+  const footer = document.getElementById("mobile-fixed-footer");
+  if (!footer) return;
+
+  const mode = detectPageMode();
+
+  // 既存のリンクをクリア
+  footer.innerHTML = '';
+
+  let links = [];
+
+  if (mode === 'index') {
+    // 入口モード
+    links = [
+      { href: 'about.html', text: '理解する', systemLink: 'about' },
+      { href: '#catalog', text: '閲覧する', systemLink: 'catalog' },
+      { href: 'https://agavest.stores.jp', text: '入手する', systemLink: 'external', target: '_blank' }
+    ];
+  } else if (mode === 'about') {
+    // 観測モード
+    links = [
+      { href: 'index.html', text: '観測を続ける', systemLink: 'home' },
+      { href: 'index.html#catalog', text: '標本へ移動', systemLink: 'catalog' },
+      { href: 'https://agavest.stores.jp', text: '入手する', systemLink: 'external', target: '_blank' }
+    ];
+  } else if (mode === 'detail') {
+    // 標本モード
+    links = [
+      { href: '#', text: '前の個体', systemLink: 'prev', id: 'mobile-footer-prev' },
+      { href: 'index.html#catalog', text: '一覧へ戻る', systemLink: 'catalog' },
+      { href: 'https://agavest.stores.jp', text: '入手する', systemLink: 'external', target: '_blank' }
+    ];
+  }
+
+  // リンクを生成
+  links.forEach(link => {
+    const a = document.createElement('a');
+    a.href = link.href;
+    a.className = 'mobile-footer-link';
+    a.dataset.systemLink = link.systemLink;
+    if (link.target) a.target = link.target;
+    if (link.id) a.id = link.id;
+
+    const icon = document.createElement('span');
+    icon.className = 'mobile-footer-icon';
+    icon.textContent = '◈';
+
+    const text = document.createElement('span');
+    text.className = 'mobile-footer-text';
+    text.textContent = link.text;
+
+    a.appendChild(icon);
+    a.appendChild(text);
+    footer.appendChild(a);
+  });
+
+  // detailモードの場合は「前の個体」のリンク先を設定
+  if (mode === 'detail') {
+    updatePrevEntryLink();
+  }
+}
+
+function updatePrevEntryLink() {
+  const prevLink = document.getElementById('mobile-footer-prev');
+  if (!prevLink) return;
+
+  // URLパラメータから現在のエントリーIDを取得
+  const params = new URLSearchParams(window.location.search);
+  const currentId = params.get('id');
+
+  if (!currentId) return;
+
+  // entriesデータから前のIDを探す
+  if (typeof entries !== 'undefined' && entries.length > 0) {
+    const currentIndex = entries.findIndex(e => e.id === currentId);
+    if (currentIndex > 0) {
+      const prevEntry = entries[currentIndex - 1];
+      prevLink.href = `entry.html?id=${prevEntry.id}`;
+    } else {
+      // 最初のエントリーの場合は無効化
+      prevLink.style.pointerEvents = 'none';
+      prevLink.style.opacity = '0.3';
+    }
+  }
+}
+
+/* ----------------------------------------------------------
+   11. Init
    ---------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", async () => {
   await initComponents();
   initReveal();
   applySiteConfig();
+  updateMobileFooterByState();
   initSystemConnectionLinks();
   initMobileFooterScroll();
 });
