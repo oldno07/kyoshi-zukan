@@ -322,10 +322,101 @@ function applySiteConfig() {
 }
 
 /* ----------------------------------------------------------
-   8. Init
+   8. System Connection Animation - 観測システム起動演出
+   ---------------------------------------------------------- */
+function initSystemConnectionLinks() {
+  const systemLinks = document.querySelectorAll(".nav-overlay-system-link, .mobile-footer-link");
+  const overlay = document.getElementById("system-connection-overlay");
+  const textEl = document.getElementById("system-connection-text");
+  const statusEl = document.getElementById("system-connection-status");
+
+  if (!systemLinks.length || !overlay) return;
+
+  systemLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const href = link.getAttribute("href");
+      const isExternal = link.getAttribute("target") === "_blank";
+      const linkType = link.dataset.systemLink;
+
+      // ランダムにテキストを選択
+      const messages = ["CONNECTING...", "OBSERVATION NODE ACTIVE"];
+      const message = messages[Math.floor(Math.random() * messages.length)];
+      textEl.textContent = message;
+
+      // オーバーレイを表示
+      overlay.classList.add("active");
+
+      // モバイルメニューを閉じる
+      const burger = document.getElementById("nav-burger");
+      const navOverlay = document.getElementById("nav-overlay");
+      if (burger && navOverlay && navOverlay.classList.contains("is-open")) {
+        burger.classList.remove("is-open");
+        navOverlay.classList.remove("is-open");
+        document.body.classList.remove("nav-is-open");
+      }
+
+      // 0.4〜0.6秒後に遷移
+      const delay = 400 + Math.random() * 200;
+
+      // 成功メッセージを一瞬表示（オプション）
+      setTimeout(() => {
+        statusEl.textContent = "SIGNAL CONFIRMED";
+        statusEl.classList.add("visible");
+      }, delay - 100);
+
+      // 遷移実行
+      setTimeout(() => {
+        if (isExternal) {
+          window.open(href, "_blank");
+        } else {
+          window.location.href = href;
+        }
+
+        // オーバーレイを非表示（遷移後のクリーンアップ）
+        setTimeout(() => {
+          overlay.classList.remove("active");
+          statusEl.classList.remove("visible");
+        }, 100);
+      }, delay);
+    });
+  });
+}
+
+/* ----------------------------------------------------------
+   9. Mobile Footer Scroll Detection - スクロール停止時に表示
+   ---------------------------------------------------------- */
+function initMobileFooterScroll() {
+  const footer = document.getElementById("mobile-fixed-footer");
+  if (!footer) return;
+
+  let scrollTimeout;
+  let isScrolling = false;
+
+  // スクロール中は非表示
+  window.addEventListener("scroll", () => {
+    if (!isScrolling) {
+      footer.classList.remove("visible");
+      isScrolling = true;
+    }
+
+    // スクロール停止を検出
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      isScrolling = false;
+      footer.classList.add("visible");
+    }, 150);
+  });
+}
+
+/* ----------------------------------------------------------
+   10. Init
    ---------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", async () => {
   await initComponents();
   initReveal();
   applySiteConfig();
+  initSystemConnectionLinks();
+  initMobileFooterScroll();
 });
