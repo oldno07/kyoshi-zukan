@@ -136,27 +136,33 @@
             <p class="hero-subtitle">FIELD OBSERVATION LOG — PELICAN WORKS</p>
           </div>
 
-          <!-- Stats Grid -->
-          <div class="hero-stats-grid">
-            <div class="hero-stat-item">
-              <div class="hero-stat-label">ENTRIES</div>
-              <div class="hero-stat-value">
-                <span class="entry-total"></span
-                ><span class="hero-stat-unit">SPECIMENS</span>
+          <!-- Observation System Interface -->
+          <div class="hero-observation-system">
+            <!-- World Scale (Total Specimens) - Static Foundation -->
+            <div class="observation-layer observation-world-scale">
+              <div class="observation-label">TOTAL SPECIMENS</div>
+              <div class="observation-value">
+                <span class="entry-total"></span>
               </div>
             </div>
-            <div class="hero-stat-item">
-              <div class="hero-stat-label">DISCOVERY</div>
-              <div class="hero-stat-value">
-                <span class="discovery-rate" id="hero-discovery-rate">0/0</span>
-                <span class="discovery-percent" id="hero-discovery-percent"
-                  >0%</span
-                >
+
+            <!-- Observation State (Discovery Progress) - Primary Living State -->
+            <div class="observation-layer observation-state-primary">
+              <div class="observation-label">OBSERVATION PROGRESS</div>
+              <div class="observation-progress-container">
+                <div class="observation-progress-bar">
+                  <div class="observation-progress-fill" id="hero-progress-fill"></div>
+                </div>
+                <div class="observation-progress-text">
+                  <span id="hero-discovery-text">0/0 (0%)</span>
+                </div>
               </div>
             </div>
-            <div class="hero-stat-item">
-              <div class="hero-stat-label">MATERIAL</div>
-              <div class="hero-stat-value">RESIN CLAY</div>
+
+            <!-- Material System (Composition Rule) - Secondary Metadata -->
+            <div class="observation-layer observation-material">
+              <div class="observation-label">MATERIAL</div>
+              <div class="observation-value observation-value-muted">RESIN CLAY</div>
             </div>
           </div>
 

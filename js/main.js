@@ -163,17 +163,16 @@ function updateCollectionProgress() {
     progressBar.style.width = `${percentage}%`;
   }
 
-  // ヒーローセクションのDISCOVERY RATEを更新
-  const heroDiscoveryRate = document.getElementById("hero-discovery-rate");
-  if (heroDiscoveryRate) {
-    heroDiscoveryRate.textContent = `${viewedCount}/${total}`;
+  // ヒーローセクションのDISCOVERY TEXTを更新
+  const heroDiscoveryText = document.getElementById("hero-discovery-text");
+  if (heroDiscoveryText) {
+    heroDiscoveryText.textContent = `${viewedCount}/${total} (${percentage}%)`;
   }
 
-  const heroDiscoveryPercent = document.getElementById(
-    "hero-discovery-percent",
-  );
-  if (heroDiscoveryPercent) {
-    heroDiscoveryPercent.textContent = `${percentage}%`;
+  // ヒーローセクションのプログレスバーを更新
+  const heroProgressFill = document.getElementById("hero-progress-fill");
+  if (heroProgressFill) {
+    heroProgressFill.style.width = `${percentage}%`;
   }
 }
 

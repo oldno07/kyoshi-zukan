@@ -833,62 +833,140 @@ footer {
   margin-top: 12px;
 }
 
-/* Stats Grid */
-.hero-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+/* Observation System Interface */
+.hero-observation-system {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
   margin-bottom: 40px;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  width: 100%;
 }
 
-.hero-stat-item {
-  background: rgba(17, 17, 16, 0.6);
-  padding: 20px 24px;
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
+/* Top Row Container */
+.observation-top-row {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
-.hero-stat-item:last-child {
-  border-right: none;
+/* Observation Layers */
+.observation-layer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.hero-stat-label {
+.observation-label {
   font-family: var(--mono);
   font-size: 9px;
-  letter-spacing: 0.25em;
-  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.observation-value {
+  font-family: var(--mono);
+  font-size: 24px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0.05em;
+}
+
+.observation-value-muted {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.15em;
+}
+
+/* World Scale (Total Specimens) - Static Foundation */
+.observation-world-scale {
+  opacity: 0.85;
+}
+
+.observation-world-scale .observation-label {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.observation-world-scale .observation-value {
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Observation State (Discovery Progress) - Primary Living State */
+.observation-state-primary {
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(59, 109, 17, 0.05);
+  position: relative;
+}
+
+.observation-state-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--g);
+}
+
+.observation-state-primary .observation-label {
+  color: var(--g);
+  font-weight: 600;
+  letter-spacing: 0.35em;
   margin-bottom: 8px;
 }
 
-.hero-stat-value {
-  font-family: var(--mono);
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.95);
+.observation-progress-container {
   display: flex;
-  align-items: baseline;
-  gap: 6px;
+  align-items: center;
+  gap: 12px;
 }
 
-.hero-stat-unit {
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.5);
-  margin-left: 2px;
+.observation-progress-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+  min-width: 0;
 }
 
-.discovery-rate {
-  color: var(--g);
-  font-weight: 700;
+.observation-progress-fill {
+  height: 100%;
+  background: rgba(59, 109, 17, 0.6);
+  border-radius: 2px;
+  transition: width 0.8s ease;
+  width: 0%;
 }
 
-.discovery-percent {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.7);
-  background: rgba(59, 109, 17, 0.2);
-  padding: 2px 8px;
-  border: 1px solid rgba(59, 109, 17, 0.4);
+.observation-progress-text {
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+/* Material System (Composition Rule) - Secondary Metadata */
+.observation-material {
+  opacity: 0.6;
+}
+
+.observation-material .observation-label {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.observation-material .observation-value {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.2em;
 }
 
 /* Description */
