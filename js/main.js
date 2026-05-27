@@ -440,23 +440,23 @@ function updateMobileFooterByState() {
   if (mode === 'index') {
     // 入口モード
     links = [
-      { href: 'about.html', text: '理解する', systemLink: 'about' },
-      { href: '#catalog', text: '閲覧する', systemLink: 'catalog' },
-      { href: 'https://agavest.stores.jp', text: '入手する', systemLink: 'external', target: '_blank' }
+      { href: 'about.html', text: '理解する', systemLink: 'about', icon: '◈' },
+      { href: '#catalog', text: '閲覧する', systemLink: 'catalog', icon: '▦' },
+      { href: 'https://agavest.stores.jp', text: '入手する', systemLink: 'external', target: '_blank', icon: '↗' }
     ];
   } else if (mode === 'about') {
     // 観測モード
     links = [
-      { href: 'index.html', text: '観測を続ける', systemLink: 'home' },
-      { href: 'index.html#catalog', text: '標本へ移動', systemLink: 'catalog' },
-      { href: 'https://agavest.stores.jp', text: '入手する', systemLink: 'external', target: '_blank' }
+      { href: 'index.html', text: '観測を続ける', systemLink: 'home', icon: '◈' },
+      { href: 'index.html#catalog', text: '標本へ移動', systemLink: 'catalog', icon: '▦' },
+      { href: 'https://agavest.stores.jp', text: '入手する', systemLink: 'external', target: '_blank', icon: '↗' }
     ];
   } else if (mode === 'detail') {
     // 標本モード
     links = [
-      { href: '#', text: '前の個体', systemLink: 'prev', id: 'mobile-footer-prev' },
-      { href: 'index.html#catalog', text: '一覧へ戻る', systemLink: 'catalog' },
-      { href: 'https://agavest.stores.jp', text: '入手する', systemLink: 'external', target: '_blank' }
+      { href: '#', text: '前の個体', systemLink: 'prev', id: 'mobile-footer-prev', icon: '◈' },
+      { href: 'index.html#catalog', text: '一覧へ戻る', systemLink: 'catalog', icon: '▦' },
+      { href: 'https://agavest.stores.jp', text: '入手する', systemLink: 'external', target: '_blank', icon: '↗' }
     ];
   }
 
@@ -471,7 +471,7 @@ function updateMobileFooterByState() {
 
     const icon = document.createElement('span');
     icon.className = 'mobile-footer-icon';
-    icon.textContent = '◈';
+    icon.textContent = link.icon || '◈';
 
     const text = document.createElement('span');
     text.className = 'mobile-footer-text';
