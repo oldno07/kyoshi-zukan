@@ -2136,6 +2136,214 @@ footer {
     letter-spacing: 0.2em;
   }
 }
+
+/* ============================================================
+   SYSTEM CONNECTION OVERLAY - 観測システム起動演出
+   ============================================================ */
+.system-connection-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.98);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10002;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.system-connection-overlay.active {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.system-connection-content {
+  text-align: center;
+  color: var(--g);
+  font-family: var(--mono);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Noise effect */
+.system-connection-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  animation: noise-shift 0.3s steps(4) infinite;
+}
+
+@keyframes noise-shift {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-2px, 2px);
+  }
+  50% {
+    transform: translate(2px, -2px);
+  }
+  75% {
+    transform: translate(-2px, -2px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* Scanline effect */
+.system-connection-scanline {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(59, 109, 17, 0.03) 2px,
+    rgba(59, 109, 17, 0.03) 4px
+  );
+  pointer-events: none;
+  animation: scanline-move 0.15s linear infinite;
+}
+
+@keyframes scanline-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 4px;
+  }
+}
+
+/* Connection text with flicker */
+.system-connection-text {
+  font-size: 20px;
+  letter-spacing: 0.35em;
+  color: var(--g);
+  position: relative;
+  z-index: 1;
+  animation: text-flicker 0.15s ease-in-out infinite;
+}
+
+@keyframes text-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* Status message (SIGNAL CONFIRMED) */
+.system-connection-status {
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  color: var(--g);
+  margin-top: 16px;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.system-connection-status.visible {
+  opacity: 1;
+}
+
+/* ============================================================
+   MOBILE FIXED FOOTER BAR - 画面下に追尾するフッター
+   ============================================================ */
+.mobile-fixed-footer {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: rgba(17, 17, 16, 0.98);
+  border-top: 1px solid var(--br2);
+  padding: 8px 16px;
+  padding-bottom: calc(8px + env(safe-area-inset-bottom));
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 8px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.mobile-fixed-footer.visible {
+  transform: translateY(0);
+}
+
+@media (min-width: 901px) {
+  .mobile-fixed-footer {
+    display: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .mobile-fixed-footer {
+    display: flex;
+  }
+  
+  /* bodyにpadding-bottomを追加してフッターに被らないように */
+  body {
+    padding-bottom: 60px;
+  }
+}
+
+.mobile-footer-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 4px;
+  text-decoration: none;
+  color: var(--ink3);
+  transition: all 0.2s;
+  cursor: crosshair;
+  border-radius: 4px;
+}
+
+.mobile-footer-link:hover {
+  color: var(--g);
+  background: rgba(59, 109, 17, 0.1);
+}
+
+.mobile-footer-link:active {
+  color: var(--g);
+  background: rgba(59, 109, 17, 0.2);
+}
+
+.mobile-footer-icon {
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: var(--ink3);
+  transition: color 0.2s;
+}
+
+.mobile-footer-link:hover .mobile-footer-icon {
+  color: var(--g);
+}
+
+.mobile-footer-text {
+  font-family: "Shippori Mincho", serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
 .ct {
   padding: 14px 18px 11px;
   border-bottom: 1px solid var(--br);

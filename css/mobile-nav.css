@@ -166,9 +166,15 @@
 .nav-overlay-footer {
   padding: 20px 22px;
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.nav-overlay-footer-top {
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-shrink: 0;
 }
 .nav-overlay-count {
   font-family: var(--mono);
@@ -215,4 +221,52 @@
 /* body scroll lock（JS側でクラスを付与） */
 body.nav-is-open {
   overflow: hidden;
+}
+
+/* ============================================================
+   観測システム接続リンク（モバイルフッター）
+   ============================================================ */
+.nav-overlay-system-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--br2);
+}
+
+.nav-overlay-system-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--bg);
+  border: 1px solid var(--br2);
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: crosshair;
+}
+
+.nav-overlay-system-link:hover {
+  background: var(--bg2);
+  border-color: var(--g);
+}
+
+.nav-overlay-system-link:active {
+  background: var(--gp);
+  border-color: var(--g);
+}
+
+.system-link-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.system-link-en {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--ink3);
 }
