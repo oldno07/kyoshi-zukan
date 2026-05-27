@@ -1093,17 +1093,24 @@ footer {
   }
 
   .hero-stats-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1px;
   }
 
   .hero-stat-item {
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 16px 12px;
   }
 
-  .hero-stat-item:last-child {
-    border-bottom: none;
+  .hero-stat-label {
+    font-size: 8px;
+  }
+
+  .hero-stat-value {
+    font-size: 14px;
+  }
+
+  .hero-stat-unit {
+    font-size: 8px;
   }
 
   .hero-description {

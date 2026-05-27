@@ -3,7 +3,7 @@
 // ============================================================
 
 window.SITE_CONFIG = {
-  version: "1.34",
+  version: "1.35",
   lastUpdate: "2026.05.24",
   status: "ACTIVE",
   region: "UNKNOWN",
