@@ -910,11 +910,11 @@ footer {
   left: 0;
   width: 3px;
   height: 100%;
-  background: var(--g);
+  /* background: var(--g); */
 }
 
 .observation-state-primary .observation-label {
-  color: var(--g);
+  color: rgba(255, 255, 255, 0.4);
   font-weight: 600;
   letter-spacing: 0.35em;
   margin-bottom: 8px;
