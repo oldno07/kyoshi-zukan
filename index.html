@@ -128,50 +128,35 @@
         <div class="hero-archive-container">
           <!-- Main Title -->
           <div class="hero-title-group">
-            <div class="hero-label">OBSERVATION ARCHIVE SYSTEM</div>
             <h1 class="hero-main-title">
               <span class="hero-title-en">KYOSHI CREATURE ARCHIVE</span>
               <span class="hero-title-jp">鋸歯生物図鑑</span>
             </h1>
-            <p class="hero-subtitle">FIELD OBSERVATION LOG — PELICAN WORKS</p>
           </div>
 
-          <!-- Observation System Interface -->
-          <div class="hero-observation-system">
-            <!-- World Scale (Total Specimens) - Static Foundation -->
-            <div class="observation-layer observation-world-scale">
-              <div class="observation-label">TOTAL SPECIMENS</div>
-              <div class="observation-value">
-                <span class="entry-total"></span>
-              </div>
-            </div>
+          <!-- Catch Copy -->
+          <p class="hero-catch-copy">
+            動物と植物の境界が溶け合う場所に、<br />
+            鋸歯生物は息づいている。
+          </p>
 
-            <!-- Observation State (Discovery Progress) - Primary Living State -->
-            <div class="observation-layer observation-state-primary">
-              <div class="observation-label">OBSERVATION PROGRESS</div>
-              <div class="observation-progress-container">
-                <div class="observation-progress-bar">
-                  <div class="observation-progress-fill" id="hero-progress-fill"></div>
-                </div>
-                <div class="observation-progress-text">
-                  <span id="hero-discovery-text">0/0 (0%)</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Material System (Composition Rule) - Secondary Metadata -->
-            <div class="observation-layer observation-material">
-              <div class="observation-label">MATERIAL</div>
-              <div class="observation-value observation-value-muted">RESIN CLAY</div>
-            </div>
-          </div>
-
-          <!-- Description -->
-          <p class="hero-description">
-            動物と植物の境界が溶け合う場所に、鋸歯生物は息づいている。
-            光合成しながら移動し、根を張りながら眼を持つ。
+          <!-- Sub Text -->
+          <p class="hero-sub-text">
+            光合成しながら移動し、根を張りながら眼を持つ。<br />
             既存の分類学が届かぬ生命の、記録と標本。
           </p>
+
+          <!-- Statistics -->
+          <div class="hero-stats-grid">
+            <div class="hero-stat-item">
+              <div class="hero-stat-label">登録標本数</div>
+              <div class="hero-stat-value">24</div>
+            </div>
+            <!--<div class="hero-stat-item">
+              <div class="hero-stat-label">共生生物数</div>
+              <div class="hero-stat-value">3</div>
+            </div>-->
+          </div>
 
           <!-- CTA Buttons -->
           <div class="hero-cta-row">
@@ -210,17 +195,32 @@
                   stroke-width="1"
                 />
               </svg>
-              標本目録へ
+              標本目録を見る
             </a>
-            <a href="about.html" class="btn btn-o">この世界について →</a>
+            <a href="https://agavest.stores.jp" target="_blank" class="btn btn-p">
+              譲渡局へ
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                <path
+                  d="M2 5.5H9M9 5.5L6 2.5M9 5.5L6 8.5"
+                  stroke="currentColor"
+                  stroke-width="1"
+                />
+              </svg>
+            </a>
           </div>
 
-          <!-- Transfer Notice -->
-          <div class="hero-transfer-notice">
-            <p class="hero-transfer-text">
-              観測データは鋸歯生物図鑑により管理されています<br />
-              一部個体は<a href="https://agavest.stores.jp" target="_blank" class="hero-transfer-link">譲渡局アーカイブ</a>にて閲覧・入手可能です
+          <!-- Transfer Bureau Section -->
+          <div class="hero-transfer-bureau">
+            <div class="hero-transfer-bureau-title">譲渡局</div>
+            <p class="hero-transfer-bureau-text">
+              観測された個体の一部は、譲渡局を通じて新たな管理者へ引き継がれる。<br />
+              現在譲渡可能な個体や、再観測情報を確認できます。
             </p>
+          </div>
+
+          <!-- World Link -->
+          <div class="hero-world-link">
+            <a href="about.html">この世界について →</a>
           </div>
         </div>
       </div>
@@ -241,8 +241,8 @@
 
         <!-- Bottom Left -->
         <div class="hero-ui-element hero-ui-bl">
-          <div class="hero-ui-label">MODE</div>
-          <div class="hero-ui-value">OBSERVATION</div>
+          <div class="hero-ui-label">MATERIAL</div>
+          <div class="hero-ui-value">RESIN CLAY</div>
         </div>
 
         <!-- Bottom Right -->
@@ -279,11 +279,185 @@
       </div>
     </section>
 
+    <!-- SECTION_00 譲渡局 -->
+    <section class="transfer-sec">
+      <div class="sec-hd reveal">
+        <div>
+          <div class="sec-no">SECTION_00</div>
+          <h2 class="sec-title">譲渡局</h2>
+          <p class="sec-subtitle">TRANSFER ARCHIVE</p>
+        </div>
+      </div>
+      <p class="reveal" style="font-size: 13px; line-height: 2.2; color: var(--ink2); max-width: 900px; margin-bottom: 36px;">
+        観測された個体の一部は、<br />
+        譲渡局を通じて新たな管理者へ引き継がれる。<br />
+        現在譲渡可能な個体や、<br />
+        再観測情報を確認できます。
+      </p>
+      <div class="transfer-card-grid">
+        <!-- Card 1: 現存個体 -->
+        <a href="https://agavest.stores.jp" target="_blank" class="transfer-card reveal">
+          <div class="transfer-card-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <rect x="4" y="4" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 16L16 20L20 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 8V20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="transfer-card-content">
+            <div class="transfer-card-label">CURRENT SPECIMENS</div>
+            <div class="transfer-card-title">現存個体</div>
+            <p class="transfer-card-desc">現在譲渡可能な個体を閲覧</p>
+          </div>
+          <div class="transfer-card-arrow">→</div>
+        </a>
+
+        <!-- Card 2: 再観測情報 -->
+        <a href="news.html" class="transfer-card reveal" style="transition-delay: 0.1s">
+          <div class="transfer-card-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M16 8V16L20 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="transfer-card-content">
+            <div class="transfer-card-label">REDISCOVERY LOG</div>
+            <div class="transfer-card-title">再観測情報</div>
+            <p class="transfer-card-desc">再入荷・再観測情報を確認</p>
+          </div>
+          <div class="transfer-card-arrow">→</div>
+        </a>
+
+        <!-- Card 3: 共生生物 -->
+        <a href="#symbiont" class="transfer-card reveal" style="transition-delay: 0.2s">
+          <div class="transfer-card-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M16 4C9.373 4 4 9.373 4 16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16C28 9.373 22.627 4 16 4Z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M16 12V20M12 16H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="transfer-card-content">
+            <div class="transfer-card-label">SYMBIONTS</div>
+            <div class="transfer-card-title">共生生物</div>
+            <p class="transfer-card-desc">園芸支援個体を確認</p>
+          </div>
+          <div class="transfer-card-arrow">→</div>
+        </a>
+      </div>
+      <div class="transfer-cta reveal">
+        <a href="https://agavest.stores.jp" target="_blank" class="btn btn-p">
+          譲渡局へ移動
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path d="M2 5.5H9M9 5.5L6 2.5M9 5.5L6 8.5" stroke="currentColor" stroke-width="1"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- SECTION_01 研究員注目標本 -->
+    <section class="picks-sec">
+      <div class="sec-hd reveal">
+        <div>
+          <div class="sec-no">SECTION_01</div>
+          <h2 class="sec-title">研究員注目標本</h2>
+          <p class="sec-subtitle">CURATOR'S PICKS</p>
+        </div>
+      </div>
+      <p class="reveal" style="font-size: 13px; line-height: 2.2; color: var(--ink2); max-width: 900px; margin-bottom: 36px;">
+        初めて観測する方へ。<br />
+        まずはこちらの個体からの観察を推奨します。
+      </p>
+      <div class="card-grid">
+        <!-- No.001 スニャグルトゥース -->
+        <a href="entry.html?no=001" class="ecard reveal">
+          <div class="ct">
+            <span class="cno">NO.001</span>
+            <div class="ct-badges">
+              <span class="rarity rar-u">UNIQUE</span>
+            </div>
+          </div>
+          <div class="cillus">
+            <img src="images/no_001.png" alt="スニャグルトゥース" />
+          </div>
+          <div class="cbody">
+            <div class="ctag">鋸歯生物</div>
+            <div class="cnm-jp">スニャグルトゥース</div>
+            <div class="cnm-en"><em>Snyaggletooth</em></div>
+            <p class="cdesc">鋸歯生物図鑑の最初の標本。アガベの葉の形状を模した鋸歯状の突起を持つ。移動速度は遅いが、光合成能力は高い。</p>
+            <div class="cdata">
+              <div class="dc">
+                <div class="dk">TYPE</div>
+                <div class="dv">PLANT+</div>
+              </div>
+              <div class="dc">
+                <div class="dk">SIZE</div>
+                <div class="dv">M</div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- SYM-001 ハザマドリ -->
+        <a href="https://agavest.stores.jp/items/6a1908f5b456382c4ccd57b9" target="_blank" class="ecard reveal" style="transition-delay: 0.1s">
+          <div class="ct">
+            <span class="cno">SYM-001</span>
+            <div class="ct-badges">
+              <span class="rarity rar-c">COMMON</span>
+            </div>
+          </div>
+          <div class="cillus">
+            <img src="images/unknown.png" alt="ハザマドリ" />
+          </div>
+          <div class="cbody">
+            <div class="ctag">縦割りストッパー</div>
+            <div class="cnm-jp">ハザマドリ</div>
+            <div class="cnm-en"><em>Agavus fissura avis</em></div>
+            <p class="cdesc">アガベの縦割り時に裂け目へ自らくちばしを差し込み、身体全体で開口を固定する鳥型共生生物。子株発生を促進する分泌液を塗布する。</p>
+            <div class="cdata">
+              <div class="dc">
+                <div class="dk">RELATED</div>
+                <div class="dv">各種アガベ由来鋸歯生物</div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- No.013 ハクゲイ -->
+        <a href="entry.html?no=013" class="ecard reveal" style="transition-delay: 0.2s">
+          <div class="ct">
+            <span class="cno">NO.013</span>
+            <div class="ct-badges">
+              <span class="rarity rar-c">COMMON</span>
+            </div>
+          </div>
+          <div class="cillus">
+            <img src="images/no_013.png" alt="ハクゲイ" />
+          </div>
+          <div class="cbody">
+            <div class="ctag">噴水状器官を持つ鯨類</div>
+            <div class="cnm-jp">ハクゲイ</div>
+            <div class="cnm-en"><em>White Heron</em></div>
+            <p class="cdesc">深海域において確認される、植物融合型の巨大鋸歯生物。夜行性で、月光を浴びて光合成を行う。</p>
+            <div class="cdata">
+              <div class="dc">
+                <div class="dk">TYPE</div>
+                <div class="dv">ANIMAL+</div>
+              </div>
+              <div class="dc">
+                <div class="dk">SIZE</div>
+                <div class="dv">XL</div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
     <!-- CATALOG -->
     <section class="cat-sec" id="catalog">
       <div class="sec-hd reveal">
         <div>
-          <div class="sec-no">SECTION_01</div>
+          <div class="sec-no">SECTION_02</div>
           <h2 class="sec-title">標本目録</h2>
         </div>
 
@@ -365,14 +539,14 @@
       </div>
 
       <!-- cards -->
-      <div class="card-grid" id="card-grid"></div>
+      <div class="card-grid" id="catalog-card-grid"></div>
     </section>
 
     <!-- 共生生物観測記録 -->
-    <section class="symbiont-sec">
+    <section class="symbiont-sec" id="symbiont">
       <div class="sec-hd reveal">
         <div>
-          <div class="sec-no">SECTION_02</div>
+          <div class="sec-no">SECTION_03</div>
           <h2 class="sec-title">共生生物観測記録</h2>
         </div>
       </div>
@@ -465,7 +639,7 @@
     <section class="ab-sec">
       <div class="sec-hd reveal">
         <div>
-          <div class="sec-no">SECTION_03</div>
+          <div class="sec-no">SECTION_04</div>
           <h2 class="sec-title">共通生態特性</h2>
         </div>
       </div>
@@ -496,9 +670,12 @@
 
     <!-- WORLD LOG -->
     <section class="log-sec" id="world">
-      <div class="log-hd">
-        <div class="pulse"></div>
-        <span class="log-ttl">WORLD LOG / 世界観記録</span>
+      <div class="sec-hd reveal">
+        <div>
+          <div class="sec-no">SECTION_05</div>
+          <h2 class="sec-title">世界観記録</h2>
+          <p class="sec-subtitle">WORLD LOG</p>
+        </div>
       </div>
       <p class="log-q reveal">
         分類できないものだけが、<br />本当に生きているのかもしれない。

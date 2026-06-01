@@ -1,7 +1,17 @@
 <header>
   <div class="header-left">
-    <span class="sys-badge" id="sys-version">SYS_V1.32</span>
     <a href="index.html" class="logo">鋸歯生物図鑑</a>
+    <span class="sys-badge" id="sys-version">SYS_V1.32</span>
+  </div>
+
+  <!-- SYSTEM INFO PANEL -->
+  <div class="sys-info-panel" id="sys-info-panel">
+    <div class="sys-info-panel-inner">
+      <div class="sys-info-header">SYSTEM ARCHIVE LOG</div>
+      <div class="sys-info-content" id="sys-info-content">
+        <!-- JavaScript will populate this -->
+      </div>
+    </div>
   </div>
 
   <!-- デスクトップナビ -->
@@ -9,17 +19,7 @@
     <a href="index.html#catalog" class="nav-a" data-nav="catalog">CATALOG</a>
     <a href="about.html" class="nav-a" data-nav="world">WORLD</a>
     <a href="news.html" class="nav-a" data-nav="news">NEWS</a>
-    <a href="index.html#maker" class="nav-a" data-nav="maker">MAKER</a>
-    <a href="https://agavest.stores.jp" target="_blank" class="nav-a nav-shop"
-      >SHOP ↗</a
-    >
-    <div class="collection-progress-wrapper">
-      <span class="collection-progress-label">DISCOVERED</span>
-      <span class="collection-progress-value" id="collection-progress">0/0</span>
-      <div class="collection-progress-bar">
-        <div class="collection-progress-fill" id="collection-bar-fill"></div>
-      </div>
-    </div>
+    <a href="https://agavest.stores.jp" target="_blank" class="nav-a nav-shop">TRANSFER ↗</a>
   </div>
 
   <!-- モバイル：ハンバーガーボタン -->
@@ -56,32 +56,26 @@
         <span class="nav-overlay-jp">ニュース</span>
         <span class="nav-overlay-en">NEWS</span>
       </a>
-      <a href="index.html#maker" class="nav-overlay-item" data-nav="maker">
-        <span class="nav-overlay-no">04</span>
-        <span class="nav-overlay-jp">作者</span>
-        <span class="nav-overlay-en">MAKER</span>
-      </a>
+    </nav>
+
+    <!-- CTA: TRANSFER -->
+    <div class="nav-overlay-cta">
       <a
         href="https://agavest.stores.jp"
         target="_blank"
         class="nav-overlay-item nav-overlay-shop"
       >
         <span class="nav-overlay-no">↗</span>
-        <span class="nav-overlay-jp">ショップ</span>
-        <span class="nav-overlay-en">SHOP — STORES</span>
+        <span class="nav-overlay-jp">譲渡局</span>
+        <span class="nav-overlay-en">TRANSFER</span>
       </a>
-    </nav>
+    </div>
 
     <div class="nav-overlay-footer">
       <div class="nav-overlay-footer-top">
         <span class="nav-overlay-count"
           >ENTRIES: <span id="entry-count-num-mobile">...</span></span
         >
-        <div class="nav-overlay-progress">
-          <span class="nav-overlay-progress-label">DISCOVERED</span>
-          <span class="nav-overlay-progress-value" id="collection-progress-mobile">0/0</span>
-          <span class="nav-overlay-progress-percent" id="collection-percentage-mobile">0%</span>
-        </div>
         <a
           href="https://www.instagram.com/pelican.works"
           target="_blank"

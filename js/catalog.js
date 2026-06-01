@@ -128,7 +128,12 @@ function hasIntentionalMissingState(entry) {
 }
 
 function renderCatalog() {
-  const grid = document.querySelector(".card-grid");
+  const grid = document.getElementById("catalog-card-grid");
+
+  if (!grid) {
+    console.warn("[WARN] catalog-card-grid element not found");
+    return;
+  }
 
   grid.innerHTML = "";
 

@@ -162,6 +162,28 @@
   color: var(--ink3);
 }
 
+/* オーバーレイ CTA (TRANSFER) */
+.nav-overlay-cta {
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--br2);
+  flex-shrink: 0;
+}
+
+.nav-overlay-cta .nav-overlay-item {
+  border: 1px solid var(--g);
+  background: var(--gp);
+  padding: 20px 24px;
+}
+
+.nav-overlay-cta .nav-overlay-item:hover {
+  background: var(--g);
+}
+
+.nav-overlay-cta .nav-overlay-item:hover .nav-overlay-jp,
+.nav-overlay-cta .nav-overlay-item:hover .nav-overlay-en {
+  color: var(--bg);
+}
+
 /* オーバーレイ フッター */
 .nav-overlay-footer {
   padding: 20px 22px;

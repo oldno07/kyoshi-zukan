@@ -162,18 +162,6 @@ function updateCollectionProgress() {
   if (progressBar) {
     progressBar.style.width = `${percentage}%`;
   }
-
-  // ヒーローセクションのDISCOVERY TEXTを更新
-  const heroDiscoveryText = document.getElementById("hero-discovery-text");
-  if (heroDiscoveryText) {
-    heroDiscoveryText.textContent = `${viewedCount}/${total} (${percentage}%)`;
-  }
-
-  // ヒーローセクションのプログレスバーを更新
-  const heroProgressFill = document.getElementById("hero-progress-fill");
-  if (heroProgressFill) {
-    heroProgressFill.style.width = `${percentage}%`;
-  }
 }
 
 /* ----------------------------------------------------------
@@ -512,7 +500,94 @@ function updatePrevEntryLink() {
 }
 
 /* ----------------------------------------------------------
-   11. Init
+   11. System Info Panel Toggle
+   ---------------------------------------------------------- */
+function initSystemInfoPanel() {
+  const sysBadge = document.getElementById("sys-version");
+  const sysPanel = document.getElementById("sys-info-panel");
+  const sysContent = document.getElementById("sys-info-content");
+
+  if (!sysBadge || !sysPanel || !sysContent) return;
+
+  // Populate panel content from SITE_CONFIG
+  function populateSysInfo() {
+    if (!window.SITE_CONFIG) return;
+
+    const config = window.SITE_CONFIG;
+    const entriesCount = window.MAIN_ENTRIES ? window.MAIN_ENTRIES.length : 0;
+
+    // Update sys badge version
+    sysBadge.textContent = `SYS_V${config.version || "UNKNOWN"}`;
+
+    sysContent.innerHTML = `
+      <div class="sys-info-row">
+        <span class="sys-info-label">STATUS:</span>
+        <span class="sys-info-value">${config.status || "UNKNOWN"}</span>
+      </div>
+      <div class="sys-info-row">
+        <span class="sys-info-label">VERSION:</span>
+        <span class="sys-info-value">v${config.version || "UNKNOWN"}</span>
+      </div>
+      <div class="sys-info-row">
+        <span class="sys-info-label">LAST UPDATE:</span>
+        <span class="sys-info-value">${config.lastUpdate || "UNKNOWN"}</span>
+      </div>
+      <div class="sys-info-row">
+        <span class="sys-info-label">REGION:</span>
+        <span class="sys-info-value">${config.region || "UNKNOWN"}</span>
+      </div>
+      <div class="sys-info-row">
+        <span class="sys-info-label">COLLECTOR:</span>
+        <span class="sys-info-value">${config.collector || "UNKNOWN"}</span>
+      </div>
+      <div class="sys-info-row">
+        <span class="sys-info-label">CLASSIFICATION:</span>
+        <span class="sys-info-value">${config.classification || "UNDEFINED"}</span>
+      </div>
+      <div class="sys-info-row">
+        <span class="sys-info-label">SPECIMEN COUNT:</span>
+        <span class="sys-info-value">${entriesCount}</span>
+      </div>
+      <div class="sys-info-separator"></div>
+      <div class="sys-info-row">
+        <span class="sys-info-label">OBSERVATION MODE:</span>
+        <span class="sys-info-value">ACTIVE</span>
+      </div>
+    `;
+  }
+
+  // Toggle panel
+  sysBadge.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    sysPanel.classList.toggle("is-open");
+  });
+
+  // Close on ESC key (PC)
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && sysPanel.classList.contains("is-open")) {
+      sysPanel.classList.remove("is-open");
+    }
+  });
+
+  // Close on external click
+  document.addEventListener("click", (e) => {
+    if (sysPanel.classList.contains("is-open") && !sysPanel.contains(e.target) && e.target !== sysBadge) {
+      sysPanel.classList.remove("is-open");
+    }
+  });
+
+  // Populate content when config is available
+  if (window.SITE_CONFIG) {
+    populateSysInfo();
+  } else {
+    // Wait for config to load
+    window.addEventListener("load", populateSysInfo);
+  }
+}
+
+/* ----------------------------------------------------------
+   12. Init
    ---------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", async () => {
   await initComponents();
@@ -521,4 +596,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   updateMobileFooterByState();
   initSystemConnectionLinks();
   initMobileFooterScroll();
+  initSystemInfoPanel();
 });
