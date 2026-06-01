@@ -3747,5 +3747,23 @@ footer {
 .hero-shop-soldout-name {
   font-family: "Shippori Mincho", serif;
   font-size: 13px;
-  color: var(--ink3);
+}
+
+/* ============================================================
+   INDEX — SYMBIONT OBSERVATION ARCHIVE
+   ============================================================ */
+.symbiont-sec {
+  padding: 72px 40px;
+  background: var(--bg);
+}
+
+.symbiont-sec .ecard {
+  text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .symbiont-sec {
+    padding: 44px 22px;
+  }
 }
