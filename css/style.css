@@ -280,7 +280,7 @@ header {
 }
 
 .sys-info-value {
-  color: var(--ink);
+  color: var(--g);
 }
 
 .sys-info-separator {
@@ -295,12 +295,11 @@ header {
   }
 
   .sys-info-row {
-    flex-direction: column;
-    gap: 4px;
+    gap: 12px;
   }
 
   .sys-info-label {
-    min-width: auto;
+    min-width: 120px;
   }
 }
 .header-right {
@@ -2456,7 +2455,7 @@ footer {
   .mobile-fixed-footer {
     display: flex;
   }
-  
+
   /* bodyにpadding-bottomを追加してフッターに被らないように */
   body {
     padding-bottom: 60px;

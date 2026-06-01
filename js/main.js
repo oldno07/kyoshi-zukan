@@ -312,7 +312,9 @@ function applySiteConfig() {
    8. System Connection Animation - 観測システム起動演出
    ---------------------------------------------------------- */
 function initSystemConnectionLinks() {
-  const systemLinks = document.querySelectorAll(".nav-overlay-system-link, .mobile-footer-link");
+  const systemLinks = document.querySelectorAll(
+    ".nav-overlay-system-link, .mobile-footer-link",
+  );
   const overlay = document.getElementById("system-connection-overlay");
   const textEl = document.getElementById("system-connection-text");
   const statusEl = document.getElementById("system-connection-status");
@@ -402,14 +404,14 @@ function initMobileFooterScroll() {
    ---------------------------------------------------------- */
 function detectPageMode() {
   const path = window.location.pathname;
-  const filename = path.split('/').pop();
+  const filename = path.split("/").pop();
 
-  if (filename === 'about.html' || filename === 'about') {
-    return 'about';
-  } else if (filename === 'entry.html' || filename === 'entry') {
-    return 'detail';
+  if (filename === "about.html" || filename === "about") {
+    return "about";
+  } else if (filename === "entry.html" || filename === "entry") {
+    return "detail";
   } else {
-    return 'index';
+    return "index";
   }
 }
 
@@ -420,48 +422,87 @@ function updateMobileFooterByState() {
   const mode = detectPageMode();
 
   // 既存のリンクをクリア
-  footer.innerHTML = '';
+  footer.innerHTML = "";
 
   let links = [];
 
-  if (mode === 'index') {
+  if (mode === "index") {
     // 入口モード
     links = [
-      { href: 'about.html', text: '理解する', systemLink: 'about', icon: '◈' },
-      { href: '#catalog', text: '閲覧する', systemLink: 'catalog', icon: '▦' },
-      { href: 'https://agavest.stores.jp', text: '入手する', systemLink: 'external', target: '_blank', icon: '↗' }
+      { href: "about.html", text: "理解する", systemLink: "about", icon: "◈" },
+      { href: "#catalog", text: "閲覧する", systemLink: "catalog", icon: "▦" },
+      {
+        href: "https://agavest.stores.jp",
+        text: "入手する",
+        systemLink: "external",
+        target: "_blank",
+        icon: "↗",
+      },
     ];
-  } else if (mode === 'about') {
+  } else if (mode === "about") {
     // 観測モード
     links = [
-      { href: 'index.html', text: '観測を続ける', systemLink: 'home', icon: '◈' },
-      { href: 'index.html#catalog', text: '標本へ移動', systemLink: 'catalog', icon: '▦' },
-      { href: 'https://agavest.stores.jp', text: '入手する', systemLink: 'external', target: '_blank', icon: '↗' }
+      {
+        href: "index.html",
+        text: "観測を続ける",
+        systemLink: "home",
+        icon: "◈",
+      },
+      {
+        href: "index.html#catalog",
+        text: "標本へ移動",
+        systemLink: "catalog",
+        icon: "▦",
+      },
+      {
+        href: "https://agavest.stores.jp",
+        text: "入手する",
+        systemLink: "external",
+        target: "_blank",
+        icon: "↗",
+      },
     ];
-  } else if (mode === 'detail') {
+  } else if (mode === "detail") {
     // 標本モード
     links = [
-      { href: '#', text: '前の個体', systemLink: 'prev', id: 'mobile-footer-prev', icon: '◈' },
-      { href: 'index.html#catalog', text: '一覧へ戻る', systemLink: 'catalog', icon: '▦' },
-      { href: 'https://agavest.stores.jp', text: '入手する', systemLink: 'external', target: '_blank', icon: '↗' }
+      {
+        href: "#",
+        text: "前の個体",
+        systemLink: "prev",
+        id: "mobile-footer-prev",
+        icon: "◈",
+      },
+      {
+        href: "index.html#catalog",
+        text: "一覧へ戻る",
+        systemLink: "catalog",
+        icon: "▦",
+      },
+      {
+        href: "https://agavest.stores.jp",
+        text: "入手する",
+        systemLink: "external",
+        target: "_blank",
+        icon: "↗",
+      },
     ];
   }
 
   // リンクを生成
-  links.forEach(link => {
-    const a = document.createElement('a');
+  links.forEach((link) => {
+    const a = document.createElement("a");
     a.href = link.href;
-    a.className = 'mobile-footer-link';
+    a.className = "mobile-footer-link";
     a.dataset.systemLink = link.systemLink;
     if (link.target) a.target = link.target;
     if (link.id) a.id = link.id;
 
-    const icon = document.createElement('span');
-    icon.className = 'mobile-footer-icon';
-    icon.textContent = link.icon || '◈';
+    const icon = document.createElement("span");
+    icon.className = "mobile-footer-icon";
+    icon.textContent = link.icon || "◈";
 
-    const text = document.createElement('span');
-    text.className = 'mobile-footer-text';
+    const text = document.createElement("span");
+    text.className = "mobile-footer-text";
     text.textContent = link.text;
 
     a.appendChild(icon);
@@ -470,31 +511,36 @@ function updateMobileFooterByState() {
   });
 
   // detailモードの場合は「前の個体」のリンク先を設定
-  if (mode === 'detail') {
+  if (mode === "detail") {
     updatePrevEntryLink();
   }
 }
 
 function updatePrevEntryLink() {
-  const prevLink = document.getElementById('mobile-footer-prev');
+  const prevLink = document.getElementById("mobile-footer-prev");
   if (!prevLink) return;
 
-  // URLパラメータから現在のエントリーIDを取得
+  // URLパラメータから現在のエントリー番号を取得
   const params = new URLSearchParams(window.location.search);
-  const currentId = params.get('id');
+  const currentNo = params.get("no");
 
-  if (!currentId) return;
+  if (!currentNo) return;
 
-  // entriesデータから前のIDを探す
-  if (typeof entries !== 'undefined' && entries.length > 0) {
-    const currentIndex = entries.findIndex(e => e.id === currentId);
+  // MAIN_ENTRIESデータから前の番号を探す
+  if (
+    typeof window.MAIN_ENTRIES !== "undefined" &&
+    window.MAIN_ENTRIES.length > 0
+  ) {
+    const currentIndex = window.MAIN_ENTRIES.findIndex(
+      (e) => e.no === currentNo,
+    );
     if (currentIndex > 0) {
-      const prevEntry = entries[currentIndex - 1];
-      prevLink.href = `entry.html?id=${prevEntry.id}`;
+      const prevEntry = window.MAIN_ENTRIES[currentIndex - 1];
+      prevLink.href = `entry.html?no=${prevEntry.no}`;
     } else {
       // 最初のエントリーの場合は無効化
-      prevLink.style.pointerEvents = 'none';
-      prevLink.style.opacity = '0.3';
+      prevLink.style.pointerEvents = "none";
+      prevLink.style.opacity = "0.3";
     }
   }
 }
@@ -545,6 +591,10 @@ function initSystemInfoPanel() {
         <span class="sys-info-value">${config.classification || "UNDEFINED"}</span>
       </div>
       <div class="sys-info-row">
+        <span class="sys-info-label">DOC TYPE:</span>
+        <span class="sys-info-value">${config.docType || "UNKNOWN"}</span>
+      </div>
+      <div class="sys-info-row">
         <span class="sys-info-label">SPECIMEN COUNT:</span>
         <span class="sys-info-value">${entriesCount}</span>
       </div>
@@ -572,7 +622,11 @@ function initSystemInfoPanel() {
 
   // Close on external click
   document.addEventListener("click", (e) => {
-    if (sysPanel.classList.contains("is-open") && !sysPanel.contains(e.target) && e.target !== sysBadge) {
+    if (
+      sysPanel.classList.contains("is-open") &&
+      !sysPanel.contains(e.target) &&
+      e.target !== sysBadge
+    ) {
       sysPanel.classList.remove("is-open");
     }
   });

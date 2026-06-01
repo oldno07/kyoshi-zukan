@@ -210,7 +210,13 @@ window.MAIN_ENTRIES = [
         youtubeId: "R_BYUPtk_lE",
         title: "Unknown Species Detected Near Prestera Habitat",
         observedAt: "2026-05-23",
-        duration: 60,
+        duration: 30,
+      },
+      {
+        youtubeId: "vb-Hvxywtzs",
+        title: "プレステラに住み着く猫を捕獲しました😼🌵",
+        observedAt: "2026-06-01",
+        duration: 40,
       },
     ],
   },
@@ -223,7 +229,7 @@ window.MAIN_ENTRIES = [
     animal: 85,
     danger: 20,
     notes:
-      "植物と動物の特性を併せ持つ、非常に興味深い生命体のようだ。サンプルを捕獲しようとしたら向こうから擦り寄ってきた。今後の研究が楽しみだ。アガベスト",
+      "青色毛玉は定期的に排出される。回収された毛玉の用途について質問されることが多いが、研究所としてはコメントを控える。また脱走した。アガベスト",
     rarity: "COMMON",
     rarityClass: "rar-c",
     image: "images/no_002.png",
@@ -242,24 +248,32 @@ window.MAIN_ENTRIES = [
     jp: "ブラックにゃんこブルー",
     en: "Black Nyanko Blue",
     desc: `
-    岩場環境に適応した鋸歯ネコ型生物。
+    ブラックにゃんこブルーです。
 
-本個体は光環境依存性の色素変化を示し、
-高照度条件下では尾部鋸歯に黒化現象が確認される。
+プレステラを近くに置くと
+寄ってきます。
 
-また、人工栽培環境においては
-“プレステラ型支持構造への抱着行動”が高頻度で観測されている。
+かわいいですね。
 
-さらに、外部投与された液体栄養因子に対して一時的な活動性上昇を示すが、
-これは恒常的代謝変化ではなく、刺激応答性の反射的現象と考えられる。
+鋸歯も好んで摂取します。
+
+おや。
+
+毛玉を吐きました。
+
+これがハイポネックスの青です。
+
+かわいいですね。
+
+隔離します。
   `,
-    abilities: ["フォトクロマティクス", "ひかりかんじょう"],
+    abilities: ["青化反応", "プレステラ探知"],
     habitat: "岩場",
     size: "184mm",
     mobility: "夜間活性",
     status: "● ACTIVE",
     statusColor: "var(--g)",
-    shopUrl: "",
+    shopUrl: "https://agavest.stores.jp/items/6a07e6cca30c09e1667757ee",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
     variants: [
@@ -268,8 +282,8 @@ window.MAIN_ENTRIES = [
         label: "フチネコ種",
         labelEn: "Fuchi-Neko Type",
         image: "images/no_002_a.png",
-        shopUrl: "",
-        price: 5000,
+        shopUrl: "https://agavest.stores.jp/items/6a07e6cca30c09e1667757ee",
+        price: "",
         soldOut: false,
       },
     ],
@@ -317,7 +331,7 @@ window.MAIN_ENTRIES = [
     mobility: "夜間活性",
     status: "● ACTIVE",
     statusColor: "var(--g)",
-    shopUrl: "",
+    shopUrl: "https://agavest.stores.jp/items/6a080c2e9797c79a78b9a4f0",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
     variants: [
@@ -326,8 +340,8 @@ window.MAIN_ENTRIES = [
         label: "フチネコ種",
         labelEn: "Fuchi-Neko Type",
         image: "images/no_003_a.png",
-        shopUrl: "",
-        price: 5000,
+        shopUrl: "https://agavest.stores.jp/items/6a080c2e9797c79a78b9a4f0",
+        price: "",
         soldOut: false,
       },
     ],
@@ -373,7 +387,7 @@ window.MAIN_ENTRIES = [
     mobility: "夜間活性",
     status: "● ACTIVE",
     statusColor: "var(--g)",
-    shopUrl: "",
+    shopUrl: "https://agavest.stores.jp/items/6a080ce79797c7aacab9a479",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
     variants: [
@@ -382,8 +396,8 @@ window.MAIN_ENTRIES = [
         label: "フチネコ種",
         labelEn: "Fuchi-Neko Type",
         image: "images/no_004_a.png",
-        shopUrl: "",
-        price: 5000,
+        shopUrl: "https://agavest.stores.jp/items/6a080ce79797c7aacab9a479",
+        price: "",
         soldOut: false,
       },
       {
@@ -756,7 +770,6 @@ window.MAIN_ENTRIES = [
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-    
   },
 
   {
@@ -858,7 +871,7 @@ window.MAIN_ENTRIES = [
     mobility: "浮遊型",
     status: "● MYTHIC",
     statusColor: "#e0b94f",
-    shopUrl: "",
+    shopUrl: "https://agavest.stores.jp/items/681f990c80278e0a7b078b64",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
   },
