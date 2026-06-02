@@ -365,7 +365,7 @@ function renderHeroViewer() {
       </a>`;
   } else {
     shopWrap.innerHTML = `
-      <a href="https://agavest.stores.jp" target="_blank" class="hero-shop-btn hero-shop-btn--top">
+      <a href="https://agavest.stores.jp/?utm_source=zukan&utm_medium=internal&utm_campaign=species_link" target="_blank" class="hero-shop-btn hero-shop-btn--top">
         <div>
           <div class="hero-shop-label">ショップで購入する</div>
           <div class="hero-shop-en">AGAVEST STORES ↗</div>

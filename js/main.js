@@ -432,7 +432,7 @@ function updateMobileFooterByState() {
       { href: "about.html", text: "理解する", systemLink: "about", icon: "◈" },
       { href: "#catalog", text: "閲覧する", systemLink: "catalog", icon: "▦" },
       {
-        href: "https://agavest.stores.jp",
+        href: "https://agavest.stores.jp/?utm_source=zukan&utm_medium=internal&utm_campaign=species_link",
         text: "入手する",
         systemLink: "external",
         target: "_blank",
@@ -455,7 +455,7 @@ function updateMobileFooterByState() {
         icon: "▦",
       },
       {
-        href: "https://agavest.stores.jp",
+        href: "https://agavest.stores.jp/?utm_source=zukan&utm_medium=internal&utm_campaign=species_link",
         text: "入手する",
         systemLink: "external",
         target: "_blank",
@@ -479,7 +479,7 @@ function updateMobileFooterByState() {
         icon: "▦",
       },
       {
-        href: "https://agavest.stores.jp",
+        href: "https://agavest.stores.jp/?utm_source=zukan&utm_medium=internal&utm_campaign=species_link",
         text: "入手する",
         systemLink: "external",
         target: "_blank",
