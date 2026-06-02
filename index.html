@@ -946,5 +946,14 @@
     <script src="data/news.js"></script>
     <script src="js/main.js"></script>
     <script src="js/catalog.js"></script>
+    <script>
+  console.log("GA4テスト: gtag存在確認 →", typeof gtag !== 'undefined' ? "OK" : "NG");
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'test_event', {
+      'event_category': 'debug',
+      'event_label': 'manual_test'
+    });
+  }
+</script>
   </body>
 </html>
