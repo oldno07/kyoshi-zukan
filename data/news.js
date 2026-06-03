@@ -18,6 +18,16 @@
 
 window.NEWS = [
   {
+    id: "008",
+    date: "2026-06-03",
+    type: "new",
+    title: "No.025 ビカクモリ — 発見",
+    body: "吊り鉢擬態型個体を発見。",
+    image: "images/no_025.png",
+    link: "entry.html?no=025",
+    linkLabel: "図鑑で見る",
+  },
+  {
     id: "007",
     date: "2026-05-24",
     type: "new",
