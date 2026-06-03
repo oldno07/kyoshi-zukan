@@ -285,17 +285,19 @@ function renderCatalog() {
    ---------------------------------------------------------- */
 function renderHeroViewer() {
   if (
-    !window.ENTRIES ||
-    !Array.isArray(window.ENTRIES) ||
-    window.ENTRIES.length === 0
+    !window.MAIN_ENTRIES ||
+    !Array.isArray(window.MAIN_ENTRIES) ||
+    window.MAIN_ENTRIES.length === 0
   ) {
-    console.warn("[WARN] ENTRIES data is invalid or empty for hero viewer");
+    console.warn(
+      "[WARN] MAIN_ENTRIES data is invalid or empty for hero viewer",
+    );
     return;
   }
 
   // ランダムに1体選ぶ
   const pick =
-    window.ENTRIES[Math.floor(Math.random() * window.ENTRIES.length)];
+    window.MAIN_ENTRIES[Math.floor(Math.random() * window.MAIN_ENTRIES.length)];
 
   // 画像
   const img = document.querySelector(".sp-float img");
@@ -444,7 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // .entry-total の更新（main.jsのupdateEntryCountと役割分担）
-  const total = window.ENTRIES?.length ?? 0;
+  const total = window.MAIN_ENTRIES?.length ?? 0;
   document.querySelectorAll(".entry-total").forEach((el) => {
     el.textContent = total.toString().padStart(3, "0");
   });

@@ -144,7 +144,8 @@ window.MAIN_ENTRIES = [
     statusColor: "var(--g)",
 
     // Shop information
-    shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_001",
+    shopUrl:
+      "https://agavest.stores.jp/items/65c627d48fd8872275cc50db?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_001",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
 
@@ -155,7 +156,8 @@ window.MAIN_ENTRIES = [
         label: "フチネコ種",
         labelEn: "Fuchi-Neko Type",
         image: "images/no_001_a.png",
-        shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_001",
+        shopUrl:
+          "https://agavest.stores.jp/items/65c627d48fd8872275cc50db?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_001",
         price: "",
         soldOut: false,
       },
@@ -164,7 +166,8 @@ window.MAIN_ENTRIES = [
         label: "寝そべり種",
         labelEn: "Sitting Type",
         image: "images/no_001_b.png",
-        shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_001",
+        shopUrl:
+          "https://agavest.stores.jp/items/65c627d48fd8872275cc50db?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_001",
         price: "",
         soldOut: false,
       },
@@ -173,7 +176,8 @@ window.MAIN_ENTRIES = [
         label: "招き猫種",
         labelEn: "Maneki Type",
         image: "images/no_001_c.png",
-        shopUrl: "https://agavest.stores.jp/items/65c627d48fd8872275cc50db?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_001",
+        shopUrl:
+          "https://agavest.stores.jp/items/65c627d48fd8872275cc50db?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_001",
         price: "",
         soldOut: false,
       },
@@ -273,7 +277,8 @@ window.MAIN_ENTRIES = [
     mobility: "夜間活性",
     status: "● ACTIVE",
     statusColor: "var(--g)",
-    shopUrl: "https://agavest.stores.jp/items/6a07e6cca30c09e1667757ee?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_002",
+    shopUrl:
+      "https://agavest.stores.jp/items/6a07e6cca30c09e1667757ee?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_002",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
     variants: [
@@ -282,7 +287,8 @@ window.MAIN_ENTRIES = [
         label: "フチネコ種",
         labelEn: "Fuchi-Neko Type",
         image: "images/no_002_a.png",
-        shopUrl: "https://agavest.stores.jp/items/6a07e6cca30c09e1667757ee?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_002",
+        shopUrl:
+          "https://agavest.stores.jp/items/6a07e6cca30c09e1667757ee?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_002",
         price: "",
         soldOut: false,
       },
@@ -331,7 +337,8 @@ window.MAIN_ENTRIES = [
     mobility: "夜間活性",
     status: "● ACTIVE",
     statusColor: "var(--g)",
-    shopUrl: "https://agavest.stores.jp/items/6a080c2e9797c79a78b9a4f0?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_003",
+    shopUrl:
+      "https://agavest.stores.jp/items/6a080c2e9797c79a78b9a4f0?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_003",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
     variants: [
@@ -340,7 +347,8 @@ window.MAIN_ENTRIES = [
         label: "フチネコ種",
         labelEn: "Fuchi-Neko Type",
         image: "images/no_003_a.png",
-        shopUrl: "https://agavest.stores.jp/items/6a080c2e9797c79a78b9a4f0?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_003",
+        shopUrl:
+          "https://agavest.stores.jp/items/6a080c2e9797c79a78b9a4f0?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_003",
         price: "",
         soldOut: false,
       },
@@ -387,7 +395,8 @@ window.MAIN_ENTRIES = [
     mobility: "夜間活性",
     status: "● ACTIVE",
     statusColor: "var(--g)",
-    shopUrl: "https://agavest.stores.jp/items/6a080ce79797c7aacab9a479?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_004",
+    shopUrl:
+      "https://agavest.stores.jp/items/6a080ce79797c7aacab9a479?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_004",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
     variants: [
@@ -396,7 +405,8 @@ window.MAIN_ENTRIES = [
         label: "フチネコ種",
         labelEn: "Fuchi-Neko Type",
         image: "images/no_004_a.png",
-        shopUrl: "https://agavest.stores.jp/items/6a080ce79797c7aacab9a479?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_004",
+        shopUrl:
+          "https://agavest.stores.jp/items/6a080ce79797c7aacab9a479?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_004",
         price: "",
         soldOut: false,
       },
@@ -525,7 +535,7 @@ window.MAIN_ENTRIES = [
       },
     ],
 
-    tag: "BEAST-DOMINANT",
+    tag: "BEAST-DOMINANT Aerial Type",
     jp: "スカイブルーニャンダホー",
     en: "Sky Blue Nyanda Ho",
     desc: `
@@ -871,7 +881,8 @@ window.MAIN_ENTRIES = [
     mobility: "浮遊型",
     status: "● MYTHIC",
     statusColor: "#e0b94f",
-    shopUrl: "https://agavest.stores.jp/items/681f990c80278e0a7b078b64?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_013",
+    shopUrl:
+      "https://agavest.stores.jp/items/681f990c80278e0a7b078b64?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_013",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
   },
@@ -1565,6 +1576,89 @@ window.MAIN_ENTRIES = [
     ],
 
     missingState: "", // 欠損状態を設定
+  },
+  {
+    // Basic identification
+    no: "025",
+    sort: 250,
+    createdAt: "2026-06-03",
+    firstObserved: "2026-06-03",
+
+    // Classification system
+    species: "Platybat Mosswing",
+    lineage: "MOSS-SYMBIOSIS",
+    dangerClass: "CAUTION",
+    classification: "SAFE",
+
+    // Biological stats (0-100)
+    plant: 68,
+    animal: 42,
+    danger: 4,
+
+    // Display info
+    tag: "Plant-Dominant Aerial Type",
+    jp: "ビカクモリ",
+    en: "Platybat Mosswing",
+    rarity: "uncommon",
+    rarityClass: "rar-u",
+
+    // Detailed description
+    notes:
+      "プレステラ周辺で定着する吊り鉢擬態型個体群の中から確認された、ビカクシダとコウモリの中間的特徴を持つ独立種。",
+
+    desc: `
+湿潤環境下のアガベ棚および吊り鉢群において確認される、半飛行性鋸歯生物。
+
+本個体はビカクシダ系統の胞子葉構造と、コウモリ型飛行生物の骨格特性が異常融合したことで成立したと考えられている。
+
+前肢は葉状に分岐し、光合成を行うわけではないが、高湿度環境において水分を吸着・保持する機能を持つ。胸部には水苔状繊維が発達し、微生物層と共生することで体表環境を安定化させている。
+
+後肢は著しく伸長しており、プレステラ鉢の縁や棚構造に“固定”することで、逆さ吊り状態での長時間静止を可能にしている。
+
+行動は極めて緩慢で、活動の大半は「吊る」「静止する」「微風に揺れる」の三種に分類される。
+これにより周囲の植物と同化し、外敵からの視認を避けていると考えられる。
+  `,
+
+    namer: "@agadai_6213",
+
+    // Abilities and traits
+    abilities: ["鉢縁固定", "水苔共生", "静止擬態"],
+
+    // Habitat and physical traits
+    habitat: "アガベ棚・湿潤吊り鉢環境",
+    size: "180mm",
+    mobility: "吊下型低速移動",
+
+    // Status
+    status: "● STABLE",
+    statusColor: "var(--g)",
+
+    // Shop information
+    shopUrl: "",
+    price: "",
+    soldOut: false,
+
+    // Variants
+    variants: [],
+
+    // Image
+    image: "images/no_025.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "images/no_025_01.png",
+        title: "プレステラ擬態状態",
+        description: "襟元の水苔を膨らませて、植物として誤認される状態。",
+      },
+      {
+        image: "images/no_025_02.png",
+        title: "獣型狩猟状態",
+        description: "後肢を伸ばして固定し、獲物を狙撃する状態。",
+      },
+    ],
+
+    missingState: "",
   },
 ];
 
