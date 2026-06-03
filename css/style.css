@@ -3956,6 +3956,31 @@ footer {
     padding: 44px 22px;
   }
 
+  /* Mobile card slider for picks-sec */
+  .picks-sec .card-grid {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    margin: 0 -22px;
+    padding: 0 22px 0 4vw;
+    -webkit-overflow-scrolling: touch;
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .picks-sec .card-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .picks-sec .ecard {
+    flex: 0 0 70vw;
+    scroll-snap-align: center;
+    max-width: 400px;
+  }
+
   .symbiont-sec {
     padding: 44px 22px;
   }
