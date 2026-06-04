@@ -1,0 +1,2830 @@
+<!DOCTYPE html>
+<html lang="ja" class="lang-jp" data-script-enabled="true">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鋸歯生物図鑑 - 生体展示室</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <style>
+    @charset "UTF-8";
+    @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap");
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :where(html) {
+      -webkit-text-size-adjust: none;
+      color-scheme: dark light;
+      tab-size: 2;
+      scrollbar-gutter: stable;
+    }
+
+    :where(body) {
+      line-height: 1.5;
+      font-family: system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    :where(button) {
+      all: unset;
+    }
+
+    :where(input, button, textarea, select) {
+      font: inherit;
+      color: inherit;
+    }
+
+    :where(button, label, select, summary, [role=button], [role=option]) {
+      cursor: pointer;
+    }
+
+    :where(a) {
+      color: inherit;
+      text-underline-offset: 0.2ex;
+    }
+
+    :where(ul, ol) {
+      list-style: none;
+    }
+
+    :where(img, svg, video, canvas, audio, iframe, embed, object) {
+      display: block;
+    }
+
+    :where(img, picture, svg, video) {
+      max-inline-size: 100%;
+      block-size: auto;
+    }
+
+    :where(p, h1, h2, h3, h4, h5, h6) {
+      overflow-wrap: break-word;
+    }
+
+    :where(h1, h2, h3) {
+      line-height: calc(1em + 0.5rem);
+      text-wrap: balance;
+    }
+
+    body {
+      background-color: #FFFCC9;
+      overflow-x: hidden;
+      position: relative;
+      width: 100%;
+      color: #1F3134;
+      text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+      font-family: "M PLUS Rounded 1c", sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Layout Containers */
+    .l-main__inner {
+      width: 100%;
+      position: relative;
+    }
+    @media screen and (min-width: 768px) {
+      .l-main__inner {
+        width: 700px;
+        margin: 0 auto;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .l-main__inner {
+        padding: 0 5.12vw;
+      }
+    }
+
+    .l-main__inner02 {
+      width: 100%;
+      position: relative;
+    }
+    @media screen and (min-width: 768px) {
+      .l-main__inner02 {
+        width: 1080px;
+        margin: 0 auto;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .l-main__inner02 {
+        padding: 0 5.12vw;
+      }
+    }
+
+    /* Border Areas */
+    .l-main__border-area {
+      position: relative;
+      background-color: #FFFFFF;
+    }
+    @media screen and (min-width: 768px) {
+      .l-main__border-area {
+        border-radius: 20px;
+        padding: 80px 80px 60px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .l-main__border-area {
+        border-radius: 20px;
+        padding: 30px 20px 20px;
+      }
+    }
+    @media screen and (max-width: 479px) {
+      .l-main__border-area {
+        border-radius: 20px;
+        padding: 7.7vw 5.12vw 5.12vw;
+      }
+    }
+
+    /* Navigation Button */
+    .c-button__nav--wrapper {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      z-index: 11;
+      opacity: 1;
+    }
+    @media screen and (min-width: 768px) {
+      .c-button__nav--wrapper {
+        right: 35px;
+        top: 35px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .c-button__nav--wrapper {
+        right: 10px;
+        top: 10px;
+      }
+    }
+
+    .c-button__nav {
+      background-color: #FFFFFF;
+      border-radius: 50%;
+      position: relative;
+      cursor: pointer;
+    }
+    @media screen and (min-width: 768px) {
+      .c-button__nav {
+        border: solid #000000 5px;
+        width: 60px;
+        height: 60px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .c-button__nav {
+        border: solid #000000 3px;
+        width: 56px;
+        height: 56px;
+      }
+    }
+
+    .c-button__nav span {
+      display: block;
+      position: absolute;
+      left: 14px;
+      width: 22px;
+      height: 2px;
+      background-color: #000000;
+      transition: all 0.5s;
+    }
+    .c-button__nav span:nth-child(1) {
+      top: 16px;
+    }
+    .c-button__nav span:nth-child(2) {
+      top: 24px;
+    }
+    .c-button__nav span:nth-child(3) {
+      top: 32px;
+    }
+
+    /* Common Button */
+    .c-button__common {
+      border: solid 2px #000000;
+      text-decoration: none;
+      display: block;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='M12 5l7 7-7 7'/%3E%3C/svg%3E");
+      background-color: #FFF;
+      background-repeat: no-repeat;
+      box-shadow: 3px 3px #000000;
+    }
+    @media screen and (min-width: 768px) {
+      .c-button__common {
+        padding: 18px 36px 18px 26px;
+        border-radius: 40px;
+        background-position: right 20px center;
+        background-size: 18px 18px;
+        margin: 0 auto;
+        width: 360px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .c-button__common {
+        padding: 3.33vw 36px 3.33vw 30px;
+        border-radius: 40px;
+        background-position: right 10px center;
+        background-size: 18px 18px;
+        margin: 0 auto;
+        width: 300px;
+      }
+    }
+    @media screen and (max-width: 479px) {
+      .c-button__common {
+        background-size: 4.61vw 4.61vw;
+        padding: 3.33vw 9.23vw 3.33vw 7.7vw;
+        width: 77vw;
+        background-position: right 2.56vw center;
+      }
+    }
+
+    /* Typography Utilities */
+    .u-text__common {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+    }
+    @media screen and (min-width: 768px) {
+      .u-text__common {
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 28px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .u-text__common {
+        font-size: 14px;
+        font-size: 0.875rem;
+        line-height: 150%;
+      }
+    }
+    @media screen and (max-width: 479px) {
+      .u-text__common {
+        font-size: 3.59vw;
+        line-height: 150%;
+      }
+    }
+
+    .u-text__bloc-ttl {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+    }
+    @media screen and (min-width: 768px) {
+      .u-text__bloc-ttl {
+        font-size: 36px;
+        font-size: 2.25rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .u-text__bloc-ttl {
+        font-size: 28px;
+        font-size: 1.75rem;
+      }
+    }
+    @media screen and (max-width: 479px) {
+      .u-text__bloc-ttl {
+        font-size: 7.18vw;
+      }
+    }
+
+    .u-text__subttl {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      line-height: 93.75%;
+      white-space: nowrap;
+    }
+    @media screen and (min-width: 768px) {
+      .u-text__subttl {
+        font-size: 24px;
+        font-size: 1.5rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .u-text__subttl {
+        font-size: 18px;
+        font-size: 1.125rem;
+      }
+    }
+    @media screen and (max-width: 479px) {
+      .u-text__subttl {
+        font-size: 4.61vw;
+      }
+    }
+
+    .u-text__common-btn {
+      line-height: 1;
+      font-family: "M PLUS Rounded 1c", sans-serif;
+    }
+    @media screen and (min-width: 768px) {
+      .u-text__common-btn {
+        font-size: 18px;
+        font-size: 1.125rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .u-text__common-btn {
+        font-size: 15px;
+        font-size: 0.9375rem;
+      }
+    }
+    @media screen and (max-width: 479px) {
+      .u-text__common-btn {
+        font-size: 3.6vw;
+      }
+    }
+
+    /* Header */
+    .header {
+      z-index: 11;
+    }
+
+    /* Hero Section */
+    .l-fv {
+      width: 100%;
+      background-size: cover;
+      position: relative;
+      background-color: #e6006b;
+      padding-top: 30px;
+    }
+    @media screen and (min-width: 768px) {
+      .l-fv {
+        height: 678px;
+        background-image: linear-gradient(135deg, #FFE45E 0%, #FFFCC9 50%, #FFE4B5 100%);
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .l-fv {
+        background-image: linear-gradient(135deg, #FFE45E 0%, #FFFCC9 50%, #FFE4B5 100%);
+        height: 123vw;
+      }
+    }
+
+    .l-fv__content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    .l-fv__title {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 800;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .l-fv__title {
+        font-size: 48px;
+        font-size: 3rem;
+        line-height: 1.2;
+        margin-bottom: 20px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .l-fv__title {
+        font-size: 32px;
+        font-size: 2rem;
+        line-height: 1.2;
+        margin-bottom: 16px;
+      }
+    }
+
+    .l-fv__subtitle {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .l-fv__subtitle {
+        font-size: 20px;
+        font-size: 1.25rem;
+        line-height: 1.6;
+        margin-bottom: 40px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .l-fv__subtitle {
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 32px;
+      }
+    }
+
+    .l-fv__cta-group {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Section Common */
+    .section {
+      position: relative;
+    }
+
+    .l-main__topbg {
+      margin-top: -1px;
+      width: 100%;
+      position: relative;
+    }
+    @media screen and (min-width: 768px) {
+      .l-main__topbg {
+        width: 700px;
+        margin: -1px auto 0;
+        padding-top: 150px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .l-main__topbg {
+        padding: 0 5.12vw;
+        padding-top: 20.5vw;
+      }
+    }
+
+    /* Intro Section */
+    .intro-section {
+      background-color: #FFFFFF;
+    }
+
+    .intro-content {
+      text-align: center;
+    }
+
+    .intro-text {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .intro-text {
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 28px;
+        margin-bottom: 40px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .intro-text {
+        font-size: 14px;
+        font-size: 0.875rem;
+        line-height: 150%;
+        margin-bottom: 32px;
+      }
+    }
+
+    .researcher-box {
+      background-color: #FFFCC9;
+      border-radius: 20px;
+      padding: 40px;
+      margin-top: 60px;
+    }
+    @media screen and (max-width: 767px) {
+      .researcher-box {
+        padding: 20px;
+        margin-top: 40px;
+      }
+    }
+
+    .researcher-name {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 800;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .researcher-name {
+        font-size: 24px;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .researcher-name {
+        font-size: 20px;
+        font-size: 1.25rem;
+        margin-bottom: 16px;
+      }
+    }
+
+    .researcher-log {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: #1F3134;
+      font-style: italic;
+    }
+    @media screen and (min-width: 768px) {
+      .researcher-log {
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 28px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .researcher-log {
+        font-size: 14px;
+        font-size: 0.875rem;
+        line-height: 150%;
+      }
+    }
+
+    /* LOG Cards Section */
+    .log-section {
+      background-color: #FFFCC9;
+    }
+
+    .log-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .log-card {
+      background-color: #FFFFFF;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .log-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+
+    .log-number {
+      background-color: #FFE45E;
+      color: #1F3134;
+      padding: 12px 24px;
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 800;
+    }
+    @media screen and (min-width: 768px) {
+      .log-number {
+        font-size: 18px;
+        font-size: 1.125rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .log-number {
+        font-size: 16px;
+        font-size: 1rem;
+      }
+    }
+
+    .log-card-content {
+      padding: 24px;
+    }
+
+    .log-card-title {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 800;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .log-card-title {
+        font-size: 20px;
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .log-card-title {
+        font-size: 18px;
+        font-size: 1.125rem;
+        margin-bottom: 10px;
+      }
+    }
+
+    .log-card-text {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .log-card-text {
+        font-size: 14px;
+        font-size: 0.875rem;
+        line-height: 22.4px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .log-card-text {
+        font-size: 13px;
+        font-size: 0.8125rem;
+        line-height: 22.4px;
+      }
+    }
+
+    /* Area Section */
+    .area-section {
+      background-color: #FFFFFF;
+    }
+
+    .area-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media screen and (max-width: 767px) {
+      .area-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .area-card {
+      background-color: #FFFCC9;
+      border-radius: 20px;
+      padding: 30px 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .area-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .area-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .area-title {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 800;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .area-title {
+        font-size: 20px;
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .area-title {
+        font-size: 18px;
+        font-size: 1.125rem;
+        margin-bottom: 10px;
+      }
+    }
+
+    .area-desc {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .area-desc {
+        font-size: 14px;
+        font-size: 0.875rem;
+        line-height: 22.4px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .area-desc {
+        font-size: 13px;
+        font-size: 0.8125rem;
+        line-height: 22.4px;
+      }
+    }
+
+    /* Photo Carousel Section */
+    .photo-section {
+      background-color: #FFFCC9;
+    }
+
+    .photo-carousel {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .photo-card {
+      background-color: #FFFFFF;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      margin: 0 10px;
+      transition: all 0.3s ease;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+
+    .photo-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      background-color: #FFFCC9;
+    }
+
+    .photo-content {
+      padding: 20px;
+    }
+
+    .photo-name {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 800;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .photo-name {
+        font-size: 18px;
+        font-size: 1.125rem;
+        margin-bottom: 10px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .photo-name {
+        font-size: 16px;
+        font-size: 1rem;
+        margin-bottom: 8px;
+      }
+    }
+
+    .photo-desc {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .photo-desc {
+        font-size: 14px;
+        font-size: 0.875rem;
+        line-height: 22.4px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .photo-desc {
+        font-size: 13px;
+        font-size: 0.8125rem;
+        line-height: 22.4px;
+      }
+    }
+
+    .photo-cta {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 24px;
+      background-color: #FFE45E;
+      color: #1F3134;
+      text-decoration: none;
+      border-radius: 40px;
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+    @media screen and (min-width: 768px) {
+      .photo-cta {
+        font-size: 14px;
+        font-size: 0.875rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .photo-cta {
+        font-size: 13px;
+        font-size: 0.8125rem;
+      }
+    }
+
+    .photo-cta:hover {
+      background-color: #E5006A;
+      color: #FFFFFF;
+    }
+
+    /* News Section */
+    .news-section {
+      background-color: #FFFFFF;
+    }
+
+    .news-list {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .news-item {
+      padding: 20px 0;
+      border-bottom: 2px dotted #000;
+      transition: all 0.3s ease;
+    }
+
+    .news-item:hover {
+      padding-left: 10px;
+    }
+
+    .news-date {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .news-date {
+        font-size: 14px;
+        font-size: 0.875rem;
+        margin-bottom: 8px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .news-date {
+        font-size: 13px;
+        font-size: 0.8125rem;
+        margin-bottom: 6px;
+      }
+    }
+
+    .news-title {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 700;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .news-title {
+        font-size: 16px;
+        font-size: 1rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .news-title {
+        font-size: 14px;
+        font-size: 0.875rem;
+      }
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #1F3134;
+      color: #FFFFFF;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .researcher-profile {
+      margin-bottom: 40px;
+    }
+
+    .researcher-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      background-color: #FFFCC9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      border: 4px solid #FFE45E;
+    }
+
+    .researcher-name-footer {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 800;
+    }
+    @media screen and (min-width: 768px) {
+      .researcher-name-footer {
+        font-size: 24px;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .researcher-name-footer {
+        font-size: 20px;
+        font-size: 1.25rem;
+        margin-bottom: 8px;
+      }
+    }
+
+    .researcher-title {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+    }
+    @media screen and (min-width: 768px) {
+      .researcher-title {
+        font-size: 14px;
+        font-size: 0.875rem;
+        margin-bottom: 20px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .researcher-title {
+        font-size: 13px;
+        font-size: 0.8125rem;
+        margin-bottom: 16px;
+      }
+    }
+
+    .researcher-bio {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+    }
+    @media screen and (min-width: 768px) {
+      .researcher-bio {
+        font-size: 14px;
+        font-size: 0.875rem;
+        line-height: 22.4px;
+        margin-bottom: 40px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .researcher-bio {
+        font-size: 13px;
+        font-size: 0.8125rem;
+        line-height: 22.4px;
+        margin-bottom: 32px;
+      }
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .social-link {
+      width: 48px;
+      height: 48px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 20px;
+      transition: all 0.3s ease;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+
+    .social-link:hover {
+      background-color: #FFE45E;
+      color: #1F3134;
+      transform: translateY(-4px);
+      border-color: #FFE45E;
+    }
+
+    .footer-message {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      font-style: italic;
+    }
+    @media screen and (min-width: 768px) {
+      .footer-message {
+        font-size: 14px;
+        font-size: 0.875rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .footer-message {
+        font-size: 13px;
+        font-size: 0.8125rem;
+      }
+    }
+
+    /* Swiper Customization */
+    .swiper {
+      padding: 20px 0;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #1F3134;
+      background-color: rgba(255,255,255,0.9);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+      background-color: #FFE45E;
+      color: #1F3134;
+    }
+
+    .swiper-pagination {
+      bottom: 0;
+    }
+
+    .swiper-pagination-bullet {
+      background-color: #FFE45E;
+      width: 12px;
+      height: 12px;
+      opacity: 0.5;
+    }
+
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
+
+    /* HERO Section Additional */
+    .l-fv__btm {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: linear-gradient(to top, #FFFCC9, transparent);
+    }
+
+    .l-fv__logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .l-fv__logo img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .l-fv__img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .l-fv__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .l-fv__usagi,
+    .l-fv__lion {
+      position: absolute;
+    }
+
+    .l-fv__usagi {
+      left: 5%;
+      bottom: 10%;
+    }
+
+    .l-fv__lion {
+      right: 5%;
+      bottom: 10%;
+    }
+
+    .l-fv__btm--feature {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .l-fv__btm--feature img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .l-fv__picture {
+      margin: 40px 0;
+    }
+
+    .l-fv__picture img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .l-fv__txtwrap {
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .l-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 11;
+    }
+
+    .l-header__nav--wrapper {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 11;
+    }
+
+    .l-header__mask {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .l-header__nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 400px;
+      height: 100%;
+      background-color: #FFFCC9;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+    }
+
+    .l-header__nav--inner {
+      padding: 80px 40px 40px;
+    }
+
+    .l-header__nav--lists {
+      list-style: none;
+    }
+
+    .l-header__nav--lists li {
+      margin-bottom: 20px;
+    }
+
+    .l-header__nav--lists a {
+      text-decoration: none;
+      color: #1F3134;
+    }
+
+    .u-text__menu {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 700;
+    }
+    @media screen and (min-width: 768px) {
+      .u-text__menu {
+        font-size: 18px;
+        font-size: 1.125rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .u-text__menu {
+        font-size: 16px;
+        font-size: 1rem;
+      }
+    }
+
+    /* Wrapper */
+    .wrapper {
+      width: 100%;
+      position: relative;
+    }
+
+    .l-main {
+      width: 100%;
+      position: relative;
+    }
+
+    /* Event Section */
+    .p-home__event {
+      position: relative;
+    }
+
+    .p-home__announceblc {
+      background-color: #FFFFFF;
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .u-text__announce {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .u-text__announce {
+        font-size: 20px;
+        font-size: 1.25rem;
+        line-height: 32px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .u-text__announce {
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 28px;
+      }
+    }
+
+    .red {
+      color: #E5006A;
+    }
+
+    /* Factory Section */
+    .p-home__factory--zou {
+      position: absolute;
+      top: -50px;
+      right: 10%;
+    }
+
+    .p-home__factory--zou img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .p-home__factory--ttlwrap {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .c-paragraph__b-fctoryttl {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 800;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .c-paragraph__b-fctoryttl {
+        font-size: 36px;
+        font-size: 2.25rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .c-paragraph__b-fctoryttl {
+        font-size: 28px;
+        font-size: 1.75rem;
+      }
+    }
+
+    .p-home__factory--mapttlwrap {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .u-text__map-ttl {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 800;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .u-text__map-ttl {
+        font-size: 24px;
+        font-size: 1.5rem;
+        line-height: 32px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .u-text__map-ttl {
+        font-size: 20px;
+        font-size: 1.25rem;
+        line-height: 28px;
+      }
+    }
+
+    .u-text__map-txt {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .u-text__map-txt {
+        font-size: 18px;
+        font-size: 1.125rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .u-text__map-txt {
+        font-size: 16px;
+        font-size: 1rem;
+      }
+    }
+
+    .p-home__factory--blc {
+      background-color: #FFFFFF;
+      border-radius: 20px;
+      padding: 40px;
+      margin-top: 180px;
+    }
+
+    .l-main__border-num {
+      position: relative;
+    }
+
+    .l-main__numttl--wrap {
+      position: absolute;
+      top: -165px !important;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .l-main__numttl--wrap img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .p-home__factory--picture {
+      margin: 40px 0;
+    }
+
+    .p-home__factory--picture img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .p-home__factory--picture-flex {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .p-home__factory--pictture-item {
+      flex: 1;
+    }
+
+    .p-home__factory--pictture-item img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .u-text__factory {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 800;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .u-text__factory {
+        font-size: 24px;
+        font-size: 1.5rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .u-text__factory {
+        font-size: 20px;
+        font-size: 1.25rem;
+      }
+    }
+
+    .p-home__factory--txtwrap {
+      margin: 20px 0;
+    }
+
+    .u-text__factorytxt {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .u-text__factorytxt {
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 28px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .u-text__factorytxt {
+        font-size: 14px;
+        font-size: 0.875rem;
+        line-height: 22.4px;
+      }
+    }
+
+    .l-main__ohters--wrap {
+      background-color: #FFE45E;
+      border-radius: 20px 20px 0 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .c-paragraph__goods-top {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 800;
+    }
+
+    .u-text__subttl-bold {
+      color: #FFFFFF;
+    }
+    @media screen and (min-width: 768px) {
+      .u-text__subttl-bold {
+        font-size: 24px;
+        font-size: 1.5rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .u-text__subttl-bold {
+        font-size: 20px;
+        font-size: 1.25rem;
+      }
+    }
+
+    .p-home__foodgoods--btnwrap {
+      margin: 40px 0;
+    }
+
+    /* Photo Spot Section */
+    .p-home__photospot--saru {
+      position: absolute;
+      top: -50px;
+      right: 10%;
+    }
+
+    .p-home__photospot--saru img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .p-home__photospot--ttlwrap {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .c-paragraph__photostop--ttl {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 800;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .c-paragraph__photostop--ttl {
+        font-size: 36px;
+        font-size: 2.25rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .c-paragraph__photostop--ttl {
+        font-size: 28px;
+        font-size: 1.75rem;
+      }
+    }
+
+    .u-text__midtxt {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .u-text__midtxt {
+        font-size: 18px;
+        font-size: 1.125rem;
+        line-height: 28px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .u-text__midtxt {
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 22.4px;
+      }
+    }
+
+    .p-home__photospopt--carousel {
+      margin: 40px 0;
+    }
+
+    .p-home__photospopt--slide {
+      background-color: #FFFFFF;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .p-home__photospopt--slide__inner {
+      padding: 20px;
+    }
+
+    .p-home__photospopt--imgwrap img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+    }
+
+    .u-text__photospot--ttl {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 800;
+      color: #1F3134;
+      margin: 16px 0;
+    }
+    @media screen and (min-width: 768px) {
+      .u-text__photospot--ttl {
+        font-size: 20px;
+        font-size: 1.25rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .u-text__photospot--ttl {
+        font-size: 18px;
+        font-size: 1.125rem;
+      }
+    }
+
+    .p-home__photospopt--txtblc {
+      background-color: #FFFCC9;
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    /* News Section */
+    .p-home__news--saru {
+      position: absolute;
+      top: -50px;
+      right: 10%;
+    }
+
+    .p-home__news--saru img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .p-home__news--ttlwrap {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .c-paragraph__news {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 800;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .c-paragraph__news {
+        font-size: 36px;
+        font-size: 2.25rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .c-paragraph__news {
+        font-size: 28px;
+        font-size: 1.75rem;
+      }
+    }
+
+    .p-home__news--lists {
+      list-style: none;
+    }
+
+    .p-home__news--blc {
+      background-color: #FFFFFF;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .p-home__news--ttlblc {
+      padding: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .p-home__news--date {
+      flex-shrink: 0;
+    }
+
+    .u-text__faq--item {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .u-text__faq--item {
+        font-size: 16px;
+        font-size: 1rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .u-text__faq--item {
+        font-size: 14px;
+        font-size: 0.875rem;
+      }
+    }
+
+    .p-home__news--sblc {
+      flex: 1;
+    }
+
+    .p-home__news--arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid #1F3134;
+      border-bottom: 2px solid #1F3134;
+      transform: rotate(45deg);
+      transition: transform 0.3s ease;
+    }
+
+    .p-home__news--details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .p-home__news--details-inner {
+      padding: 0 20px 20px;
+    }
+
+    .u-text__midium {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .u-text__midium {
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 28px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .u-text__midium {
+        font-size: 14px;
+        font-size: 0.875rem;
+        line-height: 22.4px;
+      }
+    }
+
+    .p-home__news--btnwrap {
+      margin: 40px 0;
+    }
+
+    /* Footer */
+    .l-footer__kirin {
+      position: absolute;
+      bottom: 0;
+      right: 5%;
+    }
+
+    .l-footer__kirin img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .l-footer__inner {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .l-footer__logo img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .l-footer__txt {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 700;
+      color: #1F3134;
+      margin-bottom: 20px;
+    }
+    @media screen and (min-width: 768px) {
+      .l-footer__txt {
+        font-size: 18px;
+        font-size: 1.125rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .l-footer__txt {
+        font-size: 16px;
+        font-size: 1rem;
+      }
+    }
+
+    .l-footer__sns--wrap {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .l-footer__sns img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .l-footer__links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .c-button__link {
+      text-decoration: none;
+    }
+
+    .u-text__origin {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: #1F3134;
+    }
+    @media screen and (min-width: 768px) {
+      .u-text__origin {
+        font-size: 14px;
+        font-size: 0.875rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .u-text__origin {
+        font-size: 13px;
+        font-size: 0.8125rem;
+      }
+    }
+
+    .l-footer__copy {
+      margin-top: 40px;
+    }
+
+    .u-text__copy {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+    }
+    @media screen and (min-width: 768px) {
+      .u-text__copy {
+        font-size: 12px;
+        font-size: 0.75rem;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .u-text__copy {
+        font-size: 11px;
+        font-size: 0.6875rem;
+      }
+    }
+
+    /* Utility Classes */
+    .center {
+      text-align: center;
+    }
+
+    .bold {
+      font-weight: 700;
+    }
+
+    .exbold {
+      font-weight: 800;
+    }
+
+    .regular {
+      font-weight: 400;
+    }
+
+    .white {
+      color: #FFFFFF;
+    }
+
+    .black {
+      color: #1F3134;
+    }
+
+    /* Wave Separator */
+    .wave-separator {
+      position: relative;
+      width: 100%;
+      height: 80px;
+      overflow: hidden;
+      background-color: #FFFCC9;
+    }
+
+    .wave-separator svg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+    }
+
+    .wave-separator--alt {
+      background-color: #FFA500;
+    }
+
+    .wave-separator--alt svg {
+      bottom: auto;
+      top: 0;
+      transform: rotate(180deg);
+    }
+
+    /* Section Background Colors */
+    .section-bg-base {
+      background-color: #FFFCC9;
+    }
+
+    .section-bg-orange {
+      background-color: #FFA500;
+    }
+
+    .section-bg-yellow {
+      background-color: #FFFCC9;
+    }
+
+    .section-bg-pink {
+      background-color: #FFE4E5;
+    }
+
+    .section-bg-white {
+      background-color: #FFFFFF;
+    }
+
+    /* SPOT Badge CSS */
+    .spot-badge {
+      width: 330px;
+      height: 330px;
+      background-color: #E5006A;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      color: #FFFFFF;
+      position: relative;
+    }
+
+    .spot-badge__spot {
+      font-size: 24px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .spot-badge__number {
+      font-size: 120px;
+      font-size: 7.5rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    @media screen and (max-width: 767px) {
+      .spot-badge {
+        width: 200px;
+        height: 200px;
+      }
+
+      .spot-badge__spot {
+        font-size: 18px;
+        font-size: 1.125rem;
+        margin-bottom: 4px;
+      }
+
+      .spot-badge__number {
+        font-size: 80px;
+        font-size: 5rem;
+      }
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 1024px) {
+      .area-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .l-main__inner {
+        padding: 0 20px;
+      }
+
+      .l-main__inner02 {
+        padding: 0 20px;
+      }
+
+      .l-main__border-area {
+        padding: 40px 20px;
+      }
+
+      .l-fv {
+        height: 500px;
+      }
+
+      .l-fv__logo img {
+        width: 80%;
+        height: auto;
+      }
+
+      .l-fv__usagi,
+      .l-fv__lion {
+        width: 100px;
+      }
+
+      .l-fv__usagi img,
+      .l-fv__lion img {
+        width: 100%;
+        height: auto;
+      }
+
+      .l-fv__btm--feature img {
+        width: 100%;
+        height: auto;
+      }
+
+      .l-fv__picture img {
+        width: 100%;
+        height: auto;
+      }
+
+      .p-home__announceblc {
+        padding: 30px 20px;
+      }
+
+      .p-home__factory--zou {
+        position: relative;
+        top: 0;
+        right: 0;
+        width: 150px;
+        margin: 0 auto 20px;
+      }
+
+      .p-home__factory--zou img {
+        width: 100%;
+        height: auto;
+      }
+
+      .p-home__factory--blc {
+        padding: 30px 20px;
+        margin-top: 40px;
+      }
+
+      .l-main__numttl--wrap {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        margin: 0 auto -100px;
+        z-index: 10;
+      }
+
+      .p-home__factory--picture img {
+        width: 100%;
+        height: auto;
+      }
+
+      .p-home__factory--picture-flex {
+        flex-direction: column;
+      }
+
+      .p-home__factory--pictture-item {
+        width: 100%;
+      }
+
+      .l-main__ohters--wrap {
+        padding: 15px;
+      }
+
+      .p-home__foodgoods--btnwrap {
+        margin: 30px 0;
+      }
+
+      .p-home__photospot--saru {
+        position: relative;
+        top: 0;
+        right: 0;
+        width: 120px;
+        margin: 0 auto 20px;
+      }
+
+      .p-home__photospot--saru img {
+        width: 100%;
+        height: auto;
+      }
+
+      .p-home__photospopt--carousel {
+        margin: 30px 0;
+      }
+
+      .p-home__photospopt--slide__inner {
+        padding: 15px;
+      }
+
+      .p-home__news--saru {
+        position: relative;
+        top: 0;
+        right: 0;
+        width: 120px;
+        margin: 0 auto 20px;
+      }
+
+      .p-home__news--saru img {
+        width: 100%;
+        height: auto;
+      }
+
+      .p-home__news--blc {
+        margin-bottom: 15px;
+      }
+
+      .p-home__news--ttlblc {
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .p-home__news--details-inner {
+        padding: 0 15px 15px;
+      }
+
+      .p-home__news--btnwrap {
+        margin: 30px 0;
+      }
+
+      .l-footer__kirin {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        width: 200px;
+        margin: 0 auto 20px;
+      }
+
+      .l-footer__kirin img {
+        width: 100%;
+        height: auto;
+      }
+
+      .l-footer__inner {
+        padding: 30px 20px;
+      }
+
+      .l-footer__logo img {
+        width: 80%;
+        height: auto;
+      }
+
+      .l-footer__sns--wrap {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .l-footer__links {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .area-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-cta-group {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-cta {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    @media screen and (max-width: 479px) {
+      .l-main__inner {
+        padding: 0 15px;
+      }
+
+      .l-main__inner02 {
+        padding: 0 15px;
+      }
+
+      .l-main__border-area {
+        padding: 30px 15px;
+      }
+
+      .l-fv {
+        height: 400px;
+      }
+
+      .l-fv__logo img {
+        width: 90%;
+        height: auto;
+      }
+
+      .p-home__announceblc {
+        padding: 25px 15px;
+      }
+
+      .p-home__factory--blc {
+        padding: 25px 15px;
+      }
+
+      .p-home__factory--txtwrap {
+        margin: 15px 0;
+      }
+
+      .p-home__photospopt--slide__inner {
+        padding: 12px;
+      }
+
+      .p-home__news--ttlblc {
+        padding: 12px;
+      }
+
+      .p-home__news--details-inner {
+        padding: 0 12px 12px;
+      }
+
+      .l-footer__inner {
+        padding: 25px 15px;
+      }
+
+      .header {
+        padding: 12px 20px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .hero-title {
+        font-size: 28px;
+      }
+
+      .hero-subtitle {
+        font-size: 14px;
+      }
+
+      .hero-cta {
+        padding: 14px 36px;
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      .researcher-box {
+        padding: 20px;
+      }
+
+      .log-card-content {
+        padding: 16px;
+      }
+
+      .area-card {
+        padding: 20px 16px;
+      }
+    }
+  </style>
+</head>
+<body id="home">
+  <!-- HERO Section -->
+  <section class="l-fv" id="fv">
+    <div class="l-fv__btm"></div>
+    <h1 class="l-fv__logo">
+      <span style="font-size:0; line-height: 0;">鋸歯生物図鑑 - 生体展示室</span>
+      <img src="../images/hero-video.mp4" loading="eager" title="鋸歯生物図鑑 - 生体展示室" alt="鋸歯生物図鑑 - 生体展示室" width="1011" height="429">
+    </h1>
+    <figure class="l-fv__img">
+      <img src="../images/hero-video.mp4" loading="eager" title="鋸歯生物" alt="鋸歯生物" width="1366" height="889">
+    </figure>
+  </section>
+
+  <!-- HERO Event Section -->
+  <section class="l-fv__event">
+    <div class="l-main__inner">
+      <div class="l-fv__usagi scrollSet blurIn">
+        <img src="../images/no_001.png" loading="eager" title="スニャグルトゥース" alt="スニャグルトゥース" width="254" height="266">
+      </div>
+      <div class="l-fv__lion scrollSet blurIn">
+        <img src="../images/k_001.png" loading="eager" title="ハザマドリ" alt="ハザマドリ" width="289" height="272">
+      </div>
+      <h2 class="l-fv__btm--feature">
+        <span style="font-size:0; line-height: 0;">植物と動物のあいだに存在する未知の生命体群</span>
+        <img src="../images/feature_txt02.png" loading="eager" title="植物と動物のあいだに存在する未知の生命体群" alt="植物と動物のあいだに存在する未知の生命体群" width="1400" height="450">
+      </h2>
+      <div class="l-fv__picture">
+        <img src="../images/img_fv-feature.jpg" loading="eager" title="鋸歯生物の世界" alt="鋸歯生物の世界" width="1500" height="840">
+      </div>
+      <div class="l-fv__txtwrap">
+        <p class="u-text__common center">植物と動物のあいだに存在する未知の生命体群。<br class="sp">植物寄生型、共生型、移動型など多様な形態を持つ。<br>
+          環境適応能力が高く、アガベを中心とした生態系に適応している。<br>鋸歯生物の世界を体験しよう♪</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Header -->
+  <header class="l-header" id="header">
+    <div id="navArea" class="l-header__nav--wrapper">
+      <div id="mask" class="l-header__mask"></div>
+      <nav class="l-header__nav">
+        <div class="l-header__nav--inner">
+          <ul class="l-header__nav--lists">
+            <li><a href="#">
+                <p class="u-text__menu">TOPページ</p>
+              </a></li>
+            <li><a href="#factory">
+                <p class="u-text__menu">鋸歯生物研究所</p>
+              </a></li>
+            <li><a href="#goods">
+                <p class="u-text__menu">譲渡局</p>
+              </a></li>
+            <li><a href="#news">
+                <p class="u-text__menu">観測ニュース</p>
+              </a></li>
+          </ul>
+        </div>
+      </nav>
+      <section class="c-button__nav--wrapper">
+        <div class="c-button__nav" id="js-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="wrapper">
+    <main class="l-main" id="main">
+      
+      <!-- Event Section -->
+      <section class="p-home__event section-bg-base" id="event">
+        <div class="l-main__topbg">
+          <div class="p-home__announceblc">
+            <p class="center u-text__announce bold">鋸歯生物図鑑<br>植物と動物のあいだに存在する<br class="sp"><span class="red">未知の生命体群</span><br>生体展示室へようこそ！</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Wave Separator -->
+      <div class="wave-separator">
+        <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+          <path d="M0,40 C150,80 300,0 450,40 C600,80 750,0 900,40 C1050,80 1200,0 1200,0 L1200,80 L0,80 Z" fill="#FFA500"/>
+        </svg>
+      </div>
+
+      <!-- Factory Section -->
+      <section class="p-home__factory section-bg-orange" id="factory">
+        <div class="l-main__topbg">
+          <section class="p-home__factory--zou scrollSet blurIn">
+            <img src="../images/no_002.png" loading="lazy" title="グリーンリーフ" alt="グリーンリーフ" width="277" height="293">
+          </section>
+          <h2 class="p-home__factory--ttlwrap">
+            <section class="c-paragraph__b-fctoryttl">鋸歯生物研究所</section>
+          </h2>
+          <div class="p-home__factory--mapttlwrap" id="map">
+            <p class="center bold u-text__map-ttl">展示エリアから<br class="sp"><span class="red">各SPOT</span>をチェック！</p>
+            <p class="center bold u-text__map-txt">気になる<span class="red">SPOT</span>をタップ！</p>
+          </div>
+          
+          <!-- SPOT 1 -->
+          <section class="p-home__factory--blc l-main__border-num" id="num01">
+            <div class="l-main__numttl--wrap">
+              <div class="spot-badge">
+                <span class="spot-badge__spot">SPOT</span>
+                <span class="spot-badge__number">1</span>
+              </div>
+            </div>
+            <div class="p-home__factory--picture">
+              <img src="../images/img_factory01.png" loading="lazy" title="鋸歯生物とは？" alt="鋸歯生物とは？" width="1500" height="974">
+            </div>
+            <h3 class="center u-text__factory bold">鋸歯生物とは？</h3>
+            <div class="p-home__factory--txtwrap">
+              <p class="u-text__factorytxt regular">植物と動物のあいだに存在する未知の生命体群。<br>
+                植物寄生型、共生型、移動型など多様な形態を持つ。<br><br>
+                環境適応能力が高く、アガベを中心とした生態系に適応している。<br>鋸歯生物の世界を体験しよう！</p>
+            </div>
+          </section>
+
+          <!-- SPOT 2 -->
+          <section class="p-home__factory--blc l-main__border-num" id="num02">
+            <div class="l-main__numttl--wrap">
+              <div class="spot-badge">
+                <span class="spot-badge__spot">SPOT</span>
+                <span class="spot-badge__number">2</span>
+              </div>
+            </div>
+            <div class="p-home__factory--picture">
+              <img src="../images/img_factory02.jpg" loading="lazy" title="初観測記録" alt="初観測記録" width="1500" height="1059">
+            </div>
+            <h3 class="center u-text__factory bold">初観測記録</h3>
+            <div class="p-home__factory--txtwrap">
+              <p class="u-text__factorytxt regular">
+                ある日、アガベと動物のあいだにいる奇妙な生き物を見つけた。<br>
+                <br>
+                その存在を「鋸歯生物」と名付けた。<br>
+                ペリカン研究員は、この発見をきっかけに図鑑を作ることにした。
+              </p>
+            </div>
+          </section>
+
+          <!-- SPOT 3 -->
+          <section class="p-home__factory--blc l-main__border-num" id="num03">
+            <div class="l-main__numttl--wrap">
+              <div class="spot-badge">
+                <span class="spot-badge__spot">SPOT</span>
+                <span class="spot-badge__number">3</span>
+              </div>
+            </div>
+            <div class="p-home__factory--picture">
+              <div class="p-home__factory--picture-flex">
+                <div class="p-home__factory--pictture-item">
+                  <img src="../images/img_spot03-01.jpg" loading="lazy" title="生態分類 01" alt="生態分類 01" width="307" height="546">
+                </div>
+                <div class="p-home__factory--pictture-item">
+                  <img src="../images/img_spot03-02.jpg" loading="lazy" title="生態分類 02" alt="生態分類 02" width="307" height="546">
+                </div>
+                <div class="p-home__factory--pictture-item">
+                  <img src="../images/img_spot03-03.jpg" loading="lazy" title="生態分類 03" alt="生態分類 03" width="307" height="546">
+                </div>
+              </div>
+            </div>
+            <h3 class="center u-text__factory bold">生態分類</h3>
+            <div class="p-home__factory--txtwrap">
+              <p class="u-text__factorytxt regular">植物寄生型、共生型、移動型の3つの主要な分類。<br><br>
+                それぞれ異なる生態特性を持つ。<br>鋸歯生物の多様性を知ろう！</p>
+            </div>
+          </section>
+
+          <!-- SPOT 4 -->
+          <section class="p-home__factory--blc l-main__border-num" id="num04">
+            <div class="l-main__numttl--wrap">
+              <div class="spot-badge">
+                <span class="spot-badge__spot">SPOT</span>
+                <span class="spot-badge__number">4</span>
+              </div>
+            </div>
+            <div class="p-home__factory--picture">
+              <div class="p-home__factory--picture-flex">
+                <div class="p-home__factory--pictture-item">
+                  <img src="../images/img_spot04-01.jpg" loading="lazy" title="観測アーカイブ 01" alt="観測アーカイブ 01" width="307" height="546">
+                </div>
+                <div class="p-home__factory--pictture-item">
+                  <img src="../images/img_spot04-02.jpg" loading="lazy" title="観測アーカイブ 02" alt="観測アーカイブ 02" width="307" height="546">
+                </div>
+                <div class="p-home__factory--pictture-item">
+                  <img src="../images/img_spot04-03b.png" loading="lazy" title="観測アーカイブ 03" alt="観測アーカイブ 03" width="307" height="546">
+                </div>
+              </div>
+            </div>
+            <h3 class="center u-text__factory bold">観測アーカイブ</h3>
+            <div class="p-home__factory--txtwrap">
+              <p class="u-text__factorytxt regular">観測個体は増え続けている。<br>
+                新しい発見、新しい出会い。<br>図鑑一覧で全個体を確認しよう。</p>
+            </div>
+          </section>
+
+          <!-- 譲渡局 -->
+          <section class="p-home__factory--blc l-main__border-area" id="goods">
+            <div class="l-main__ohters--wrap">
+              <section class="c-paragraph__goods-top">
+                <p class="center white exbold u-text__subttl-bold">譲渡局</p>
+              </section>
+            </div>
+            <div class="p-home__factory--picture">
+              <img src="../images/img_foods-top.jpg" loading="lazy" alt="譲渡局" title="譲渡局" width="1338" height="846">
+            </div>
+            <div class="p-home__factory--txtwrap">
+              <p class="u-text__factorytxt regular center">観測された個体の中には、<br class="sp">新しい管理者のもとへ移送される個体もいます。</p>
+            </div>
+            <div class="p-home__foodgoods--btnwrap">
+              <a href="#" class="c-button__common">
+                <p class="u-text__common-btn exbold center">お迎えできる個体はこちら</p>
+              </a>
+            </div>
+          </section>
+
+        </div>
+      </section>
+
+      <!-- Wave Separator -->
+      <div class="wave-separator wave-separator--alt"></div>
+
+      <!-- Photo Spot Section -->
+      <section class="p-home__photospopt section-bg-base" id="photospot">
+        <div class="l-main__topbg">
+          <section class="p-home__photospopt--saru scrollSet blurIn">
+            <img src="../images/no_003.png" loading="lazy" title="レッドキャットミーズル" alt="レッドキャットミーズル" width="211" height="277">
+          </section>
+          <section class="p-home__photospot--ttlwrap">
+            <h3 class="c-paragraph__photostop--ttl">お迎えできる鋸歯生物</h3>
+          </section>
+          <p class="u-text__midtxt center bold">観測された個体の中には、<br class="sp">新しい管理者のもとへ移送される個体もいます。<br>
+            撮った写真はぜひSNSでシェアしてね♪</p>
+        </div>
+
+        <section class="p-home__photospopt--carousel">
+          <div class="swiper photo-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide p-home__photospopt--slide">
+                <div class="p-home__photospopt--slide__inner">
+                  <section class="p-home__photospopt--imgwrap">
+                    <img src="../images/no_001.png" loading="lazy" title="スニャグルトゥース" alt="スニャグルトゥース" width="920" height="570">
+                  </section>
+                  <p class="center exbold u-text__photospot--ttl">スニャグルトゥース</p>
+                  <section class="p-home__photospopt--txtblc">
+                    <p class="center regular u-text__factorytxt">日向ぼっこが好きな個体。<br>
+                      比較的人に慣れています。</p>
+                  </section>
+                </div>
+              </div>
+              <div class="swiper-slide p-home__photospopt--slide">
+                <div class="p-home__photospopt--slide__inner">
+                  <section class="p-home__photospopt--imgwrap">
+                    <img src="../images/k_001.png" loading="lazy" title="ハザマドリ" alt="ハザマドリ" width="920" height="570">
+                  </section>
+                  <p class="center exbold u-text__photospot--ttl">ハザマドリ</p>
+                  <section class="p-home__photospopt--txtblc">
+                    <p class="center regular u-text__factorytxt">プレステラの縁に巣を作ります。<br>
+                      静かな環境を好みます。</p>
+                  </section>
+                </div>
+              </div>
+              <div class="swiper-slide p-home__photospopt--slide">
+                <div class="p-home__photospopt--slide__inner">
+                  <section class="p-home__photospopt--imgwrap">
+                    <img src="../images/no_003.png" loading="lazy" title="レッドキャットミーズル" alt="レッドキャットミーズル" width="920" height="570">
+                  </section>
+                  <p class="center exbold u-text__photospot--ttl">レッドキャットミーズル</p>
+                  <section class="p-home__photospopt--txtblc">
+                    <p class="center regular u-text__factorytxt">好奇心旺盛。<br>
+                      現在も観測が続いています。</p>
+                  </section>
+                </div>
+              </div>
+              <div class="swiper-slide p-home__photospopt--slide">
+                <div class="p-home__photospopt--slide__inner">
+                  <section class="p-home__photospopt--imgwrap">
+                    <img src="../images/no_002.png" loading="lazy" title="グリーンリーフ" alt="グリーンリーフ" width="920" height="570">
+                  </section>
+                  <p class="center exbold u-text__photospot--ttl">グリーンリーフ</p>
+                  <section class="p-home__photospopt--txtblc">
+                    <p class="center regular u-text__factorytxt">植物との共生関係が<br>
+                      特に強い個体。</p>
+                  </section>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </section>
+      </section>
+
+      <!-- Wave Separator -->
+      <div class="wave-separator"></div>
+
+      <!-- News Section -->
+      <section class="p-home__news section-bg-orange" id="news">
+        <div class="l-main__topbg">
+          <section class="p-home__news--saru scrollSet blurIn">
+            <img src="../images/no_003.png" loading="lazy" title="レッドキャットミーズル" alt="レッドキャットミーズル" width="211" height="277">
+          </section>
+          <div class="p-home__news--ttlwrap">
+            <p class="c-paragraph__news">観測ニュース</p>
+          </div>
+          <ul class="p-home__news--lists">
+            <li class="p-home__news--blc">
+              <div class="p-home__news--ttlblc js-acoordion-btn">
+                <div class="p-home__news--date">
+                  <p class="u-text__faq--item exbold">2024.06.01</p>
+                </div>
+                <div class="p-home__news--sblc">
+                  <p class="u-text__faq--item regular"><span>新種「スニャグルトゥース」の観測に成功</span></p>
+                </div>
+                <div class="p-home__news--arrow"></div>
+              </div>
+              <div class="p-home__news--details js-acoordion-answer">
+                <div class="p-home__news--details-inner">
+                  <p class="u-text__midium regular">新種「スニャグルトゥース」の観測に成功しました。<br>
+                    日向ぼっこが好きな個体で、比較的人に慣れています。<br>
+                    今後の観測記録にご期待ください。</p>
+                </div>
+              </div>
+            </li>
+            <li class="p-home__news--blc">
+              <div class="p-home__news--ttlblc js-acoordion-btn">
+                <div class="p-home__news--date">
+                  <p class="u-text__faq--item exbold">2024.05.15</p>
+                </div>
+                <div class="p-home__news--sblc">
+                  <p class="u-text__faq--item regular"><span>生体展示室のリニューアル完了</span></p>
+                </div>
+                <div class="p-home__news--arrow"></div>
+              </div>
+              <div class="p-home__news--details js-acoordion-answer">
+                <div class="p-home__news--details-inner">
+                  <p class="u-text__midium regular">生体展示室のリニューアルが完了しました。<br>
+                    より多くの鋸歯生物を展示できるようになりました。<br>
+                    ぜひご来場ください。</p>
+                </div>
+              </div>
+            </li>
+            <li class="p-home__news--blc">
+              <div class="p-home__news--ttlblc js-acoordion-btn">
+                <div class="p-home__news--date">
+                  <p class="u-text__faq--item exbold">2024.04.20</p>
+                </div>
+                <div class="p-home__news--sblc">
+                  <p class="u-text__faq--item regular"><span>鋸歯生物図鑑 第2巻 発売決定</span></p>
+                </div>
+                <div class="p-home__news--arrow"></div>
+              </div>
+              <div class="p-home__news--details js-acoordion-answer">
+                <div class="p-home__news--details-inner">
+                  <p class="u-text__midium regular">鋸歯生物図鑑 第2巻の発売が決定しました。<br>
+                    新しい個体の観測記録を多数収録。<br>
+                    発売日をお知らせします。</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div class="p-home__news--btnwrap">
+            <a href="#" class="c-button__common">
+              <p class="u-text__common-btn exbold center">そのほかのニュースはこちら</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="l-footer" id="footer">
+    <div class="l-main__topbg">
+      <div class="l-footer__kirin scrollSet blurIn">
+        <img src="../images/unknown.png" loading="lazy" title="ペリカン研究員" alt="ペリカン研究員" width="496" height="724">
+      </div>
+      <div class="l-footer__inner">
+        <div class="l-footer__logo">
+          <img src="../images/hero-video.mp4" loading="eager" title="鋸歯生物図鑑" alt="鋸歯生物図鑑" width="1011" height="429">
+        </div>
+        <p class="l-footer__txt">最新情報はこちら</p>
+        <div class="l-footer__sns--wrap">
+          <div class="l-footer__sns">
+            <a href="#" target="_blank" rel="noreferrer">
+              <img src="../images/link_x.png" loading="lazy" title="鋸歯生物図鑑 公式X" alt="鋸歯生物図鑑 公式X" width="480" height="160">
+            </a>
+          </div>
+          <div class="l-footer__sns">
+            <a href="#" target="_blank" rel="noreferrer">
+              <img src="../images/link_insta.png" loading="lazy" title="鋸歯生物図鑑 公式Instagram" alt="鋸歯生物図鑑 公式Instagram" width="480" height="160">
+            </a>
+          </div>
+        </div>
+        <section class="l-footer__links">
+          <div class="l-footer__links--item">
+            <a href="#" class="c-button__link">
+              <p class="u-text__origin black">鋸歯生物研究所</p>
+            </a>
+          </div>
+          <div class="l-footer__links--item">
+            <a href="#" class="c-button__link">
+              <p class="u-text__origin black">譲渡局</p>
+            </a>
+          </div>
+        </section>
+        <p class="center u-text__origin regular">主催 ペリカン研究所</p>
+        <div class="l-footer__copy">
+          <small class="u-text__copy center">© 2024 鋸歯生物図鑑</small>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var photoswiper = new Swiper(".photo-swiper", {
+      loop: true,
+      autoplay: true,
+      spaceBetween: 20,
+      centeredSlides: true,
+      pagination: {
+        el: '.swiper-pagination',
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      slidesPerView: 1.4,
+      breakpoints: {
+        1025: {
+          slidesPerView: 2.6,
+        }
+      }
+    });
+  </script>
+
+  <script>
+    (() => {
+      function A({navId: t="navArea", btnId: s="js-btn", maskId: l="mask", linkSelector: i="a", openClass: c="open"}={}) {
+        let o = document.getElementById(t)
+          , h = document.getElementById(s)
+          , E = document.getElementById(l);
+        if (!o || !h || !E)
+          return;
+        let d = 0;
+        h.addEventListener("click", () => {
+          o.classList.toggle(c) ? (d = window.pageYOffset,
+          Object.assign(document.body.style, {
+            position: "fixed",
+            top: `-${d}px`,
+            width: "100%"
+          })) : (document.body.style.position = "",
+          document.body.style.top = "",
+          document.body.style.width = "",
+          window.scrollTo(0, d))
+        }
+        ),
+        E.addEventListener("click", () => {
+          o.classList.remove(c),
+          document.body.style.position = "",
+          document.body.style.top = "",
+          document.body.style.width = "",
+          window.scrollTo(0, d)
+        }
+        ),
+        o.querySelectorAll(i).forEach(f => {
+          f.addEventListener("click", y => {
+            o.classList.remove(c),
+            document.body.style.position = "",
+            document.body.style.top = "",
+            document.body.style.width = "",
+            window.scrollTo(0, d);
+            let u = f.getAttribute("href");
+            if (u && u.startsWith("#")) {
+              let g = document.querySelector(u);
+              g && (y.preventDefault(),
+              g.scrollIntoView({
+                behavior: "smooth"
+              }))
+            }
+          }
+          )
+        }
+        )
+      }
+      function L(t=".js-acoordion-btn", s=".js-acoordion-answer", l="open") {
+        let i = document.querySelectorAll(t);
+        i.forEach(c => {
+          c.addEventListener("click", () => {
+            let o = c.nextElementSibling;
+            o && o.matches(s) && (o.style.maxHeight ? o.style.maxHeight = null : o.style.maxHeight = o.scrollHeight + "px",
+            c.classList.toggle(l))
+          }
+          )
+        }
+        ),
+        window.addEventListener("resize", () => {
+          i.forEach(c => {
+            if (c.classList.contains(l)) {
+              let o = c.nextElementSibling;
+              o && o.matches(s) && (o.style.maxHeight = o.scrollHeight + "px")
+            }
+          }
+          )
+        }
+        )
+      }
+      var b = () => {
+        document.querySelectorAll(".scrollSet").forEach(t => {
+          let s = t.getBoundingClientRect().top + window.pageYOffset
+            , l = window.pageYOffset
+            , i = window.innerHeight;
+          l > s - i + 100 && t.classList.add("blurIn")
+        }
+        )
+      }
+      ;
+      window.addEventListener("scroll", b);
+      function B(t, s) {
+        t.checked === !0 ? s.disabled = !1 : s.disabled = !0
+      }
+      function S() {
+        let t = document.getElementById("contact__agree")
+          , s = document.getElementById("button__submit");
+        t && t.addEventListener("click", () => {
+          B(t, s)
+        }
+        )
+      }
+      function T(t) {
+        let s = "error"
+          , l = "errorwrapper"
+          , i = t.querySelectorAll(".required")
+          , c = t.querySelectorAll(".selectsitem")
+          , o = t.querySelectorAll(".email")
+          , h = t.querySelectorAll(".tel")
+          , E = t.querySelectorAll(".maxlength")
+          , d = t.querySelectorAll(".kana")
+          , f = t.querySelectorAll(".postcord")
+          , y = t.querySelector(".emailunique")
+          , u = t.querySelector(".emailConfirm")
+          , g = t.querySelectorAll(".nameJp")
+          , v = Array.from(t.querySelectorAll(".js-checked"))
+          , q = "1つ以上選択してください。"
+          , C = (w, m) => {
+            let a = document.createElement("p");
+            a.classList.add(s),
+            a.setAttribute("aria-live", "polite"),
+            a.textContent = m,
+            (w.closest("label") || w.parentNode).appendChild(a)
+          }
+          ;
+        t.addEventListener("submit", w => {
+          t.querySelectorAll("." + s).forEach(e => e.remove()),
+          t.querySelectorAll("." + l).forEach(e => e.classList.remove(l));
+          let m = !1
+            , a = null
+            , r = (e, n) => {
+              C(e, n);
+              let p = e.closest("label") || e.parentNode;
+              p && p.tagName.toLowerCase() === "div" && p.classList.add(l),
+              m || (m = !0,
+              a = e),
+              w.preventDefault()
+            }
+            ;
+          i.forEach(e => {
+            e.value.trim().length === 0 && r(e, "入力は必須です")
+          }
+          ),
+          c.forEach(e => {
+            e.value.trim() || r(e, "選択して下さい")
+          }
+          ),
+          o.forEach(e => {
+            let n = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            e.value && !n.test(e.value) && r(e, "Email アドレスの形式が正しくないようです。")
+          }
+          ),
+          y && u && y.value !== u.value && r(u, "メールアドレスが一致しません");
+          let O = e => e.replace(/[^\d]/g, "");
+          if (h.forEach(e => {
+            let n = e.value
+              , p = O(n);
+            n && !/^0\d{9,10}$/.test(p) && r(e, "電話番号の形式が正しくないようです")
+          }
+          ),
+          g.forEach(e => {
+            let n = /^[a-zA-Zａ-ｚＡ-Ｚぁ-んァ-ヶー一-龠々\s\u{F900}-\u{FAFF}]*$/u;
+            e.value && !n.test(e.value) && r(e, "無効な文字が含まれています")
+          }
+          ),
+          f.forEach(e => {
+            let n = /^[0-9]{3}-?[0-9]{4}$/;
+            e.value && !n.test(e.value) && r(e, "郵便番号の形式が正しくないようです")
+          }
+          ),
+          d.forEach(e => {
+            let n = /^[\u3040-\u309Fー]+$/u;
+            e.value && !n.test(e.value) && r(e, "ひらがなでご入力ください")
+          }
+          ),
+          E.forEach(e => {
+            let n = parseInt(e.dataset.maxlength, 10);
+            e.value && e.value.length > n && r(e, n + "文字以内でご入力ください")
+          }
+          ),
+          !(t.querySelector(".js-checked:checked") !== null) && v.length > 0 && r(v[0], q),
+          m && a) {
+            let e = a.getBoundingClientRect().top + window.scrollY - 40;
+            window.scrollTo({
+              top: e,
+              behavior: "smooth"
+            })
+          }
+        }
+        )
+      }
+      function x() {
+        document.addEventListener("DOMContentLoaded", () => {
+          let t = document.querySelector(".js-contactForm");
+          t && T(t)
+        }
+        )
+      }
+      function k() {
+        window.location.pathname.includes("/thanks/") && setTimeout(function() {
+          window.location.href = "../"
+        }, 5 * 1e3)
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        A()
+      }
+      );
+      document.addEventListener("DOMContentLoaded", () => {
+        L()
+      }
+      );
+      b();
+      S();
+      x();
+      k();
+    }
+    )();
+  </script>
+
+</body>
+</html>
