@@ -1619,6 +1619,10 @@
       border-bottom: 2px solid #1F3134;
       transform: rotate(45deg);
       transition: transform 0.3s ease;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      margin-top: -10px;
     }
 
     .p-home__news--details {
@@ -1789,17 +1793,18 @@
     .wave-separator {
       position: relative;
       width: 100%;
-      height: 80px;
+      height: 100px;
       overflow: hidden;
       background-color: #FFFCC9;
+      margin: -1px 0;
     }
 
     .wave-separator svg {
       position: absolute;
-      bottom: 0;
+      bottom: -1px;
       left: 0;
       width: 100%;
-      height: 80px;
+      height: 100px;
     }
 
     .wave-separator--alt {
@@ -1808,7 +1813,7 @@
 
     .wave-separator--alt svg {
       bottom: auto;
-      top: 0;
+      top: -1px;
       transform: rotate(180deg);
     }
 
@@ -2258,8 +2263,8 @@
 
       <!-- Wave Separator -->
       <div class="wave-separator">
-        <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
-          <path d="M0,40 C150,80 300,0 450,40 C600,80 750,0 900,40 C1050,80 1200,0 1200,0 L1200,80 L0,80 Z" fill="#FFA500"/>
+        <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+          <path d="M0,50 C150,100 300,0 450,50 C600,100 750,0 900,50 C1050,100 1200,0 1200,0 L1200,100 L0,100 Z" fill="#FFA500"/>
         </svg>
       </div>
 
@@ -2398,7 +2403,11 @@
       </section>
 
       <!-- Wave Separator -->
-      <div class="wave-separator wave-separator--alt"></div>
+      <div class="wave-separator wave-separator--alt">
+        <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+          <path d="M0,50 C150,100 300,0 450,50 C600,100 750,0 900,50 C1050,100 1200,0 1200,0 L1200,100 L0,100 Z" fill="#FFFCC9"/>
+        </svg>
+      </div>
 
       <!-- Photo Spot Section -->
       <section class="p-home__photospopt section-bg-base" id="photospot">
@@ -2473,7 +2482,11 @@
       </section>
 
       <!-- Wave Separator -->
-      <div class="wave-separator"></div>
+      <div class="wave-separator">
+        <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+          <path d="M0,50 C150,100 300,0 450,50 C600,100 750,0 900,50 C1050,100 1200,0 1200,0 L1200,100 L0,100 Z" fill="#FFA500"/>
+        </svg>
+      </div>
 
       <!-- News Section -->
       <section class="p-home__news section-bg-orange" id="news">
@@ -2811,7 +2824,13 @@
         }, 5 * 1e3)
       }
       document.addEventListener("DOMContentLoaded", () => {
-        A()
+        A({
+          navId: "navArea",
+          btnId: "js-btn",
+          maskId: "mask",
+          linkSelector: "a",
+          openClass: "open"
+        })
       }
       );
       document.addEventListener("DOMContentLoaded", () => {
