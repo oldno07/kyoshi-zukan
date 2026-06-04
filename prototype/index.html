@@ -1,1341 +1,376 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>鋸歯生物図鑑</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700;800&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --bg: #FFF8E7;
-      --bg-ivory: #FFF9F0;
-      --bg-beige: #FFE4C4;
-      --bg-agave: #FFD700;
-      --bg-earth: #DEB887;
-      --bg-withered: #F5DEB3;
-      --card-bg: #FFFFFF;
-      --text: #4A4A4A;
-      --text-light: #6A6A6A;
-      --accent-green: #FF6B6B;
-      --accent-brown: #D2691E;
-      --accent-gold: #FFA500;
-      --accent-pink: #FF69B4;
-      --accent-yellow: #FFD700;
-    }
-
-    body {
-      font-family: "Shippori Mincho", serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* Header */
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      padding: 16px 32px;
-      border-bottom: none;
-    }
-
-    .header-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-family: "Shippori Mincho", serif;
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .nav {
-      display: flex;
-      gap: 20px;
-    }
-
-    .nav a {
-      font-family: "Shippori Mincho", serif;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      padding: 8px 20px;
-      border-radius: 25px;
-      background: var(--bg-ivory);
-    }
-
-    .nav a:hover {
-      background: var(--accent-green);
-      color: #fff;
-      transform: scale(1.05);
-    }
-
-    /* Hero Section */
-    .hero {
-      position: relative;
-      height: 100vh;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .hero-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        to bottom,
-        rgba(240, 230, 211, 0.4) 0%,
-        rgba(255, 254, 247, 0.3) 50%,
-        rgba(240, 230, 211, 0.5) 100%
-      );
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 0 24px;
-      max-width: 800px;
-    }
-
-    .hero-title {
-      font-family: "Shippori Mincho", serif;
-      font-size: 48px;
-      font-weight: 800;
-      margin-bottom: 16px;
-      color: var(--text);
-      text-shadow: 0 2px 8px rgba(255, 255, 255, 0.5);
-    }
-
-    .hero-subtitle {
-      font-size: 18px;
-      margin-bottom: 24px;
-      color: var(--text);
-      text-shadow: 0 1px 4px rgba(255, 255, 255, 0.5);
-      line-height: 1.6;
-    }
-
-    .hero-narration {
-      font-size: 20px;
-      font-style: italic;
-      margin-bottom: 32px;
-      color: var(--text);
-      text-shadow: 0 1px 4px rgba(255, 255, 255, 0.5);
-      line-height: 1.6;
-    }
-
-    .hero-cta {
-      display: inline-block;
-      padding: 16px 48px;
-      background: var(--accent-green);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 30px;
-      font-family: "Shippori Mincho", serif;
-      font-size: 18px;
-      font-weight: 700;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 30px rgba(122, 139, 90, 0.4);
-    }
-
-    .hero-cta:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 10px 40px rgba(122, 139, 90, 0.5);
-    }
-
-    /* Wave Section Container */
-    .wave-section {
-      position: relative;
-      padding: 120px 32px;
-    }
-
-    /* LOG Section */
-    .log-section {
-      position: relative;
-      padding: 100px 32px;
-    }
-
-    .log-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .log-number {
-      font-family: "Cinzel", serif;
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--accent-brown);
-      margin-bottom: 16px;
-    }
-
-    .log-subtitle {
-      font-size: 14px;
-      color: var(--text-light);
-      margin-bottom: 8px;
-      letter-spacing: 0.1em;
-    }
-
-    .log-content {
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .log-text {
-      font-size: 16px;
-      color: var(--text-light);
-      line-height: 1.9;
-      margin-bottom: 32px;
-    }
-
-    .log-cta {
-      display: inline-block;
-      padding: 14px 40px;
-      background: var(--accent-green);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 30px;
-      font-family: "Shippori Mincho", serif;
-      font-size: 16px;
-      font-weight: 700;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 30px rgba(122, 139, 90, 0.4);
-    }
-
-    .log-cta:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 10px 40px rgba(122, 139, 90, 0.5);
-    }
-
-    .classification-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 32px;
-      margin-top: 48px;
-    }
-
-    .classification-card {
-      background: var(--card-bg);
-      padding: 32px;
-      border-radius: 30px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-      text-align: center;
-    }
-
-    .classification-title {
-      font-family: "Shippori Mincho", serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-
-    .classification-desc {
-      font-size: 14px;
-      color: var(--text-light);
-      line-height: 1.7;
-    }
-
-    .wave-divider {
-      position: absolute;
-      left: 0;
-      right: 0;
-      width: 100%;
-      height: 150px;
-      z-index: 1;
-    }
-
-    .wave-divider.top {
-      top: -75px;
-    }
-
-    .wave-divider.bottom {
-      bottom: -75px;
-    }
-
-    .wave-divider svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    /* Section */
-    .section-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-
-    .section-title {
-      font-family: "Shippori Mincho", serif;
-      font-size: 42px;
-      font-weight: 800;
-      margin-bottom: 8px;
-      color: var(--text);
-    }
-
-    .section-subtitle {
-      font-family: "Cinzel", serif;
-      font-size: 14px;
-      letter-spacing: 0.25em;
-      color: var(--text-light);
-      text-transform: uppercase;
-    }
-
-    /* Popular Creatures Grid */
-    .creatures-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-    }
-
-    /* Creature Card */
-    .creature-card {
-      background: var(--card-bg);
-      border-radius: 35px;
-      overflow: hidden;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-      transition: all 0.4s ease;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    .creature-card:nth-child(1) {
-      transform: rotate(-2deg);
-    }
-
-    .creature-card:nth-child(2) {
-      transform: rotate(1deg);
-    }
-
-    .creature-card:nth-child(3) {
-      transform: rotate(-1deg);
-    }
-
-    .creature-card:nth-child(4) {
-      transform: rotate(2deg);
-    }
-
-    .creature-card:hover {
-      transform: translateY(-16px) rotate(0deg) scale(1.03);
-      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.15);
-    }
-
-    .creature-image {
-      position: relative;
-      width: 100%;
-      padding-top: 100%;
-      overflow: hidden;
-      background: var(--bg-cream);
-    }
-
-    .creature-image img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .creature-card:hover .creature-image img {
-      transform: scale(1.08);
-    }
-
-    .creature-content {
-      padding: 28px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .creature-no {
-      font-family: "Cinzel", serif;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      color: var(--text-light);
-      margin-bottom: 8px;
-      opacity: 0.5;
-    }
-
-    .creature-name {
-      font-family: "Shippori Mincho", serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-
-    .creature-nickname {
-      font-size: 15px;
-      color: var(--accent-brown);
-      margin-bottom: 16px;
-      font-weight: 600;
-    }
-
-    .creature-personality {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .personality-tag {
-      background: var(--bg-beige);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 12px;
-      color: var(--text);
-      font-weight: 600;
-      border: 1px solid var(--accent-brown);
-    }
-
-    .creature-cta {
-      margin-top: auto;
-      text-align: center;
-      padding: 14px;
-      background: var(--accent-green);
-      color: #fff;
-      border-radius: 25px;
-      font-family: "Shippori Mincho", serif;
-      font-size: 15px;
-      font-weight: 700;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 16px rgba(122, 139, 90, 0.3);
-    }
-
-    .creature-card:hover .creature-cta {
-      background: var(--accent-brown);
-      box-shadow: 0 4px 16px rgba(139, 115, 85, 0.4);
-    }
-
-    /* Discovery Section */
-    .discovery-section {
-      background: var(--bg-beige);
-      padding: 120px 32px;
-      text-align: center;
-      position: relative;
-    }
-
-    .discovery-creature {
-      max-width: 800px;
-      margin: 0 auto 40px;
-    }
-
-    .discovery-creature img {
-      width: 100%;
-      height: auto;
-      border-radius: 40px;
-      box-shadow: 0 12px 60px rgba(0, 0, 0, 0.15);
-      transform: rotate(3deg);
-    }
-
-    .discovery-title {
-      font-family: "Shippori Mincho", serif;
-      font-size: 38px;
-      font-weight: 800;
-      margin-bottom: 16px;
-      color: var(--text);
-    }
-
-    .discovery-text {
-      font-size: 18px;
-      color: var(--text-light);
-      margin-bottom: 32px;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .discovery-cta {
-      display: inline-block;
-      padding: 16px 48px;
-      background: var(--accent-brown);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 35px;
-      font-family: "Shippori Mincho", serif;
-      font-size: 18px;
-      font-weight: 700;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 30px rgba(139, 115, 85, 0.4);
-    }
-
-    .discovery-cta:hover {
-      transform: translateY(-6px) scale(1.05);
-      box-shadow: 0 10px 40px rgba(139, 115, 85, 0.5);
-    }
-
-    /* Search Section */
-    .search-section {
-      background: var(--bg-ivory);
-      padding: 100px 32px;
-    }
-
-    .search-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin-bottom: 48px;
-    }
-
-    .filter-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .filter-label {
-      font-size: 13px;
-      color: var(--text-light);
-      font-weight: 600;
-    }
-
-    .filter-buttons {
-      display: flex;
-      gap: 10px;
-    }
-
-    .filter-btn {
-      font-family: "Shippori Mincho", serif;
-      font-size: 14px;
-      padding: 12px 24px;
-      background: #fff;
-      border: none;
-      border-radius: 25px;
-      color: var(--text);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 600;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    }
-
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: var(--accent-green);
-      color: #fff;
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(122, 139, 90, 0.4);
-    }
-
-    .search-cta {
-      text-align: center;
-    }
-
-    .search-cta a {
-      display: inline-block;
-      padding: 18px 56px;
-      background: var(--accent-gold);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 35px;
-      font-family: "Shippori Mincho", serif;
-      font-size: 20px;
-      font-weight: 700;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 30px rgba(201, 169, 97, 0.4);
-    }
-
-    .search-cta a:hover {
-      transform: translateY(-6px) scale(1.05);
-      box-shadow: 0 10px 40px rgba(201, 169, 97, 0.5);
-    }
-
-    /* Observation Log Section */
-    .observation-section {
-      background: var(--bg);
-      padding: 100px 32px;
-    }
-
-    .observation-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 40px;
-    }
-
-    .observation-card {
-      background: var(--card-bg);
-      border-radius: 35px;
-      padding: 32px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .observation-card:nth-child(1) {
-      transform: rotate(-1deg);
-    }
-
-    .observation-card:nth-child(2) {
-      transform: rotate(2deg);
-    }
-
-    .observation-card:nth-child(3) {
-      transform: rotate(-2deg);
-    }
-
-    .observation-card:hover {
-      transform: translateY(-12px) rotate(0deg);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-    }
-
-    .observation-date {
-      font-family: "Cinzel", serif;
-      font-size: 12px;
-      letter-spacing: 0.2em;
-      color: var(--text-light);
-      margin-bottom: 12px;
-    }
-
-    .observation-title {
-      font-family: "Shippori Mincho", serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-
-    .observation-content {
-      font-size: 15px;
-      color: var(--text-light);
-      margin-bottom: 16px;
-      line-height: 1.8;
-    }
-
-    .observation-note {
-      background: var(--bg-beige);
-      padding: 14px 18px;
-      border-radius: 20px;
-      font-size: 14px;
-      color: var(--text);
-      font-style: italic;
-      border: 1px solid var(--accent-brown);
-    }
-
-    /* Transfer Section */
-    .transfer-section {
-      background: var(--bg-withered);
-      padding: 100px 32px;
-    }
-
-    .transfer-description {
-      max-width: 600px;
-      margin: 0 auto 48px;
-      text-align: center;
-      font-size: 16px;
-      color: var(--text-light);
-      line-height: 1.9;
-    }
-
-    .transfer-subtitle {
-      font-size: 14px;
-      color: var(--text-light);
-      margin-bottom: 8px;
-      letter-spacing: 0.1em;
-    }
-
-    /* Swiper Container */
-    .swiper {
-      width: 100%;
-      padding: 20px 0;
-    }
-
-    .swiper-slide {
-      width: auto;
-    }
-
-    .transfer-card {
-      background: var(--card-bg);
-      border-radius: 30px;
-      overflow: hidden;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
-      text-decoration: none;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      max-width: 320px;
-    }
-
-    .transfer-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.15);
-    }
-
-    .transfer-image {
-      position: relative;
-      width: 100%;
-      padding-top: 75%;
-      overflow: hidden;
-      background: var(--bg-beige);
-    }
-
-    .transfer-image img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .transfer-content {
-      padding: 20px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .transfer-name {
-      font-family: "Shippori Mincho", serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-
-    .transfer-intro {
-      font-size: 14px;
-      color: var(--text-light);
-      line-height: 1.7;
-      margin-bottom: 16px;
-      flex: 1;
-    }
-
-    .transfer-cta {
-      display: inline-block;
-      padding: 12px 28px;
-      background: var(--accent-green);
-      color: #fff;
-      border-radius: 25px;
-      font-family: "Shippori Mincho", serif;
-      font-size: 14px;
-      font-weight: 700;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 16px rgba(122, 139, 90, 0.3);
-      text-align: center;
-    }
-
-    .transfer-card:hover .transfer-cta {
-      background: var(--accent-brown);
-      box-shadow: 0 4px 16px rgba(139, 115, 85, 0.4);
-    }
-
-    /* Swiper Navigation */
-    .swiper-button-next,
-    .swiper-button-prev {
-      color: var(--accent-brown);
-    }
-
-    .swiper-pagination-bullet {
-      background: var(--accent-brown);
-    }
-
-    .swiper-pagination-bullet-active {
-      background: var(--accent-green);
-    }
-
-    /* About Section */
-    .about-section {
-      padding: 100px 32px;
-      text-align: center;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .researcher-profile {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 48px;
-      margin-top: 48px;
-    }
-
-    .researcher-image {
-      max-width: 300px;
-    }
-
-    .researcher-image img {
-      width: 100%;
-      height: auto;
-      border-radius: 30px;
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
-    }
-
-    .researcher-content {
-      max-width: 600px;
-    }
-
-    .researcher-text {
-      font-size: 16px;
-      color: var(--text-light);
-      line-height: 1.9;
-      margin-bottom: 24px;
-    }
-
-    .final-links {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      margin-top: 48px;
-    }
-
-    .final-link {
-      padding: 14px 36px;
-      background: var(--card-bg);
-      color: var(--text);
-      text-decoration: none;
-      border-radius: 25px;
-      font-family: "Shippori Mincho", serif;
-      font-size: 15px;
-      font-weight: 600;
-      border: 1px solid var(--accent-brown);
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    }
-
-    .final-link:hover {
-      background: var(--accent-brown);
-      color: #fff;
-      transform: scale(1.05);
-    }
-
-    .final-message {
-      font-family: "Shippori Mincho", serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text);
-      margin-top: 48px;
-      text-align: center;
-    }
-
-    /* Footer */
-    .footer {
-      background: var(--bg-agave);
-      padding: 40px 32px;
-      text-align: center;
-    }
-
-    .footer-text {
-      font-size: 14px;
-      color: var(--text-light);
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .hero-main-creature {
-        max-width: 100%;
-      }
-
-      .hero-catch {
-        font-size: 24px;
-      }
-
-      .creatures-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      }
-
-      .nav {
-        display: none;
-      }
-
-      .filter-group {
-        width: 100%;
-      }
-
-      .filter-buttons {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .hero-catch {
-        font-size: 20px;
-      }
-
-      .creature-content {
-        padding: 24px;
-      }
-
-      .creature-name {
-        font-size: 20px;
-      }
-
-      .section-title {
-        font-size: 32px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <svg style="position: absolute; width: 0; height: 0;">
-    <defs>
-      <clipPath id="wave-hero-top" clipPathUnits="objectBoundingBox">
-        <path d="M0,0.3 C0.2,0.1 0.4,0.5 0.6,0.3 C0.8,0.1 1,0.3 1,0 L0,0 Z"/>
-      </clipPath>
-      <clipPath id="wave-hero-bottom" clipPathUnits="objectBoundingBox">
-        <path d="M0,0.3 C0.2,0.5 0.4,0.1 0.6,0.3 C0.8,0.5 1,0.3 1,1 L0,1 Z"/>
-      </clipPath>
-    </defs>
-  </svg>
-
-  <!-- Header -->
-  <header class="header">
-    <div class="header-inner">
-      <a href="#" class="logo">鋸歯生物図鑑</a>
-      <nav class="nav">
-        <a href="#spot1">鋸歯生物って？</a>
-        <a href="#spot2">初観測記録</a>
-        <a href="#spot3">生態分類</a>
-        <a href="#spot4">観測アーカイブ</a>
-        <a href="#foods">鋸歯生物研究所</a>
-        <a href="#goods">譲渡局</a>
-        <a href="#news">観測ニュース</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline>
-      <source src="../images/hero-video.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 class="hero-title">鋸歯生物がくらす世界！</h1>
-      <p class="hero-subtitle">植物と動物のあいだに存在する未知の生命体群</p>
-      <p class="hero-narration">「私はこの展示室で、最初の個体と遭遇した——」</p>
-      <a href="#spot1" class="hero-cta">鋸歯生物って？</a>
-    </div>
-  </section>
-
-  <!-- SPOT 1: 鋸歯生物って？ -->
-  <section class="log-section" id="spot1" style="background: var(--bg-ivory);">
-    <div class="wave-divider top">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,25 400,125 600,75 C800,25 1000,125 1200,75 L1200,150 L0,150 Z" fill="var(--bg-ivory)"/>
-      </svg>
-    </div>
-    <div class="section-inner">
-      <div class="log-header">
-        <div class="log-number">SPOT 1</div>
-        <h2 class="section-title">鋸歯生物って？</h2>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>鋸歯生物図鑑</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="header-logo">鋸歯生物図鑑</div>
       </div>
+    </header>
 
-      <div class="log-content">
-        <p class="log-text">
-          植物と動物のあいだに存在する未知の生命体群。<br>
-          植物寄生型、共生型、移動型など多様な形態を持つ。<br>
-          環境適応能力が高く、アガベを中心とした生態系に適応している。
+    <!-- HERO: 入場ゲート -->
+    <section class="hero" id="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="../images/hero-video.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-noise"></div>
+
+      <!-- UI Labels (四隅) -->
+      <div class="ui-label ui-label--tl">ENTRY GATE</div>
+      <div class="ui-label ui-label--tr">ZONE 01</div>
+      <div class="ui-label ui-label--bl">RESEARCHER MODE</div>
+      <div class="ui-label ui-label--br">OPEN NOW</div>
+
+      <div class="hero-content">
+        <h1 class="hero-title">鋸歯生物の世界へようこそ</h1>
+        <div class="hero-cta-group">
+          <a href="#catalog" class="hero-cta hero-cta--primary">図鑑を見る</a>
+          <a href="#log" class="hero-cta hero-cta--secondary">観測ログを見る</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTRO: 世界導入 -->
+    <section class="intro" id="intro">
+      <div class="intro-decoration"></div>
+      <div class="intro-inner">
+        <p class="intro-text">
+          植物と動物のあいだに存在する未知の生命体群。
+          あなたは今、研究員としてこの世界に足を踏み入れた。
         </p>
       </div>
-    </div>
-    <div class="wave-divider bottom">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,125 400,25 600,75 C800,125 1000,25 1200,75 L1200,0 L0,0 Z" fill="var(--bg-ivory)"/>
-      </svg>
-    </div>
-  </section>
+    </section>
 
-  <!-- SPOT 2: 初観測記録 -->
-  <section class="log-section" id="spot2" style="background: var(--bg-beige);">
-    <div class="wave-divider top">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,25 400,125 600,75 C800,25 1000,125 1200,75 L1200,150 L0,150 Z" fill="var(--bg-beige)"/>
-      </svg>
-    </div>
-    <div class="section-inner">
-      <div class="log-header">
-        <div class="log-number">SPOT 2</div>
-        <h2 class="section-title">初観測記録</h2>
-        <p class="log-subtitle">ペリカン研究員</p>
-      </div>
-
-      <div class="log-content">
-        <p class="log-text">
-          ある日、アガベと動物のあいだにいる奇妙な生き物を見つけた。<br>
-          葉を持ちながら歩き、鋸歯を持ちながら眠る。<br>
-          その存在を「鋸歯生物」と名付けた。<br>
-          未分類生物との接触ログを記録し始めた。
-        </p>
-      </div>
-    </div>
-    <div class="wave-divider bottom">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,125 400,25 600,75 C800,125 1000,25 1200,75 L1200,0 L0,0 Z" fill="var(--bg-beige)"/>
-      </svg>
-    </div>
-  </section>
-
-  <!-- SPOT 3: 生態分類 -->
-  <section class="log-section" id="spot3" style="background: var(--bg);">
-    <div class="wave-divider top">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,25 400,125 600,75 C800,25 1000,125 1200,75 L1200,150 L0,150 Z" fill="var(--bg)"/>
-      </svg>
-    </div>
-    <div class="section-inner">
-      <div class="log-header">
-        <div class="log-number">SPOT 3</div>
-        <h2 class="section-title">生態分類</h2>
-      </div>
-
-      <div class="log-content">
-        <div class="classification-grid">
-          <div class="classification-card">
-            <h3 class="classification-title">植物寄生型</h3>
-            <p class="classification-desc">アガベなどの植物に寄生し、共生関係を築く個体</p>
+    <!-- STORY: ペリカン研究員のおはなし -->
+    <section class="story" id="story">
+      <div class="story-decoration"></div>
+      <div class="story-inner">
+        <div class="story-title-sticker">ペリカン研究員のおはなし</div>
+        <div class="story-illustration">
+          <div class="creatures-row creatures-row--top">
+            <img
+              src="../images/no_001.png"
+              alt="スニャグルトゥース"
+              class="creature-img"
+            />
+            <img
+              src="../images/k_001.png"
+              alt="ハザマドリ"
+              class="creature-img"
+            />
+            <img
+              src="../images/no_003.png"
+              alt="レッドキャットミーズル"
+              class="creature-img"
+            />
           </div>
-          <div class="classification-card">
-            <h3 class="classification-title">共生型</h3>
-            <p class="classification-desc">植物と動物の特性を併せ持つ中間形態</p>
+          <div class="researcher-center">
+            <img
+              src="../images/pelican.png"
+              alt="ペリカン研究員"
+              class="researcher-image"
+            />
           </div>
-          <div class="classification-card">
-            <h3 class="classification-title">移動型</h3>
-            <p class="classification-desc">自らの意思で移動し、環境を選択できる個体</p>
+          <div class="creatures-row creatures-row--bottom">
+            <img
+              src="../images/no_002.png"
+              alt="にゃんこブルー"
+              class="creature-img"
+            />
+            <img
+              src="../images/no_004.png"
+              alt="にゃガベチタノタ"
+              class="creature-img"
+            />
+            <img
+              src="../images/no_005.png"
+              alt="ゴリラホリダ"
+              class="creature-img"
+            />
+          </div>
+        </div>
+        <div class="story-text">
+          <p>
+            可愛くて奇妙な生き物を見つけたペリカン研究員は、その動物と植物の間にいる生き物を「鋸歯生物」と名付けて、ずかんを作ることにしました。
+          </p>
+          <p>たくさんの鋸歯生物と出会い、おねんどで標本を作りました。</p>
+          <p>ペリカン研究員は、今も研究を続けています。</p>
+        </div>
+        <div class="story-signature">Pelican Researcher</div>
+      </div>
+    </section>
+
+    <!-- LOG: 観測記録セクション -->
+    <section class="log" id="log">
+      <div class="section-header section-header--log">
+        <h2 class="section-title">観測記録</h2>
+        <p class="section-subtitle">OBSERVATION LOG</p>
+      </div>
+      <div class="log-grid">
+        <div class="spot-wrapper">
+          <div class="spot">
+            <span class="spot-label">SPOT</span>
+            <span class="spot-number">1</span>
+          </div>
+          <div class="log-card fade-in">
+            <div class="log-card-image">
+              <div class="log-card-placeholder">LOG 01</div>
+            </div>
+            <div class="log-card-content">
+              <h3 class="log-card-title">初遭遇</h3>
+              <p class="log-card-text">アガベの葉陰で最初の個体を確認</p>
+              <div class="log-card-memo">ペリカン研究員メモ：動いている…！</div>
+            </div>
+          </div>
+        </div>
+        <div class="spot-wrapper">
+          <div class="spot">
+            <span class="spot-label">SPOT</span>
+            <span class="spot-number">2</span>
+          </div>
+          <div class="log-card fade-in">
+            <div class="log-card-image">
+              <div class="log-card-placeholder">LOG 02</div>
+            </div>
+            <div class="log-card-content">
+              <h3 class="log-card-title">基本理解</h3>
+              <p class="log-card-text">植物と動物の特性を併せ持つ中間形態</p>
+              <div class="log-card-memo">ペリカン研究員メモ：分類不能</div>
+            </div>
+          </div>
+        </div>
+        <div class="spot-wrapper">
+          <div class="spot">
+            <span class="spot-label">SPOT</span>
+            <span class="spot-number">3</span>
+          </div>
+          <div class="log-card fade-in">
+            <div class="log-card-image">
+              <div class="log-card-placeholder">LOG 03</div>
+            </div>
+            <div class="log-card-content">
+              <h3 class="log-card-title">行動観測</h3>
+              <p class="log-card-text">自らの意思で環境を選択する個体</p>
+              <div class="log-card-memo">
+                ペリカン研究員メモ：夜間活動を確認
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="spot-wrapper">
+          <div class="spot">
+            <span class="spot-label">SPOT</span>
+            <span class="spot-number">4</span>
+          </div>
+          <div class="log-card fade-in">
+            <div class="log-card-image">
+              <div class="log-card-placeholder">LOG 04</div>
+            </div>
+            <div class="log-card-content">
+              <h3 class="log-card-title">異常個体</h3>
+              <p class="log-card-text">通常とは異なる行動パターンを観測</p>
+              <div class="log-card-memo">ペリカン研究員メモ：警戒が必要</div>
+            </div>
+          </div>
+        </div>
+        <div class="spot-wrapper">
+          <div class="spot">
+            <span class="spot-label">SPOT</span>
+            <span class="spot-number">5</span>
+          </div>
+          <div class="log-card fade-in">
+            <div class="log-card-image">
+              <div class="log-card-placeholder">LOG 05</div>
+            </div>
+            <div class="log-card-content">
+              <h3 class="log-card-title">共生関係</h3>
+              <p class="log-card-text">アガベとの共生を確認</p>
+              <div class="log-card-memo">ペリカン研究員メモ：相互依存</div>
+            </div>
+          </div>
+        </div>
+        <div class="spot-wrapper">
+          <div class="spot">
+            <span class="spot-label">SPOT</span>
+            <span class="spot-number">6</span>
+          </div>
+          <div class="log-card fade-in">
+            <div class="log-card-image">
+              <div class="log-card-placeholder">LOG 06</div>
+            </div>
+            <div class="log-card-content">
+              <h3 class="log-card-title">観測者メモ</h3>
+              <p class="log-card-text">継続的な観測記録の重要性</p>
+              <div class="log-card-memo">ペリカン研究員メモ：記録を続ける</div>
+            </div>
+          </div>
+        </div>
+        <div class="spot-wrapper">
+          <div class="spot">
+            <span class="spot-label">SPOT</span>
+            <span class="spot-number">7</span>
+          </div>
+          <div class="log-card fade-in">
+            <div class="log-card-image">
+              <div class="log-card-placeholder">LOG 07</div>
+            </div>
+            <div class="log-card-content">
+              <h3 class="log-card-title">未確定情報</h3>
+              <p class="log-card-text">まだ解明されていない謎</p>
+              <div class="log-card-memo">ペリカン研究員メモ：調査中</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="wave-divider bottom">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,125 400,25 600,75 C800,125 1000,25 1200,75 L1200,0 L0,0 Z" fill="var(--bg)"/>
-      </svg>
-    </div>
-  </section>
+    </section>
 
-  <!-- SPOT 4: 観測アーカイブ -->
-  <section class="log-section" id="spot4" style="background: var(--bg-ivory);">
-    <div class="wave-divider top">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,25 400,125 600,75 C800,25 1000,125 1200,75 L1200,150 L0,150 Z" fill="var(--bg-ivory)"/>
-      </svg>
-    </div>
-    <div class="section-inner">
-      <div class="log-header">
-        <div class="log-number">SPOT 4</div>
-        <h2 class="section-title">観測アーカイブ</h2>
+    <!-- CATALOG: 図鑑一覧 -->
+    <section class="catalog" id="catalog">
+      <div class="section-header section-header--catalog">
+        <h2 class="section-title">図鑑</h2>
+        <p class="section-subtitle">CATALOG</p>
       </div>
-
-      <div class="log-content">
-        <p class="log-text">
-          観測個体は増え続けている。<br>
-          新しい発見、新しい出会い。<br>
-          図鑑一覧ページで全個体を確認できます。
-        </p>
-        <a href="#catalog" class="log-cta">図鑑一覧へ</a>
+      <div class="catalog-grid">
+        <div class="catalog-card">
+          <div class="catalog-no">NO.001</div>
+          <div class="catalog-name">スニャグルトゥース</div>
+          <div class="catalog-type">ANIMAL+</div>
+        </div>
+        <div class="catalog-card">
+          <div class="catalog-no">NO.002</div>
+          <div class="catalog-name">ブラックにゃんこブルー</div>
+          <div class="catalog-type">ANIMAL+</div>
+        </div>
+        <div class="catalog-card">
+          <div class="catalog-no">NO.003</div>
+          <div class="catalog-name">レッドキャットミーズル</div>
+          <div class="catalog-type">ANIMAL+</div>
+        </div>
+        <div class="catalog-card">
+          <div class="catalog-no">NO.004</div>
+          <div class="catalog-name">にゃガベ チタノタ</div>
+          <div class="catalog-type">ANIMAL+</div>
+        </div>
+        <div class="catalog-card">
+          <div class="catalog-no">NO.005</div>
+          <div class="catalog-name">ゴリラホリダ</div>
+          <div class="catalog-type">ANIMAL+</div>
+        </div>
+        <div class="catalog-card">
+          <div class="catalog-no">NO.006</div>
+          <div class="catalog-name">キンタ魔丸</div>
+          <div class="catalog-type">ANIMAL+</div>
+        </div>
+        <div class="catalog-card">
+          <div class="catalog-no">NO.007</div>
+          <div class="catalog-name">スカイブルーニャンダホー</div>
+          <div class="catalog-type">ANIMAL+</div>
+        </div>
+        <div class="catalog-card">
+          <div class="catalog-no">NO.008</div>
+          <div class="catalog-name">アガベカブトトカゲ</div>
+          <div class="catalog-type">ANIMAL+</div>
+        </div>
       </div>
-    </div>
-    <div class="wave-divider bottom">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,125 400,25 600,75 C800,125 1000,25 1200,75 L1200,0 L0,0 Z" fill="var(--bg-ivory)"/>
-      </svg>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOD & DRINK: 鋸歯生物研究所 -->
-  <section class="log-section" id="foods" style="background: var(--bg-beige);">
-    <div class="wave-divider top">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,25 400,125 600,75 C800,25 1000,125 1200,75 L1200,150 L0,150 Z" fill="var(--bg-beige)"/>
-      </svg>
-    </div>
-    <div class="section-inner">
-      <div class="log-header">
-        <div class="log-number">FOOD & DRINK</div>
-        <h2 class="section-title">鋸歯生物研究所</h2>
+    <!-- AREA: 体験エリア (横スクロール) -->
+    <section class="area" id="area">
+      <div class="section-header section-header--area">
+        <h2 class="section-title">体験エリア</h2>
+        <p class="section-subtitle">EXPERIENCE ZONE</p>
       </div>
-
-      <div class="log-content">
-        <p class="log-text">
-          生体の培養・観測・実験ログ拠点。<br>
-          研究施設ではなく「生体環境管理施設」。
-        </p>
-      </div>
-    </div>
-    <div class="wave-divider bottom">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,125 400,25 600,75 C800,125 1000,25 1200,75 L1200,0 L0,0 Z" fill="var(--bg-beige)"/>
-      </svg>
-    </div>
-  </section>
-
-  <!-- GOODS: 鋸歯生物 譲渡局 -->
-  <section class="log-section" id="goods" style="background: var(--bg-withered);">
-    <div class="wave-divider top">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,25 400,125 600,75 C800,25 1000,125 1200,75 L1200,150 L0,150 Z" fill="var(--bg-withered)"/>
-      </svg>
-    </div>
-    <div class="section-inner">
-      <div class="log-header">
-        <div class="log-number">GOODS</div>
-        <h2 class="section-title">鋸歯生物 譲渡局</h2>
-      </div>
-
-      <div class="log-content">
-        <p class="log-text">
-          個体の譲渡・お迎え・移送記録。<br>
-          グッズではなく「生体の管理・移送システム」。
-        </p>
-      </div>
-    </div>
-    <div class="wave-divider bottom">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,125 400,25 600,75 C800,125 1000,25 1200,75 L1200,0 L0,0 Z" fill="var(--bg-withered)"/>
-      </svg>
-    </div>
-  </section>
-
-  <!-- Role-playing: ログステッカー登場！ -->
-  <section class="log-section" id="sticker" style="background: var(--bg);">
-    <div class="wave-divider top">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,25 400,125 600,75 C800,125 1000,25 1200,75 L1200,150 L0,150 Z" fill="var(--bg)"/>
-      </svg>
-    </div>
-    <div class="section-inner">
-      <div class="log-header">
-        <div class="log-number">なりきりコンテンツ</div>
-        <h2 class="section-title">ログステッカー登場！</h2>
-      </div>
-
-      <div class="log-content">
-        <p class="log-text">
-          ユーザーが研究員として観測記録を残す体験。<br>
-          ステッカー＝観測ログの証明。
-        </p>
-      </div>
-    </div>
-    <div class="wave-divider bottom">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,125 400,25 600,75 C800,125 1000,25 1200,75 L1200,0 L0,0 Z" fill="var(--bg)"/>
-      </svg>
-    </div>
-  </section>
-
-  <!-- PHOTO SPOT: お迎えできる鋸歯生物 -->
-  <section class="log-section" id="photospot" style="background: var(--bg-ivory);">
-    <div class="wave-divider top">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,25 400,125 600,75 C800,25 1000,125 1200,75 L1200,150 L0,150 Z" fill="var(--bg-ivory)"/>
-      </svg>
-    </div>
-    <div class="section-inner">
-      <div class="log-header">
-        <div class="log-number">PHOTO SPOT</div>
-        <h2 class="section-title">お迎えできる鋸歯生物</h2>
-      </div>
-
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <a href="#" class="transfer-card">
-              <div class="transfer-image">
-                <img src="../images/no_001.png" alt="スニャグルトゥース">
-              </div>
-              <div class="transfer-content">
-                <h3 class="transfer-name">スニャグルトゥース</h3>
-                <p class="transfer-intro">日向ぼっこが好きな個体。比較的人に慣れています。</p>
-                <div class="transfer-cta">お迎え</div>
-              </div>
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="#" class="transfer-card">
-              <div class="transfer-image">
-                <img src="../images/k_001.png" alt="ハザマドリ">
-              </div>
-              <div class="transfer-content">
-                <h3 class="transfer-name">ハザマドリ</h3>
-                <p class="transfer-intro">プレステラの縁に巣を作ります。静かな環境を好みます。</p>
-                <div class="transfer-cta">お迎え</div>
-              </div>
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="#" class="transfer-card">
-              <div class="transfer-image">
-                <img src="../images/no_003.png" alt="レッドキャットミーズル">
-              </div>
-              <div class="transfer-content">
-                <h3 class="transfer-name">レッドキャットミーズル</h3>
-                <p class="transfer-intro">好奇心旺盛。現在も観測が続いています。</p>
-                <div class="transfer-cta">観察記録を見る</div>
-              </div>
-            </a>
+      <div class="area-scroll">
+        <div class="area-card">
+          <div class="area-card-inner">
+            <div class="area-icon">📸</div>
+            <h3 class="area-title">フォトスポット</h3>
+            <p class="area-desc">鋸歯生物との記念撮影コーナー</p>
           </div>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
+        <div class="area-card">
+          <div class="area-card-inner">
+            <div class="area-icon">🔄</div>
+            <h3 class="area-title">譲渡局</h3>
+            <p class="area-desc">鋸歯生物の譲渡・交換窓口</p>
+          </div>
+        </div>
+        <div class="area-card">
+          <div class="area-card-inner">
+            <div class="area-icon">🔬</div>
+            <h3 class="area-title">研究所</h3>
+            <p class="area-desc">最新の研究成果を公開中</p>
+          </div>
+        </div>
+        <div class="area-card">
+          <div class="area-card-inner">
+            <div class="area-icon">🎁</div>
+            <h3 class="area-title">グッズショップ</h3>
+            <p class="area-desc">オリジナルグッズを販売</p>
+          </div>
+        </div>
+        <div class="area-card">
+          <div class="area-card-inner">
+            <div class="area-icon">📖</div>
+            <h3 class="area-title">図鑑コーナー</h3>
+            <p class="area-desc">全個体の詳細データを閲覧</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="wave-divider bottom">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,125 400,25 600,75 C800,125 1000,25 1200,75 L1200,0 L0,0 Z" fill="var(--bg-ivory)"/>
-      </svg>
-    </div>
-  </section>
+    </section>
 
-  <!-- NEWS: 観測ニュース -->
-  <section class="log-section" id="news" style="background: var(--bg);">
-    <div class="wave-divider top">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,25 400,125 600,75 C800,125 1000,25 1200,75 L1200,150 L0,150 Z" fill="var(--bg)"/>
-      </svg>
-    </div>
-    <div class="section-inner">
-      <div class="log-header">
-        <div class="log-number">NEWS</div>
+    <!-- NEWS: 更新ログ -->
+    <section class="news" id="news">
+      <div class="section-header section-header--news">
         <h2 class="section-title">観測ニュース</h2>
+        <p class="section-subtitle">UPDATE LOG</p>
       </div>
-
-      <div class="log-content">
-        <p class="log-text">
-          最新の観測情報や新種発見のお知らせ。<br>
-          鋸歯生物の世界は常に拡張され続けている。
-        </p>
-      </div>
-    </div>
-    <div class="wave-divider bottom">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,125 400,25 600,75 C800,125 1000,25 1200,75 L1200,0 L0,0 Z" fill="var(--bg)"/>
-      </svg>
-    </div>
-  </section>
-
-  <!-- FINAL: ペリカン研究員紹介 -->
-  <section class="about-section" id="about">
-    <div class="wave-divider top">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,25 400,125 600,75 C800,125 1000,25 1200,75 L1200,150 L0,150 Z" fill="var(--bg)"/>
-      </svg>
-    </div>
-    <div class="section-inner">
-      <div class="section-header">
-        <h2 class="section-title">ペリカン研究員 アガベスト</h2>
-        <p class="section-subtitle">PELICAN RESEARCHER AGABEST</p>
-      </div>
-
-      <div class="researcher-profile">
-        <div class="researcher-image">
-          <img src="../images/unknown.png" alt="ペリカン研究員">
+      <div class="news-list">
+        <div class="news-item">
+          <span class="news-date">2026.06.01</span>
+          <span class="news-title">新個体「アガベ・ワンダラー」を発見</span>
         </div>
-        <div class="researcher-content">
-          <p class="researcher-text">
-            可愛くて奇妙な生き物を見つけたペリカン研究員は、<br>
-            その動物と植物の間にいる生き物を鋸歯生物と名付けて、<br>
-            ずかんを作ることにしました。
-          </p>
-          <p class="researcher-text">
-            たくさんの鋸歯生物と出会い、<br>
-            おねんどで標本を作りました。
-          </p>
-          <p class="researcher-text">
-            ペリカン研究員は、今も研究を続けています。
-          </p>
+        <div class="news-item">
+          <span class="news-date">2026.05.20</span>
+          <span class="news-title">フォトスポットをリニューアル</span>
+        </div>
+        <div class="news-item">
+          <span class="news-date">2026.05.10</span>
+          <span class="news-title">図鑑データを更新（全12種類）</span>
+        </div>
+        <div class="news-item">
+          <span class="news-date">2026.04.28</span>
+          <span class="news-title">譲渡局の営業時間を変更</span>
         </div>
       </div>
+    </section>
 
-      <div class="final-links">
-        <a href="#" class="final-link">Instagram</a>
-        <a href="#" class="final-link">YouTube</a>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-logo">鋸歯生物図鑑</div>
+        <div class="footer-signature">観測者：ペリカン研究員 アガベスト</div>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Twitter</a>
+          <a href="#" class="footer-link">Instagram</a>
+          <a href="#" class="footer-link">Contact</a>
+        </div>
+        <p class="footer-message">— 観測を続ける —</p>
       </div>
+    </footer>
 
-      <p class="final-message">
-        この展示は、まだ拡張され続けている。
-      </p>
-    </div>
-    <div class="wave-divider bottom">
-      <svg viewBox="0 0 1200 150" preserveAspectRatio="none">
-        <path d="M0,75 C200,125 400,25 600,75 C800,125 1000,25 1200,75 L1200,0 L0,0 Z" fill="var(--bg)"/>
-      </svg>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <p class="footer-text">© 2026 鋸歯生物図鑑</p>
-  </footer>
-
-  <script>
-    const swiper = new Swiper('.mySwiper', {
-      slidesPerView: 1.2,
-      spaceBetween: 24,
-      centeredSlides: false,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 24,
-        },
-        1024: {
-          slidesPerView: 3,
-          spaceBetween: 32,
-        },
-        1280: {
-          slidesPerView: 4,
-          spaceBetween: 32,
-        },
-      },
-    });
-  </script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
