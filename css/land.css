@@ -372,9 +372,10 @@ body {
 }
 
 .story-text p {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 2;
   color: var(--text-primary);
+  margin-bottom: 0.8em; /* ← ここで余白を調整 */
 }
 
 .story-signature {
