@@ -1269,7 +1269,24 @@
         font-family: "M PLUS Rounded 1c", sans-serif;
         font-weight: 800;
         color: #1f3134;
+        position: relative;
+        width: fit-content;
+        margin-inline: auto;
+        padding-left: 20px;
       }
+
+      .c-paragraph__b-fctoryttl::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        background-color: #FFA500;
+        border-radius: 50%;
+      }
+
       @media screen and (min-width: 768px) {
         .c-paragraph__b-fctoryttl {
           font-size: 36px;
@@ -1426,6 +1443,22 @@
       .c-paragraph__goods-top {
         font-family: "M PLUS Rounded 1c", sans-serif;
         font-weight: 800;
+        position: relative;
+        width: fit-content;
+        margin-inline: auto;
+        padding-left: 20px;
+      }
+
+      .c-paragraph__goods-top::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        background-color: #FFA500;
+        border-radius: 50%;
       }
 
       .u-text__subttl-bold {
@@ -1469,7 +1502,24 @@
         font-family: "M PLUS Rounded 1c", sans-serif;
         font-weight: 800;
         color: #1f3134;
+        position: relative;
+        width: fit-content;
+        margin-inline: auto;
+        padding-left: 20px;
       }
+
+      .c-paragraph__photostop--ttl::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        background-color: #FFA500;
+        border-radius: 50%;
+      }
+
       @media screen and (min-width: 768px) {
         .c-paragraph__photostop--ttl {
           font-size: 36px;
@@ -1569,7 +1619,24 @@
         font-family: "M PLUS Rounded 1c", sans-serif;
         font-weight: 800;
         color: #1f3134;
+        position: relative;
+        width: fit-content;
+        margin-inline: auto;
+        padding-left: 20px;
       }
+
+      .c-paragraph__news::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        background-color: #FFA500;
+        border-radius: 50%;
+      }
+
       @media screen and (min-width: 768px) {
         .c-paragraph__news {
           font-size: 36px;
@@ -1676,10 +1743,18 @@
       }
 
       /* Footer */
+      .l-footer {
+        position: relative;
+        background: linear-gradient(135deg, #FFFCC9 0%, #FFE45E 100%);
+        overflow: hidden;
+      }
+
       .l-footer__kirin {
         position: absolute;
         bottom: 0;
         right: 5%;
+        max-width: 250px;
+        opacity: 0.8;
       }
 
       .l-footer__kirin img {
@@ -1689,51 +1764,88 @@
 
       .l-footer__inner {
         text-align: center;
-        padding: 40px 20px;
+        padding: 25px 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .l-footer__header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+      }
+
+      .l-footer__logo {
+        flex: 0 0 auto;
       }
 
       .l-footer__logo img {
-        max-width: 100%;
+        max-width: 180px;
         height: auto;
-        margin-bottom: 20px;
       }
 
       .l-footer__txt {
         font-family: "M PLUS Rounded 1c", sans-serif;
         font-weight: 700;
         color: #1f3134;
-        margin-bottom: 20px;
+        margin-bottom: 0;
       }
       @media screen and (min-width: 768px) {
-        .l-footer__txt {
-          font-size: 18px;
-          font-size: 1.125rem;
-        }
-      }
-      @media screen and (max-width: 767px) {
         .l-footer__txt {
           font-size: 16px;
           font-size: 1rem;
         }
       }
+      @media screen and (max-width: 767px) {
+        .l-footer__txt {
+          font-size: 14px;
+          font-size: 0.875rem;
+        }
+      }
 
       .l-footer__sns--wrap {
         display: flex;
-        gap: 20px;
+        gap: 10px;
         justify-content: center;
-        margin-bottom: 40px;
+        margin-bottom: 15px;
+      }
+
+      .l-footer__sns {
+        flex: 0 0 auto;
       }
 
       .l-footer__sns img {
-        max-width: 100%;
+        max-width: 100px;
         height: auto;
+      }
+
+      .l-footer__content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        max-width: 500px;
+        margin: 0 auto;
+        text-align: left;
       }
 
       .l-footer__links {
         display: flex;
-        gap: 20px;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .l-footer__links--item {
+        display: block;
+      }
+
+      .l-footer__info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
         justify-content: center;
-        margin-bottom: 20px;
       }
 
       .c-button__link {
@@ -1759,13 +1871,15 @@
       }
 
       .l-footer__copy {
-        margin-top: 40px;
+        margin-top: 15px;
+        grid-column: 1 / -1;
+        text-align: center;
       }
 
       .u-text__copy {
         font-family: "M PLUS Rounded 1c", sans-serif;
         font-weight: 400;
-        color: rgba(255, 255, 255, 0.6);
+        color: #1f3134;
       }
       @media screen and (min-width: 768px) {
         .u-text__copy {
@@ -2065,8 +2179,8 @@
           position: relative;
           bottom: 0;
           right: 0;
-          width: 200px;
-          margin: 0 auto 20px;
+          max-width: 150px;
+          margin: 0 auto 15px;
         }
 
         .l-footer__kirin img {
@@ -2075,22 +2189,40 @@
         }
 
         .l-footer__inner {
-          padding: 30px 20px;
+          padding: 20px 15px;
+        }
+
+        .l-footer__header {
+          flex-direction: column;
+          gap: 10px;
+          margin-bottom: 10px;
         }
 
         .l-footer__logo img {
-          width: 80%;
+          max-width: 120px;
           height: auto;
         }
 
         .l-footer__sns--wrap {
-          flex-direction: column;
+          gap: 8px;
+          margin-bottom: 10px;
+        }
+
+        .l-footer__sns img {
+          max-width: 70px;
+        }
+
+        .l-footer__content {
+          grid-template-columns: 1fr;
           gap: 10px;
         }
 
         .l-footer__links {
-          flex-direction: column;
-          gap: 10px;
+          gap: 6px;
+        }
+
+        .l-footer__info {
+          gap: 6px;
         }
 
         .nav {
@@ -2831,17 +2963,19 @@
           />
         </div>
         <div class="l-footer__inner">
-          <div class="l-footer__logo">
-            <img
-              src="../images/hero-video.mp4"
-              loading="eager"
-              title="鋸歯生物図鑑"
-              alt="鋸歯生物図鑑"
-              width="1011"
-              height="429"
-            />
+          <div class="l-footer__header">
+            <div class="l-footer__logo">
+              <img
+                src="../images/hero-video.mp4"
+                loading="eager"
+                title="鋸歯生物図鑑"
+                alt="鋸歯生物図鑑"
+                width="1011"
+                height="429"
+              />
+            </div>
+            <p class="l-footer__txt">最新情報はこちら</p>
           </div>
-          <p class="l-footer__txt">最新情報はこちら</p>
           <div class="l-footer__sns--wrap">
             <div class="l-footer__sns">
               <a href="#" target="_blank" rel="noreferrer">
@@ -2868,21 +3002,25 @@
               </a>
             </div>
           </div>
-          <section class="l-footer__links">
-            <div class="l-footer__links--item">
-              <a href="#" class="c-button__link">
-                <p class="u-text__origin black">鋸歯生物研究所</p>
-              </a>
+          <div class="l-footer__content">
+            <div class="l-footer__links">
+              <div class="l-footer__links--item">
+                <a href="#" class="c-button__link">
+                  <p class="u-text__origin black">鋸歯生物研究所</p>
+                </a>
+              </div>
+              <div class="l-footer__links--item">
+                <a href="#" class="c-button__link">
+                  <p class="u-text__origin black">譲渡局</p>
+                </a>
+              </div>
             </div>
-            <div class="l-footer__links--item">
-              <a href="#" class="c-button__link">
-                <p class="u-text__origin black">譲渡局</p>
-              </a>
+            <div class="l-footer__info">
+              <p class="u-text__origin regular">主催 ペリカン研究所</p>
             </div>
-          </section>
-          <p class="center u-text__origin regular">主催 ペリカン研究所</p>
-          <div class="l-footer__copy">
-            <small class="u-text__copy center">© 2024 鋸歯生物図鑑</small>
+            <div class="l-footer__copy">
+              <small class="u-text__copy center">© 2024 鋸歯生物図鑑</small>
+            </div>
           </div>
         </div>
       </div>

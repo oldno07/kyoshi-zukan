@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+
     <!-- Header -->
     <header class="header">
       <div class="header-inner">
@@ -20,18 +21,23 @@
       </div>
     </header>
 
-    <!-- HERO: 入場ゲート -->
+    <!-- HERO -->
     <section class="hero" id="hero">
       <video class="hero-video" autoplay muted loop playsinline>
         <source src="../images/hero-video.mp4" type="video/mp4" />
       </video>
       <div class="hero-noise"></div>
 
-      <!-- UI Labels (四隅) -->
       <div class="ui-label ui-label--tl">ENTRY GATE</div>
       <div class="ui-label ui-label--tr">ZONE 01</div>
       <div class="ui-label ui-label--bl">RESEARCHER MODE</div>
       <div class="ui-label ui-label--br">OPEN NOW</div>
+
+      <div class="hero-creature-label">
+        <span class="hero-creature-no">NO.001</span>
+        <span class="hero-creature-name">スニャグルトゥース</span>
+        <span class="hero-creature-en">Snyaggletooth</span>
+      </div>
 
       <div class="hero-content">
         <h1 class="hero-title">鋸歯生物の世界へようこそ</h1>
@@ -42,251 +48,214 @@
       </div>
     </section>
 
-    <!-- INTRO: 世界導入 -->
+    <!-- INTRO -->
     <section class="intro" id="intro">
       <div class="intro-decoration"></div>
       <div class="intro-inner">
         <p class="intro-text">
-          植物と動物のあいだに存在する未知の生命体群。
-          あなたは今、研究員としてこの世界に足を踏み入れた。
+          はじめて見たのに、なぜか懐かしい。<br />
+          名前を知った瞬間、もっと好きになった。<br />
+          <span class="intro-text--sub">ここは、そういう生き物たちが暮らす場所。</span>
         </p>
       </div>
     </section>
 
-    <!-- STORY: ペリカン研究員のおはなし -->
-    <section class="story" id="story">
-      <div class="story-decoration"></div>
-      <div class="story-inner">
-        <div class="story-title-sticker">ペリカン研究員のおはなし</div>
-        <div class="story-illustration">
-          <div class="creatures-row creatures-row--top">
-            <img
-              src="../images/no_001.png"
-              alt="スニャグルトゥース"
-              class="creature-img"
-            />
-            <img
-              src="../images/k_001.png"
-              alt="ハザマドリ"
-              class="creature-img"
-            />
-            <img
-              src="../images/no_003.png"
-              alt="レッドキャットミーズル"
-              class="creature-img"
-            />
-          </div>
-          <div class="researcher-center">
-            <img
-              src="../images/pelican.png"
-              alt="ペリカン研究員"
-              class="researcher-image"
-            />
-          </div>
-          <div class="creatures-row creatures-row--bottom">
-            <img
-              src="../images/no_002.png"
-              alt="にゃんこブルー"
-              class="creature-img"
-            />
-            <img
-              src="../images/no_004.png"
-              alt="にゃガベチタノタ"
-              class="creature-img"
-            />
-            <img
-              src="../images/no_005.png"
-              alt="ゴリラホリダ"
-              class="creature-img"
-            />
-          </div>
-        </div>
-        <div class="story-text">
-          <p>
-            可愛くて奇妙な生き物を見つけたペリカン研究員は、その動物と植物の間にいる生き物を「鋸歯生物」と名付けて、ずかんを作ることにしました。
-          </p>
-          <p>たくさんの鋸歯生物と出会い、おねんどで標本を作りました。</p>
-          <p>ペリカン研究員は、今も研究を続けています。</p>
-        </div>
-        <div class="story-signature">Pelican Researcher</div>
-      </div>
-    </section>
-
-    <!-- LOG: 観測記録セクション -->
-    <section class="log" id="log">
-      <div class="section-header section-header--log">
-        <h2 class="section-title">観測記録</h2>
-        <p class="section-subtitle">OBSERVATION LOG</p>
-      </div>
-      <div class="log-grid">
-        <div class="spot-wrapper">
-          <div class="spot">
-            <span class="spot-label">SPOT</span>
-            <span class="spot-number">1</span>
-          </div>
-          <div class="log-card fade-in">
-            <div class="log-card-image">
-              <div class="log-card-placeholder">LOG 01</div>
-            </div>
-            <div class="log-card-content">
-              <h3 class="log-card-title">初遭遇</h3>
-              <p class="log-card-text">アガベの葉陰で最初の個体を確認</p>
-              <div class="log-card-memo">ペリカン研究員メモ：動いている…！</div>
-            </div>
-          </div>
-        </div>
-        <div class="spot-wrapper">
-          <div class="spot">
-            <span class="spot-label">SPOT</span>
-            <span class="spot-number">2</span>
-          </div>
-          <div class="log-card fade-in">
-            <div class="log-card-image">
-              <div class="log-card-placeholder">LOG 02</div>
-            </div>
-            <div class="log-card-content">
-              <h3 class="log-card-title">基本理解</h3>
-              <p class="log-card-text">植物と動物の特性を併せ持つ中間形態</p>
-              <div class="log-card-memo">ペリカン研究員メモ：分類不能</div>
-            </div>
-          </div>
-        </div>
-        <div class="spot-wrapper">
-          <div class="spot">
-            <span class="spot-label">SPOT</span>
-            <span class="spot-number">3</span>
-          </div>
-          <div class="log-card fade-in">
-            <div class="log-card-image">
-              <div class="log-card-placeholder">LOG 03</div>
-            </div>
-            <div class="log-card-content">
-              <h3 class="log-card-title">行動観測</h3>
-              <p class="log-card-text">自らの意思で環境を選択する個体</p>
-              <div class="log-card-memo">
-                ペリカン研究員メモ：夜間活動を確認
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="spot-wrapper">
-          <div class="spot">
-            <span class="spot-label">SPOT</span>
-            <span class="spot-number">4</span>
-          </div>
-          <div class="log-card fade-in">
-            <div class="log-card-image">
-              <div class="log-card-placeholder">LOG 04</div>
-            </div>
-            <div class="log-card-content">
-              <h3 class="log-card-title">異常個体</h3>
-              <p class="log-card-text">通常とは異なる行動パターンを観測</p>
-              <div class="log-card-memo">ペリカン研究員メモ：警戒が必要</div>
-            </div>
-          </div>
-        </div>
-        <div class="spot-wrapper">
-          <div class="spot">
-            <span class="spot-label">SPOT</span>
-            <span class="spot-number">5</span>
-          </div>
-          <div class="log-card fade-in">
-            <div class="log-card-image">
-              <div class="log-card-placeholder">LOG 05</div>
-            </div>
-            <div class="log-card-content">
-              <h3 class="log-card-title">共生関係</h3>
-              <p class="log-card-text">アガベとの共生を確認</p>
-              <div class="log-card-memo">ペリカン研究員メモ：相互依存</div>
-            </div>
-          </div>
-        </div>
-        <div class="spot-wrapper">
-          <div class="spot">
-            <span class="spot-label">SPOT</span>
-            <span class="spot-number">6</span>
-          </div>
-          <div class="log-card fade-in">
-            <div class="log-card-image">
-              <div class="log-card-placeholder">LOG 06</div>
-            </div>
-            <div class="log-card-content">
-              <h3 class="log-card-title">観測者メモ</h3>
-              <p class="log-card-text">継続的な観測記録の重要性</p>
-              <div class="log-card-memo">ペリカン研究員メモ：記録を続ける</div>
-            </div>
-          </div>
-        </div>
-        <div class="spot-wrapper">
-          <div class="spot">
-            <span class="spot-label">SPOT</span>
-            <span class="spot-number">7</span>
-          </div>
-          <div class="log-card fade-in">
-            <div class="log-card-image">
-              <div class="log-card-placeholder">LOG 07</div>
-            </div>
-            <div class="log-card-content">
-              <h3 class="log-card-title">未確定情報</h3>
-              <p class="log-card-text">まだ解明されていない謎</p>
-              <div class="log-card-memo">ペリカン研究員メモ：調査中</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CATALOG: 図鑑一覧 -->
+    <!-- CATALOG: 図鑑ショーケース -->
     <section class="catalog" id="catalog">
       <div class="section-header section-header--catalog">
         <h2 class="section-title">図鑑</h2>
         <p class="section-subtitle">CATALOG</p>
       </div>
       <div class="catalog-grid">
+
         <div class="catalog-card">
+          <div class="catalog-img-wrap">
+            <img src="../images/no_001.png" alt="スニャグルトゥース" class="catalog-img" />
+          </div>
           <div class="catalog-no">NO.001</div>
           <div class="catalog-name">スニャグルトゥース</div>
-          <div class="catalog-type">ANIMAL+</div>
+          <div class="catalog-type">BEAST-DOMINANT</div>
         </div>
+
         <div class="catalog-card">
+          <div class="catalog-img-wrap">
+            <img src="../images/no_002.png" alt="ブラックにゃんこブルー" class="catalog-img" />
+          </div>
           <div class="catalog-no">NO.002</div>
           <div class="catalog-name">ブラックにゃんこブルー</div>
-          <div class="catalog-type">ANIMAL+</div>
+          <div class="catalog-type">BEAST-DOMINANT</div>
         </div>
+
         <div class="catalog-card">
+          <div class="catalog-img-wrap">
+            <img src="../images/no_003.png" alt="レッドキャットミーズル" class="catalog-img" />
+          </div>
           <div class="catalog-no">NO.003</div>
           <div class="catalog-name">レッドキャットミーズル</div>
-          <div class="catalog-type">ANIMAL+</div>
+          <div class="catalog-type">BEAST-DOMINANT</div>
         </div>
+
         <div class="catalog-card">
-          <div class="catalog-no">NO.004</div>
-          <div class="catalog-name">にゃガベ チタノタ</div>
-          <div class="catalog-type">ANIMAL+</div>
-        </div>
-        <div class="catalog-card">
+          <div class="catalog-img-wrap">
+            <img src="../images/no_005.png" alt="ゴリラホリダ" class="catalog-img" />
+          </div>
           <div class="catalog-no">NO.005</div>
           <div class="catalog-name">ゴリラホリダ</div>
-          <div class="catalog-type">ANIMAL+</div>
+          <div class="catalog-type">BEAST-DOMINANT</div>
         </div>
+
         <div class="catalog-card">
+          <div class="catalog-img-wrap">
+            <img src="../images/no_006.png" alt="キンタ魔丸" class="catalog-img" />
+          </div>
           <div class="catalog-no">NO.006</div>
           <div class="catalog-name">キンタ魔丸</div>
-          <div class="catalog-type">ANIMAL+</div>
+          <div class="catalog-type">BEAST-DOMINANT</div>
         </div>
+
         <div class="catalog-card">
-          <div class="catalog-no">NO.007</div>
-          <div class="catalog-name">スカイブルーニャンダホー</div>
-          <div class="catalog-type">ANIMAL+</div>
+          <div class="catalog-img-wrap">
+            <img src="../images/no_013.png" alt="白鯨" class="catalog-img" />
+          </div>
+          <div class="catalog-no">NO.013</div>
+          <div class="catalog-name">白鯨</div>
+          <div class="catalog-type">AQUATIC-SUCCULENT</div>
         </div>
+
         <div class="catalog-card">
-          <div class="catalog-no">NO.008</div>
-          <div class="catalog-name">アガベカブトトカゲ</div>
-          <div class="catalog-type">ANIMAL+</div>
+          <div class="catalog-img-wrap">
+            <img src="../images/no_017.png" alt="ライオンズニャーン" class="catalog-img" />
+          </div>
+          <div class="catalog-no">NO.017</div>
+          <div class="catalog-name">ライオンズニャーン</div>
+          <div class="catalog-type">BEAST-DOMINANT</div>
+        </div>
+
+        <div class="catalog-card">
+          <div class="catalog-img-wrap">
+            <img src="../images/no_023.png" alt="美角鹿" class="catalog-img" />
+          </div>
+          <div class="catalog-no">NO.023</div>
+          <div class="catalog-name">美角鹿 -ビカクシカ-</div>
+          <div class="catalog-type">MOSS-SYMBIOSIS</div>
+        </div>
+
+      </div>
+
+      <!-- 全個体への導線 -->
+      <div class="catalog-footer">
+        <a href="catalog.html" class="catalog-all-btn">
+          全ての個体を見る
+          <span class="catalog-all-count">25 species →</span>
+        </a>
+      </div>
+    </section>
+
+<!-- LOG: 観測記録セクション -->
+<section class="log" id="log">
+  <div class="section-header section-header--log">
+    <h2 class="section-title">観測記録</h2>
+    <p class="section-subtitle">OBSERVATION LOG</p>
+  </div>
+  <div class="log-grid">
+
+    <div class="spot-wrapper">
+      <div class="spot"><span class="spot-label">SPOT</span><span class="spot-number">1</span></div>
+      <div class="log-card fade-in">
+        <div class="log-card-image"><div class="log-card-placeholder">LOG 01</div></div>
+        <div class="log-card-content">
+          <h3 class="log-card-title">鋸歯生物って？</h3>
+          <p class="log-card-text">
+            ある日、ペリカン研究員は<br>
+            動物とも植物とも分類できない<br>
+            奇妙な生命体に出会いました。<br><br>
+            それが最初の鋸歯生物でした。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="spot-wrapper">
+      <div class="spot"><span class="spot-label">SPOT</span><span class="spot-number">2</span></div>
+      <div class="log-card fade-in">
+        <div class="log-card-image"><div class="log-card-placeholder">LOG 02</div></div>
+        <div class="log-card-content">
+          <h3 class="log-card-title">鋸歯生物の特徴</h3>
+          <p class="log-card-text">
+            光合成を行いながら移動し、<br>
+            根を持ちながら感情を示す。<br><br>
+            彼らは動物と植物の<br>
+            境界に存在しています。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="spot-wrapper">
+      <div class="spot"><span class="spot-label">SPOT</span><span class="spot-number">3</span></div>
+      <div class="log-card fade-in">
+        <div class="log-card-image"><div class="log-card-placeholder">LOG 03</div></div>
+        <div class="log-card-content">
+          <h3 class="log-card-title">観測されている個体たち</h3>
+          <p class="log-card-text">代表的な個体が確認されています。</p>
+          <ul class="log-card-list">
+            <li>スニャグルトゥース</li>
+            <li>ブラックニャンコブルー</li>
+            <li>レッドキャットミーズル</li>
+            <li>白鯨</li>
+          </ul>
+          <div class="log-card-memo">現在25種以上を観測記録中</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="spot-wrapper">
+      <div class="spot"><span class="spot-label">SPOT</span><span class="spot-number">4</span></div>
+      <div class="log-card fade-in">
+        <div class="log-card-image"><div class="log-card-placeholder">LOG 04</div></div>
+        <div class="log-card-content">
+          <h3 class="log-card-title">観測は続いている</h3>
+          <p class="log-card-text">
+            現在も新たな鋸歯生物が<br>
+            発見されています。<br><br>
+            詳細な観測記録は<br>
+            図鑑で閲覧できます。
+          </p>
+          <a href="../index.html" class="log-card-link">図鑑を開く →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- STORY: ペリカン研究員（LOGの後ろに移動・タイトル簡素化） -->
+    <section class="story" id="story">
+      <div class="story-decoration"></div>
+      <div class="story-inner">
+
+        <!-- タイトルステッカー廃止、さりげない見出しに -->
+        <p class="story-eyebrow">RESEARCHER NOTE</p>
+        <h2 class="story-heading">ペリカン研究員のおはなし</h2>
+
+        <div class="story-illustration">
+          <img src="../images/no_001.png" alt="スニャグルトゥース" class="creature-img" />
+          <img src="../images/no_002.png" alt="ブラックにゃんこブルー" class="creature-img" />
+          <img src="../images/pelican.png" alt="ペリカン研究員" class="researcher-image" />
+          <img src="../images/no_003.png" alt="レッドキャットミーズル" class="creature-img" />
+          <img src="../images/no_004.png" alt="にゃガベチタノタ" class="creature-img" />
+        </div>
+
+        <div class="story-text">
+          <p>
+            可愛くて奇妙な生き物を見つけたペリカン研究員は、動物と植物の間を生きるその姿に魅せられ、「鋸歯生物」と名付けてずかんを作ることにしました。おねんどで標本を作り、記録を重ねながら、今も研究を続けています。
+          </p>
+          <p class="story-signature">— Pelican Researcher</p>
         </div>
       </div>
     </section>
 
-    <!-- AREA: 体験エリア (横スクロール) -->
+    <!-- AREA: 体験エリア -->
     <section class="area" id="area">
       <div class="section-header section-header--area">
         <h2 class="section-title">体験エリア</h2>
@@ -331,7 +300,7 @@
       </div>
     </section>
 
-    <!-- NEWS: 更新ログ -->
+    <!-- NEWS -->
     <section class="news" id="news">
       <div class="section-header section-header--news">
         <h2 class="section-title">観測ニュース</h2>
@@ -348,7 +317,7 @@
         </div>
         <div class="news-item">
           <span class="news-date">2026.05.10</span>
-          <span class="news-title">図鑑データを更新（全12種類）</span>
+          <span class="news-title">図鑑データを更新（全25種類）</span>
         </div>
         <div class="news-item">
           <span class="news-date">2026.04.28</span>

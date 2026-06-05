@@ -1,5 +1,5 @@
 // ============================================================
-// 鋸歯生物図鑑 LP - script.js
+// 鋸歯生物図鑑 LP - land.js
 // ============================================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
-        fadeObserver.unobserve(entry.target); // 一度発火したら監視解除
+        fadeObserver.unobserve(entry.target);
       }
     });
   }, {
@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.querySelectorAll(".fade-in").forEach((el, i) => {
-    // カードが複数並ぶ場合はstaggerで順番に出す
     el.style.transitionDelay = `${i * 0.08}s`;
     fadeObserver.observe(el);
   });
@@ -48,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
     catalogObserver.observe(card);
   });
 
-  // catalog-card--visible が付いたら表示
   const catalogStyle = document.createElement("style");
   catalogStyle.textContent = `
     .catalog-card--visible {
@@ -68,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
     creatureLabel.style.transform = "translateX(-50%) translateY(10px)";
     creatureLabel.style.transition = "opacity 0.8s ease 1s, transform 0.8s ease 1s";
 
-    // 少し遅らせて登場（動画を先に見せる）
     requestAnimationFrame(() => {
       setTimeout(() => {
         creatureLabel.style.opacity = "1";
@@ -87,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentIndex = 0;
 
     document.addEventListener("keydown", (e) => {
-      // AREAセクションが画面内にいるときだけ反応
       const areaRect = document.querySelector(".area")?.getBoundingClientRect();
       if (!areaRect) return;
       const inView = areaRect.top < window.innerHeight && areaRect.bottom > 0;
@@ -147,4 +143,62 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+});
+// ============================================================
+// 8. NEWS: news.js からデータを動的描画
+// ============================================================
+const newsList = document.getElementById("news-list");
+if (newsList && window.NEWS) {
+  const TYPE_LABEL = {
+    new:   "NEW",
+    event: "EVENT",
+    shop:  "SHOP",
+    info:  "INFO",
+  };
+
+  const STATUS_LABEL = {
+    upcoming: "開催予定",
+    ongoing:  "開催中",
+    ended:    "終了",
+  };
+
+  const formatDate = (str) => str.replace(/-/g, ".");
+
+  const items = window.NEWS.slice(0, 5);
+
+  newsList.innerHTML = items.map((item) => {
+    const typeLabel   = TYPE_LABEL[item.type] ?? item.type.toUpperCase();
+    const statusBadge = item.status
+      ? `<span class="news-badge news-badge--status news-badge--${item.status}">${STATUS_LABEL[item.status]}</span>`
+      : "";
+    const linkBtn = item.link
+      ? `<a href="${item.link}" class="news-link" target="_blank" rel="noopener">${item.linkLabel}</a>`
+      : "";
+    const thumb = item.image
+      ? `<div class="news-thumb"><img src="${item.image}" alt="${item.title}" class="news-thumb-img" /></div>`
+      : `<div class="news-thumb news-thumb--empty"></div>`;
+
+    return `
+      <div class="news-item">
+        ${thumb}
+        <div class="news-item-body">
+          <div class="news-item-meta">
+            <span class="news-date">${formatDate(item.date)}</span>
+            <span class="news-badge news-badge--${item.type}">${typeLabel}</span>
+            ${statusBadge}
+          </div>
+          <span class="news-title">${item.title}</span>
+        </div>
+        ${linkBtn}
+      </div>
+    `;
+  }).join("");
+}
+// カードフリップ
+document.querySelectorAll('.catalog-card').forEach((card) => {
+  card.addEventListener('click', (e) => {
+    // 裏面のリンククリック時はフリップしない
+    if (e.target.closest('.catalog-back-cta')) return;
+    card.classList.toggle('flipped');
+  });
 });
