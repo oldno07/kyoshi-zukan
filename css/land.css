@@ -522,47 +522,17 @@ body {
   display: block;
 }
 
-.section-header--log .section-title::before,
-.section-header--catalog .section-title::before,
-.section-header--area .section-title::before,
-.section-header--news .section-title::before {
-  content: "";
-  position: absolute;
-  right: calc(100% + 0.5rem);
-  top: 50%;
-  transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.section-header--log .section-title::before {
-  background-image: url("images/no_001.png");
-}
-
-.section-header--catalog .section-title::before {
-  background-image: url("images/no_002.png");
-}
-
-.section-header--area .section-title::before {
-  background-image: url("images/no_003.png");
-}
-
-.section-header--news .section-title::before {
-  background-image: url("images/no_004.png");
-}
-.section-header--faq .section-title::before {
-  background-image: url("images/no_005.png");
-}
-
 .section-subtitle {
   font-size: 14px;
   font-weight: 700;
   color: var(--text-secondary);
   letter-spacing: 0.3em;
   text-transform: uppercase;
+}
+
+.section-header {
+  position: relative;
+  overflow: visible;
 }
 
 /* ============================================================
