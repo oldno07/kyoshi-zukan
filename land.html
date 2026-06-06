@@ -10,15 +10,45 @@
       href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/land.css" />
   </head>
   <body>
-
     <!-- Header -->
     <header class="header">
       <div class="header-inner">
         <div class="header-logo">鋸歯生物図鑑</div>
+        <a
+          href="https://www.instagram.com/pelican.works"
+          target="_blank"
+          rel="noopener"
+          class="header-ig"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle
+              cx="17.5"
+              cy="6.5"
+              r="1"
+              fill="currentColor"
+              stroke="none"
+            />
+          </svg>
+        </a>
       </div>
     </header>
 
@@ -29,23 +59,10 @@
       </video>
       <div class="hero-noise"></div>
 
-      <div class="ui-label ui-label--tl">ENTRY GATE</div>
-      <div class="ui-label ui-label--tr">ZONE 01</div>
-      <div class="ui-label ui-label--bl">RESEARCHER MODE</div>
-      <div class="ui-label ui-label--br">OPEN NOW</div>
-
       <div class="hero-creature-label">
         <span class="hero-creature-no">NO.001</span>
         <span class="hero-creature-name">スニャグルトゥース</span>
         <span class="hero-creature-en">Snyaggletooth</span>
-      </div>
-
-      <div class="hero-content">
-        <h1 class="hero-title">鋸歯生物の世界へようこそ</h1>
-        <div class="hero-cta-group">
-          <a href="#catalog" class="hero-cta hero-cta--primary">図鑑を見る</a>
-          <a href="#log" class="hero-cta hero-cta--secondary">観測ログを見る</a>
-        </div>
       </div>
     </section>
 
@@ -54,10 +71,78 @@
       <div class="intro-decoration"></div>
       <div class="intro-inner">
         <p class="intro-text">
-          はじめて見たのに、なぜか懐かしい。<br />
-          名前を知った瞬間、もっと好きになった。<br />
-          <span class="intro-text--sub">ここは、そういう生き物たちが暮らす場所。</span>
+          もしも植物が、生きていたら？<br />
+          <br />
+          <span class="intro-text--sub">
+            アガベの葉っぱがしっぽになって、<br />
+            グラキリスがねこになって、<br />
+            だるそうな顔で、こちらを見ている。<br />
+            <br />
+            ここは、そういう生き物たちが暮らす場所。
+          </span>
         </p>
+      </div>
+    </section>
+    <!-- PHOTO STRIP: 観測写真 -->
+    <section class="photo-strip">
+      <div class="photo-track">
+        <!-- 1セット目 -->
+        <div class="photo-item" style="--rot: -3deg">
+          <img src="images/photo_01.jpg" alt="観測写真" loading="eager" />
+        </div>
+        <div class="photo-item" style="--rot: 2deg">
+          <img src="images/photo_02.jpg" alt="観測写真" loading="lazy" />
+        </div>
+        <div class="photo-item" style="--rot: -1deg">
+          <img src="images/photo_03.jpg" alt="観測写真" loading="lazy" />
+        </div>
+        <div class="photo-item" style="--rot: 3deg">
+          <img src="images/photo_04.jpg" alt="観測写真" loading="lazy" />
+        </div>
+        <div class="photo-item" style="--rot: -2deg">
+          <img src="images/photo_05.jpg" alt="観測写真" loading="lazy" />
+        </div>
+        <div class="photo-item" style="--rot: 1deg">
+          <img src="images/photo_06.jpg" alt="観測写真" loading="lazy" />
+        </div>
+        <div class="photo-item" style="--rot: 1deg">
+          <img src="images/photo_07.jpg" alt="観測写真" loading="lazy" />
+        </div>
+        <div class="photo-item" style="--rot: 1deg">
+          <img src="images/photo_08.jpg" alt="観測写真" loading="lazy" />
+        </div>
+        <div class="photo-item" style="--rot: 1deg">
+          <img src="images/photo_09.jpg" alt="観測写真" loading="lazy" />
+        </div>
+
+        <!-- 2セット目（ループ用の複製） -->
+        <div class="photo-item" style="--rot: -3deg">
+          <img src="images/photo_01.jpg" alt="観測写真" loading="lazy" />
+        </div>
+        <div class="photo-item" style="--rot: 2deg">
+          <img src="images/photo_02.jpg" alt="観測写真" loading="lazy" />
+        </div>
+        <div class="photo-item" style="--rot: -1deg">
+          <img src="images/photo_03.jpg" alt="観測写真" loading="lazy" />
+        </div>
+        <div class="photo-item" style="--rot: 3deg">
+          <img src="images/photo_04.jpg" alt="観測写真" loading="lazy" />
+        </div>
+        <div class="photo-item" style="--rot: -2deg">
+          <img src="images/photo_05.jpg" alt="観測写真" loading="lazy" />
+        </div>
+        <div class="photo-item" style="--rot: 1deg">
+          <img src="images/photo_06.jpg" alt="観測写真" loading="lazy" />
+        </div>
+        <div class="photo-item" style="--rot: 1deg">
+          <img src="images/photo_07.jpg" alt="観測写真" loading="lazy" />
+        </div>
+        <div class="photo-item" style="--rot: 1deg">
+          <img src="images/photo_08.jpg" alt="観測写真" loading="lazy" />
+        </div>
+        <div class="photo-item" style="--rot: 1deg">
+          <img src="images/photo_09.jpg" alt="観測写真" loading="lazy" />
+        </div>
       </div>
     </section>
 
@@ -68,198 +153,237 @@
         <p class="section-subtitle">CATALOG</p>
       </div>
       <div class="catalog-grid">
-<!-- NO.001 -->
-<div class="catalog-card">
-  <div class="catalog-card-inner">
-    <div class="catalog-card-front">
-      <div class="catalog-img-wrap">
-        <img src="images/no_001.png" alt="スニャグルトゥース" class="catalog-img" />
-      </div>
-      <div class="catalog-no">NO.001</div>
-      <div class="catalog-name">スニャグルトゥース</div>
-      <div class="catalog-type">BEAST-DOMINANT</div>
-    </div>
-    <div class="catalog-card-back">
-      <div class="catalog-back-no">SPECIMEN NO.001</div>
-      <div class="catalog-back-name">スニャグルトゥース</div>
-      <p class="catalog-back-desc">
-        現在確認されている最初の鋸歯生物。<br><br>
-        アガベ由来の鋸歯状器官を持ち、比較的穏やかな性質を示す。
-      </p>
-      <a href="entry.html?no=001" class="catalog-back-cta">詳細な観測記録を開く →</a>
-      <div class="catalog-back-hint">タップで戻る</div>
-    </div>
-  </div>
-</div>
+        <!-- NO.001 -->
+        <div class="catalog-card">
+          <div class="catalog-card-inner">
+            <div class="catalog-card-front">
+              <div class="catalog-img-wrap">
+                <img
+                  src="images/no_001.png"
+                  alt="スニャグルトゥース"
+                  class="catalog-img"
+                />
+              </div>
+              <div class="catalog-no">NO.001</div>
+              <div class="catalog-name">スニャグルトゥース</div>
+              <div class="catalog-type">BEAST-DOMINANT</div>
+            </div>
+            <div class="catalog-card-back">
+              <div class="catalog-back-no">SPECIMEN NO.001</div>
+              <div class="catalog-back-name">スニャグルトゥース</div>
+              <p class="catalog-back-desc">
+                現在確認されている最初の鋸歯生物。<br /><br />
+                アガベ由来の鋸歯状器官を持ち、比較的穏やかな性質を示す。
+              </p>
+              <a href="entry.html?no=001" class="catalog-back-cta"
+                >詳細な観測記録を開く →</a
+              >
+              <div class="catalog-back-hint">タップで戻る</div>
+            </div>
+          </div>
+        </div>
 
-<!-- NO.002 -->
-<div class="catalog-card">
-  <div class="catalog-card-inner">
-    <div class="catalog-card-front">
-      <div class="catalog-img-wrap">
-        <img src="images/no_002.png" alt="ブラックにゃんこブルー" class="catalog-img" />
-      </div>
-      <div class="catalog-no">NO.002</div>
-      <div class="catalog-name">ブラックにゃんこブルー</div>
-      <div class="catalog-type">BEAST-DOMINANT</div>
-    </div>
-    <div class="catalog-card-back">
-      <div class="catalog-back-no">SPECIMEN NO.002</div>
-      <div class="catalog-back-name">ブラックにゃんこブルー</div>
-      <p class="catalog-back-desc">
-        深夜の植物帯に生息する暗色個体。<br><br>
-        青みがかった体色と鋭い感覚器官を持ち、夜間の観測記録が多い。
-      </p>
-      <a href="entry.html?no=002" class="catalog-back-cta">詳細な観測記録を開く →</a>
-      <div class="catalog-back-hint">タップで戻る</div>
-    </div>
-  </div>
-</div>
+        <!-- NO.002 -->
+        <div class="catalog-card">
+          <div class="catalog-card-inner">
+            <div class="catalog-card-front">
+              <div class="catalog-img-wrap">
+                <img
+                  src="images/no_002.png"
+                  alt="ブラックにゃんこブルー"
+                  class="catalog-img"
+                />
+              </div>
+              <div class="catalog-no">NO.002</div>
+              <div class="catalog-name">ブラックにゃんこブルー</div>
+              <div class="catalog-type">BEAST-DOMINANT</div>
+            </div>
+            <div class="catalog-card-back">
+              <div class="catalog-back-no">SPECIMEN NO.002</div>
+              <div class="catalog-back-name">ブラックにゃんこブルー</div>
+              <p class="catalog-back-desc">
+                深夜の植物帯に生息する暗色個体。<br /><br />
+                青みがかった体色と鋭い感覚器官を持ち、夜間の観測記録が多い。
+              </p>
+              <a href="entry.html?no=002" class="catalog-back-cta"
+                >詳細な観測記録を開く →</a
+              >
+              <div class="catalog-back-hint">タップで戻る</div>
+            </div>
+          </div>
+        </div>
 
-<!-- NO.003 -->
-<div class="catalog-card">
-  <div class="catalog-card-inner">
-    <div class="catalog-card-front">
-      <div class="catalog-img-wrap">
-        <img src="images/no_003.png" alt="レッドキャットミーズル" class="catalog-img" />
-      </div>
-      <div class="catalog-no">NO.003</div>
-      <div class="catalog-name">レッドキャットミーズル</div>
-      <div class="catalog-type">BEAST-DOMINANT</div>
-    </div>
-    <div class="catalog-card-back">
-      <div class="catalog-back-no">SPECIMEN NO.003</div>
-      <div class="catalog-back-name">レッドキャットミーズル</div>
-      <p class="catalog-back-desc">
-        赤い斑紋が特徴的な個体。<br><br>
-        活発な行動パターンを示し、植物質の摂取量が他個体より多い。
-      </p>
-      <a href="entry.html?no=003" class="catalog-back-cta">詳細な観測記録を開く →</a>
-      <div class="catalog-back-hint">タップで戻る</div>
-    </div>
-  </div>
-</div>
+        <!-- NO.003 -->
+        <div class="catalog-card">
+          <div class="catalog-card-inner">
+            <div class="catalog-card-front">
+              <div class="catalog-img-wrap">
+                <img
+                  src="images/no_003.png"
+                  alt="レッドキャットミーズル"
+                  class="catalog-img"
+                />
+              </div>
+              <div class="catalog-no">NO.003</div>
+              <div class="catalog-name">レッドキャットミーズル</div>
+              <div class="catalog-type">BEAST-DOMINANT</div>
+            </div>
+            <div class="catalog-card-back">
+              <div class="catalog-back-no">SPECIMEN NO.003</div>
+              <div class="catalog-back-name">レッドキャットミーズル</div>
+              <p class="catalog-back-desc">
+                赤い斑紋が特徴的な個体。<br /><br />
+                活発な行動パターンを示し、植物質の摂取量が他個体より多い。
+              </p>
+              <a href="entry.html?no=003" class="catalog-back-cta"
+                >詳細な観測記録を開く →</a
+              >
+              <div class="catalog-back-hint">タップで戻る</div>
+            </div>
+          </div>
+        </div>
 
-<!-- NO.005 -->
-<div class="catalog-card">
-  <div class="catalog-card-inner">
-    <div class="catalog-card-front">
-      <div class="catalog-img-wrap">
-        <img src="images/no_005.png" alt="ゴリラホリダ" class="catalog-img" />
-      </div>
-      <div class="catalog-no">NO.005</div>
-      <div class="catalog-name">ゴリラホリダ</div>
-      <div class="catalog-type">BEAST-DOMINANT</div>
-    </div>
-    <div class="catalog-card-back">
-      <div class="catalog-back-no">SPECIMEN NO.005</div>
-      <div class="catalog-back-name">ゴリラホリダ</div>
-      <p class="catalog-back-desc">
-        大型の鋸歯生物。<br><br>
-        強靭な体躯とホリダ種由来の硬質な表皮を持つ。縄張り意識が強い。
-      </p>
-      <a href="entry.html?no=005" class="catalog-back-cta">詳細な観測記録を開く →</a>
-      <div class="catalog-back-hint">タップで戻る</div>
-    </div>
-  </div>
-</div>
+        <!-- NO.005 -->
+        <div class="catalog-card">
+          <div class="catalog-card-inner">
+            <div class="catalog-card-front">
+              <div class="catalog-img-wrap">
+                <img
+                  src="images/no_005.png"
+                  alt="ゴリラホリダ"
+                  class="catalog-img"
+                />
+              </div>
+              <div class="catalog-no">NO.005</div>
+              <div class="catalog-name">ゴリラホリダ</div>
+              <div class="catalog-type">BEAST-DOMINANT</div>
+            </div>
+            <div class="catalog-card-back">
+              <div class="catalog-back-no">SPECIMEN NO.005</div>
+              <div class="catalog-back-name">ゴリラホリダ</div>
+              <p class="catalog-back-desc">
+                大型の鋸歯生物。<br /><br />
+                強靭な体躯とホリダ種由来の硬質な表皮を持つ。縄張り意識が強い。
+              </p>
+              <a href="entry.html?no=005" class="catalog-back-cta"
+                >詳細な観測記録を開く →</a
+              >
+              <div class="catalog-back-hint">タップで戻る</div>
+            </div>
+          </div>
+        </div>
 
-<!-- NO.006 -->
-<div class="catalog-card">
-  <div class="catalog-card-inner">
-    <div class="catalog-card-front">
-      <div class="catalog-img-wrap">
-        <img src="images/no_006.png" alt="キンタ魔丸" class="catalog-img" />
-      </div>
-      <div class="catalog-no">NO.006</div>
-      <div class="catalog-name">キンタ魔丸</div>
-      <div class="catalog-type">BEAST-DOMINANT</div>
-    </div>
-    <div class="catalog-card-back">
-      <div class="catalog-back-no">SPECIMEN NO.006</div>
-      <div class="catalog-back-name">キンタ魔丸</div>
-      <p class="catalog-back-desc">
-        金色の光沢を持つ希少個体。<br><br>
-        丸みを帯びた体型と独特の模様から、観測員の間で人気が高い。
-      </p>
-      <a href="entry.html?no=006" class="catalog-back-cta">詳細な観測記録を開く →</a>
-      <div class="catalog-back-hint">タップで戻る</div>
-    </div>
-  </div>
-</div>
+        <!-- NO.013 白鯨 -->
+        <div class="catalog-card">
+          <div class="catalog-card-inner">
+            <div class="catalog-card-front">
+              <div class="catalog-img-wrap">
+                <img src="images/no_013.png" alt="白鯨" class="catalog-img" />
+              </div>
+              <div class="catalog-no">NO.013</div>
+              <div class="catalog-name">白鯨</div>
+              <div class="catalog-type">AQUATIC-SUCCULENT HYBRID</div>
+            </div>
+            <div class="catalog-card-back">
+              <div class="catalog-back-no">SPECIMEN NO.013</div>
+              <div class="catalog-back-name">白鯨</div>
+              <p class="catalog-back-desc">
+                深海から浮上する巨大な植物融合型生物。<br /><br />
+                頭頂部の器官から鋸歯葉片を含む水流を放出し、周囲の海流までも変化させる。
+              </p>
+              <a href="entry.html?no=013" class="catalog-back-cta"
+                >詳細な観測記録を開く →</a
+              >
+              <div class="catalog-back-hint">タップで戻る</div>
+            </div>
+          </div>
+        </div>
 
-<!-- NO.013 -->
-<div class="catalog-card">
-  <div class="catalog-card-inner">
-    <div class="catalog-card-front">
-      <div class="catalog-img-wrap">
-        <img src="images/no_013.png" alt="白鯨" class="catalog-img" />
-      </div>
-      <div class="catalog-no">NO.013</div>
-      <div class="catalog-name">白鯨</div>
-      <div class="catalog-type">AQUATIC-SUCCULENT</div>
-    </div>
-    <div class="catalog-card-back">
-      <div class="catalog-back-no">SPECIMEN NO.013</div>
-      <div class="catalog-back-name">白鯨</div>
-      <p class="catalog-back-desc">
-        水生環境に適応した多肉系鋸歯生物。<br><br>
-        白く滑らかな体表と大型の体躯を持ち、水中での光合成能力を有する。
-      </p>
-      <a href="entry.html?no=013" class="catalog-back-cta">詳細な観測記録を開く →</a>
-      <div class="catalog-back-hint">タップで戻る</div>
-    </div>
-  </div>
-</div>
+        <!-- NO.016 金鯨 -->
+        <div class="catalog-card">
+          <div class="catalog-card-inner">
+            <div class="catalog-card-front">
+              <div class="catalog-img-wrap">
+                <img src="images/no_016.png" alt="金鯨" class="catalog-img" />
+              </div>
+              <div class="catalog-no">NO.016</div>
+              <div class="catalog-name">金鯨</div>
+              <div class="catalog-type">AQUATIC-SUCCULENT HYBRID</div>
+            </div>
+            <div class="catalog-card-back">
+              <div class="catalog-back-no">SPECIMEN NO.016</div>
+              <div class="catalog-back-name">金鯨</div>
+              <p class="catalog-back-desc">
+                深海熱水域に生息する、白鯨系統の金属化変異個体。<br /><br />
+                通過した海域には発光性の沈殿層が形成され、深海の神話的存在として記録されている。
+              </p>
+              <a href="entry.html?no=016" class="catalog-back-cta"
+                >詳細な観測記録を開く →</a
+              >
+              <div class="catalog-back-hint">タップで戻る</div>
+            </div>
+          </div>
+        </div>
 
-<!-- NO.017 -->
-<div class="catalog-card">
-  <div class="catalog-card-inner">
-    <div class="catalog-card-front">
-      <div class="catalog-img-wrap">
-        <img src="images/no_017.png" alt="ライオンズニャーン" class="catalog-img" />
-      </div>
-      <div class="catalog-no">NO.017</div>
-      <div class="catalog-name">ライオンズニャーン</div>
-      <div class="catalog-type">BEAST-DOMINANT</div>
-    </div>
-    <div class="catalog-card-back">
-      <div class="catalog-back-no">SPECIMEN NO.017</div>
-      <div class="catalog-back-name">ライオンズニャーン</div>
-      <p class="catalog-back-desc">
-        たてがみ状の器官を持つ大型個体。<br><br>
-        威圧的な外見とは裏腹に、温和な気質が観測されている。
-      </p>
-      <a href="entry.html?no=017" class="catalog-back-cta">詳細な観測記録を開く →</a>
-      <div class="catalog-back-hint">タップで戻る</div>
-    </div>
-  </div>
-</div>
+        <!-- NO.021 グニャキリス -->
+        <div class="catalog-card">
+          <div class="catalog-card-inner">
+            <div class="catalog-card-front">
+              <div class="catalog-img-wrap">
+                <img
+                  src="images/no_021.png"
+                  alt="グニャキリス"
+                  class="catalog-img"
+                />
+              </div>
+              <div class="catalog-no">NO.021</div>
+              <div class="catalog-name">グニャキリス</div>
+              <div class="catalog-type">SUCCULENT-TYPE</div>
+            </div>
+            <div class="catalog-card-back">
+              <div class="catalog-back-no">SPECIMEN NO.021</div>
+              <div class="catalog-back-name">グニャキリス</div>
+              <p class="catalog-back-desc">
+                乾燥地帯に生息するネコ型塊根生物。<br /><br />
+                水分不足が進むと機嫌が急変する。四肢に見える器官は歩行肢ではなく根系構造と推定される。
+              </p>
+              <a href="entry.html?no=021" class="catalog-back-cta"
+                >詳細な観測記録を開く →</a
+              >
+              <div class="catalog-back-hint">タップで戻る</div>
+            </div>
+          </div>
+        </div>
 
-<!-- NO.023 -->
-<div class="catalog-card">
-  <div class="catalog-card-inner">
-    <div class="catalog-card-front">
-      <div class="catalog-img-wrap">
-        <img src="images/no_023.png" alt="美角鹿" class="catalog-img" />
-      </div>
-      <div class="catalog-no">NO.023</div>
-      <div class="catalog-name">美角鹿 -ビカクシカ-</div>
-      <div class="catalog-type">MOSS-SYMBIOSIS</div>
-    </div>
-    <div class="catalog-card-back">
-      <div class="catalog-back-no">SPECIMEN NO.023</div>
-      <div class="catalog-back-name">美角鹿 -ビカクシカ-</div>
-      <p class="catalog-back-desc">
-        苔との共生関係を持つ稀少個体。<br><br>
-        ビカクシダに似た角状器官が美しく、観測員から特に注目されている。
-      </p>
-      <a href="entry.html?no=023" class="catalog-back-cta">詳細な観測記録を開く →</a>
-      <div class="catalog-back-hint">タップで戻る</div>
-    </div>
-  </div>
-</div>
-
+        <!-- NO.025 ビカクモリ -->
+        <div class="catalog-card">
+          <div class="catalog-card-inner">
+            <div class="catalog-card-front">
+              <div class="catalog-img-wrap">
+                <img
+                  src="images/no_025.png"
+                  alt="ビカクモリ"
+                  class="catalog-img"
+                />
+              </div>
+              <div class="catalog-no">NO.025</div>
+              <div class="catalog-name">ビカクモリ</div>
+              <div class="catalog-type">PLANT-DOMINANT AERIAL TYPE</div>
+            </div>
+            <div class="catalog-card-back">
+              <div class="catalog-back-no">SPECIMEN NO.025</div>
+              <div class="catalog-back-name">ビカクモリ</div>
+              <p class="catalog-back-desc">
+                プレステラや吊り鉢に固定して静止する半飛行性生物。<br /><br />
+                活動の大半は「吊る」「静止する」「微風に揺れる」の三種のみ。
+              </p>
+              <a href="entry.html?no=025" class="catalog-back-cta"
+                >詳細な観測記録を開く →</a
+              >
+              <div class="catalog-back-hint">タップで戻る</div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- 全個体への導線 -->
@@ -278,208 +402,353 @@
         <p class="section-subtitle">OBSERVATION LOG</p>
       </div>
       <div class="log-grid">
-
         <div class="spot-wrapper">
-          <div class="spot"><span class="spot-label">MEMO</span><span class="spot-number">1</span></div>
+          <div class="spot">
+            <span class="spot-label">MEMO</span
+            ><span class="spot-number">1</span>
+          </div>
           <div class="log-card fade-in">
             <div class="log-card-image">
-  <img src="images/log_memo1.png" alt="観測メモ1" style="width:100%;height:100%;object-fit:cover;" />
-</div>
+              <img
+                src="images/log_memo1.png"
+                alt="観測メモ1"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
             <div class="log-card-content">
               <h3 class="log-card-title">ちいさな目が、あった。</h3>
               <p class="log-card-text">
-ある日のこと。<br>
-<br>
-ペリカン研究員は、<br>
-<br>
-プレステラにぶら下がりながら<br>
-こちらを見つめる<br>
-<br>
-小さな目を見つけました。<br>
+                ある日のこと。<br />
+                <br />
+                ペリカン研究員は、<br />
+                <br />
+                プレステラにぶら下がりながら<br />
+                こちらを見つめる<br />
+                <br />
+                小さな目を見つけました。<br />
               </p>
             </div>
           </div>
         </div>
 
         <div class="spot-wrapper">
-          <div class="spot"><span class="spot-label">MEMO</span><span class="spot-number">2</span></div>
+          <div class="spot">
+            <span class="spot-label">MEMO</span
+            ><span class="spot-number">2</span>
+          </div>
           <div class="log-card fade-in">
-<div class="log-card-image">
-  <img src="images/log_memo2.png" alt="観測メモ2" style="width:100%;height:100%;object-fit:cover;" />
-</div>            <div class="log-card-content">
+            <div class="log-card-image">
+              <img
+                src="images/log_memo2.png"
+                alt="観測メモ2"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="log-card-content">
               <h3 class="log-card-title">はっぱのふりを、していた。</h3>
               <p class="log-card-text">
-次の日も。<br>
-<br>
-そのまた次の日も。<br>
-<br>
-その子は同じ場所にいました。<br>
-<br>
-葉っぱのふりをしながら。<br>
+                次の日も。<br />
+                <br />
+                そのまた次の日も。<br />
+                <br />
+                その子は同じ場所にいました。<br />
+                <br />
+                葉っぱのふりをしながら。<br />
               </p>
             </div>
           </div>
         </div>
 
         <div class="spot-wrapper">
-          <div class="spot"><span class="spot-label">MEMO</span><span class="spot-number">3</span></div>
+          <div class="spot">
+            <span class="spot-label">MEMO</span
+            ><span class="spot-number">3</span>
+          </div>
           <div class="log-card fade-in">
-<div class="log-card-image">
-  <img src="images/log_memo3.png" alt="観測メモ3" style="width:100%;height:100%;object-fit:cover;" />
-</div>            <div class="log-card-content">
+            <div class="log-card-image">
+              <img
+                src="images/log_memo3.png"
+                alt="観測メモ3"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="log-card-content">
               <h3 class="log-card-title">なまえを、つけてあげた。</h3>
-              <p class="log-card-text">忘れてしまうのが、
-
-なんだかもったいなくて。<br>
-<br>
-ペリカン研究員は、<br>
-<br>
-その子のことを<br>
-ノートに書き残しました。<br>
+              <p class="log-card-text">
+                忘れてしまうのが、 なんだかもったいなくて。<br />
+                <br />
+                ペリカン研究員は、<br />
+                <br />
+                その子のことを<br />
+                ノートに書き残しました。<br />
               </p>
-              
+
               <div class="log-card-memo">現在25種以上を観測記録中</div>
             </div>
           </div>
         </div>
 
         <div class="spot-wrapper">
-          <div class="spot"><span class="spot-label">MEMO</span><span class="spot-number">4</span></div>
+          <div class="spot">
+            <span class="spot-label">MEMO</span
+            ><span class="spot-number">4</span>
+          </div>
           <div class="log-card fade-in">
-<div class="log-card-image">
-  <img src="images/log_memo4.png" alt="観測メモ4" style="width:100%;height:100%;object-fit:cover;" />
-</div>            <div class="log-card-content">
+            <div class="log-card-image">
+              <img
+                src="images/log_memo4.png"
+                alt="観測メモ4"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="log-card-content">
               <h3 class="log-card-title">きろくは、まだつづいている。</h3>
               <p class="log-card-text">
-  それからというもの。<br>
-  <br>
-  ペリカン研究員の机の上には、<br>
-  少しずつ観測記録が増えていきました。
-</p>
-<ul class="log-card-list">
-  <li>名前がついた子。</li>
-  <li>まだ名前のない子。</li>
-  <li>もう会えなくなった子。</li>
-</ul>
-<p class="log-card-text">
-  そして、<br>
-  これから出会うかもしれない子。<br>
-  <br>
-  もしかしたら次のページには、<br>
-  まだ誰も知らない鋸歯生物が<br>
-  待っているかもしれません。
-</p>
+                それからというもの。<br />
+                <br />
+                ペリカン研究員の机の上には、<br />
+                少しずつ観測記録が増えていきました。
+              </p>
+              <ul class="log-card-list">
+                <li>名前がついた子。</li>
+                <li>まだ名前のない子。</li>
+                <li>もう会えなくなった子。</li>
+              </ul>
+              <p class="log-card-text">
+                そして、<br />
+                これから出会うかもしれない子。<br />
+                <br />
+                もしかしたら次のページには、<br />
+                まだ誰も知らない鋸歯生物が<br />
+                待っているかもしれません。
+              </p>
               <a href="index.html" class="log-card-link">図鑑を開く →</a>
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
     <!-- STORY: ペリカン研究員 -->
     <section class="story" id="story">
-  <div class="story-decoration"></div>
-  <div class="story-inner">
-<p class="story-eyebrow">BEHIND THE ZUKAN</p>
-<h2 class="story-heading">図鑑を作っている人</h2>
+      <div class="story-decoration"></div>
+      <div class="story-inner">
+        <p class="story-eyebrow">BEHIND THE ZUKAN</p>
+        <h2 class="story-heading">図鑑を作っている人</h2>
 
-    <div class="story-illustration">
-      <img src="images/no_001.png" alt="スニャグルトゥース" class="creature-img" />
-      <img src="images/no_002.png" alt="ブラックにゃんこブルー" class="creature-img" />
-      <img src="images/pelican.png" alt="ペリカン研究員" class="researcher-image" />
-      <img src="images/no_003.png" alt="レッドキャットミーズル" class="creature-img" />
-      <img src="images/no_004.png" alt="にゃガベチタノタ" class="creature-img" />
-    </div>
+        <div class="story-illustration">
+          <img
+            src="images/no_001.png"
+            alt="スニャグルトゥース"
+            class="creature-img"
+          />
+          <img
+            src="images/no_002.png"
+            alt="ブラックにゃんこブルー"
+            class="creature-img"
+          />
+          <img
+            src="images/pelican.png"
+            alt="ペリカン研究員"
+            class="researcher-image"
+          />
+          <img
+            src="images/no_003.png"
+            alt="レッドキャットミーズル"
+            class="creature-img"
+          />
+          <img
+            src="images/no_004.png"
+            alt="にゃガベチタノタ"
+            class="creature-img"
+          />
+        </div>
 
-<div class="story-text">
-  <p>マルシェに出ると、子どもが来てくれる。</p>
-  <p>「かわいい！！」</p>
-  <p>その顔が、いちばん好きだ。<br>
-  でも次の瞬間、<br>
-  お母さんに手を引かれていく。</p>
-  <p>「高っ」</p>
-  <p>その言葉は、今でも少し刺さる。<br>
-  値段の話じゃなくて、<br>
-  その子の「かわいい」が<br>
-  かき消された気がして。</p>
-  <p>だから、わかってくれる人に届けたい。<br>
-  ちゃんと、その子と同じ目で<br>
-  見てくれる人に。</p>
-  <p class="story-signature">— PelicanWorks / Agavest</p>
-</div>
-  </div>
-</section>
-
-    <!-- AREA: 体験エリア -->
-    <section class="area" id="area">
-      <div class="section-header section-header--area">
-        <h2 class="section-title">体験エリア</h2>
-        <p class="section-subtitle">EXPERIENCE ZONE</p>
-      </div>
-      <div class="area-scroll">
-        <div class="area-card">
-          <div class="area-card-inner">
-            <div class="area-icon">📸</div>
-            <h3 class="area-title">フォトスポット</h3>
-            <p class="area-desc">鋸歯生物との記念撮影コーナー</p>
-          </div>
-        </div>
-        <div class="area-card">
-          <div class="area-card-inner">
-            <div class="area-icon">🔄</div>
-            <h3 class="area-title">譲渡局</h3>
-            <p class="area-desc">鋸歯生物の譲渡・交換窓口</p>
-          </div>
-        </div>
-        <div class="area-card">
-          <div class="area-card-inner">
-            <div class="area-icon">🔬</div>
-            <h3 class="area-title">研究所</h3>
-            <p class="area-desc">最新の研究成果を公開中</p>
-          </div>
-        </div>
-        <div class="area-card">
-          <div class="area-card-inner">
-            <div class="area-icon">🎁</div>
-            <h3 class="area-title">グッズショップ</h3>
-            <p class="area-desc">オリジナルグッズを販売</p>
-          </div>
-        </div>
-        <div class="area-card">
-          <div class="area-card-inner">
-            <div class="area-icon">📖</div>
-            <h3 class="area-title">図鑑コーナー</h3>
-            <p class="area-desc">全個体の詳細データを閲覧</p>
-          </div>
+        <div class="story-text">
+          <p>マルシェに出ると、子どもが来てくれる。</p>
+          <p>「かわいい！！」</p>
+          <p>
+            その顔が、いちばん好きだ。<br />
+            でも次の瞬間、<br />
+            お母さんに手を引かれていく。
+          </p>
+          <p>「高っ」</p>
+          <p>
+            その言葉は、今でも少し刺さる。<br />
+            値段の話じゃなくて、<br />
+            その子の「かわいい」が<br />
+            かき消された気がして。
+          </p>
+          <p>
+            だから、わかってくれる人に届けたい。<br />
+            ちゃんと、その子と同じ目で<br />
+            見てくれる人に。
+          </p>
+          <p class="story-signature">— PelicanWorks / Agavest</p>
         </div>
       </div>
     </section>
 
-   <!-- NEWS -->
-<section class="news" id="news">
-  <div class="section-header section-header--news">
-    <h2 class="section-title">観測ニュース</h2>
-    <p class="section-subtitle">UPDATE LOG</p>
-  </div>
-  <div class="news-list" id="news-list"></div>
-</section>
+    <!-- AREA: 採集待合室 -->
+    <section class="area" id="area">
+      <div class="section-header section-header--area">
+        <h2 class="section-title">採集待合室</h2>
+        <p class="section-subtitle">EXPEDITION LOUNGE</p>
+      </div>
+      <div class="area-scroll">
+        <div class="area-card">
+          <a href="/index.html#catalog" class="area-card-inner">
+            <img src="images/icon_catalog.png" alt="図鑑" class="area-icon" />
+            <h3 class="area-title">図鑑で探す</h3>
+            <p class="area-desc">全25種の観測記録を閲覧する</p>
+          </a>
+        </div>
 
+        <div class="area-card">
+          <a
+            href="https://agavest.stores.jp"
+            target="_blank"
+            rel="noopener"
+            class="area-card-inner"
+          >
+            <img src="images/icon_store.png" alt="標本入手" class="area-icon" />
+            <h3 class="area-title">標本を入手する</h3>
+            <p class="area-desc">現在販売中の個体をSTORESで確認する</p>
+          </a>
+        </div>
+
+        <div class="area-card">
+          <a
+            href="https://www.instagram.com/pelican.works"
+            target="_blank"
+            rel="noopener"
+            class="area-card-inner"
+          >
+            <img
+              src="images/icon_instagram.png"
+              alt="観測記録"
+              class="area-icon"
+            />
+            <h3 class="area-title">最新観測記録</h3>
+            <p class="area-desc">Instagramで制作過程・新個体情報を見る</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <section class="news" id="news">
+      <div class="section-header section-header--news">
+        <h2 class="section-title">観測ニュース</h2>
+        <p class="section-subtitle">UPDATE LOG</p>
+      </div>
+      <div class="news-list" id="news-list"></div>
+    </section>
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+      <div class="section-header section-header--faq">
+        <h2 class="section-title">よくある質問</h2>
+        <p class="section-subtitle">FAQ</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>素材は何ですか？</span>
+            <span class="faq-icon">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              樹脂粘土を使って、ひとつひとつ手作りしています。自然乾燥で仕上げた一点ものです。
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>水に濡れても大丈夫ですか？</span>
+            <span class="faq-icon">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              基本的に水に弱い素材のため、濡らさないようにご注意ください。ただし、フチネコ種はアクリル防水コーティングを施しているため、少量の水分であれば問題ありません。いずれも飾って楽しむことを想定して制作しています。
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>どこで買えますか？</span>
+            <span class="faq-icon">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              オンラインショップ「鋸歯生物譲渡局」（STORES）で販売しています。<a
+                href="https://agavest.stores.jp"
+                target="_blank"
+                rel="noopener"
+                >こちらからご覧いただけます →</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>いつも売り切れています。どうすれば買えますか？</span>
+            <span class="faq-icon">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              すべて手作りの一点もののため、制作できる数に限りがあります。販売のお知らせはInstagramで先行告知していますので、フォローしていただくのが一番確実です。<a
+                href="https://www.instagram.com/pelican.works"
+                target="_blank"
+                rel="noopener"
+                >@pelican.works →</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>オーダーメイドや複製はできますか？</span>
+            <span class="faq-icon">＋</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              現在は承っていません。すべて一点ものとして制作・販売しています。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- FOOTER -->
     <footer class="footer">
       <div class="footer-inner">
         <div class="footer-logo">鋸歯生物図鑑</div>
         <div class="footer-signature">観測者：ペリカン研究員 アガベスト</div>
         <div class="footer-links">
-          <a href="#" class="footer-link">Twitter</a>
-          <a href="#" class="footer-link">Instagram</a>
-          <a href="#" class="footer-link">Contact</a>
+          <a href="/index.html#catalog" class="footer-link">図鑑を見る</a>
+          <a
+            href="https://agavest.stores.jp"
+            target="_blank"
+            rel="noopener"
+            class="footer-link"
+            >標本を入手する</a
+          >
+          <a
+            href="https://www.instagram.com/pelican.works"
+            target="_blank"
+            rel="noopener"
+            class="footer-link"
+            >Instagram</a
+          >
         </div>
         <p class="footer-message">— 観測を続ける —</p>
       </div>
     </footer>
 
     <script src="data/news.js"></script>
-<script src="js/land.js"></script>
+    <script src="js/land.js"></script>
   </body>
 </html>
