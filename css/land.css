@@ -354,6 +354,27 @@ body {
   display: block;
 }
 /* ============================================================
+   イベント用パラメーター
+============================================================ */
+.event-banner {
+  text-align: center;
+  padding: 1.2rem 1.5rem;
+  background: rgba(0, 0, 0, 0.6); /* お好みで調整 */
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+.event-banner-text {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+}
+.event-banner-text strong {
+  font-weight: 700;
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+/* ============================================================
    STORY
 ============================================================ */
 .story {

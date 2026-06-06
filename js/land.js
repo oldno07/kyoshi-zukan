@@ -1,6 +1,17 @@
 // ============================================================
 // 鋸歯生物図鑑 LP - land.js
 // ============================================================
+// イベントバナー出し分け
+const params = new URLSearchParams(window.location.search);
+const eventName = params.get("event");
+
+if (eventName) {
+  const banner = document.getElementById("event-banner");
+  const text = banner.querySelector(".event-banner-text");
+  text.innerHTML =
+    "<strong>イベント会場で出会ってくれた方へ。</strong>手に取ってくれてありがとうございます。<br>ここは、その子たちが暮らす記録の場所です。";
+  banner.style.display = "block";
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   // ============================================================
