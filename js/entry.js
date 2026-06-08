@@ -81,9 +81,9 @@ function shopPanel(e) {
   return `
     <a href="${e.shopUrl}" target="_blank" class="ed-panel ed-panel-shop reveal">
       <div class="ed-panel-title">TRANSFER FILE / 譲渡可能個体</div>
-      <div class="ed-shop-price">${e.price ? `¥${Number(e.price).toLocaleString()}` : "譲渡条件：譲渡局にて開示"}</div>
+      <div class="ed-shop-price">${e.price ? `¥${Number(e.price).toLocaleString()}` : "入手条件：譲渡局で開示"}</div>
       <p class="ed-panel-sub">STORESにて譲渡申請を受付</p>
-      <span class="ed-shop-btn">購入・譲渡ページへ →</span>
+      <span class="ed-shop-btn">この個体を迎え入れる →</span>
     </a>`;
 }
 
