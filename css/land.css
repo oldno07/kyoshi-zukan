@@ -278,6 +278,67 @@ body {
   }
 }
 /* ============================================================
+   SHELF WORLD
+============================================================ */
+
+.shelf-world {
+  position: relative;
+  padding: 100px 32px;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+.shelf-world::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(255, 228, 94, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(230, 0, 107, 0.08) 0%,
+      transparent 50%
+    );
+
+  pointer-events: none;
+}
+
+.shelf-world-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.shelf-world-text {
+  font-size: 18px;
+  line-height: 2.2;
+  color: var(--text-primary);
+  margin-bottom: 32px;
+}
+
+.shelf-world-text--accent {
+  font-weight: 700;
+  color: var(--spot-pink);
+}
+
+@media (max-width: 768px) {
+  .shelf-world {
+    padding: 80px 24px;
+  }
+
+  .shelf-world-text {
+    font-size: 16px;
+    line-height: 2;
+  }
+}
+/* ============================================================
    INTRO
 ============================================================ */
 .intro {
@@ -789,7 +850,34 @@ body {
     padding: 14px 28px;
   }
 }
+.catalog-counter {
+  text-align: center;
+  margin-bottom: 60px;
+}
 
+.catalog-counter-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.catalog-counter-number {
+  display: block;
+  font-size: clamp(48px, 8vw, 80px);
+  font-weight: 900;
+  color: var(--spot-pink);
+  line-height: 1;
+}
+
+.catalog-counter-text {
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
 /* ============================================================
    CATALOG
 ============================================================ */

@@ -74,7 +74,7 @@ window.NEWS = [
     title: "第３回ガーデンマルシェ 出展",
     body: "愛媛県新居浜市サキュレントプラント様にて開催されるガーデンマルシェに出展します。鋸歯生物の新作を複数展示・販売予定です。",
     image: "images/event/260607.jpg",
-    status: "upcoming",
+    status: "ended",
     venue: "愛媛県新居浜市船木甲 5434-1 サキュレントプラント",
     eventDate: "2026-06-07 / 10:00-15:30",
     booth: "未定",
