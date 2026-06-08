@@ -278,64 +278,136 @@ body {
   }
 }
 /* ============================================================
-   SHELF WORLD
+   SHELF RESIDENTS
 ============================================================ */
-
-.shelf-world {
-  position: relative;
-  padding: 100px 32px;
-  background: var(--bg-primary);
+.shelf-residents {
+  padding: 100px 0;
+  background: #ffffff;
   overflow: hidden;
 }
 
-.shelf-world::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background:
-    radial-gradient(
-      circle at 20% 80%,
-      rgba(255, 228, 94, 0.15) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(230, 0, 107, 0.08) 0%,
-      transparent 50%
-    );
-
-  pointer-events: none;
+.shelf-residents .section-header {
+  padding: 0 32px;
+  margin-bottom: 48px;
 }
 
-.shelf-world-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 700px;
-  margin: 0 auto;
+.shelf-residents-scroll {
+  display: flex;
+  gap: 24px;
+  padding: 0 10px 32px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.shelf-residents-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* カード */
+.resident-card {
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+  background: var(--bg-primary);
+  border-radius: 24px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* 植物写真 */
+.resident-plant-img {
+  width: 100%;
+  aspect-ratio: 4 / 3; /* 正方形→横長に変更 */
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.resident-plant-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+  font-style: italic;
   text-align: center;
 }
 
-.shelf-world-text {
-  font-size: 18px;
-  line-height: 2.2;
-  color: var(--text-primary);
-  margin-bottom: 32px;
-}
-
-.shelf-world-text--accent {
-  font-weight: 700;
+/* 矢印 */
+.resident-arrow {
+  display: flex;
+  flex-direction: row; /* 縦→横に変更 */
+  align-items: center;
+  gap: 6px;
   color: var(--spot-pink);
 }
 
+.resident-arrow svg {
+  transform: rotate(-90deg); /* 下矢印→右矢印に */
+  width: 16px;
+  height: 16px;
+}
+
+.resident-arrow-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+/* 鋸歯生物 */
+.resident-creature {
+  width: 100%;
+  display: flex;
+  flex-direction: row; /* 縦→横並びに変更 */
+  align-items: center;
+  gap: 12px;
+}
+
+.resident-creature-img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.resident-creature-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.resident-creature-name {
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--text-primary);
+}
+
+.resident-creature-link {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--spot-pink);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.resident-creature-link:hover {
+  opacity: 0.7;
+}
+
+/* モバイル */
 @media (max-width: 768px) {
-  .shelf-world {
-    padding: 80px 24px;
+  .shelf-residents {
+    padding: 60px 0;
   }
 
-  .shelf-world-text {
-    font-size: 16px;
-    line-height: 2;
+  .resident-card {
+    flex: 0 0 260px;
   }
 }
 /* ============================================================
@@ -385,10 +457,38 @@ body {
 
 .intro-text--sub {
   display: block;
-  margin-top: 8px;
+  margin-top: 24px;
   font-size: 16px;
   font-weight: 400;
   color: var(--text-secondary);
+  line-height: 2.2;
+  margin-bottom: 24px;
+}
+.intro-heading {
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.intro-text {
+  font-size: 18px;
+  line-height: 2.2;
+  color: var(--text-primary);
+  margin-bottom: 32px;
+}
+
+.intro-text--accent {
+  font-weight: 700;
+  color: var(--spot-pink);
+}
+
+@media (max-width: 768px) {
+  .intro-text {
+    font-size: 16px;
+    line-height: 2;
+  }
 }
 /* ============================================================
    PHOTO STRIP
@@ -810,7 +910,7 @@ body {
 .ig-follow {
   text-align: center;
   padding: 60px 32px;
-  background: var(--bg-secondary);
+  background: var(--card-bg);
 }
 
 .ig-follow-text {
