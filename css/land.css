@@ -80,6 +80,10 @@ body {
   text-decoration: none;
   color: var(--text-primary);
 }
+.header-logo a {
+  text-decoration: none;
+  color: inherit;
+}
 
 /* ============================================================
    HERO
