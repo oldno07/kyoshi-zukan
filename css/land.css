@@ -743,10 +743,13 @@ body {
 .log-card-link:hover {
   opacity: 0.7;
 }
+/* ============================================================
+   IG FOLLOW
+============================================================ */
 .ig-follow {
   text-align: center;
   padding: 60px 32px;
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
 }
 
 .ig-follow-text {
