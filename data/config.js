@@ -3,8 +3,8 @@
 // ============================================================
 
 window.SITE_CONFIG = {
-  version: "1.36",
-  lastUpdate: "2026.06.01",
+  version: "1.50",
+  lastUpdate: "2026.06.08",
   status: "ACTIVE",
   region: "UNKNOWN",
   collector: "PELICAN WORKS",
