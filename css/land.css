@@ -257,7 +257,26 @@ body {
   background: var(--bg-secondary);
   border-color: var(--bg-secondary);
 }
+.hero-catch {
+  position: absolute;
+  bottom: 168px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
 
+@media (max-width: 768px) {
+  .hero-catch {
+    font-size: 11px;
+    bottom: 156px;
+  }
+}
 /* ============================================================
    INTRO
 ============================================================ */
@@ -723,6 +742,49 @@ body {
 
 .log-card-link:hover {
   opacity: 0.7;
+}
+.ig-follow {
+  text-align: center;
+  padding: 60px 32px;
+  background: var(--bg-primary);
+}
+
+.ig-follow-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+}
+
+.ig-follow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 40px;
+  background: var(--text-primary);
+  color: #ffffff;
+  border-radius: 40px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-medium);
+}
+
+.ig-follow-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-strong);
+}
+
+@media (max-width: 768px) {
+  .ig-follow {
+    padding: 48px 24px;
+  }
+  .ig-follow-btn {
+    font-size: 13px;
+    padding: 14px 28px;
+  }
 }
 
 /* ============================================================
