@@ -76,6 +76,10 @@ body {
   font-weight: 900;
   color: var(--text-primary);
 }
+.header-logo {
+  text-decoration: none;
+  color: var(--text-primary);
+}
 
 /* ============================================================
    HERO
