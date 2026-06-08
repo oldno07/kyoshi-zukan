@@ -17,6 +17,16 @@
    ============================================================ */
 
 window.NEWS = [
+    {
+    id: "009",
+    date: "2026-06-09",
+    type: "new",
+    title: "No.??? 新個体 — 発見",
+    body: "???",
+    image: "images/unknown.png",
+    link: "entry.html?no=000",
+    linkLabel: "図鑑で見る",
+  },
   {
     id: "008",
     date: "2026-06-03",
