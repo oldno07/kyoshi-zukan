@@ -24,7 +24,7 @@ window.NEWS = [
     title: "No.??? 新個体 — 発見",
     body: "???",
     image: "images/unknown.png",
-    link: "entry.html?no=000",
+    link: "",
     linkLabel: "図鑑で見る",
   },
   {
