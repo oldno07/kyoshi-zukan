@@ -91,13 +91,19 @@
 
 // Main catalog entries (001-999)
 window.MAIN_ENTRIES = [
-  {
-    //001スニャグルトゥース
+  {//001スニャグルトゥース
     // Basic identification
     no: "001",
     sort: 10,
     createdAt: "2026-05-13",
     firstObserved: "2024-05-13",
+
+    // Display info
+    tag: "BEAST-DOMINANT",
+    jp: "スニャグルトゥース",
+    en: "Snyaggletooth",
+    rarity: "UNCOMMON",
+    rarityClass: "rar-uc",
 
     // Classification system
     species: "Snyaggletooth",
@@ -109,13 +115,6 @@ window.MAIN_ENTRIES = [
     plant: 30,
     animal: 78,
     danger: 5,
-
-    // Display info
-    tag: "BEAST-DOMINANT",
-    jp: "スニャグルトゥース",
-    en: "Snyaggletooth",
-    rarity: "UNCOMMON",
-    rarityClass: "rar-uc",
 
     // Detailed description
     notes:
@@ -233,32 +232,28 @@ window.MAIN_ENTRIES = [
     ],
   },
 
-  {
+  {//002ブラックにゃんこブルー
+    // Basic identification
     no: "002",
     sort: 20,
     createdAt: "2026-05-13",
-    plant: 10,
-    animal: 85,
-    danger: 20,
-    notes:
-      "青色毛玉は定期的に排出される。回収された毛玉の用途について質問されることが多いが、研究所としてはコメントを控える。また脱走した。アガベスト",
-    rarity: "COMMON",
-    rarityClass: "rar-c",
-    image: "images/no_002.png",
 
-    // Gallery
-    gallery: [
-      {
-        image: "",
-        title: "",
-        titleEn: "",
-        description: "",
-      },
-    ],
-
+    // Display info
     tag: "BEAST-DOMINANT",
     jp: "ブラックにゃんこブルー",
     en: "Black Nyanko Blue",
+    rarity: "COMMON",
+    rarityClass: "rar-c",
+
+    // Biological stats (0-100)
+    plant: 10,
+    animal: 85,
+    danger: 20,
+
+    // Detailed description
+    notes:
+      "青色毛玉は定期的に排出される。回収された毛玉の用途について質問されることが多いが、研究所としてはコメントを控える。また脱走した。アガベスト",
+
     desc: `
     プレステラ周辺で高頻度に観測される鋸歯生物。
 
@@ -273,16 +268,26 @@ window.MAIN_ENTRIES = [
 
 本個体はアガベ棚環境において安定して観測されている。
   `,
+
+    // Abilities and traits
     abilities: ["青化反応", "プレステラ探知"],
+
+    // Habitat and physical traits
     habitat: "アガベ棚周辺",
     size: "164mm",
     mobility: "夜間活性",
+
+    // Status
     status: "● ACTIVE",
     statusColor: "var(--g)",
+
+    // Shop information
     shopUrl:
       "https://agavest.stores.jp/items/6a07e6cca30c09e1667757ee?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_002",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
+
+    // Variants
     variants: [
       {
         id: "002-a",
@@ -295,6 +300,20 @@ window.MAIN_ENTRIES = [
         soldOut: false,
       },
     ],
+
+    // Image
+    image: "images/no_002.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
     // Observation Videos
     videos: [
       {
@@ -307,31 +326,27 @@ window.MAIN_ENTRIES = [
     ],
   },
 
-  {
+  {//003レッドキャットミーズル
+    // Basic identification
     no: "003",
     sort: 30,
     createdAt: "2026-05-13",
-    plant: 20,
-    animal: 80,
-    danger: 25,
-    notes: "ストレス時に赤色化を確認。",
-    rarity: "UNCOMMON",
-    rarityClass: "rar-uc",
-    image: "images/no_003.png",
 
-    // Gallery
-    gallery: [
-      {
-        image: "",
-        title: "",
-        titleEn: "",
-        description: "",
-      },
-    ],
-
+    // Display info
     tag: "BEAST-DOMINANT",
     jp: "レッドキャットミーズル",
     en: "Red Cat meezle",
+    rarity: "UNCOMMON",
+    rarityClass: "rar-uc",
+
+    // Biological stats (0-100)
+    plant: 20,
+    animal: 80,
+    danger: 25,
+
+    // Detailed description
+    notes: "ストレス時に赤色化を確認。",
+
     desc: `
     スポットライト環境下で色彩変化が観測される鋸歯生物。
 
@@ -342,16 +357,26 @@ window.MAIN_ENTRIES = [
 この変化は防御行動というより、
 環境情報を可視化する反応機構である可能性が高い。
   `,
+
+    // Abilities and traits
     abilities: ["ストレスカラーシフト", "あかいろはんのう"],
+
+    // Habitat and physical traits
     habitat: "スポットライト直下",
     size: "164mm",
     mobility: "夜間活性",
+
+    // Status
     status: "● ACTIVE",
     statusColor: "var(--g)",
+
+    // Shop information
     shopUrl:
       "https://agavest.stores.jp/items/6a080c2e9797c79a78b9a4f0?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_003",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
+
+    // Variants
     variants: [
       {
         id: "003-a",
@@ -364,19 +389,9 @@ window.MAIN_ENTRIES = [
         soldOut: false,
       },
     ],
-  },
 
-  {
-    no: "004",
-    sort: 40,
-    createdAt: "2026-05-13",
-    plant: 40,
-    animal: 70,
-    danger: 15,
-    notes: "植物と動物の特徴を併せ持つ個体群を確認。鋸歯構造との関連性あり。",
-    rarity: "COMMON",
-    rarityClass: "rar-c",
-    image: "images/no_004.png",
+    // Image
+    image: "images/no_003.png",
 
     // Gallery
     gallery: [
@@ -387,10 +402,29 @@ window.MAIN_ENTRIES = [
         description: "",
       },
     ],
+  },
 
+  {//004にゃガベ チタノタ
+    // Basic identification
+    no: "004",
+    sort: 40,
+    createdAt: "2026-05-13",
+
+    // Display info
     tag: "BEAST-DOMINANT",
     jp: "にゃガベ チタノタ",
     en: "NyAgabe titanota",
+    rarity: "COMMON",
+    rarityClass: "rar-c",
+
+    // Biological stats (0-100)
+    plant: 40,
+    animal: 70,
+    danger: 15,
+
+    // Detailed description
+    notes: "植物と動物の特徴を併せ持つ個体群を確認。鋸歯構造との関連性あり。",
+
     desc: `
     鋸歯生物群において広域分布が確認されている基礎個体。
 
@@ -400,16 +434,26 @@ window.MAIN_ENTRIES = [
 形態変化よりも環境適応の安定性を優先する傾向があり、
 構造的変化よりも恒常性維持に重きを置いていると推定される。
   `,
+
+    // Abilities and traits
     abilities: ["エコシステムアダプト", "かんきょうてきおう"],
+
+    // Habitat and physical traits
     habitat: "アガベ棚全域",
     size: "172mm",
     mobility: "夜間活性",
+
+    // Status
     status: "● ACTIVE",
     statusColor: "var(--g)",
+
+    // Shop information
     shopUrl:
       "https://agavest.stores.jp/items/6a080ce79797c7aacab9a479?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_004",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
+
+    // Variants
     variants: [
       {
         id: "004-a",
@@ -431,20 +475,9 @@ window.MAIN_ENTRIES = [
         soldOut: false,
       },
     ],
-  },
 
-  {
-    no: "005",
-    sort: 50,
-    createdAt: "2026-05-13",
-    plant: 25,
-    animal: 90,
-    danger: 60,
-    notes:
-      "驚いた。ネコ型生物以外にも、ゴリラのような個体を密林の奥深くで発見した。どのような進化を遂げてきたのだろうか。頭部に見えるのはホリダの葉っぱのように見える。アガベスト",
-    rarity: "RARE",
-    rarityClass: "rar-r",
-    image: "images/no_005.png",
+    // Image
+    image: "images/no_004.png",
 
     // Gallery
     gallery: [
@@ -455,10 +488,30 @@ window.MAIN_ENTRIES = [
         description: "",
       },
     ],
+  },
 
+  {//005ゴリラホリダ
+    // Basic identification
+    no: "005",
+    sort: 50,
+    createdAt: "2026-05-13",
+
+    // Display info
     tag: "BEAST-DOMINANT",
     jp: "ゴリラホリダ",
     en: "Gorillahorrida",
+    rarity: "RARE",
+    rarityClass: "rar-r",
+
+    // Biological stats (0-100)
+    plant: 25,
+    animal: 90,
+    danger: 60,
+
+    // Detailed description
+    notes:
+      "驚いた。ネコ型生物以外にも、ゴリラのような個体を密林の奥深くで発見した。どのような進化を遂げてきたのだろうか。頭部に見えるのはホリダの葉っぱのように見える。アガベスト",
+
     desc: `
     アガベ棚大型領域で観測された大型鋸歯生物。
 
@@ -472,30 +525,26 @@ window.MAIN_ENTRIES = [
 
 観測時には周囲の個体が一定距離を保つ行動が確認されている。
   `,
+
+    // Abilities and traits
     abilities: ["マッスルビルダー", "おもみしずめ"],
+
+    // Habitat and physical traits
     habitat: "棚外縁重圧域",
     size: "2.4m",
     mobility: "重量型",
+
+    // Status
     status: "● STABLE",
     statusColor: "var(--g)",
+
+    // Shop information
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-  },
 
-  {
-    no: "006",
-    sort: 60,
-    createdAt: "2026-05-13",
-    plant: 15,
-    animal: 95,
-    danger: 90,
-    notes:
-      "ある日荒野を歩いていると、私はそれを見つけました。あまりにも大きなキンタマを持つそいつに私は名付けました。キンタ魔丸。その名の通り。恐ろしくデカいです。クラフトセブンティ",
-
-    rarity: "LEGEND",
-    rarityClass: "rar-l",
-    image: "images/no_006.png",
+    // Image
+    image: "images/no_005.png",
 
     // Gallery
     gallery: [
@@ -506,10 +555,30 @@ window.MAIN_ENTRIES = [
         description: "",
       },
     ],
+  },
 
+  {//006キンタ魔丸
+    // Basic identification
+    no: "006",
+    sort: 60,
+    createdAt: "2026-05-13",
+
+    // Display info
     tag: "BEAST-DOMINANT",
     jp: "キンタ魔丸",
     en: "GoldenBall Magan",
+    rarity: "LEGEND",
+    rarityClass: "rar-l",
+
+    // Biological stats (0-100)
+    plant: 15,
+    animal: 95,
+    danger: 90,
+
+    // Detailed description
+    notes:
+      "ある日荒野を歩いていると、私はそれを見つけました。あまりにも大きなキンタマを持つそいつに私は名付けました。キンタ魔丸。その名の通り。恐ろしくデカいです。クラフトセブンティ",
+
     desc: `
       禁域生態圏において観測された大型鋸歯生物。
 
@@ -522,28 +591,26 @@ window.MAIN_ENTRIES = [
 その存在は「禁域個体」として特別記録に分類されている。
     `,
     namer: "@craft_seventy",
+
+    // Abilities and traits
     abilities: ["オーバーリバランス", "りょくばくぞうふく"],
+
+    // Habitat and physical traits
     habitat: "棚禁域",
     size: "4.1m",
     mobility: "群体統率",
+
+    // Status
     status: "● MONARCH",
     statusColor: "#e0b94f",
+
+    // Shop information
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-  },
 
-  {
-    no: "007",
-    sort: 70,
-    createdAt: "2026-05-13",
-    plant: 10,
-    animal: 60,
-    danger: 0,
-    notes: "領空域で浮遊する鋸歯ネコ型生物を確認。体表に空色変化あり。",
-    rarity: "uncommon",
-    rarityClass: "rar-uc",
-    image: "images/no_007.png",
+    // Image
+    image: "images/no_006.png",
 
     // Gallery
     gallery: [
@@ -554,10 +621,29 @@ window.MAIN_ENTRIES = [
         description: "",
       },
     ],
+  },
 
+  {//007スカイブルーニャンダホー
+    // Basic identification
+    no: "007",
+    sort: 70,
+    createdAt: "2026-05-13",
+
+    // Display info
     tag: "BEAST-DOMINANT Aerial Type",
     jp: "スカイブルーニャンダホー",
     en: "Sky Blue Nyanda Ho",
+    rarity: "uncommon",
+    rarityClass: "rar-uc",
+
+    // Biological stats (0-100)
+    plant: 10,
+    animal: 60,
+    danger: 0,
+
+    // Detailed description
+    notes: "領空域で浮遊する鋸歯ネコ型生物を確認。体表に空色変化あり。",
+
     desc: `
       領空域において観測される鋸歯ネコ型生物。
 
@@ -570,32 +656,29 @@ window.MAIN_ENTRIES = [
 
 また人工環境下では、
 棚上部構造への定着行動が確認されることがあり、
-休息時の安定化プロセスとして記録されている。 
+休息時の安定化プロセスとして記録されている。
   `,
     namer: "@fukuboo",
+
+    // Abilities and traits
     abilities: ["エアロバランサー", "かぜのり"],
+
+    // Habitat and physical traits
     habitat: "アガベ棚上層環境",
     size: "160mm",
     mobility: "高速飛行",
+
+    // Status
     status: "● MONARCH",
     statusColor: "#e0b94f",
+
+    // Shop information
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-    missingState: "SIGNAL_LOST",
-  },
 
-  {
-    no: "008",
-    sort: 80,
-    createdAt: "2026-05-13",
-    plant: 70,
-    animal: 85,
-    danger: 35,
-    notes: "草食傾向を持つトカゲ型個体を確認。体表に葉状構造あり。",
-    rarity: "RARE",
-    rarityClass: "rar-r",
-    image: "images/no_008.png",
+    // Image
+    image: "images/no_007.png",
 
     // Gallery
     gallery: [
@@ -607,9 +690,30 @@ window.MAIN_ENTRIES = [
       },
     ],
 
+    missingState: "SIGNAL_LOST",
+  },
+
+  {//008アガベカブトトカゲ
+    // Basic identification
+    no: "008",
+    sort: 80,
+    createdAt: "2026-05-13",
+
+    // Display info
     tag: "BEAST-DOMINANT",
     jp: "アガベカブトトカゲ",
     en: "Agave Kabutotokage",
+    rarity: "RARE",
+    rarityClass: "rar-r",
+
+    // Biological stats (0-100)
+    plant: 70,
+    animal: 85,
+    danger: 35,
+
+    // Detailed description
+    notes: "草食傾向を持つトカゲ型個体を確認。体表に葉状構造あり。",
+
     desc: `
 草原から湿潤境界帯にかけて観測される、
 トカゲ型鋸歯生物。
@@ -624,30 +728,26 @@ window.MAIN_ENTRIES = [
 あるいは環境同化現象なのかは未解明である。
 
 `,
+
+    // Abilities and traits
     abilities: ["リーフアーマーフュージョン", "しょくぶつどうか"],
+
+    // Habitat and physical traits
     habitat: "棚外縁環境",
     size: "248mm",
     mobility: "俊敏",
+
+    // Status
     status: "● ACTIVE",
     statusColor: "var(--g)",
+
+    // Shop information
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-    missingState: "DATA_LOST", // 欠損状態を設定
-  },
 
-  {
-    no: "009",
-    sort: 90,
-    createdAt: "2026-05-13",
-    plant: 35,
-    animal: 80,
-    danger: 30,
-    namer: "@craft_seventy",
-    notes: "クマ型の群体鋸歯生物を確認。二足歩行および集団行動あり。",
-    rarity: "COMMON",
-    rarityClass: "rar-c",
-    image: "images/no_009.png",
+    // Image
+    image: "images/no_008.png",
 
     // Gallery
     gallery: [
@@ -659,9 +759,30 @@ window.MAIN_ENTRIES = [
       },
     ],
 
+    missingState: "DATA_LOST", // 欠損状態を設定
+  },
+
+  {//009フィリグリズリー
+    // Basic identification
+    no: "009",
+    sort: 90,
+    createdAt: "2026-05-13",
+
+    // Display info
     tag: "BEAST-DOMINANT",
     jp: "フィリグリズリー",
     en: "Filigrizzly",
+    rarity: "COMMON",
+    rarityClass: "rar-c",
+
+    // Biological stats (0-100)
+    plant: 35,
+    animal: 80,
+    danger: 30,
+
+    // Detailed description
+    notes: "クマ型の群体鋸歯生物を確認。二足歩行および集団行動あり。",
+
     desc: `
        群体行動を示す鋸歯生物。
 
@@ -677,28 +798,27 @@ window.MAIN_ENTRIES = [
 成熟個体は肩部鋸歯を展開したまま長時間静止することがあり、
 これは群体間の情報伝達の一形態である可能性がある。
     `,
+    namer: "@craft_seventy",
+
+    // Abilities and traits
     abilities: ["スウォームコンダクト", "なかまよび"],
+
+    // Habitat and physical traits
     habitat: "棚外縁群体領域",
     size: "1.8m",
     mobility: "群行型",
+
+    // Status
     status: "● STABLE",
     statusColor: "var(--g)",
+
+    // Shop information
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-  },
 
-  {
-    no: "010",
-    sort: 100,
-    createdAt: "2026-05-13",
-    plant: 20,
-    animal: 95,
-    danger: 85,
-    notes: "",
-    rarity: "RARE",
-    rarityClass: "rar-r",
-    image: "images/no_010.png",
+    // Image
+    image: "images/no_009.png",
 
     // Gallery
     gallery: [
@@ -709,10 +829,27 @@ window.MAIN_ENTRIES = [
         description: "",
       },
     ],
+  },
 
+  {//010フィリグリズリーデビル
+    // Basic identification
+    no: "010",
+    sort: 100,
+    createdAt: "2026-05-13",
+
+    // Display info
     tag: "BEAST-DOMINANT",
     jp: "フィリグリズリーデビル",
     en: "Filigrizzly Devil",
+    rarity: "RARE",
+    rarityClass: "rar-r",
+
+    // Biological stats (0-100)
+    plant: 20,
+    animal: 95,
+    danger: 85,
+
+    // Detailed description
     notes: "背部に視線反応。観測中に瞬き同期あり。アガベスト",
 
     desc: `
@@ -728,29 +865,26 @@ window.MAIN_ENTRIES = [
 背部構造の数と群体内階級には相関が見られるが、
 その因果関係は未確定である。
 `,
+
+    // Abilities and traits
     abilities: ["ハイパーインシデント", "きょうかかいろ"],
+
+    // Habitat and physical traits
     habitat: "棚禁域群体崩壊層",
     size: "2.7m",
     mobility: "重装型",
+
+    // Status
     status: "● AGITATED",
     statusColor: "#d65a5a",
+
+    // Shop information
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-  },
 
-  {
-    no: "011",
-    sort: 110,
-    createdAt: "2026-05-13",
-    plant: 15,
-    animal: 95,
-    danger: 95,
-    notes:
-      "世界は広いことを知った。 キンター魔族の住む禁域森林を後にした私は、深い森の奥で小さな池を見つけた。 渇いた喉を潤そうと近づいた、その時だった。 奴らは池を取り囲み、狂気じみた踊りを捧げていた。 フィリグリズリーの群れだ。 その視線の先を追う。 木々を組み上げた巨大な玉座。 そして、その頂で微動だにせず群れを見下ろす一体の巨獣。 あれは長ではない。王ですらない。 群れ全てが跪き、その存在を称えている。 私は直感した。 ――君主だ。 新種個体として記録する。 クラフトセブンティ",
-    rarity: "EPIC",
-    rarityClass: "rar-e",
-    image: "images/no_011.png",
+    // Image
+    image: "images/no_010.png",
 
     // Gallery
     gallery: [
@@ -761,10 +895,30 @@ window.MAIN_ENTRIES = [
         description: "",
       },
     ],
+  },
 
+  {//011フィリグリズリーモナーク
+    // Basic identification
+    no: "011",
+    sort: 110,
+    createdAt: "2026-05-13",
+
+    // Display info
     tag: "BEAST-DOMINANT",
     jp: "フィリグリズリーモナーク",
     en: "Filigrizzly Monarch",
+    rarity: "EPIC",
+    rarityClass: "rar-e",
+
+    // Biological stats (0-100)
+    plant: 15,
+    animal: 95,
+    danger: 95,
+
+    // Detailed description
+    notes:
+      "世界は広いことを知った。 キンター魔族の住む禁域森林を後にした私は、深い森の奥で小さな池を見つけた。 渇いた喉を潤そうと近づいた、その時だった。 奴らは池を取り囲み、狂気じみた踊りを捧げていた。 フィリグリズリーの群れだ。 その視線の先を追う。 木々を組み上げた巨大な玉座。 そして、その頂で微動だにせず群れを見下ろす一体の巨獣。 あれは長ではない。王ですらない。 群れ全てが跪き、その存在を称えている。 私は直感した。 ――君主だ。 新種個体として記録する。 クラフトセブンティ",
+
     desc: `
   フィリグリズリー群において観測される高位個体。
 
@@ -778,28 +932,26 @@ window.MAIN_ENTRIES = [
 また周辺では群体内の衝突頻度が著しく低下しており、
 特定個体を中心とした安定構造が形成されている可能性がある。
   `,
+
+    // Abilities and traits
     abilities: ["コロニーオーバーライド", "しはいどうちょう"],
+
+    // Habitat and physical traits
     habitat: "棚禁域群体中枢",
     size: "4.1m",
     mobility: "群体統率",
+
+    // Status
     status: "● MONARCH",
     statusColor: "#e0b94f",
+
+    // Shop information
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-  },
 
-  {
-    no: "012",
-    sort: 120,
-    createdAt: "2026-05-14",
-    plant: 60,
-    animal: 85,
-    danger: 30,
-    notes: "岩状の大型鋸歯生物を確認。移動に伴い周辺植物群が活性化。アガベスト",
-    rarity: "UNCOMMON",
-    rarityClass: "rar-uc",
-    image: "images/no_012.png",
+    // Image
+    image: "images/no_011.png",
 
     // Gallery
     gallery: [
@@ -810,10 +962,29 @@ window.MAIN_ENTRIES = [
         description: "",
       },
     ],
+  },
 
+  {//012緑犀牛
+    // Basic identification
+    no: "012",
+    sort: 120,
+    createdAt: "2026-05-14",
+
+    // Display info
     tag: "BEAST-DOMINANT",
     jp: "緑犀牛",
     en: "Green Rhino",
+    rarity: "UNCOMMON",
+    rarityClass: "rar-uc",
+
+    // Biological stats (0-100)
+    plant: 60,
+    animal: 85,
+    danger: 30,
+
+    // Detailed description
+    notes: "岩状の大型鋸歯生物を確認。移動に伴い周辺植物群が活性化。アガベスト",
+
     desc: `
   草原地帯にて観測された大型鋸歯生物。
 
@@ -829,28 +1000,26 @@ window.MAIN_ENTRIES = [
 頭部鋸歯器官は地中探索に関与している可能性があり、
 環境情報の取得手段として機能していると考えられる。
 `,
+
+    // Abilities and traits
     abilities: ["クロロコンダクター", "どしょくれんどう"],
+
+    // Habitat and physical traits
     habitat: "棚外縁地表層",
     size: "2.1m",
     mobility: "重量型",
+
+    // Status
     status: "● ACTIVE",
     statusColor: "var(--g)",
+
+    // Shop information
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-  },
 
-  {
-    no: "013",
-    sort: 130,
-    createdAt: "2026-05-13",
-    plant: 20,
-    animal: 95,
-    danger: 80,
-    notes: "深海から白色の大型個体が浮上。周囲海流に変化を確認。アガベスト",
-    rarity: "COMMON",
-    rarityClass: "rar-c",
-    image: "images/no_013.png",
+    // Image
+    image: "images/no_012.png",
 
     // Gallery
     gallery: [
@@ -861,10 +1030,29 @@ window.MAIN_ENTRIES = [
         description: "",
       },
     ],
+  },
 
+  {//013白鯨
+    // Basic identification
+    no: "013",
+    sort: 130,
+    createdAt: "2026-05-13",
+
+    // Display info
     tag: "AQUATIC-SUCCULENT HYBRID",
     jp: "白鯨",
     en: "Hakugei White Cetus",
+    rarity: "COMMON",
+    rarityClass: "rar-c",
+
+    // Biological stats (0-100)
+    plant: 20,
+    animal: 95,
+    danger: 80,
+
+    // Detailed description
+    notes: "深海から白色の大型個体が浮上。周囲海流に変化を確認。アガベスト",
+
     desc: `
 深海域で観測された巨大な白色鋸歯生物。
 
@@ -877,29 +1065,90 @@ window.MAIN_ENTRIES = [
 これは生物なのか、それとも現象なのか。
 観測記録は未だ分類を保留している。
 `,
+
+    // Abilities and traits
     abilities: ["ハイドロモジュレーター", "すいあつばいそう"],
+
+    // Habitat and physical traits
     habitat: "棚水圏",
     size: "18m+",
     mobility: "浮遊型",
+
+    // Status
     status: "● MYTHIC",
     statusColor: "#e0b94f",
+
+    // Shop information
     shopUrl:
       "https://agavest.stores.jp/items/681f990c80278e0a7b078b64?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_013",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
+
+    // Image
+    image: "images/no_013.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
   },
 
-  {
+  {//014黒鯨
+    // Basic identification
     no: "014",
     sort: 140,
     createdAt: "2026-05-14",
+
+    // Display info
+    tag: "BEAST-DOMINANT",
+    jp: "黒鯨",
+    en: "Kokugei Black Cetus",
+    rarity: "UNCOMMON",
+    rarityClass: "rar-uc",
+
+    // Biological stats (0-100)
     plant: 25,
     animal: 90,
     danger: 75,
+
+    // Detailed description
     notes:
       "黒い潮煙の中心から浮上した個体。周囲の生物群が逃げずに集まる異常行動を確認。これは生物というより環境に近い。アガベスト",
-    rarity: "UNCOMMON",
-    rarityClass: "rar-uc",
+
+
+    desc: `
+  深海域にて黒い潮煙状の現象が発生し、その中心から巨大な鋸歯生物が浮上した。
+
+周囲の小型個体群は逃走行動を示さず、
+むしろその周辺へと集積する傾向が確認されている。
+
+本個体の周囲では水質および生物分布が変化しており、
+一時的に“環境そのものが個体に従属している”状態が観測された。
+`,
+
+    // Abilities and traits
+    abilities: ["ディープシンクアダプト", "しんかいどうか"],
+
+    // Habitat and physical traits
+    habitat: "棚水圏中枢干渉域",
+    size: "18m級",
+    mobility: "遊泳型",
+
+    // Status
+    status: "● MONITOR",
+    statusColor: "#e0b94f",
+
+    // Shop information
+    shopUrl: "",
+    price: "",
+    soldOut: false, // 完売時は true に変えるだけ
+
+    // Image
     image: "images/no_014.png",
 
     // Gallery
@@ -911,55 +1160,29 @@ window.MAIN_ENTRIES = [
         description: "",
       },
     ],
-
-    tag: "BEAST-DOMINANT",
-    jp: "黒鯨",
-    en: "Kokugei Black Cetus",
-    desc: `
-  深海域にて黒い潮煙状の現象が発生し、その中心から巨大な鋸歯生物が浮上した。
-
-周囲の小型個体群は逃走行動を示さず、
-むしろその周辺へと集積する傾向が確認されている。
-
-本個体の周囲では水質および生物分布が変化しており、
-一時的に“環境そのものが個体に従属している”状態が観測された。
-`,
-    abilities: ["ディープシンクアダプト", "しんかいどうか"],
-    habitat: "棚水圏中枢干渉域",
-    size: "18m級",
-    mobility: "遊泳型",
-    status: "● MONITOR",
-    statusColor: "#e0b94f",
-    shopUrl: "",
-    price: "",
-    soldOut: false, // 完売時は true に変えるだけ
   },
-  {
+  {//015メタル白鯨
+    // Basic identification
     no: "015",
     sort: 150,
     createdAt: "2026-05-14",
-    plant: 5,
-    animal: 90,
-    danger: 56,
-    notes:
-      "海底で金属反応が検出された直後、巨大な白鯨型個体を確認。通過後の地形が変形している。これは生物というより構造物に近い。アガベスト",
-    rarity: "RARE",
-    rarityClass: "rar-r",
-    image: "images/no_015.png",
 
-    // Gallery
-    gallery: [
-      {
-        image: "",
-        title: "",
-        titleEn: "",
-        description: "",
-      },
-    ],
-
+    // Display info
     tag: "AQUATIC-SUCCULENT HYBRID",
     jp: "メタル白鯨",
     en: "Metal Hakugei Cetus",
+    rarity: "RARE",
+    rarityClass: "rar-r",
+
+    // Biological stats (0-100)
+    plant: 5,
+    animal: 90,
+    danger: 56,
+
+    // Detailed description
+    notes:
+      "海底で金属反応が検出された直後、巨大な白鯨型個体を確認。通過後の地形が変形している。これは生物というより構造物に近い。アガベスト",
+
     desc: `
   深海極圧環境にて確認された、白鯨系統の金属化変異個体。
 
@@ -972,29 +1195,26 @@ window.MAIN_ENTRIES = [
 本個体は環境を変化させるのではなく、
 環境そのものを書き換える存在として記録されている。
 `,
+
+    // Abilities and traits
     abilities: ["メタルバイオシフト", "まてりあるへんか"],
+
+    // Habitat and physical traits
     habitat: "棚水圏構造改変域",
     size: "18m+",
     mobility: "浮遊型",
+
+    // Status
     status: "● MONARCH",
     statusColor: "#e0b94f",
+
+    // Shop information
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-  },
 
-  {
-    no: "016",
-    sort: 160,
-    createdAt: "2026-05-14",
-    plant: 10,
-    animal: 90,
-    danger: 70,
-    notes:
-      "金色発光を伴う巨大個体が海底を通過。通過後、鉱物粒子の沈殿帯が形成された。アガベスト",
-    rarity: "LEGEND",
-    rarityClass: "rar-l",
-    image: "images/no_016.png",
+    // Image
+    image: "images/no_015.png",
 
     // Gallery
     gallery: [
@@ -1005,10 +1225,31 @@ window.MAIN_ENTRIES = [
         description: "",
       },
     ],
+  },
 
+  {//016金鯨
+    // Basic identification
+    no: "016",
+    sort: 160,
+    createdAt: "2026-05-14",
+
+    // Display info
     tag: "AQUATIC-SUCCULENT HYBRID",
     jp: "金鯨",
     en: "Kingei Golden Cetus",
+    rarity: "LEGEND",
+    rarityClass: "rar-l",
+
+    // Biological stats (0-100)
+    plant: 10,
+    animal: 90,
+    danger: 70,
+
+    // Detailed description
+    notes:
+      "金色発光を伴う巨大個体が海底を通過。通過後、鉱物粒子の沈殿帯が形成された。アガベスト",
+
+
     desc: `
   深海熱水域にて確認された、白鯨系統の金属光沢変異個体。
 
@@ -1021,29 +1262,26 @@ window.MAIN_ENTRIES = [
 本個体は移動する生物というよりも、
 “海に残る現象の起点”として記録されている。
 `,
+
+    // Abilities and traits
     abilities: ["オーロラミネラルフロー", "こうたくばいぞう"],
+
+    // Habitat and physical traits
     habitat: "棚水圏沈殿域",
     size: "18m+",
     mobility: "浮遊型",
+
+    // Status
     status: "● STABLE",
     statusColor: "var(--g)",
+
+    // Shop information
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-  },
 
-  {
-    no: "017",
-    sort: 170,
-    createdAt: "2026-05-14",
-    plant: 55,
-    animal: 75,
-    danger: 35,
-    notes:
-      "草原でこちらを見つめる小型個体を確認した。ライオンのような鬣を持つが、近づいて観察すると葉そのものだった。風が吹くたびに葉同士が微かに共鳴しており、周囲の植物群も同調するように揺れていた。アガベスト",
-    rarity: "UNCOMMON",
-    rarityClass: "rar-uc",
-    image: "images/no_017.png",
+    // Image
+    image: "images/no_016.png",
 
     // Gallery
     gallery: [
@@ -1054,10 +1292,30 @@ window.MAIN_ENTRIES = [
         description: "",
       },
     ],
+  },
 
+  {//017ライオンズニャーン
+    // Basic identification
+    no: "017",
+    sort: 170,
+    createdAt: "2026-05-14",
+
+    // Display info
     tag: "BEAST-DOMINANT",
     jp: "ライオンズニャーン",
     en: "Lions Nyaan",
+    rarity: "UNCOMMON",
+    rarityClass: "rar-uc",
+
+    // Biological stats (0-100)
+    plant: 55,
+    animal: 75,
+    danger: 35,
+
+    // Detailed description
+    notes:
+      "草原でこちらを見つめる小型個体を確認した。ライオンのような鬣を持つが、近づいて観察すると葉そのものだった。風が吹くたびに葉同士が微かに共鳴しており、周囲の植物群も同調するように揺れていた。アガベスト",
+
     desc: `
   草原地帯にて確認された、
   鋸歯ネコ系統の個体。  
@@ -1074,29 +1332,26 @@ window.MAIN_ENTRIES = [
   葉片同士が共鳴振動を起こし、
   周囲植物群へ影響を与える現象が確認されている。
 `,
+
+    // Abilities and traits
     abilities: ["センサリーフラクタル", "ひかりきょうかん"],
+
+    // Habitat and physical traits
     habitat: "草原地帯",
     size: "170mm",
     mobility: "緩慢",
+
+    // Status
     status: "● ACTIVE",
     statusColor: "var(--g)",
+
+    // Shop information
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-  },
 
-  {
-    no: "018",
-    sort: 180,
-    createdAt: "2026-05-14",
-    plant: 30,
-    animal: 85,
-    danger: 70,
-    notes:
-      "廃棄区域で金属音を伴う大型個体を確認した。動きは機械のように正確だったが、こちらを視認した直後だけ数秒間停止した。あの挙動には“迷い”のようなものを感じた。アガベスト",
-    rarity: "RARE",
-    rarityClass: "rar-r",
-    image: "images/no_018.png",
+    // Image
+    image: "images/no_017.png",
 
     // Gallery
     gallery: [
@@ -1107,10 +1362,30 @@ window.MAIN_ENTRIES = [
         description: "",
       },
     ],
+  },
 
+{//018鋸歯機獣ゴリボーグ
+    // Basic identification
+    no: "018",
+    sort: 180,
+    createdAt: "2026-05-14",
+
+    // Display info
     tag: "MECHA-BEAST-JOINT",
     jp: "鋸歯機獣ゴリボーグ",
     en: "Goriborg Serrate Beast",
+    rarity: "RARE",
+    rarityClass: "rar-r",
+
+    // Biological stats (0-100)
+    plant: 30,
+    animal: 85,
+    danger: 70,
+
+    // Detailed description
+    notes:
+      "廃棄区域で金属音を伴う大型個体を確認した。動きは機械のように正確だったが、こちらを視認した直後だけ数秒間停止した。あの挙動には\"迷い\"のようなものを感じた。アガベスト",
+
     desc: `
   草原〜廃棄境界帯にて確認された、
   機械融合型鋸歯生物。  
@@ -1126,29 +1401,27 @@ window.MAIN_ENTRIES = [
   稀に観察対象を注視したまま停止する挙動が確認されており、
   意思残留体の可能性が示唆されている。
 `,
+
+    // Abilities and traits
     abilities: ["メカノイドレジスト", "かんせいざんぞう"],
+
+    // Habitat and physical traits
     habitat: "境界地帯",
+
     size: "2.6m",
     mobility: "機械歩行型",
+
+    // Status
     status: "● MONITOR",
     statusColor: "#e0b94f",
+
+    // Shop information
     shopUrl: "",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
-  },
 
-  {
-    no: "019",
-    sort: 190,
-    createdAt: "2026-05-14",
-    plant: 25,
-    animal: 88,
-    danger: 20,
-    notes:
-      "海面に浮かぶ白い物体を岩礁だと思っていたが、触れた瞬間に大きく沈み込み、そのまま弾むように遊泳を開始した。想像以上に柔らかい。群れ同士が反発波で会話しているようにも見える。アガベスト",
-    rarity: "UNCOMMON",
-    rarityClass: "rar-uc",
-    image: "images/no_019.png",
+    // Image
+    image: "images/no_018.png",
 
     // Gallery
     gallery: [
@@ -1159,10 +1432,29 @@ window.MAIN_ENTRIES = [
         description: "",
       },
     ],
+  },
 
+{//019もち鯨
+    // Basic identification
+    no: "019",
+    sort: 190,
+    createdAt: "2026-05-14",
+
+    // Display info
     tag: "AQUATIC-SUCCULENT HYBRID",
     jp: "もち鯨",
     en: "Mochi Cetus",
+    rarity: "UNCOMMON",
+    rarityClass: "rar-uc",
+
+    // Biological stats (0-100)
+    plant: 25,
+    animal: 88,
+    danger: 20,
+
+    // Detailed description
+    notes:
+      "海面に浮かぶ白い物体を岩礁だと思っていたが、触れた瞬間に大きく沈み込み、そのまま弾むように遊泳を開始した。想像以上に柔らかい。群れ同士が反発波で会話しているようにも見える。アガベスト",
     desc: `
   沿岸域にて群れで確認される、
   鯨型鋸歯生物。  
@@ -1178,15 +1470,37 @@ window.MAIN_ENTRIES = [
   全身を急激に膨張させ、
   水中へ反発波を発生させる防御行動を行う。
 `,
+
+    // Abilities and traits
     abilities: ["エラスティックフォーム", "はんぱつしんどう"],
+
+    // Habitat and physical traits
     habitat: "沿岸域",
     size: "12m〜18m",
     mobility: "遊泳型",
+
+    // Status
     status: "● STABLE",
-    statusColor: "var(--g)",
-    shopUrl: "",
+
+    // Shop information
     price: "",
+    shopUrl: "",
     soldOut: false, // 完売時は true に変えるだけ
+
+    // Image
+    image: "images/no_019.png",
+
+    // Gallery
+    gallery: [
+      {
+        image: "",
+        title: "",
+        titleEn: "",
+        description: "",
+      },
+    ],
+
+    // Variants
     variants: [
       {
         id: "019-a",
@@ -1217,8 +1531,7 @@ window.MAIN_ENTRIES = [
       },
     ],
   },
-
-  {
+  {//020グラキりす
     no: "020",
     sort: 200,
     createdAt: "2026-05-14",
@@ -1250,7 +1563,7 @@ window.MAIN_ENTRIES = [
 
   本種は高い貯水能力を持つ塊根構造を形成しており、
   頬袋状器官へ水分を蓄積することで、
-  長期乾燥環境下でも活動を維持する。  
+  長期乾燥環境下でも活動を維持。  
 
   人工環境下では、
   プレステラ型基底環境へ固定化する行動が確認されており、
@@ -1884,3 +2197,6 @@ window.ENTRIES = [
   ...window.EX_ENTRIES,
   ...window.MISSING_ENTRIES,
 ];
+` 
+console.log('File written');
+`

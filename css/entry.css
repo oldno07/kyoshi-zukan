@@ -113,7 +113,7 @@
 }
 .ed-hero-jp {
   font-family: "Shippori Mincho", serif;
-  font-size: clamp(40px, 5vw, 64px);
+  font-size: clamp(35px, 5vw, 64px);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;

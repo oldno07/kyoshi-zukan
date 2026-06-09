@@ -204,7 +204,7 @@ function variantsSection(e) {
         shopHtml = `
         <a href="${v.shopUrl}" target="_blank" class="vr-buy">
           ${v.price ? `<span class="vr-price">¥${Number(v.price).toLocaleString()}</span>` : ""}
-          <span class="vr-buy-label">購入する →</span>
+          <span class="vr-buy-label">お迎えする →</span>
         </a>`;
       }
 
