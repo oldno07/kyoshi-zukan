@@ -289,6 +289,7 @@ function renderEntry(e, source = "MAIN") {
     .join("");
 
   const rows = [
+    { k: "ToPLANTs", v: e.top },
     { k: "HABITAT", v: e.habitat },
     { k: "SIZE", v: e.size },
     { k: "MOBILITY", v: e.mobility },

@@ -142,6 +142,7 @@ window.MAIN_ENTRIES = [
     abilities: ["シャドーステイシス", "ぶら下がりプレステラ"],
 
     // Habitat and physical traits
+    top: "Agave Titanota \"Snaggle Tooth\"",
     habitat: "アガベ棚周辺",
     size: "166mm",
     mobility: "緩慢",
@@ -273,6 +274,7 @@ window.MAIN_ENTRIES = [
     abilities: ["青化反応", "プレステラ探知"],
 
     // Habitat and physical traits
+    top: "Agave Titanota \"Black &Blue\"",
     habitat: "アガベ棚周辺",
     size: "164mm",
     mobility: "夜間活性",
@@ -362,6 +364,7 @@ window.MAIN_ENTRIES = [
     abilities: ["ストレスカラーシフト", "あかいろはんのう"],
 
     // Habitat and physical traits
+    top: "Agave Titanota \"Red Catweezle\"",
     habitat: "スポットライト直下",
     size: "164mm",
     mobility: "夜間活性",
@@ -439,6 +442,7 @@ window.MAIN_ENTRIES = [
     abilities: ["エコシステムアダプト", "かんきょうてきおう"],
 
     // Habitat and physical traits
+    top: "Agave Titanota \"No Name\"",
     habitat: "アガベ棚全域",
     size: "172mm",
     mobility: "夜間活性",
@@ -530,6 +534,7 @@ window.MAIN_ENTRIES = [
     abilities: ["マッスルビルダー", "おもみしずめ"],
 
     // Habitat and physical traits
+    top: "Agave Horrida",
     habitat: "棚外縁重圧域",
     size: "2.4m",
     mobility: "重量型",
@@ -596,6 +601,7 @@ window.MAIN_ENTRIES = [
     abilities: ["オーバーリバランス", "りょくばくぞうふく"],
 
     // Habitat and physical traits
+    top: "Agave Titanota \"魔丸\"",
     habitat: "棚禁域",
     size: "4.1m",
     mobility: "群体統率",
@@ -664,6 +670,7 @@ window.MAIN_ENTRIES = [
     abilities: ["エアロバランサー", "かぜのり"],
 
     // Habitat and physical traits
+    top: "Agave Titanota \"Black &Blue\"",
     habitat: "アガベ棚上層環境",
     size: "160mm",
     mobility: "高速飛行",
@@ -733,6 +740,7 @@ window.MAIN_ENTRIES = [
     abilities: ["リーフアーマーフュージョン", "しょくぶつどうか"],
 
     // Habitat and physical traits
+    top: "Agave Oteroi",
     habitat: "棚外縁環境",
     size: "248mm",
     mobility: "俊敏",
@@ -804,6 +812,7 @@ window.MAIN_ENTRIES = [
     abilities: ["スウォームコンダクト", "なかまよび"],
 
     // Habitat and physical traits
+    top: "Agave Titanota \"filigree\"",
     habitat: "棚外縁群体領域",
     size: "1.8m",
     mobility: "群行型",
@@ -870,6 +879,7 @@ window.MAIN_ENTRIES = [
     abilities: ["ハイパーインシデント", "きょうかかいろ"],
 
     // Habitat and physical traits
+    top: "Agave Titanota \"filigree\"",
     habitat: "棚禁域群体崩壊層",
     size: "2.7m",
     mobility: "重装型",
@@ -937,6 +947,7 @@ window.MAIN_ENTRIES = [
     abilities: ["コロニーオーバーライド", "しはいどうちょう"],
 
     // Habitat and physical traits
+    top: "Agave Titanota \"filigree\"",
     habitat: "棚禁域群体中枢",
     size: "4.1m",
     mobility: "群体統率",
@@ -1005,6 +1016,7 @@ window.MAIN_ENTRIES = [
     abilities: ["クロロコンダクター", "どしょくれんどう"],
 
     // Habitat and physical traits
+    top: "Agave Titanota \"緑犀牛\"",
     habitat: "棚外縁地表層",
     size: "2.1m",
     mobility: "重量型",
@@ -1070,6 +1082,7 @@ window.MAIN_ENTRIES = [
     abilities: ["ハイドロモジュレーター", "すいあつばいそう"],
 
     // Habitat and physical traits
+    top: "Agave Titanota \"白鯨\"",
     habitat: "棚水圏",
     size: "18m+",
     mobility: "浮遊型",
@@ -1135,6 +1148,7 @@ window.MAIN_ENTRIES = [
     abilities: ["ディープシンクアダプト", "しんかいどうか"],
 
     // Habitat and physical traits
+    top: "Agave Titanota \"黒鯨\"",
     habitat: "棚水圏中枢干渉域",
     size: "18m級",
     mobility: "遊泳型",
@@ -1200,6 +1214,7 @@ window.MAIN_ENTRIES = [
     abilities: ["メタルバイオシフト", "まてりあるへんか"],
 
     // Habitat and physical traits
+    top: "Agave Titanota \"白鯨\"",
     habitat: "棚水圏構造改変域",
     size: "18m+",
     mobility: "浮遊型",
@@ -1267,6 +1282,7 @@ window.MAIN_ENTRIES = [
     abilities: ["オーロラミネラルフロー", "こうたくばいぞう"],
 
     // Habitat and physical traits
+    top: "Agave Titanota \"金鯨\"",
     habitat: "棚水圏沈殿域",
     size: "18m+",
     mobility: "浮遊型",
@@ -1337,6 +1353,7 @@ window.MAIN_ENTRIES = [
     abilities: ["センサリーフラクタル", "ひかりきょうかん"],
 
     // Habitat and physical traits
+    top: "Agave Titanota \"ライオンズメーン\"",
     habitat: "草原地帯",
     size: "170mm",
     mobility: "緩慢",
@@ -1406,6 +1423,7 @@ window.MAIN_ENTRIES = [
     abilities: ["メカノイドレジスト", "かんせいざんぞう"],
 
     // Habitat and physical traits
+    top: "Agave Titanota \"FO-76\"",
     habitat: "境界地帯",
 
     size: "2.6m",
@@ -1475,6 +1493,7 @@ window.MAIN_ENTRIES = [
     abilities: ["エラスティックフォーム", "はんぱつしんどう"],
 
     // Habitat and physical traits
+    top: "Agave Titanota \"白鯨\"",
     habitat: "沿岸域",
     size: "12m〜18m",
     mobility: "遊泳型",
@@ -1573,6 +1592,7 @@ window.MAIN_ENTRIES = [
   成長速度が大きく変動する特徴を持つ。
 `,
     abilities: ["デザートストレージコア", "みずほぞん"],
+    top: "Pachypodium Gracilius",
     habitat: "乾燥地帯",
     size: "212mm",
     mobility: "緩慢",
@@ -1626,6 +1646,7 @@ window.MAIN_ENTRIES = [
     namer: "@miyamoyo0520",
     notes:
       "見た目は完全にネコだが、触れると塊根植物に近い弾力を持っていた。水分状態によって機嫌が極端に変化するらしく、水切れ直前には明確な威嚇反応を示した。アガベスト ",
+    top: "Pachypodium Gracilius",
     habitat: "乾燥地帯",
     size: "112mm",
     mobility: "緩慢",
@@ -1682,6 +1703,7 @@ window.MAIN_ENTRIES = [
     notes:
       "遠目には完全に植物だった。しかし近づいた瞬間、岩だと思っていた塊がゆっくり動き出した。甲羅部分はブーファンの葉そのもので構成されており、乾燥時には完全に閉じて休眠状態へ入るらしい。アガベスト",
 
+    top: "Boophane haemanthoides",
     habitat: "乾燥岩場",
     size: "320mm",
     mobility: "超緩慢",
@@ -1737,6 +1759,7 @@ window.MAIN_ENTRIES = [
     abilities: ["擬態ステイシス", "苔類共生"],
 
     // Habitat and physical traits
+    top: "Platycerium",
     habitat: "湿潤森林",
     size: "3.4m",
     mobility: "突進型",
@@ -1846,6 +1869,7 @@ window.MAIN_ENTRIES = [
     abilities: ["鹿擬態", "らくれん"],
 
     // Habitat and physical traits
+    top: "Platycerium",
     habitat: "湿潤森林",
     size: "1.8m",
     mobility: "重量突進型",
@@ -1925,6 +1949,7 @@ window.MAIN_ENTRIES = [
     abilities: ["鉢縁固定", "水苔共生", "静止擬態"],
 
     // Habitat and physical traits
+    top: "Platycerium \"ellisii\"",
     habitat: "アガベ棚・湿潤吊り鉢環境",
     size: "180mm",
     mobility: "吊下型低速移動",
@@ -2008,6 +2033,7 @@ window.EX_ENTRIES = [
     abilities: ["外部変異", "限定観測"],
 
     // Habitat and physical traits
+    top: "",
     habitat: "特殊環境",
     size: "—",
     mobility: "—",
@@ -2077,6 +2103,7 @@ window.MISSING_ENTRIES = [
     abilities: [],
 
     // Habitat and physical traits
+    plant: "",
     habitat: "—",
     size: "—",
     mobility: "—",
