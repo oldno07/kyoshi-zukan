@@ -1680,13 +1680,13 @@ window.MAIN_ENTRIES = [
         description: "口周りまで猫化していますね。",
       },
       {
-        image: "images/no_021_04.jpg",
+        image: "images/no_021_04.JPG",
         title: "水を吸いすぎてまんまるに",
         titleEn: "",
         description: "これでは野生での生存は難しそうです。",
       },
       {
-        image: "images/no_021_05.png",
+        image: "images/no_021_05.PNG",
         title: "脱走したグニャキリスを捕獲",
         titleEn: "",
         description: "雪見だいふくのケースが落ち着くようでした。",
