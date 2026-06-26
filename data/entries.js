@@ -1620,13 +1620,19 @@ window.MAIN_ENTRIES = [
         image: "images/no_021_01.jpg",
         title: "グニャキリス郡を発見",
         titleEn: "",
-        description: "色も見た目も多種多様だ。",
+        description: "色も見た目も多種多様な生物です。",
       },
             {
         image: "images/no_021_02.jpg",
         title: "植物棚での人工飼育に成功",
         titleEn: "",
         description: "脱走に気をつけて飼育しています。",
+      },
+                  {
+        image: "images/no_021_03.jpg",
+        title: "より猫に酷似した個体を観測",
+        titleEn: "",
+        description: "口周りまで猫化していますね。",
       },
     ],
 
