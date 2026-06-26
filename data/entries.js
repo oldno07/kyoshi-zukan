@@ -1622,6 +1622,12 @@ window.MAIN_ENTRIES = [
         titleEn: "",
         description: "色も見た目も多種多様だ。",
       },
+            {
+        image: "images/no_021_02.jpg",
+        title: "植物棚での人工飼育に成功",
+        titleEn: "",
+        description: "脱走に気をつけて飼育しています。",
+      },
     ],
 
     tag: "SUCCULENT-TYPE",
