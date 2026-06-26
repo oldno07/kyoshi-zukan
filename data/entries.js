@@ -91,7 +91,8 @@
 
 // Main catalog entries (001-999)
 window.MAIN_ENTRIES = [
-  {//001スニャグルトゥース
+  {
+    //001スニャグルトゥース
     // Basic identification
     no: "001",
     sort: 10,
@@ -118,31 +119,35 @@ window.MAIN_ENTRIES = [
 
     // Detailed description
     notes:
-      "こんな動物を見るのは初めてだ猫のようにも見えるが、尻尾には植物特有の鋸歯構造が確認できる。現時点では分類不能。観測を継続する。研究員アガベスト",
+      "こんな生き物を見るのは初めてだ。猫のようにも見えるが、尻尾には植物のような鋸歯がある。いったい何者なのか、観測を続ける。",
 
     desc: `
     アガベ（スナグルトゥース）周辺で最初に確認された鋸歯生物。
 
-外見は小型のネコに近いが、
-尾部には植物由来と考えられる鋸歯葉構造を持つ。
+アガベ（スナグルトゥース）の近くで最初に確認された、
+ネコ型鋸歯生物。
 
-特に鋸歯の発達が顕著で、
-個体ごとに異なる配列や形状が確認されている。
+見た目は小さな猫に似ていますが、
+尻尾にはアガベの葉のような鋸歯が並んでいます。
 
-日中は鉢の縁や棚の上で休眠していることが多く、
-危険を感じると尻尾を膨らませるように広げる行動が観測されている。
+鋸歯の形や並び方には個体差があり、
+同じ姿の個体はまだ確認されていません。
 
-本種を発見する際は、まずプレステラ周辺を確認するとよい。鉢の縁にぶら下がった状態で休眠していることが多い。
+普段は鉢の縁や棚の上で丸まって休んでおり、
+気配を感じると尻尾を広げる姿が見られます。
 
-現在確認されている鋸歯生物の中では、
-最も古い観測記録を持つ代表種である。
+特にプレステラ周辺で発見されることが多く、
+鉢にぶら下がったまま眠っている個体もいます。
+
+現在確認されている鋸歯生物の中でも、
+最初期に発見された代表的な個体です。
   `,
 
     // Abilities and traits
-    abilities: ["シャドーステイシス", "ぶら下がりプレステラ"],
+    abilities: ["影ねこ休眠", "ぶら下がりプレステラ"],
 
     // Habitat and physical traits
-    top: "Agave Titanota \"Snaggle Tooth\"",
+    top: 'Agave Titanota "Snaggle Tooth"',
     habitat: "アガベ棚周辺",
     size: "166mm",
     mobility: "緩慢",
@@ -197,27 +202,39 @@ window.MAIN_ENTRIES = [
     // Gallery
     gallery: [
       {
-        image: "",
-        title: "成長段階：幼体",
-        titleEn: "Growth Stage: Juvenile",
-        description: "孵化後3ヶ月の個体",
+        image: "images/no_001_01.png",
+        title: "プレステラにぶら下がる個体",
+        titleEn: "Individual Hanging on Prestra",
+        description: "基本はこの姿勢をとっています。",
       },
       {
-        image: "",
-        title: "成長段階：成体",
-        titleEn: "Growth Stage: Adult",
-        description: "成熟期の個体",
+        image: "images/no_001_02.png",
+        title: "何とも言えない表情を見せます",
+        titleEn: "Indescribable Expression",
+        description: "どんな気分なのかは不明です。",
       },
       {
-        image: "",
-        title: "生息環境",
-        titleEn: "Habitat",
-        description: "深林域での観察記録",
+        image: "images/no_001_03.png",
+        title: "尻尾はアガベのようです。",
+        titleEn: "Tail resembles Agave leaves",
+        description: "擬態のために進化したのかもしれません。",
+      },
+      {
+        image: "images/no_001_04.png",
+        title: "地面に降りると怯えたように丸まります",
+        titleEn: "Curls up when on the ground",
+        description: "かわいいですが、危険を感じているのかもしれません。",
       },
     ],
 
     // Observation Videos
     videos: [
+      {
+        youtubeId: "ymeYShzFxz8",
+        title: "スニャグルの研究レポートです",
+        observedAt: "2026-06-26",
+        duration: 40,
+      },
       {
         youtubeId: "R_BYUPtk_lE",
         title: "Unknown Species Detected Near Prestera Habitat",
@@ -233,7 +250,8 @@ window.MAIN_ENTRIES = [
     ],
   },
 
-  {//002ブラックにゃんこブルー
+  {
+    //002ブラックにゃんこブルー
     // Basic identification
     no: "002",
     sort: 20,
@@ -274,7 +292,7 @@ window.MAIN_ENTRIES = [
     abilities: ["青化反応", "プレステラ探知"],
 
     // Habitat and physical traits
-    top: "Agave Titanota \"Black &Blue\"",
+    top: 'Agave Titanota "Black &Blue"',
     habitat: "アガベ棚周辺",
     size: "164mm",
     mobility: "夜間活性",
@@ -328,7 +346,8 @@ window.MAIN_ENTRIES = [
     ],
   },
 
-  {//003レッドキャットミーズル
+  {
+    //003レッドキャットミーズル
     // Basic identification
     no: "003",
     sort: 30,
@@ -364,7 +383,7 @@ window.MAIN_ENTRIES = [
     abilities: ["ストレスカラーシフト", "あかいろはんのう"],
 
     // Habitat and physical traits
-    top: "Agave Titanota \"Red Catweezle\"",
+    top: 'Agave Titanota "Red Catweezle"',
     habitat: "スポットライト直下",
     size: "164mm",
     mobility: "夜間活性",
@@ -407,7 +426,8 @@ window.MAIN_ENTRIES = [
     ],
   },
 
-  {//004にゃガベ チタノタ
+  {
+    //004にゃガベ チタノタ
     // Basic identification
     no: "004",
     sort: 40,
@@ -442,7 +462,7 @@ window.MAIN_ENTRIES = [
     abilities: ["エコシステムアダプト", "かんきょうてきおう"],
 
     // Habitat and physical traits
-    top: "Agave Titanota \"No Name\"",
+    top: 'Agave Titanota "No Name"',
     habitat: "アガベ棚全域",
     size: "172mm",
     mobility: "夜間活性",
@@ -494,7 +514,8 @@ window.MAIN_ENTRIES = [
     ],
   },
 
-  {//005ゴリラホリダ
+  {
+    //005ゴリラホリダ
     // Basic identification
     no: "005",
     sort: 50,
@@ -562,7 +583,8 @@ window.MAIN_ENTRIES = [
     ],
   },
 
-  {//006キンタ魔丸
+  {
+    //006キンタ魔丸
     // Basic identification
     no: "006",
     sort: 60,
@@ -601,7 +623,7 @@ window.MAIN_ENTRIES = [
     abilities: ["オーバーリバランス", "りょくばくぞうふく"],
 
     // Habitat and physical traits
-    top: "Agave Titanota \"魔丸\"",
+    top: 'Agave Titanota "魔丸"',
     habitat: "棚禁域",
     size: "4.1m",
     mobility: "群体統率",
@@ -629,7 +651,8 @@ window.MAIN_ENTRIES = [
     ],
   },
 
-  {//007スカイブルーニャンダホー
+  {
+    //007スカイブルーニャンダホー
     // Basic identification
     no: "007",
     sort: 70,
@@ -670,7 +693,7 @@ window.MAIN_ENTRIES = [
     abilities: ["エアロバランサー", "かぜのり"],
 
     // Habitat and physical traits
-    top: "Agave Titanota \"Black &Blue\"",
+    top: 'Agave Titanota "Black &Blue"',
     habitat: "アガベ棚上層環境",
     size: "160mm",
     mobility: "高速飛行",
@@ -700,7 +723,8 @@ window.MAIN_ENTRIES = [
     missingState: "SIGNAL_LOST",
   },
 
-  {//008アガベカブトトカゲ
+  {
+    //008アガベカブトトカゲ
     // Basic identification
     no: "008",
     sort: 80,
@@ -770,7 +794,8 @@ window.MAIN_ENTRIES = [
     missingState: "DATA_LOST", // 欠損状態を設定
   },
 
-  {//009フィリグリズリー
+  {
+    //009フィリグリズリー
     // Basic identification
     no: "009",
     sort: 90,
@@ -812,7 +837,7 @@ window.MAIN_ENTRIES = [
     abilities: ["スウォームコンダクト", "なかまよび"],
 
     // Habitat and physical traits
-    top: "Agave Titanota \"filigree\"",
+    top: 'Agave Titanota "filigree"',
     habitat: "棚外縁群体領域",
     size: "1.8m",
     mobility: "群行型",
@@ -840,7 +865,8 @@ window.MAIN_ENTRIES = [
     ],
   },
 
-  {//010フィリグリズリーデビル
+  {
+    //010フィリグリズリーデビル
     // Basic identification
     no: "010",
     sort: 100,
@@ -879,7 +905,7 @@ window.MAIN_ENTRIES = [
     abilities: ["ハイパーインシデント", "きょうかかいろ"],
 
     // Habitat and physical traits
-    top: "Agave Titanota \"filigree\"",
+    top: 'Agave Titanota "filigree"',
     habitat: "棚禁域群体崩壊層",
     size: "2.7m",
     mobility: "重装型",
@@ -907,7 +933,8 @@ window.MAIN_ENTRIES = [
     ],
   },
 
-  {//011フィリグリズリーモナーク
+  {
+    //011フィリグリズリーモナーク
     // Basic identification
     no: "011",
     sort: 110,
@@ -947,7 +974,7 @@ window.MAIN_ENTRIES = [
     abilities: ["コロニーオーバーライド", "しはいどうちょう"],
 
     // Habitat and physical traits
-    top: "Agave Titanota \"filigree\"",
+    top: 'Agave Titanota "filigree"',
     habitat: "棚禁域群体中枢",
     size: "4.1m",
     mobility: "群体統率",
@@ -975,7 +1002,8 @@ window.MAIN_ENTRIES = [
     ],
   },
 
-  {//012緑犀牛
+  {
+    //012緑犀牛
     // Basic identification
     no: "012",
     sort: 120,
@@ -1016,7 +1044,7 @@ window.MAIN_ENTRIES = [
     abilities: ["クロロコンダクター", "どしょくれんどう"],
 
     // Habitat and physical traits
-    top: "Agave Titanota \"緑犀牛\"",
+    top: 'Agave Titanota "緑犀牛"',
     habitat: "棚外縁地表層",
     size: "2.1m",
     mobility: "重量型",
@@ -1044,7 +1072,8 @@ window.MAIN_ENTRIES = [
     ],
   },
 
-  {//013白鯨
+  {
+    //013白鯨
     // Basic identification
     no: "013",
     sort: 130,
@@ -1082,7 +1111,7 @@ window.MAIN_ENTRIES = [
     abilities: ["ハイドロモジュレーター", "すいあつばいそう"],
 
     // Habitat and physical traits
-    top: "Agave Titanota \"白鯨\"",
+    top: 'Agave Titanota "白鯨"',
     habitat: "棚水圏",
     size: "18m+",
     mobility: "浮遊型",
@@ -1111,7 +1140,8 @@ window.MAIN_ENTRIES = [
     ],
   },
 
-  {//014黒鯨
+  {
+    //014黒鯨
     // Basic identification
     no: "014",
     sort: 140,
@@ -1133,7 +1163,6 @@ window.MAIN_ENTRIES = [
     notes:
       "黒い潮煙の中心から浮上した個体。周囲の生物群が逃げずに集まる異常行動を確認。これは生物というより環境に近い。アガベスト",
 
-
     desc: `
   深海域にて黒い潮煙状の現象が発生し、その中心から巨大な鋸歯生物が浮上した。
 
@@ -1148,7 +1177,7 @@ window.MAIN_ENTRIES = [
     abilities: ["ディープシンクアダプト", "しんかいどうか"],
 
     // Habitat and physical traits
-    top: "Agave Titanota \"黒鯨\"",
+    top: 'Agave Titanota "黒鯨"',
     habitat: "棚水圏中枢干渉域",
     size: "18m級",
     mobility: "遊泳型",
@@ -1175,7 +1204,8 @@ window.MAIN_ENTRIES = [
       },
     ],
   },
-  {//015メタル白鯨
+  {
+    //015メタル白鯨
     // Basic identification
     no: "015",
     sort: 150,
@@ -1214,7 +1244,7 @@ window.MAIN_ENTRIES = [
     abilities: ["メタルバイオシフト", "まてりあるへんか"],
 
     // Habitat and physical traits
-    top: "Agave Titanota \"白鯨\"",
+    top: 'Agave Titanota "白鯨"',
     habitat: "棚水圏構造改変域",
     size: "18m+",
     mobility: "浮遊型",
@@ -1242,7 +1272,8 @@ window.MAIN_ENTRIES = [
     ],
   },
 
-  {//016金鯨
+  {
+    //016金鯨
     // Basic identification
     no: "016",
     sort: 160,
@@ -1264,7 +1295,6 @@ window.MAIN_ENTRIES = [
     notes:
       "金色発光を伴う巨大個体が海底を通過。通過後、鉱物粒子の沈殿帯が形成された。アガベスト",
 
-
     desc: `
   深海熱水域にて確認された、白鯨系統の金属光沢変異個体。
 
@@ -1282,7 +1312,7 @@ window.MAIN_ENTRIES = [
     abilities: ["オーロラミネラルフロー", "こうたくばいぞう"],
 
     // Habitat and physical traits
-    top: "Agave Titanota \"金鯨\"",
+    top: 'Agave Titanota "金鯨"',
     habitat: "棚水圏沈殿域",
     size: "18m+",
     mobility: "浮遊型",
@@ -1310,7 +1340,8 @@ window.MAIN_ENTRIES = [
     ],
   },
 
-  {//017ライオンズニャーン
+  {
+    //017ライオンズニャーン
     // Basic identification
     no: "017",
     sort: 170,
@@ -1353,7 +1384,7 @@ window.MAIN_ENTRIES = [
     abilities: ["センサリーフラクタル", "ひかりきょうかん"],
 
     // Habitat and physical traits
-    top: "Agave Titanota \"ライオンズメーン\"",
+    top: 'Agave Titanota "ライオンズメーン"',
     habitat: "草原地帯",
     size: "170mm",
     mobility: "緩慢",
@@ -1381,7 +1412,8 @@ window.MAIN_ENTRIES = [
     ],
   },
 
-{//018鋸歯機獣ゴリボーグ
+  {
+    //018鋸歯機獣ゴリボーグ
     // Basic identification
     no: "018",
     sort: 180,
@@ -1401,7 +1433,7 @@ window.MAIN_ENTRIES = [
 
     // Detailed description
     notes:
-      "廃棄区域で金属音を伴う大型個体を確認した。動きは機械のように正確だったが、こちらを視認した直後だけ数秒間停止した。あの挙動には\"迷い\"のようなものを感じた。アガベスト",
+      '廃棄区域で金属音を伴う大型個体を確認した。動きは機械のように正確だったが、こちらを視認した直後だけ数秒間停止した。あの挙動には"迷い"のようなものを感じた。アガベスト',
 
     desc: `
  植物棚の廃材エリア周辺で確認された、
@@ -1427,7 +1459,7 @@ window.MAIN_ENTRIES = [
     abilities: ["改造趣味", "意思を持ってやがる"],
 
     // Habitat and physical traits
-    top: "Agave Titanota \"FO-76\"",
+    top: 'Agave Titanota "FO-76"',
     habitat: "境界地帯",
 
     size: "2.6m",
@@ -1456,7 +1488,8 @@ window.MAIN_ENTRIES = [
     ],
   },
 
-{//019もち鯨
+  {
+    //019もち鯨
     // Basic identification
     no: "019",
     sort: 190,
@@ -1557,7 +1590,8 @@ window.MAIN_ENTRIES = [
       },
     ],
   },
-  {//020グラキりす
+  {
+    //020グラキりす
     no: "020",
     sort: 200,
     createdAt: "2026-05-14",
@@ -1610,7 +1644,8 @@ window.MAIN_ENTRIES = [
     soldOut: false, // 完売時は true に変えるだけ
   },
 
-  {//021ニャキリス
+  {
+    //021ニャキリス
     no: "021",
     sort: 210,
     createdAt: "2026-05-17",
@@ -1629,13 +1664,13 @@ window.MAIN_ENTRIES = [
         titleEn: "",
         description: "色も見た目も多種多様な生物です。",
       },
-            {
+      {
         image: "images/no_021_02.jpg",
         title: "植物棚での人工飼育に成功",
         titleEn: "",
         description: "脱走に気をつけて飼育しています。",
       },
-                  {
+      {
         image: "images/no_021_03.jpg",
         title: "より猫に酷似した個体を観測",
         titleEn: "",
@@ -1994,7 +2029,7 @@ window.MAIN_ENTRIES = [
     abilities: ["つかまりプレステラ", "水苔まとい"],
 
     // Habitat and physical traits
-    top: "Platycerium \"ellisii\"",
+    top: 'Platycerium "ellisii"',
     habitat: "アガベ棚・湿潤吊り鉢環境",
     size: "180mm",
     mobility: "吊下型低速移動",
@@ -2271,4 +2306,4 @@ window.ENTRIES = [
 ];
 ` 
 console.log('File written');
-`
+`;
