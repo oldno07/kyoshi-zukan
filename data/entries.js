@@ -1081,7 +1081,7 @@ window.MAIN_ENTRIES = [
 
     // Display info
     tag: "AQUATIC-SUCCULENT HYBRID",
-    jp: "白鯨",
+    jp: "白鯨 ハクゲイ",
     en: "Hakugei White Cetus",
     rarity: "COMMON",
     rarityClass: "rar-c",
@@ -1095,20 +1095,23 @@ window.MAIN_ENTRIES = [
     notes: "深海から白色の大型個体が浮上。周囲海流に変化を確認。アガベスト",
 
     desc: `
-深海域で観測された巨大な白色鋸歯生物。
+深い水域で観測された、
+巨大な白色鋸歯生物。
 
-海面は本個体の浮上と同時に不自然に隆起し、
-水流には葉状の鋸歯構造が混ざり込んでいた。
+水面から姿を現す際には、
+大きな波とともに葉のような鋸歯構造が見られます。
 
-その影響は海流全体に広がり、
-周囲の環境そのものが変化したように見える。
+その巨体が動くことで周囲の水流が変化し、
+まるで海全体がゆっくり動いているように感じられます。
 
-これは生物なのか、それとも現象なのか。
-観測記録は未だ分類を保留している。
+まだ詳しい生態は分かっていませんが、
+群れの一部として行動している可能性も考えられています。
+
+現在も観測を継続中です。
 `,
 
     // Abilities and traits
-    abilities: ["ハイドロモジュレーター", "すいあつばいそう"],
+    abilities: ["鋸歯飛ばし", "すいあつばいそう"],
 
     // Habitat and physical traits
     top: 'Agave Titanota "白鯨"',
@@ -1132,10 +1135,10 @@ window.MAIN_ENTRIES = [
     // Gallery
     gallery: [
       {
-        image: "",
-        title: "",
+        image: "images/no_013_01.JPG",
+        title: "ハクゲイとグニャキリスを並べて観察する",
         titleEn: "",
-        description: "",
+        description: "ハクゲイは興味を示すが、グニャキリスは警戒している",
       },
     ],
   },
@@ -1645,7 +1648,7 @@ window.MAIN_ENTRIES = [
   },
 
   {
-    //021ニャキリス
+    //021グニャキリス
     no: "021",
     sort: 210,
     createdAt: "2026-05-17",
@@ -1675,6 +1678,27 @@ window.MAIN_ENTRIES = [
         title: "より猫に酷似した個体を観測",
         titleEn: "",
         description: "口周りまで猫化していますね。",
+      },
+      {
+        image: "images/no_021_04.jpg",
+        title: "水を吸いすぎてまんまるに",
+        titleEn: "",
+        description: "これでは野生での生存は難しそうです。",
+      },
+      {
+        image: "images/no_021_05.png",
+        title: "脱走したグニャキリスを捕獲",
+        titleEn: "",
+        description: "雪見だいふくのケースが落ち着くようでした。",
+      },
+    ],
+    // Observation Videos
+    videos: [
+      {
+        youtubeId: "5MjJLnTfjpY",
+        title: "グニャキリスの研究レポートです",
+        observedAt: "2026-06-18",
+        duration: 40,
       },
     ],
 
