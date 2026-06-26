@@ -202,25 +202,25 @@ window.MAIN_ENTRIES = [
     // Gallery
     gallery: [
       {
-        image: "images/no_001_01.png",
+        image: "images/no_001_01.PNG",
         title: "プレステラにぶら下がる個体",
         titleEn: "Individual Hanging on Prestra",
         description: "基本はこの姿勢をとっています。",
       },
       {
-        image: "images/no_001_02.png",
+        image: "images/no_001_02.PNG",
         title: "何とも言えない表情を見せます",
         titleEn: "Indescribable Expression",
         description: "どんな気分なのかは不明です。",
       },
       {
-        image: "images/no_001_03.png",
+        image: "images/no_001_03.PNG",
         title: "尻尾はアガベのようです。",
         titleEn: "Tail resembles Agave leaves",
         description: "擬態のために進化したのかもしれません。",
       },
       {
-        image: "images/no_001_04.png",
+        image: "images/no_001_04.PNG",
         title: "地面に降りると怯えたように丸まります",
         titleEn: "Curls up when on the ground",
         description: "かわいいですが、危険を感じているのかもしれません。",
