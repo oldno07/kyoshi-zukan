@@ -24,7 +24,7 @@ window.NEWS = [
     title: "No.021 グニャキリス — 譲渡会",
     body: "6/20(土）21時から、開墾型鋸歯生物グニャキリスの譲渡会を鋸歯生物譲渡局にて開始します。元気な個体が集まりました。研究員おすすめの子たちです。",
     image: "images/no_021.png",
-    link: "https://agavest.stores.jp/",
+    link: "https://agavest.stores.jp/?category_id=6a3e0ce35d38e9155cdbef88",
     linkLabel: "購入ページへ",
   },
  {
