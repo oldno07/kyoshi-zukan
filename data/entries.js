@@ -158,7 +158,7 @@ window.MAIN_ENTRIES = [
 
     // Shop information
     shopUrl:
-      "https://agavest.stores.jp/items/65c627d48fd8872275cc50db?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_001",
+      "https://agavest.stores.jp/?category_id=6a6070951886eb2a35f5bcdd&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_001",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
 
@@ -170,7 +170,7 @@ window.MAIN_ENTRIES = [
         labelEn: "Fuchi-Neko Type",
         image: "images/no_001_a.png",
         shopUrl:
-          "https://agavest.stores.jp/items/65c627d48fd8872275cc50db?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_001",
+          "https://agavest.stores.jp/?category_id=6a6070951886eb2a35f5bcdd&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_001",
         price: "",
         soldOut: false,
       },
@@ -180,7 +180,7 @@ window.MAIN_ENTRIES = [
         labelEn: "Sitting Type",
         image: "images/no_001_b.png",
         shopUrl:
-          "https://agavest.stores.jp/items/65c627d48fd8872275cc50db?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_001",
+          "https://agavest.stores.jp/?category_id=6a6070951886eb2a35f5bcdd&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_001",
         price: "",
         soldOut: false,
       },
@@ -190,7 +190,7 @@ window.MAIN_ENTRIES = [
         labelEn: "Maneki Type",
         image: "images/no_001_c.png",
         shopUrl:
-          "https://agavest.stores.jp/items/65c627d48fd8872275cc50db?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_001",
+          "https://agavest.stores.jp/?category_id=6a6070951886eb2a35f5bcdd&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_001",
         price: "",
         soldOut: false,
       },
@@ -303,7 +303,7 @@ window.MAIN_ENTRIES = [
 
     // Shop information
     shopUrl:
-      "https://agavest.stores.jp/items/6a07e6cca30c09e1667757ee?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_002",
+      "https://agavest.stores.jp/?category_id=6a6070f263f5f62ab963b36c&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_002",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
 
@@ -315,7 +315,7 @@ window.MAIN_ENTRIES = [
         labelEn: "Fuchi-Neko Type",
         image: "images/no_002_a.png",
         shopUrl:
-          "https://agavest.stores.jp/items/6a07e6cca30c09e1667757ee?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_002",
+          "https://agavest.stores.jp/?category_id=6a6070f263f5f62ab963b36c&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_002",
         price: "",
         soldOut: false,
       },
@@ -394,7 +394,7 @@ window.MAIN_ENTRIES = [
 
     // Shop information
     shopUrl:
-      "https://agavest.stores.jp/items/6a080c2e9797c79a78b9a4f0?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_003",
+      "https://agavest.stores.jp/?category_id=6a6070fd85f6343462161171&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_003",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
 
@@ -406,7 +406,7 @@ window.MAIN_ENTRIES = [
         labelEn: "Fuchi-Neko Type",
         image: "images/no_003_a.png",
         shopUrl:
-          "https://agavest.stores.jp/items/6a080c2e9797c79a78b9a4f0?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_003",
+          "https://agavest.stores.jp/?category_id=6a6070fd85f6343462161171&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_003",
         price: "",
         soldOut: false,
       },
@@ -473,7 +473,7 @@ window.MAIN_ENTRIES = [
 
     // Shop information
     shopUrl:
-      "https://agavest.stores.jp/items/6a080ce79797c7aacab9a479?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_004",
+      "https://agavest.stores.jp/?category_id=6a60710b96e1cb31a1d07965&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_004",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
 
@@ -485,7 +485,7 @@ window.MAIN_ENTRIES = [
         labelEn: "Fuchi-Neko Type",
         image: "images/no_004_a.png",
         shopUrl:
-          "https://agavest.stores.jp/items/6a080ce79797c7aacab9a479?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_004",
+          "https://agavest.stores.jp/?category_id=6a60710b96e1cb31a1d07965&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_004",
         price: "",
         soldOut: false,
       },
@@ -567,7 +567,7 @@ window.MAIN_ENTRIES = [
     // Shop information
     shopUrl: "",
     price: "",
-    soldOut: false, // 完売時は true に変えるだけ
+    soldOut: true, // 完売時は true に変えるだけ
 
     // Image
     image: "images/no_005.png",
@@ -635,7 +635,7 @@ window.MAIN_ENTRIES = [
     // Shop information
     shopUrl: "",
     price: "",
-    soldOut: false, // 完売時は true に変えるだけ
+    soldOut: true, // 完売時は true に変えるだけ
 
     // Image
     image: "images/no_006.png",
@@ -1056,7 +1056,7 @@ window.MAIN_ENTRIES = [
     // Shop information
     shopUrl: "",
     price: "",
-    soldOut: false, // 完売時は true に変えるだけ
+    soldOut: true, // 完売時は true に変えるだけ
 
     // Image
     image: "images/no_012.png",
@@ -1125,7 +1125,7 @@ window.MAIN_ENTRIES = [
 
     // Shop information
     shopUrl:
-      "https://agavest.stores.jp/items/681f990c80278e0a7b078b64?utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_013",
+      "https://agavest.stores.jp/?category_id=6a6071297008332d33f47c5a&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_013",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
 
@@ -1257,7 +1257,7 @@ window.MAIN_ENTRIES = [
     statusColor: "#e0b94f",
 
     // Shop information
-    shopUrl: "",
+    shopUrl: "https://agavest.stores.jp/?category_id=6a6071ee1f0e7e31e90ec72f&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_015",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
 
@@ -1546,7 +1546,7 @@ window.MAIN_ENTRIES = [
 
     // Shop information
     price: "",
-    shopUrl: "",
+    shopUrl: "https://agavest.stores.jp/?category_id=6a60720510525137d1036206&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_019",
     soldOut: false, // 完売時は true に変えるだけ
 
     // Image
@@ -1731,7 +1731,7 @@ window.MAIN_ENTRIES = [
     mobility: "緩慢",
     status: "● THIRSTY",
     statusColor: "#d6b85a",
-    shopUrl: "https://agavest.stores.jp/?category_id=6a3e0ce35d38e9155cdbef88",
+    shopUrl: "https://agavest.stores.jp/?category_id=6a3e0ce35d38e9155cdbef88&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_021",
     price: "",
     soldOut: false, // 完売時は true に変えるだけ
   },
