@@ -374,37 +374,41 @@ const progressPct = Math.round((found / TOTAL) * 100);
         彼らは鋸歯生物そのものではなく、生態系のバランスを支える重要な共生者である。<br />
         一部は園芸管理を補助する実用的な存在として観測されている。
       </p>
-      <div class="card-grid">
+      <div class="idx-grid">
         {symbionts.map((entry, i) => {
           const d = entry.data;
           return (
             <a
               href={d.shopUrl ?? '#'}
               target={d.shopUrl ? '_blank' : undefined}
-              class="ecard reveal"
+              rel={d.shopUrl ? 'noopener' : undefined}
+              class="idx-card reveal"
               style={i > 0 ? `transition-delay:${i * 0.1}s` : ''}
             >
-              <div class="ct">
-                <span class="cno">SYM-{d.no}</span>
-                <div class="ct-badges">
-                  <span class={`rarity rar-${d.rarity.slice(0,1).toLowerCase()}`}>{d.rarity}</span>
-                </div>
-              </div>
-              <div class="cillus">
+              <div class="idx-card-img">
                 {d.cover
-                  ? <img src={d.cover} alt={d.name_jp} />
-                  : <img src="/images/unknown.png" alt={d.name_jp} />
+                  ? <img src={d.cover} alt={d.name_jp} loading="lazy" />
+                  : <div class="idx-card-noimg">NO VISUAL DATA</div>
                 }
+                <span class={`idx-card-badge rarity-${d.rarity}`}>{d.rarity}</span>
               </div>
-              <div class="cbody">
-                <div class="ctag">{d.tag}</div>
-                <div class="cnm-jp">{d.name_jp}</div>
-                <div class="cnm-en"><em>{d.name_en}</em></div>
-                <p class="cdesc">{d.notes ?? ''}</p>
-                <div class="cdata">
-                  <div class="dc">
-                    <div class="dk">HABITAT</div>
-                    <div class="dv">{d.habitat}</div>
+              <div class="idx-card-body">
+                <span class="idx-card-no">SYM-{d.no}</span>
+                <p class="idx-card-jp">{d.name_jp}</p>
+                <p class="idx-card-en">{d.name_en}</p>
+                <p class="idx-card-tag">{d.tag}</p>
+                <div class="idx-card-bars">
+                  <div class="idx-mini-bar">
+                    <span class="idx-mini-label">PL</span>
+                    <div class="idx-mini-track"><div class="idx-mini-fill plant" style={`width:${d.plant}%`}></div></div>
+                  </div>
+                  <div class="idx-mini-bar">
+                    <span class="idx-mini-label">AN</span>
+                    <div class="idx-mini-track"><div class="idx-mini-fill animal" style={`width:${d.animal}%`}></div></div>
+                  </div>
+                  <div class="idx-mini-bar">
+                    <span class="idx-mini-label">DG</span>
+                    <div class="idx-mini-track"><div class="idx-mini-fill danger" style={`width:${d.danger}%`}></div></div>
                   </div>
                 </div>
               </div>
