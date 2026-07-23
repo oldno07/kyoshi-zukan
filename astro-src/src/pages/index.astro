@@ -3,59 +3,218 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const all = await getCollection('creatures');
-const published = all
-  .filter(e => e.data.status === 'published' && e.data.category === 'creature')
+
+// category: creature のみ（symbiont はカウント・表示ともに除外）
+const allCreatures = all
+  .filter(e => e.data.category === 'creature')
   .sort((a, b) => a.data.no.localeCompare(b.data.no));
 
-const total = 25; // 総登録数（要件書 4章 発見数カウンター）
+// 発見数は published のみカウント（要件書4章：hidden は含めない）
+const published = allCreatures.filter(e => e.data.status === 'published');
+const TOTAL = 25;
 const found = published.length;
+
+// 注目標本（featured: true かつ published）
+const featured = published.filter(e => e.data.featured);
+
+// フィルター用：published の全タグ・シリーズ・レアリティを収集
+const allTags    = [...new Set(published.flatMap(e => e.data.tags))].sort();
+const allSeries  = [...new Set(published.flatMap(e => e.data.series))].filter(Boolean).sort();
+const RARITY_ORDER = ['LEGEND','EPIC','RARE','UNCOMMON','COMMON'] as const;
+const allRarities = RARITY_ORDER.filter(r => published.some(e => e.data.rarity === r));
 
 function toSlug(id: string) {
   return id.replace(/\/index\.md$/, '').replace(/\.md$/, '');
 }
+
+const progressPct = Math.round((found / TOTAL) * 100);
 ---
 
 <BaseLayout
   title="鋸歯生物図鑑 — SAWTOOTH CREATURE OBSERVATION DATABASE"
-  description="PELICAN WORKS / AGAVEST が観測・記録する鋸歯生物の図鑑データベース。現在 {found} 体の観測記録を公開中。"
+  description={`PELICAN WORKS / AGAVEST が観測・記録する鋸歯生物の図鑑データベース。現在 ${found} 体の観測記録を公開中。`}
 >
 
-  <!-- ヒーローヘッダー -->
+  <!-- ── ヒーロー ──────────────────────────────────────────── -->
   <section class="idx-hero">
     <div class="idx-hero-inner">
-      <p class="idx-sys">OBSERVATION DATABASE / FIELD CLASSIFICATION</p>
+      <p class="idx-sys-label">OBSERVATION DATABASE / FIELD CLASSIFICATION</p>
       <h1 class="idx-title">鋸歯生物図鑑</h1>
       <p class="idx-subtitle">SAWTOOTH CREATURE DATABASE</p>
-      <div class="idx-count">
-        <span class="idx-count-num">{found}</span>
-        <span class="idx-count-sep">/</span>
-        <span class="idx-count-total">{total}</span>
-        <span class="idx-count-label">SPECIMENS DOCUMENTED</span>
+
+      <div class="idx-discovery">
+        <div class="idx-discovery-top">
+          <span class="idx-disc-text">発見数</span>
+          <span class="idx-disc-num">{found}</span>
+          <span class="idx-disc-sep">/</span>
+          <span class="idx-disc-total">{TOTAL}</span>
+          <span class="idx-disc-note">（共生生物は含めない）</span>
+        </div>
+        <div class="idx-disc-bar-track">
+          <div class="idx-disc-bar-fill" style={`width: ${progressPct}%`}></div>
+        </div>
+        <p class="idx-disc-label">{found} SPECIMENS DOCUMENTED</p>
       </div>
     </div>
   </section>
 
-  <!-- カタロググリッド -->
+  <!-- ── 注目標本 ──────────────────────────────────────────── -->
+  {featured.length > 0 && (
+    <section class="idx-featured">
+      <p class="idx-section-label">FEATURED SPECIMENS / 研究員注目標本</p>
+      <div class="idx-featured-grid">
+        {featured.map((entry) => {
+          const slug = toSlug(entry.id);
+          const d = entry.data;
+          return (
+            <a href={`/creatures/${slug}/`} class="idx-feat-card">
+              <div class="idx-feat-img">
+                {d.cover
+                  ? <img src={d.cover} alt={d.name_jp} loading="lazy" />
+                  : <div class="idx-feat-noimg">NO VISUAL DATA</div>
+                }
+              </div>
+              <div class="idx-feat-info">
+                <div class="idx-feat-meta">
+                  <span class="idx-feat-no">No.{d.no}</span>
+                  <span class={`idx-feat-rarity rarity-${d.rarity}`}>{d.rarity}</span>
+                </div>
+                <p class="idx-feat-jp">{d.name_jp}</p>
+                <p class="idx-feat-en">{d.name_en}</p>
+                <p class="idx-feat-tag">{d.tag}</p>
+                <div class="idx-mini-bars">
+                  <div class="idx-mini-bar">
+                    <span class="idx-mini-label">PLANT</span>
+                    <div class="idx-mini-track">
+                      <div class="idx-mini-fill plant" style={`width:${d.plant}%`}></div>
+                    </div>
+                    <span class="idx-mini-val">{d.plant}</span>
+                  </div>
+                  <div class="idx-mini-bar">
+                    <span class="idx-mini-label">ANIMAL</span>
+                    <div class="idx-mini-track">
+                      <div class="idx-mini-fill animal" style={`width:${d.animal}%`}></div>
+                    </div>
+                    <span class="idx-mini-val">{d.animal}</span>
+                  </div>
+                  <div class="idx-mini-bar">
+                    <span class="idx-mini-label">DANGER</span>
+                    <div class="idx-mini-track">
+                      <div class="idx-mini-fill danger" style={`width:${d.danger}%`}></div>
+                    </div>
+                    <span class="idx-mini-val">{d.danger}</span>
+                  </div>
+                </div>
+                <span class="idx-feat-arrow">→ OPEN RECORD</span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  )}
+
+  <!-- ── フィルター ────────────────────────────────────────── -->
+  <div class="idx-filter" id="idx-filter">
+    <div class="idx-filter-inner">
+      {allSeries.length > 0 && (
+        <div class="idx-filter-row">
+          <span class="idx-filter-key">SERIES</span>
+          <div class="idx-filter-chips">
+            {allSeries.map(s => (
+              <button class="idx-chip idx-chip-series" data-filter-type="series" data-filter-val={s}>{s}</button>
+            ))}
+          </div>
+        </div>
+      )}
+      {allRarities.length > 0 && (
+        <div class="idx-filter-row">
+          <span class="idx-filter-key">RARITY</span>
+          <div class="idx-filter-chips">
+            {allRarities.map(r => (
+              <button class={`idx-chip idx-chip-rarity rarity-${r}`} data-filter-type="rarity" data-filter-val={r}>{r}</button>
+            ))}
+          </div>
+        </div>
+      )}
+      {allTags.length > 0 && (
+        <div class="idx-filter-row">
+          <span class="idx-filter-key">TAGS</span>
+          <div class="idx-filter-chips">
+            {allTags.map(t => (
+              <button class="idx-chip" data-filter-type="tag" data-filter-val={t}>{t}</button>
+            ))}
+          </div>
+        </div>
+      )}
+      <button class="idx-filter-clear" id="idx-filter-clear" style="display:none">× CLEAR FILTER</button>
+    </div>
+  </div>
+
+  <!-- ── 全個体一覧 ────────────────────────────────────────── -->
   <section class="idx-catalog">
-    <p class="idx-catalog-label">ALL ENTRIES</p>
-    <div class="idx-grid">
-      {published.map((entry) => {
+    <p class="idx-section-label">ALL ENTRIES</p>
+    <p class="idx-catalog-count" id="idx-catalog-count">{allCreatures.length} entries</p>
+    <div class="idx-grid" id="idx-grid">
+      {allCreatures.map((entry) => {
         const slug = toSlug(entry.id);
-        const { data } = entry;
+        const d = entry.data;
+        const isHidden = d.status === 'hidden';
         return (
-          <a href={`/creatures/${slug}/`} class="idx-card">
+          <a
+            href={`/creatures/${slug}/`}
+            class={`idx-card${isHidden ? ' is-hidden-entry' : ''}`}
+            data-tags={JSON.stringify(isHidden ? [] : d.tags)}
+            data-series={JSON.stringify(isHidden ? [] : d.series)}
+            data-rarity={isHidden ? '' : d.rarity}
+          >
             <div class="idx-card-img">
-              {data.cover
-                ? <img src={data.cover} alt={data.name_jp} loading="lazy" />
-                : <div class="idx-card-noimg">NO VISUAL DATA</div>
+              {isHidden
+                ? <div class="idx-card-denied-img"><span>██</span></div>
+                : d.cover
+                  ? <img src={d.cover} alt={d.name_jp} loading="lazy" />
+                  : <div class="idx-card-noimg">NO VISUAL DATA</div>
               }
-              <span class={`idx-card-rarity ${data.rarity}`}>{data.rarity}</span>
+              <span class={`idx-card-badge${isHidden ? ' badge-denied' : ` rarity-${d.rarity}`}`}>
+                {isHidden ? 'ACCESS DENIED' : d.rarity}
+              </span>
             </div>
             <div class="idx-card-body">
-              <span class="idx-card-no">No.{data.no}</span>
-              <p class="idx-card-jp">{data.name_jp}</p>
-              <p class="idx-card-en">{data.name_en}</p>
-              <p class="idx-card-tag">{data.tag}</p>
+              <span class="idx-card-no">No.{d.no}</span>
+              {isHidden
+                ? (
+                  <>
+                    <p class="idx-card-jp denied-text">UNKNOWN ENTITY</p>
+                    <p class="idx-card-en denied-text">██████</p>
+                    <div class="idx-card-bars denied-bars">
+                      <div class="idx-mini-bar"><span class="idx-mini-label">PLANT</span><div class="idx-mini-track denied-track"></div></div>
+                      <div class="idx-mini-bar"><span class="idx-mini-label">ANIMAL</span><div class="idx-mini-track denied-track"></div></div>
+                      <div class="idx-mini-bar"><span class="idx-mini-label">DANGER</span><div class="idx-mini-track denied-track"></div></div>
+                    </div>
+                  </>
+                )
+                : (
+                  <>
+                    <p class="idx-card-jp">{d.name_jp}</p>
+                    <p class="idx-card-en">{d.name_en}</p>
+                    <p class="idx-card-tag">{d.tag}</p>
+                    <div class="idx-card-bars">
+                      <div class="idx-mini-bar">
+                        <span class="idx-mini-label">PL</span>
+                        <div class="idx-mini-track"><div class="idx-mini-fill plant" style={`width:${d.plant}%`}></div></div>
+                      </div>
+                      <div class="idx-mini-bar">
+                        <span class="idx-mini-label">AN</span>
+                        <div class="idx-mini-track"><div class="idx-mini-fill animal" style={`width:${d.animal}%`}></div></div>
+                      </div>
+                      <div class="idx-mini-bar">
+                        <span class="idx-mini-label">DG</span>
+                        <div class="idx-mini-track"><div class="idx-mini-fill danger" style={`width:${d.danger}%`}></div></div>
+                      </div>
+                    </div>
+                  </>
+                )
+              }
             </div>
           </a>
         );
@@ -65,16 +224,92 @@ function toSlug(id: string) {
 
 </BaseLayout>
 
+<!-- ── フィルター JS ──────────────────────────────────────── -->
+<script>
+  const grid    = document.getElementById('idx-grid');
+  const counter = document.getElementById('idx-catalog-count');
+  const clearBtn = document.getElementById('idx-filter-clear');
+  const chips   = document.querySelectorAll<HTMLButtonElement>('[data-filter-type]');
+
+  // アクティブフィルター状態: { series: Set, rarity: Set, tag: Set }
+  const active: Record<string, Set<string>> = {
+    series: new Set(),
+    rarity: new Set(),
+    tag: new Set(),
+  };
+
+  function applyFilter() {
+    if (!grid) return;
+    const cards = grid.querySelectorAll<HTMLElement>('.idx-card');
+    let visible = 0;
+
+    const hasSeriesFilter  = active.series.size > 0;
+    const hasRarityFilter  = active.rarity.size > 0;
+    const hasTagFilter     = active.tag.size > 0;
+    const anyActive        = hasSeriesFilter || hasRarityFilter || hasTagFilter;
+
+    cards.forEach(card => {
+      const tags   = JSON.parse(card.dataset.tags   || '[]') as string[];
+      const series = JSON.parse(card.dataset.series || '[]') as string[];
+      const rarity = card.dataset.rarity || '';
+
+      const matchSeries = !hasSeriesFilter || series.some(s => active.series.has(s));
+      const matchRarity = !hasRarityFilter || active.rarity.has(rarity);
+      const matchTag    = !hasTagFilter    || tags.some(t => active.tag.has(t));
+
+      const show = matchSeries && matchRarity && matchTag;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    if (counter) counter.textContent = `${visible} entries`;
+    if (clearBtn) clearBtn.style.display = anyActive ? '' : 'none';
+  }
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const type = chip.dataset.filterType!;
+      const val  = chip.dataset.filterVal!;
+
+      if (active[type].has(val)) {
+        active[type].delete(val);
+        chip.classList.remove('is-active');
+      } else {
+        active[type].add(val);
+        chip.classList.add('is-active');
+      }
+      applyFilter();
+    });
+  });
+
+  clearBtn?.addEventListener('click', () => {
+    active.series.clear();
+    active.rarity.clear();
+    active.tag.clear();
+    chips.forEach(c => c.classList.remove('is-active'));
+    applyFilter();
+  });
+</script>
+
 <style>
+/* ── 共通 ─────────────────────────────────────────────────── */
+.idx-section-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  color: var(--ink3);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
 /* ── ヒーロー ─────────────────────────────────────────────── */
 .idx-hero {
   border-bottom: 1px solid var(--br2);
-  padding: 64px 40px 48px;
+  padding: 56px 40px 48px;
+  background: var(--bg2);
 }
-.idx-hero-inner {
-  max-width: 800px;
-}
-.idx-sys {
+.idx-hero-inner { max-width: 760px; }
+.idx-sys-label {
   font-family: var(--mono);
   font-size: 9px;
   letter-spacing: 0.35em;
@@ -83,95 +318,107 @@ function toSlug(id: string) {
 }
 .idx-title {
   font-family: var(--disp);
-  font-size: clamp(28px, 5vw, 48px);
+  font-size: clamp(26px, 5vw, 44px);
   font-weight: 800;
   color: var(--ink);
-  letter-spacing: 0.05em;
-  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
 }
 .idx-subtitle {
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.28em;
   color: var(--ink2);
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
-.idx-count {
+
+/* 発見数 */
+.idx-discovery { max-width: 420px; }
+.idx-discovery-top {
   display: flex;
   align-items: baseline;
   gap: 6px;
+  margin-bottom: 10px;
 }
-.idx-count-num {
+.idx-disc-text {
   font-family: var(--mono);
-  font-size: 36px;
-  font-weight: 700;
-  color: var(--g);
-}
-.idx-count-sep {
-  font-family: var(--mono);
-  font-size: 20px;
-  color: var(--ink3);
-}
-.idx-count-total {
-  font-family: var(--mono);
-  font-size: 20px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
   color: var(--ink2);
 }
-.idx-count-label {
+.idx-disc-num {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--g);
+  line-height: 1;
+}
+.idx-disc-sep, .idx-disc-total {
+  font-family: var(--mono);
+  font-size: 16px;
+  color: var(--ink3);
+}
+.idx-disc-note {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: var(--ink3);
+  margin-left: 4px;
+}
+.idx-disc-bar-track {
+  height: 4px;
+  background: var(--bg3);
+  border: 1px solid var(--br2);
+  margin-bottom: 6px;
+}
+.idx-disc-bar-fill {
+  height: 100%;
+  background: var(--g2);
+  transition: width 0.8s ease;
+}
+.idx-disc-label {
+  font-family: var(--mono);
+  font-size: 8px;
   letter-spacing: 0.25em;
   color: var(--ink3);
-  margin-left: 8px;
 }
 
-/* ── カタロググリッド ─────────────────────────────────────── */
-.idx-catalog {
+/* ── 注目標本 ─────────────────────────────────────────────── */
+.idx-featured {
   padding: 40px;
+  border-bottom: 1px solid var(--br2);
 }
-.idx-catalog-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.35em;
-  color: var(--ink3);
-  margin-bottom: 24px;
-}
-.idx-grid {
+.idx-featured-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
 }
-
-/* ── カード ───────────────────────────────────────────────── */
-.idx-card {
-  display: flex;
-  flex-direction: column;
+.idx-feat-card {
+  display: grid;
+  grid-template-columns: 140px 1fr;
   border: 1px solid var(--br2);
   background: var(--bg2);
   text-decoration: none;
   transition: border-color 0.2s, transform 0.15s;
 }
-.idx-card:hover {
+.idx-feat-card:hover {
   border-color: var(--g);
   transform: translateY(-2px);
 }
-.idx-card-img {
-  position: relative;
+.idx-feat-img {
   aspect-ratio: 1;
   overflow: hidden;
-  background: var(--bg);
+  background: var(--bg3);
 }
-.idx-card-img img {
+.idx-feat-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(15%);
+  filter: grayscale(10%);
   transition: filter 0.2s;
 }
-.idx-card:hover .idx-card-img img {
-  filter: grayscale(0%);
-}
-.idx-card-noimg {
+.idx-feat-card:hover .idx-feat-img img { filter: grayscale(0%); }
+.idx-feat-noimg {
   width: 100%;
   height: 100%;
   display: flex;
@@ -182,25 +429,270 @@ function toSlug(id: string) {
   letter-spacing: 0.15em;
   color: var(--ink3);
 }
-.idx-card-rarity {
-  position: absolute;
-  top: 6px;
-  right: 6px;
+.idx-feat-info {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.idx-feat-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.idx-feat-no {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--ink3);
+}
+.idx-feat-jp {
+  font-family: var(--disp);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.idx-feat-en {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--ink2);
+}
+.idx-feat-tag {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: var(--ink3);
+  text-transform: uppercase;
+  margin-top: 2px;
+  margin-bottom: 8px;
+}
+.idx-feat-arrow {
+  margin-top: auto;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: var(--g);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.idx-feat-card:hover .idx-feat-arrow { opacity: 1; }
+
+/* ── ミニステータスバー（注目標本・カード共通） ──────────── */
+.idx-mini-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+}
+.idx-mini-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.idx-mini-label {
   font-family: var(--mono);
   font-size: 7px;
+  letter-spacing: 0.12em;
+  color: var(--ink3);
+  width: 36px;
+  flex-shrink: 0;
+}
+.idx-mini-track {
+  flex: 1;
+  height: 3px;
+  background: var(--bg3);
+  border: 1px solid var(--br);
+  overflow: hidden;
+}
+.idx-mini-fill {
+  height: 100%;
+  transition: width 0.4s;
+}
+.idx-mini-fill.plant  { background: var(--g2); }
+.idx-mini-fill.animal { background: var(--amb); }
+.idx-mini-fill.danger { background: var(--red); }
+.idx-mini-val {
+  font-family: var(--mono);
+  font-size: 7px;
+  color: var(--ink3);
+  width: 18px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── フィルター ─────────────────────────────────────────── */
+.idx-filter {
+  border-bottom: 1px solid var(--br2);
+  background: var(--bg2);
+}
+.idx-filter-inner {
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.idx-filter-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.idx-filter-key {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  color: var(--ink3);
+  padding-top: 5px;
+  min-width: 48px;
+  flex-shrink: 0;
+}
+.idx-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.idx-chip {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: var(--ink2);
+  background: var(--bg);
+  border: 1px solid var(--br2);
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  text-transform: uppercase;
+}
+.idx-chip:hover { border-color: var(--ink2); }
+.idx-chip.is-active {
+  color: var(--bg);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.idx-chip-series.is-active { background: var(--g); border-color: var(--g); }
+.idx-filter-clear {
+  align-self: flex-start;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: var(--red);
+  background: none;
+  border: 1px solid var(--red);
+  padding: 3px 10px;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.15s, color 0.15s;
+}
+.idx-filter-clear:hover { background: var(--red); color: var(--bg); }
+
+/* ── カタロググリッド ─────────────────────────────────────── */
+.idx-catalog {
+  padding: 36px 40px;
+}
+.idx-catalog-count {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--ink3);
+  margin-top: -12px;
+  margin-bottom: 24px;
+}
+.idx-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+/* ── 個体カード ─────────────────────────────────────────── */
+.idx-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--br2);
+  background: var(--bg2);
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.idx-card:hover { border-color: var(--g); transform: translateY(-2px); }
+.idx-card-img {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--bg3);
+}
+.idx-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(10%);
+  transition: filter 0.2s;
+}
+.idx-card:hover .idx-card-img img { filter: grayscale(0%); }
+.idx-card-noimg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  color: var(--ink3);
+}
+/* hidden 個体のプレースホルダー */
+.idx-card-denied-img {
+  width: 100%;
+  height: 100%;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 28px;
+  letter-spacing: 0.05em;
+  color: #333;
+}
+.idx-card.is-hidden-entry { border-color: #c0392b44; }
+.idx-card.is-hidden-entry:hover { border-color: var(--red); }
+
+/* レアリティバッジ */
+.idx-card-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  padding: 2px 5px;
+  background: rgba(0,0,0,0.65);
+  text-transform: uppercase;
+}
+.idx-card-badge.badge-denied { color: var(--red); }
+
+/* rarity color helpers（index + featured 共通） */
+.rarity-LEGEND,.idx-feat-rarity.rarity-LEGEND,.idx-card-badge.rarity-LEGEND  { color: var(--rar-l); }
+.rarity-EPIC  ,.idx-feat-rarity.rarity-EPIC  ,.idx-card-badge.rarity-EPIC    { color: var(--rar-e); }
+.rarity-RARE  ,.idx-feat-rarity.rarity-RARE  ,.idx-card-badge.rarity-RARE    { color: var(--rar-r); }
+.rarity-UNCOMMON,.idx-feat-rarity.rarity-UNCOMMON,.idx-card-badge.rarity-UNCOMMON { color: var(--rar-uc); }
+.rarity-COMMON,.idx-feat-rarity.rarity-COMMON,.idx-card-badge.rarity-COMMON  { color: var(--rar-c); }
+.idx-feat-rarity {
+  font-family: var(--mono);
+  font-size: 8px;
   letter-spacing: 0.15em;
   font-weight: 700;
-  padding: 2px 6px;
-  background: rgba(0,0,0,0.6);
 }
-.idx-card-rarity.LEGEND   { color: #f59e0b; }
-.idx-card-rarity.EPIC     { color: #a855f7; }
-.idx-card-rarity.RARE     { color: #3b82f6; }
-.idx-card-rarity.UNCOMMON { color: #10b981; }
-.idx-card-rarity.COMMON   { color: #9ca3af; }
+/* rarity filter chips */
+.idx-chip-rarity.rarity-LEGEND.is-active  { background: var(--rar-l); border-color: var(--rar-l); }
+.idx-chip-rarity.rarity-EPIC.is-active    { background: var(--rar-e); border-color: var(--rar-e); }
+.idx-chip-rarity.rarity-RARE.is-active    { background: var(--rar-r); border-color: var(--rar-r); }
+.idx-chip-rarity.rarity-UNCOMMON.is-active{ background: var(--rar-uc); border-color: var(--rar-uc); }
+.idx-chip-rarity.rarity-COMMON.is-active  { background: var(--rar-c); border-color: var(--rar-c); }
 
+/* カード本体テキスト */
 .idx-card-body {
-  padding: 12px 14px;
+  padding: 10px 12px;
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -221,24 +713,37 @@ function toSlug(id: string) {
 .idx-card-en {
   font-family: var(--mono);
   font-size: 8px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: var(--ink2);
-  line-height: 1.4;
 }
 .idx-card-tag {
   font-family: var(--mono);
   font-size: 7px;
   letter-spacing: 0.1em;
   color: var(--ink3);
-  margin-top: 4px;
-  border-top: 1px solid var(--br2);
-  padding-top: 6px;
+  text-transform: uppercase;   /* 表記ゆれを CSS で吸収 */
+  margin-top: 3px;
+  padding-top: 5px;
+  border-top: 1px solid var(--br);
 }
+.idx-card-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 6px;
+}
+/* hidden 個体のテキスト */
+.denied-text { color: var(--red) !important; letter-spacing: 0.1em; }
+.denied-track { background: #2a2a2a !important; border-color: #333 !important; }
 
 /* ── モバイル ─────────────────────────────────────────────── */
 @media (max-width: 640px) {
-  .idx-hero { padding: 40px 24px 32px; }
-  .idx-catalog { padding: 32px 24px; }
+  .idx-hero     { padding: 36px 24px 32px; }
+  .idx-featured { padding: 28px 24px; }
+  .idx-featured-grid { grid-template-columns: 1fr; }
+  .idx-feat-card { grid-template-columns: 120px 1fr; }
+  .idx-filter-inner { padding: 16px 24px; }
+  .idx-catalog  { padding: 28px 24px; }
   .idx-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
 }
 </style>

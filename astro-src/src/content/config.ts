@@ -22,6 +22,7 @@ const creatures = defineCollection({
     status_label: z.string().optional(),
     status_color: z.string().optional(),
 
+    featured: z.boolean().default(false),
     tags: z.array(z.string()).default([]),
     series: z.array(z.string()).default([]),
     related: z.array(z.string()).default([]),

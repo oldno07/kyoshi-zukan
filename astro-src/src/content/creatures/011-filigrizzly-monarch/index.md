@@ -18,6 +18,7 @@ mobility: "群体統率"
 status_label: "MONARCH"
 status_color: "#e0b94f"
 top: "Agave Titanota \"filigree\""
+featured: true
 tags: ["動物優性型", "群体種", "フィリグリズリー族"]
 series: ["フィリグリズリー"]
 related: ["009-filigrizzly", "010-filigrizzly-devil"]

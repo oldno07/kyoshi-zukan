@@ -18,6 +18,7 @@ mobility: "機械歩行型"
 status_label: "MONITOR"
 status_color: "#e0b94f"
 top: "Agave Titanota \"FO-76\""
+featured: true
 tags: ["機械融合型", "高危険度"]
 series: []
 related: ["005-gorillahorrida"]

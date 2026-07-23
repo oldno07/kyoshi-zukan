@@ -3,7 +3,8 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
-  const all = await getCollection('creatures', ({ data }) => data.status === 'published');
+  // hidden も含めて全件取得（欠番演出ページを生成するため）
+  const all = await getCollection('creatures');
   // no 番号順でソート
   const sorted = all.sort((a, b) => a.data.no.localeCompare(b.data.no));
 
@@ -48,12 +49,17 @@ export async function getStaticPaths() {
 const { entry, prev, next, relatedCreatures } = Astro.props;
 const { slug } = Astro.params;
 const { data } = entry;
+const isHidden = data.status === 'hidden';
 const { Content } = await render(entry);
 
-const ogTitle = `${data.name_jp} / ${data.name_en} | 鋸歯生物図鑑`;
-const ogDescription = data.notes
-  ? data.notes.slice(0, 100) + (data.notes.length > 100 ? '…' : '')
-  : `No.${data.no} ${data.name_jp} — 鋸歯生物観測記録`;
+const ogTitle = isHidden
+  ? `No.${data.no} UNKNOWN ENTITY | 鋸歯生物図鑑`
+  : `${data.name_jp} / ${data.name_en} | 鋸歯生物図鑑`;
+const ogDescription = isHidden
+  ? `No.${data.no} — 観測記録はアクセス制限されています。`
+  : data.notes
+    ? data.notes.slice(0, 100) + (data.notes.length > 100 ? '…' : '')
+    : `No.${data.no} ${data.name_jp} — 鋸歯生物観測記録`;
 ---
 
 <BaseLayout
@@ -77,54 +83,65 @@ const ogDescription = data.notes
     <div class="cd-hero-l">
       <div class="cd-hero-meta">
         <span class="cd-no">No.{data.no}</span>
-        <span class={`cd-rarity ${data.rarity}`}>{data.rarity}</span>
-        <span class="cd-tag">{data.tag}</span>
+        {isHidden
+          ? <span class="cd-rarity" style="background:var(--red);color:#fff;border-color:var(--red);">ACCESS DENIED</span>
+          : <span class={`cd-rarity ${data.rarity}`}>{data.rarity}</span>
+        }
+        {!isHidden && <span class="cd-tag">{data.tag}</span>}
       </div>
-      <h1 class="cd-name-jp">{data.name_jp}</h1>
-      <p class="cd-name-en">{data.name_en}</p>
+      <h1 class="cd-name-jp" style={isHidden ? 'color:var(--red);letter-spacing:0.1em;' : ''}>
+        {isHidden ? 'UNKNOWN ENTITY' : data.name_jp}
+      </h1>
+      <p class="cd-name-en" style={isHidden ? 'color:var(--ink3);' : ''}>
+        {isHidden ? '██████' : data.name_en}
+      </p>
 
-      {data.status_label && (
-        <span
-          class="cd-status-badge"
-          style={`color: ${data.status_color ?? 'var(--g)'}`}
-        >
+      {!isHidden && data.status_label && (
+        <span class="cd-status-badge" style={`color: ${data.status_color ?? 'var(--g)'}`}>
           ● {data.status_label}
+        </span>
+      )}
+      {isHidden && (
+        <span class="cd-status-badge" style="color:var(--red);">
+          ● ACCESS RESTRICTED
         </span>
       )}
     </div>
 
     <div class="cd-hero-r">
-      {data.cover
-        ? <img src={data.cover} alt={data.name_jp} class="cd-cover" loading="eager" />
-        : <div class="cd-no-visual">NO VISUAL DATA</div>
+      {isHidden
+        ? <div class="cd-no-visual" style="background:#111;color:#333;font-size:32px;letter-spacing:0.05em;">██</div>
+        : data.cover
+          ? <img src={data.cover} alt={data.name_jp} class="cd-cover" loading="eager" />
+          : <div class="cd-no-visual">NO VISUAL DATA</div>
       }
     </div>
   </section>
 
-  <!-- status bars（数値系のみ。HABITAT/TYPE はここに置かない） -->
+  <!-- status bars -->
   <section class="cd-status">
     <p class="cd-status-title">BIOLOGICAL STATUS</p>
     <div class="cd-bars">
       <div class="cd-bar-row">
         <span class="cd-bar-label">PLANT</span>
         <div class="cd-bar-track">
-          <div class="cd-bar-fill plant" style={`width: ${data.plant}%`}></div>
+          {!isHidden && <div class="cd-bar-fill plant" style={`width: ${data.plant}%`}></div>}
         </div>
-        <span class="cd-bar-val">{data.plant}</span>
+        <span class="cd-bar-val">{isHidden ? '—' : data.plant}</span>
       </div>
       <div class="cd-bar-row">
         <span class="cd-bar-label">ANIMAL</span>
         <div class="cd-bar-track">
-          <div class="cd-bar-fill animal" style={`width: ${data.animal}%`}></div>
+          {!isHidden && <div class="cd-bar-fill animal" style={`width: ${data.animal}%`}></div>}
         </div>
-        <span class="cd-bar-val">{data.animal}</span>
+        <span class="cd-bar-val">{isHidden ? '—' : data.animal}</span>
       </div>
       <div class="cd-bar-row">
         <span class="cd-bar-label">DANGER</span>
         <div class="cd-bar-track">
-          <div class="cd-bar-fill danger" style={`width: ${data.danger}%`}></div>
+          {!isHidden && <div class="cd-bar-fill danger" style={`width: ${data.danger}%`}></div>}
         </div>
-        <span class="cd-bar-val">{data.danger}</span>
+        <span class="cd-bar-val">{isHidden ? '—' : data.danger}</span>
       </div>
     </div>
   </section>
@@ -132,11 +149,21 @@ const ogDescription = data.notes
   <!-- body -->
   <article class="cd-body">
 
-    <div class="cd-body-text">
-      <Content />
-    </div>
+    {isHidden
+      ? (
+        <div class="cd-body-text cd-redacted-notice">
+          <p>[ RECORD CLASSIFIED — ACCESS DENIED ]</p>
+          <p>この個体の観測記録は現在非公開です。</p>
+        </div>
+      )
+      : (
+        <div class="cd-body-text">
+          <Content />
+        </div>
+      )
+    }
 
-    {data.notes && (
+    {!isHidden && data.notes && (
       <div class="cd-note">
         <p class="cd-note-label">
           RESEARCH NOTE{data.namer ? ` — ${data.namer}` : ''}
@@ -145,7 +172,7 @@ const ogDescription = data.notes
       </div>
     )}
 
-    {data.abilities.length > 0 && (
+    {!isHidden && data.abilities.length > 0 && (
       <div style="margin-bottom: 32px;">
         <p class="cd-status-title" style="margin-bottom: 12px;">ABILITIES</p>
         <div class="cd-abilities">
@@ -156,21 +183,21 @@ const ogDescription = data.notes
       </div>
     )}
 
-    <!-- フィールドデータ（各値は1箇所のみ） -->
+    <!-- フィールドデータ -->
     <div class="cd-data">
       <div class="cd-data-row">
         <span class="cd-data-key">HABITAT</span>
-        <span class="cd-data-val">{data.habitat}</span>
+        <span class="cd-data-val">{isHidden ? '██████' : data.habitat}</span>
       </div>
       <div class="cd-data-row">
         <span class="cd-data-key">SIZE</span>
-        <span class="cd-data-val">{data.size}</span>
+        <span class="cd-data-val">{isHidden ? '██████' : data.size}</span>
       </div>
       <div class="cd-data-row">
         <span class="cd-data-key">MOBILITY</span>
-        <span class="cd-data-val">{data.mobility}</span>
+        <span class="cd-data-val">{isHidden ? '██████' : data.mobility}</span>
       </div>
-      {data.top && (
+      {!isHidden && data.top && (
         <div class="cd-data-row">
           <span class="cd-data-key">BASED ON</span>
           <span class="cd-data-val">{data.top}</span>
@@ -178,12 +205,12 @@ const ogDescription = data.notes
       )}
     </div>
 
-    {data.shopUrl && !data.soldOut && (
+    {!isHidden && data.shopUrl && !data.soldOut && (
       <a href={data.shopUrl} class="cd-shop" target="_blank" rel="noopener">
         → ACQUISITION REQUEST
       </a>
     )}
-    {data.soldOut && (
+    {!isHidden && data.soldOut && (
       <p style="font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--ink3);margin-bottom:40px;">
         SOLD OUT
       </p>
@@ -192,7 +219,7 @@ const ogDescription = data.notes
   </article>
 
   <!-- gallery -->
-  {data.gallery.length > 0 && data.gallery.some(g => g.path) && (
+  {!isHidden && data.gallery.length > 0 && data.gallery.some(g => g.path) && (
     <section class="cd-gallery">
       <p class="cd-gallery-title">OBSERVATION GALLERY</p>
       <div class="cd-gallery-grid">
@@ -212,7 +239,7 @@ const ogDescription = data.notes
   )}
 
   <!-- videos -->
-  {data.videos.length > 0 && (
+  {!isHidden && data.videos.length > 0 && (
     <section class="cd-videos">
       <p class="cd-videos-title">OBSERVATION RECORDS</p>
       <div class="cd-video-list">
@@ -259,7 +286,7 @@ const ogDescription = data.notes
   </nav>
 
   <!-- ===== TAXONOMY: TAGS + SERIES ===== -->
-  {(data.tags.length > 0 || data.series.length > 0) && (
+  {!isHidden && (data.tags.length > 0 || data.series.length > 0) && (
     <div class="cd-taxonomy">
       {data.series.length > 0 && (
         <div class="cd-tax-row">
@@ -285,7 +312,7 @@ const ogDescription = data.notes
   )}
 
   <!-- ===== RELATED ENTITIES ===== -->
-  {relatedCreatures.length > 0 && (
+  {!isHidden && relatedCreatures.length > 0 && (
     <section class="cd-related">
       <p class="cd-related-title">RELATED ENTITIES</p>
       <div class="cd-related-grid">

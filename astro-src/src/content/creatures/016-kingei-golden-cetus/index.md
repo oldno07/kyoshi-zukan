@@ -17,6 +17,7 @@ size: "18m+"
 mobility: "浮遊型"
 status_label: "STABLE"
 top: "Agave Titanota \"金鯨\""
+featured: true
 tags: ["水棲型", "多肉混合型", "鯨族"]
 series: ["鯨族"]
 related: ["013-hakugei-white-cetus", "015-metal-hakugei-cetus"]

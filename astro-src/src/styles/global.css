@@ -490,6 +490,19 @@ body::after {
   color: var(--ink3);
 }
 
+/* -- hidden / redacted notice -- */
+.cd-redacted-notice {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--red);
+  border: 1px solid var(--red);
+  padding: 24px 32px;
+  margin-bottom: 32px;
+  opacity: 0.8;
+}
+.cd-redacted-notice p + p { margin-top: 8px; }
+
 /* -- no visual data placeholder -- */
 .cd-no-visual {
   display: flex;
