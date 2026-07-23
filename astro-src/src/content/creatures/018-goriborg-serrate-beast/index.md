@@ -18,9 +18,9 @@ mobility: "機械歩行型"
 status_label: "MONITOR"
 status_color: "#e0b94f"
 top: "Agave Titanota \"FO-76\""
-tags: []
+tags: ["機械融合型", "高危険度"]
 series: []
-related: []
+related: ["005-gorillahorrida"]
 soldOut: false
 notes: "廃棄区域で金属音を伴う大型個体を確認した。動きは機械のように正確だったが、こちらを視認した直後だけ数秒間停止した。あの挙動には\"迷い\"のようなものを感じた。アガベスト"
 abilities:

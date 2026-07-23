@@ -18,9 +18,9 @@ mobility: "遊泳型"
 status_label: "MONITOR"
 status_color: "#e0b94f"
 top: "Agave Titanota \"黒鯨\""
-tags: []
-series: []
-related: []
+tags: ["動物優性型", "水棲型", "鯨族"]
+series: ["鯨族"]
+related: ["013-hakugei-white-cetus", "015-metal-hakugei-cetus", "019-mochi-cetus"]
 soldOut: false
 notes: "黒い潮煙の中心から浮上した個体。周囲の生物群が逃げずに集まる異常行動を確認。これは生物というより環境に近い。アガベスト"
 abilities:

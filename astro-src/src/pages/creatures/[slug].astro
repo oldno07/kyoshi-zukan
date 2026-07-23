@@ -16,6 +16,19 @@ export async function getStaticPaths() {
     const prevEntry = index > 0 ? sorted[index - 1] : null;
     const nextEntry = index < sorted.length - 1 ? sorted[index + 1] : null;
 
+    const relatedCreatures = (entry.data.related ?? [])
+      .map(relSlug => sorted.find(e => toSlug(e.id) === relSlug))
+      .filter(Boolean)
+      .map(rc => ({
+        slug: toSlug(rc.id),
+        no: rc.data.no,
+        name_jp: rc.data.name_jp,
+        name_en: rc.data.name_en,
+        rarity: rc.data.rarity,
+        tag: rc.data.tag,
+        cover: rc.data.cover,
+      }));
+
     return {
       params: { slug },
       props: {
@@ -26,12 +39,13 @@ export async function getStaticPaths() {
         next: nextEntry
           ? { slug: toSlug(nextEntry.id), name_jp: nextEntry.data.name_jp, name_en: nextEntry.data.name_en }
           : null,
+        relatedCreatures,
       },
     };
   });
 }
 
-const { entry, prev, next } = Astro.props;
+const { entry, prev, next, relatedCreatures } = Astro.props;
 const { slug } = Astro.params;
 const { data } = entry;
 const { Content } = await render(entry);
@@ -244,7 +258,58 @@ const ogDescription = data.notes
     }
   </nav>
 
-  <!-- sys divider -->
+  <!-- ===== TAXONOMY: TAGS + SERIES ===== -->
+  {(data.tags.length > 0 || data.series.length > 0) && (
+    <div class="cd-taxonomy">
+      {data.series.length > 0 && (
+        <div class="cd-tax-row">
+          <span class="cd-tax-key">SERIES</span>
+          <div class="cd-tax-chips">
+            {data.series.map((s) => (
+              <span class="cd-chip cd-chip-series">{s}</span>
+            ))}
+          </div>
+        </div>
+      )}
+      {data.tags.length > 0 && (
+        <div class="cd-tax-row">
+          <span class="cd-tax-key">TAGS</span>
+          <div class="cd-tax-chips">
+            {data.tags.map((t) => (
+              <span class="cd-chip">{t}</span>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  )}
+
+  <!-- ===== RELATED ENTITIES ===== -->
+  {relatedCreatures.length > 0 && (
+    <section class="cd-related">
+      <p class="cd-related-title">RELATED ENTITIES</p>
+      <div class="cd-related-grid">
+        {relatedCreatures.map((rc) => (
+          <a href={`/creatures/${rc.slug}/`} class="cd-related-card">
+            <div class="cd-related-img">
+              {rc.cover
+                ? <img src={rc.cover} alt={rc.name_jp} loading="lazy" />
+                : <div class="cd-related-noimg">NO VISUAL</div>
+              }
+            </div>
+            <div class="cd-related-info">
+              <span class="cd-related-no">No.{rc.no}</span>
+              <span class={`cd-related-rarity ${rc.rarity}`}>{rc.rarity}</span>
+              <p class="cd-related-jp">{rc.name_jp}</p>
+              <p class="cd-related-en">{rc.name_en}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- END OF RECORD marker -->
   <div class="cd-sys">
     <div class="cd-sys-line"></div>
     <span class="cd-sys-label">END OF RECORD — No.{data.no}</span>

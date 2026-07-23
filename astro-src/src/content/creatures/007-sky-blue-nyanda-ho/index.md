@@ -18,9 +18,9 @@ mobility: "高速飛行"
 status_label: "MONARCH"
 status_color: "#e0b94f"
 top: "Agave Titanota \"Black &Blue\""
-tags: []
+tags: ["動物優性型", "飛行型", "アガベ棚"]
 series: []
-related: []
+related: ["001-snyaggletooth", "025-platybat-mosswing"]
 soldOut: false
 notes: "領空域で浮遊する鋸歯ネコ型生物を確認。体表に空色変化あり。"
 namer: "@fukuboo"

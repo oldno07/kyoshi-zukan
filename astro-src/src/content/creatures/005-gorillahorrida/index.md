@@ -17,9 +17,9 @@ size: "2.4m"
 mobility: "重量型"
 status_label: "STABLE"
 top: "Agave Horrida"
-tags: []
+tags: ["動物優性型", "大型種", "高危険度"]
 series: []
-related: []
+related: ["012-green-rhino", "018-goriborg-serrate-beast"]
 soldOut: true
 notes: "驚いた。ネコ型生物以外にも、ゴリラのような個体を密林の奥深くで発見した。どのような進化を遂げてきたのだろうか。頭部に見えるのはホリダの葉っぱのように見える。アガベスト"
 abilities:

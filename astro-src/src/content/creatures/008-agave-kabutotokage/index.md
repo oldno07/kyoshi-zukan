@@ -17,9 +17,9 @@ size: "248mm"
 mobility: "俊敏"
 status_label: "ACTIVE"
 top: "Agave Oteroi"
-tags: []
+tags: ["動物優性型", "爬虫類型", "アガベ棚"]
 series: []
-related: []
+related: ["001-snyaggletooth", "004-nyagabe-titanota"]
 soldOut: false
 notes: "草食傾向を持つトカゲ型個体を確認。体表に葉状構造あり。"
 abilities:

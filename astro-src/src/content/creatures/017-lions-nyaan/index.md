@@ -17,9 +17,9 @@ size: "170mm"
 mobility: "緩慢"
 status_label: "ACTIVE"
 top: "Agave Titanota \"ライオンズメーン\""
-tags: []
+tags: ["動物優性型", "ネコ型", "草原種"]
 series: []
-related: []
+related: ["002-black-nyanko-blue", "003-red-cat-meezle"]
 soldOut: false
 notes: "草原でこちらを見つめる小型個体を確認した。ライオンのような鬣を持つが、近づいて観察すると葉そのものだった。風が吹くたびに葉同士が微かに共鳴しており、周囲の植物群も同調するように揺れていた。アガベスト"
 abilities:

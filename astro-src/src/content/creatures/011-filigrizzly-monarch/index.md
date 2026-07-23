@@ -18,9 +18,9 @@ mobility: "群体統率"
 status_label: "MONARCH"
 status_color: "#e0b94f"
 top: "Agave Titanota \"filigree\""
-tags: []
-series: []
-related: []
+tags: ["動物優性型", "群体種", "フィリグリズリー族"]
+series: ["フィリグリズリー"]
+related: ["009-filigrizzly", "010-filigrizzly-devil"]
 soldOut: false
 notes: "世界は広いことを知った。 キンター魔族の住む禁域森林を後にした私は、深い森の奥で小さな池を見つけた。 渇いた喉を潤そうと近づいた、その時だった。 奴らは池を取り囲み、狂気じみた踊りを捧げていた。 フィリグリズリーの群れだ。 その視線の先を追う。 木々を組み上げた巨大な玉座。 そして、その頂で微動だにせず群れを見下ろす一体の巨獣。 あれは長ではない。王ですらない。 群れ全てが跪き、その存在を称えている。 私は直感した。 ――君主だ。 新種個体として記録する。 クラフトセブンティ"
 abilities:

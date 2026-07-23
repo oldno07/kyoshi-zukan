@@ -17,9 +17,9 @@ size: "164mm"
 mobility: "夜間活性"
 status_label: "ACTIVE"
 top: "Agave Titanota \"Black &Blue\""
-tags: []
+tags: ["動物優性型", "ネコ型", "アガベ棚"]
 series: []
-related: []
+related: ["001-snyaggletooth", "003-red-cat-meezle", "004-nyagabe-titanota"]
 shopUrl: "https://agavest.stores.jp/?category_id=6a6070f263f5f62ab963b36c&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_002"
 soldOut: false
 notes: "青色毛玉は定期的に排出される。回収された毛玉の用途について質問されることが多いが、研究所としてはコメントを控える。また脱走した。アガベスト"

@@ -17,9 +17,9 @@ size: "12m〜18m"
 mobility: "遊泳型"
 status_label: "STABLE"
 top: "Agave Titanota 白鯨"
-tags: []
-series: []
-related: []
+tags: ["水棲型", "多肉混合型", "鯨族"]
+series: ["鯨族"]
+related: ["013-hakugei-white-cetus", "014-kokugei-black-cetus"]
 shopUrl: "https://agavest.stores.jp/?category_id=6a60720510525137d1036206&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_019"
 soldOut: false
 notes: "植物棚の水場に浮かぶ白い物体を、石や飾りだと思っていた。しかし触れた瞬間、大きく沈み込み、そのまま弾むように移動を開始した。想像以上に柔らかい。群れ同士が反発するような動きで交流しているようにも見える。アガベスト"

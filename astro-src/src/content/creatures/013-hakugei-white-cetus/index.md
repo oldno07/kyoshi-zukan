@@ -18,9 +18,9 @@ mobility: "浮遊型"
 status_label: "MYTHIC"
 status_color: "#e0b94f"
 top: "Agave Titanota \"白鯨\""
-tags: []
-series: []
-related: []
+tags: ["水棲型", "多肉混合型", "鯨族"]
+series: ["鯨族"]
+related: ["014-kokugei-black-cetus", "015-metal-hakugei-cetus", "016-kingei-golden-cetus", "019-mochi-cetus"]
 shopUrl: "https://agavest.stores.jp/?category_id=6a6071297008332d33f47c5a&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_013"
 soldOut: false
 notes: "深海から白色の大型個体が浮上。周囲海流に変化を確認。アガベスト"

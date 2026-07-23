@@ -18,9 +18,9 @@ mobility: "緩慢"
 status_label: "THIRSTY"
 status_color: "#d6b85a"
 top: "Pachypodium Gracilius"
-tags: []
+tags: ["多肉植物型", "乾燥地帯"]
 series: []
-related: []
+related: ["021-gnyacilius"]
 soldOut: false
 notes: "乾燥地帯で発見した小型個体。動きは極めて緩慢だが、水分を与えた直後だけ明確に活動量が増加した。塊根部分には想像以上の貯水能力があるらしく、環境変化そのものを蓄積しているようにも見える。アガベスト"
 abilities:

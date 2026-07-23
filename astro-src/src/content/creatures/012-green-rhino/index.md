@@ -17,9 +17,9 @@ size: "2.1m"
 mobility: "重量型"
 status_label: "ACTIVE"
 top: "Agave Titanota \"緑犀牛\""
-tags: []
+tags: ["動物優性型", "大型種"]
 series: []
-related: []
+related: ["005-gorillahorrida"]
 soldOut: true
 notes: "岩状の大型鋸歯生物を確認。移動に伴い周辺植物群が活性化。アガベスト"
 abilities:

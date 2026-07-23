@@ -18,9 +18,9 @@ mobility: "重装型"
 status_label: "AGITATED"
 status_color: "#d65a5a"
 top: "Agave Titanota \"filigree\""
-tags: []
-series: []
-related: []
+tags: ["動物優性型", "群体種", "フィリグリズリー族"]
+series: ["フィリグリズリー"]
+related: ["009-filigrizzly", "011-filigrizzly-monarch"]
 soldOut: false
 notes: "背部に視線反応。観測中に瞬き同期あり。アガベスト"
 abilities:

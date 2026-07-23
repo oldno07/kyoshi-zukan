@@ -18,7 +18,7 @@ mobility: "群体統率"
 status_label: "MONARCH"
 status_color: "#e0b94f"
 top: "Agave Titanota \"魔丸\""
-tags: []
+tags: ["動物優性型", "禁域種"]
 series: []
 related: []
 soldOut: true

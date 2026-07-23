@@ -18,9 +18,9 @@ mobility: "突進型"
 status_label: "AGITATED"
 status_color: "#d65a5a"
 top: "Platycerium"
-tags: []
-series: []
-related: []
+tags: ["動物優性型", "森林種", "ビカク族"]
+series: ["ビカク族"]
+related: ["024-bicacu-cow", "025-platybat-mosswing"]
 soldOut: false
 notes: "初観測時、倒木と完全に同化していたため生物だと認識できなかったのです。こちらを見た瞬間、角を広げる姿が見られました。アガベスト"
 namer: "@miyamoto0520"

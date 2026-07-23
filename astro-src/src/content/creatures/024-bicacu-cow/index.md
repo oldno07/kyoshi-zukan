@@ -17,9 +17,9 @@ size: "1.8m"
 mobility: "重量突進型"
 status_label: "STABLE"
 top: "Platycerium"
-tags: []
-series: []
-related: []
+tags: ["動物優性型", "森林種", "ビカク族"]
+series: ["ビカク族"]
+related: ["023-beautiful-horn-deer", "025-platybat-mosswing"]
 soldOut: false
 notes: "ビカクシカ系幼体の標本化作業中、群れの中で明らかに異なる個体を確認した。体格や脚部構造はむしろ水牛に近い。アガベスト"
 namer: "@fukuboo"

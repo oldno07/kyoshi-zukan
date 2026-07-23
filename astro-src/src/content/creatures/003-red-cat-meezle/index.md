@@ -17,9 +17,9 @@ size: "164mm"
 mobility: "夜間活性"
 status_label: "ACTIVE"
 top: "Agave Titanota \"Red Catweezle\""
-tags: []
+tags: ["動物優性型", "ネコ型"]
 series: []
-related: []
+related: ["002-black-nyanko-blue", "017-lions-nyaan"]
 shopUrl: "https://agavest.stores.jp/?category_id=6a6070fd85f6343462161171&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_003"
 soldOut: false
 notes: "ストレス時に赤色化を確認。"

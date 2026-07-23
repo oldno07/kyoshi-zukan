@@ -19,9 +19,9 @@ status_label: "THIRSTY"
 status_color: "#d6b85a"
 
 top: "Pachypodium Gracilius"
-tags: ["塊根植物", "ネコ型", "乾燥地帯"]
+tags: ["多肉植物型", "塊根植物", "ネコ型", "乾燥地帯"]
 series: []
-related: ["001-snyaggletooth"]
+related: ["020-graci-ris", "001-snyaggletooth"]
 
 shopUrl: "https://agavest.stores.jp/?category_id=6a3e0ce35d38e9155cdbef88&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_021"
 price: null

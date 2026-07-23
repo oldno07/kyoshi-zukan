@@ -17,9 +17,9 @@ size: "180mm"
 mobility: "吊下型低速移動"
 status_label: "STABLE"
 top: "Platycerium \"ellisii\""
-tags: []
-series: []
-related: []
+tags: ["植物優性型", "飛行型", "ビカク族"]
+series: ["ビカク族"]
+related: ["023-beautiful-horn-deer", "024-bicacu-cow"]
 soldOut: false
 notes: "プレステラ周辺で定着する吊り鉢擬態型個体群の中から確認された、ビカクシダとコウモリの中間的特徴を持つ独立種。"
 namer: "@agadai_6213"
