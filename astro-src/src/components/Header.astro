@@ -1,0 +1,100 @@
+---
+// Phase1パイロット：CATALOG以外のリンクは現行サイトページへ仮リンク
+// Phase4移行後に Astro内部パスへ差し替える
+---
+
+<header class="site-header">
+  <div class="header-left">
+    <a href="/" class="logo">鋸歯生物図鑑</a>
+    <span class="sys-badge">SYS_V2.0</span>
+  </div>
+
+  <nav class="header-right">
+    <a href="/" class="nav-a" data-nav="catalog">CATALOG</a>
+    <a href="/about.html" class="nav-a" data-nav="world">WORLD</a>
+    <a href="/news.html" class="nav-a" data-nav="news">NEWS</a>
+    <a
+      href="https://agavest.stores.jp/?utm_source=zukan&utm_medium=internal&utm_campaign=species_link"
+      target="_blank"
+      class="nav-a"
+    >TRANSFER ↗</a>
+  </nav>
+
+  <button class="nav-burger" id="nav-burger" aria-label="メニューを開く">
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+  </button>
+</header>
+
+<!-- モバイルオーバーレイ -->
+<div class="nav-overlay" id="nav-overlay">
+  <div class="nav-overlay-inner">
+    <div class="nav-overlay-header">
+      <span class="nav-overlay-logo">鋸歯生物図鑑</span>
+      <button class="nav-close" id="nav-close" aria-label="メニューを閉じる">✕</button>
+    </div>
+
+    <nav class="nav-overlay-nav">
+      <a href="/" class="nav-overlay-item" data-nav="catalog">
+        <span class="nav-overlay-no">01</span>
+        <span class="nav-overlay-jp">標本目録</span>
+        <span class="nav-overlay-en">CATALOG</span>
+      </a>
+      <a href="/about.html" class="nav-overlay-item" data-nav="world">
+        <span class="nav-overlay-no">02</span>
+        <span class="nav-overlay-jp">世界観</span>
+        <span class="nav-overlay-en">WORLD</span>
+      </a>
+      <a href="/news.html" class="nav-overlay-item" data-nav="news">
+        <span class="nav-overlay-no">03</span>
+        <span class="nav-overlay-jp">ニュース</span>
+        <span class="nav-overlay-en">NEWS</span>
+      </a>
+    </nav>
+
+    <div class="nav-overlay-cta">
+      <a
+        href="https://agavest.stores.jp/?utm_source=zukan&utm_medium=internal&utm_campaign=species_link"
+        target="_blank"
+        class="nav-overlay-item"
+      >
+        <span class="nav-overlay-no">↗</span>
+        <span class="nav-overlay-jp">譲渡局</span>
+        <span class="nav-overlay-en">TRANSFER</span>
+      </a>
+    </div>
+
+    <div class="nav-overlay-footer">
+      <div class="nav-overlay-footer-top">
+        <span class="nav-overlay-count">AGAVEST OBSERVATION DATABASE</span>
+        <a href="https://www.instagram.com/pelican.works" target="_blank" class="nav-overlay-ig">
+          @pelican.works
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const burger = document.getElementById('nav-burger');
+  const overlay = document.getElementById('nav-overlay');
+  const closeBtn = document.getElementById('nav-close');
+
+  function openNav() {
+    overlay?.classList.add('is-open');
+    burger?.classList.add('is-open');
+    document.body.classList.add('nav-is-open');
+  }
+  function closeNav() {
+    overlay?.classList.remove('is-open');
+    burger?.classList.remove('is-open');
+    document.body.classList.remove('nav-is-open');
+  }
+
+  burger?.addEventListener('click', openNav);
+  closeBtn?.addEventListener('click', closeNav);
+  overlay?.addEventListener('click', (e) => {
+    if (e.target === overlay) closeNav();
+  });
+</script>

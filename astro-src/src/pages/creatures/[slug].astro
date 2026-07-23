@@ -3,18 +3,35 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
-  const entries = await getCollection('creatures', ({ data }) => data.status === 'published');
-  return entries.map((entry) => {
-    // entry.id = "001-snyaggletooth/index.md" → slug = "001-snyaggletooth"
-    const slug = entry.id.replace(/\/index\.md$/, '').replace(/\.md$/, '');
+  const all = await getCollection('creatures', ({ data }) => data.status === 'published');
+  // no 番号順でソート
+  const sorted = all.sort((a, b) => a.data.no.localeCompare(b.data.no));
+
+  function toSlug(id: string) {
+    return id.replace(/\/index\.md$/, '').replace(/\.md$/, '');
+  }
+
+  return sorted.map((entry, index) => {
+    const slug = toSlug(entry.id);
+    const prevEntry = index > 0 ? sorted[index - 1] : null;
+    const nextEntry = index < sorted.length - 1 ? sorted[index + 1] : null;
+
     return {
       params: { slug },
-      props: { entry },
+      props: {
+        entry,
+        prev: prevEntry
+          ? { slug: toSlug(prevEntry.id), name_jp: prevEntry.data.name_jp, name_en: prevEntry.data.name_en }
+          : null,
+        next: nextEntry
+          ? { slug: toSlug(nextEntry.id), name_jp: nextEntry.data.name_jp, name_en: nextEntry.data.name_en }
+          : null,
+      },
     };
   });
 }
 
-const { entry } = Astro.props;
+const { entry, prev, next } = Astro.props;
 const { slug } = Astro.params;
 const { data } = entry;
 const { Content } = await render(entry);
@@ -65,12 +82,12 @@ const ogDescription = data.notes
     <div class="cd-hero-r">
       {data.cover
         ? <img src={data.cover} alt={data.name_jp} class="cd-cover" loading="eager" />
-        : <div class="cd-cover" style="display:flex;align-items:center;justify-content:center;color:var(--ink3);font-family:var(--mono);font-size:11px;letter-spacing:0.2em;">NO VISUAL DATA</div>
+        : <div class="cd-no-visual">NO VISUAL DATA</div>
       }
     </div>
   </section>
 
-  <!-- status bars (数値系のみ。HABITAT/TYPE はここに置かない) -->
+  <!-- status bars（数値系のみ。HABITAT/TYPE はここに置かない） -->
   <section class="cd-status">
     <p class="cd-status-title">BIOLOGICAL STATUS</p>
     <div class="cd-bars">
@@ -101,12 +118,10 @@ const ogDescription = data.notes
   <!-- body -->
   <article class="cd-body">
 
-    <!-- desc (Markdown 本文) -->
     <div class="cd-body-text">
       <Content />
     </div>
 
-    <!-- 研究員メモ -->
     {data.notes && (
       <div class="cd-note">
         <p class="cd-note-label">
@@ -116,7 +131,6 @@ const ogDescription = data.notes
       </div>
     )}
 
-    <!-- アビリティ -->
     {data.abilities.length > 0 && (
       <div style="margin-bottom: 32px;">
         <p class="cd-status-title" style="margin-bottom: 12px;">ABILITIES</p>
@@ -150,7 +164,6 @@ const ogDescription = data.notes
       )}
     </div>
 
-    <!-- shop -->
     {data.shopUrl && !data.soldOut && (
       <a href={data.shopUrl} class="cd-shop" target="_blank" rel="noopener">
         → ACQUISITION REQUEST
@@ -207,11 +220,87 @@ const ogDescription = data.notes
     </section>
   )}
 
-  <!-- sys divider (Section2: 関連情報差し替えポイント。Phase3でタグ/関連生物を挿入) -->
+  <!-- ===== PREV / NEXT NAV ===== -->
+  <nav class="cd-prevnext">
+    {prev
+      ? (
+        <a href={`/creatures/${prev.slug}/`} class="cd-prevnext-btn">
+          <span class="cd-prevnext-dir">← PREV</span>
+          <span class="cd-prevnext-jp">{prev.name_jp}</span>
+          <span class="cd-prevnext-en">{prev.name_en}</span>
+        </a>
+      )
+      : <span class="cd-prevnext-btn cd-prevnext-empty">— FIRST ENTRY —</span>
+    }
+    {next
+      ? (
+        <a href={`/creatures/${next.slug}/`} class="cd-prevnext-btn cd-prevnext-right">
+          <span class="cd-prevnext-dir">NEXT →</span>
+          <span class="cd-prevnext-jp">{next.name_jp}</span>
+          <span class="cd-prevnext-en">{next.name_en}</span>
+        </a>
+      )
+      : <span class="cd-prevnext-btn cd-prevnext-right cd-prevnext-empty">— LAST ENTRY —</span>
+    }
+  </nav>
+
+  <!-- sys divider -->
   <div class="cd-sys">
     <div class="cd-sys-line"></div>
     <span class="cd-sys-label">END OF RECORD — No.{data.no}</span>
     <div class="cd-sys-line"></div>
   </div>
+
+  <!-- ===== MOBILE FIXED FOOTER BAR ===== -->
+  <div class="mobile-fixed-footer" id="mobile-fixed-footer">
+    {prev
+      ? (
+        <a href={`/creatures/${prev.slug}/`} class="mobile-footer-link">
+          <span class="mobile-footer-icon">◈</span>
+          <span class="mobile-footer-text">前の個体</span>
+        </a>
+      )
+      : <span class="mobile-footer-link mobile-footer-disabled">
+          <span class="mobile-footer-icon">◈</span>
+          <span class="mobile-footer-text">前の個体</span>
+        </span>
+    }
+    <a href="/" class="mobile-footer-link">
+      <span class="mobile-footer-icon">◈</span>
+      <span class="mobile-footer-text">一覧へ戻る</span>
+    </a>
+    {next
+      ? (
+        <a href={`/creatures/${next.slug}/`} class="mobile-footer-link">
+          <span class="mobile-footer-icon">◈</span>
+          <span class="mobile-footer-text">次の個体</span>
+        </a>
+      )
+      : <span class="mobile-footer-link mobile-footer-disabled">
+          <span class="mobile-footer-icon">◈</span>
+          <span class="mobile-footer-text">次の個体</span>
+        </span>
+    }
+  </div>
+
+  <!-- モバイル固定バーのスクロール制御 -->
+  <script>
+    const bar = document.getElementById('mobile-fixed-footer');
+    if (bar) {
+      let lastY = 0;
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        // 下スクロール時に非表示、上スクロール or トップ付近で表示
+        if (y > lastY && y > 80) {
+          bar.classList.remove('visible');
+        } else {
+          bar.classList.add('visible');
+        }
+        lastY = y;
+      }, { passive: true });
+      // 初期表示
+      bar.classList.add('visible');
+    }
+  </script>
 
 </BaseLayout>
