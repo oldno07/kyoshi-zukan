@@ -33,6 +33,7 @@ const ogImageAbsolute = ogImage ? (ogImage.startsWith('http') ? ogImage : siteUr
   {ogImageAbsolute && <meta property="og:image" content={ogImageAbsolute} />}
   <meta property="og:site_name" content="鋸歯生物図鑑" />
   <meta name="twitter:card" content="summary_large_image" />
+  <slot name="head" />
 
   <!-- GA4 (9-4: G-9MRML3BZ6M 正式採用) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MRML3BZ6M"></script>

@@ -34,26 +34,80 @@ const progressPct = Math.round((found / TOTAL) * 100);
   title="鋸歯生物図鑑 — SAWTOOTH CREATURE OBSERVATION DATABASE"
   description={`PELICAN WORKS / AGAVEST が観測・記録する鋸歯生物の図鑑データベース。現在 ${found} 体の観測記録を公開中。`}
 >
+  <!-- style.css を head に注入（既存CSSをそのまま使用） -->
+  <link slot="head" rel="stylesheet" href="/css/style.css" />
 
-  <!-- ── ヒーロー ──────────────────────────────────────────── -->
-  <section class="idx-hero">
-    <div class="idx-hero-inner">
-      <p class="idx-sys-label">OBSERVATION DATABASE / FIELD CLASSIFICATION</p>
-      <h1 class="idx-title">鋸歯生物図鑑</h1>
-      <p class="idx-subtitle">SAWTOOTH CREATURE DATABASE</p>
-
-      <div class="idx-discovery">
-        <div class="idx-discovery-top">
-          <span class="idx-disc-text">発見数</span>
-          <span class="idx-disc-num">{found}</span>
-          <span class="idx-disc-sep">/</span>
-          <span class="idx-disc-total">{TOTAL}</span>
-          <span class="idx-disc-note">（共生生物は含めない）</span>
+  <!-- ── ヒーロー（本番index.html と同一構成・文言・クラス名） ── -->
+  <section class="hero-archive">
+    <!-- Layer 1: Video Background -->
+    <div class="hero-video-layer">
+      <video class="hero-video hero-video-main" autoplay muted loop playsinline>
+        <source src="/images/hero-video.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <!-- Layer 2: Darkening & Saturation Overlay -->
+    <div class="hero-darken-overlay"></div>
+    <!-- Layer 3: Noise Overlay -->
+    <div class="hero-noise-overlay"></div>
+    <!-- Layer 4: Glass Blur Overlay -->
+    <div class="hero-glass-overlay"></div>
+    <!-- Layer 5: Text Content -->
+    <div class="hero-content-layer">
+      <div class="hero-archive-container">
+        <!-- Main Title -->
+        <div class="hero-title-group">
+          <h1 class="hero-main-title">
+            <span class="hero-title-en">KYOSHI CREATURE ARCHIVE</span>
+            <span class="hero-title-jp">鋸歯生物図鑑</span>
+          </h1>
         </div>
-        <div class="idx-disc-bar-track">
-          <div class="idx-disc-bar-fill" style={`width: ${progressPct}%`}></div>
+        <!-- Catch Copy -->
+        <p class="hero-catch-copy">
+          動物と植物の境界が溶け合う場所に、<br />
+          鋸歯生物は息づいている。
+        </p>
+        <!-- Sub Text -->
+        <p class="hero-sub-text">
+          光合成しながら移動し、根を張りながら眼を持つ。<br />
+          既存の分類学が届かぬ生命の、記録と標本。
+        </p>
+        <!-- Statistics（ビルド時算出：要件書4章） -->
+        <div class="hero-stats-grid">
+          <div class="hero-stat-item">
+            <div class="hero-stat-label">登録標本数</div>
+            <div class="hero-stat-value">{found}</div>
+          </div>
         </div>
-        <p class="idx-disc-label">{found} SPECIMENS DOCUMENTED</p>
+        <!-- CTA Buttons -->
+        <div class="hero-cta-row">
+          <a href="#catalog" class="btn btn-p">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+              <rect x="1" y="1" width="3.5" height="3.5" stroke="currentColor" stroke-width="1"/>
+              <rect x="6.5" y="1" width="3.5" height="3.5" stroke="currentColor" stroke-width="1"/>
+              <rect x="1" y="6.5" width="3.5" height="3.5" stroke="currentColor" stroke-width="1"/>
+              <rect x="6.5" y="6.5" width="3.5" height="3.5" stroke="currentColor" stroke-width="1"/>
+            </svg>
+            標本目録を見る
+          </a>
+          <a href="https://agavest.stores.jp/?utm_source=zukan&utm_medium=internal&utm_campaign=species_link" target="_blank" class="btn btn-p">
+            譲渡局へ
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+              <path d="M2 5.5H9M9 5.5L6 2.5M9 5.5L6 8.5" stroke="currentColor" stroke-width="1"/>
+            </svg>
+          </a>
+        </div>
+        <!-- Transfer Bureau Section -->
+        <div class="hero-transfer-bureau">
+          <div class="hero-transfer-bureau-title">譲渡局とは</div>
+          <p class="hero-transfer-bureau-text">
+            観測された個体の一部は、譲渡局を通じて新たな管理者へ引き継がれる。<br />
+            現在譲渡可能な個体や、再観測情報を確認できます。
+          </p>
+        </div>
+        <!-- World Link -->
+        <div class="hero-world-link">
+          <a href="about.html">この世界について →</a>
+        </div>
       </div>
     </div>
   </section>
@@ -152,7 +206,7 @@ const progressPct = Math.round((found / TOTAL) * 100);
   </div>
 
   <!-- ── 全個体一覧 ────────────────────────────────────────── -->
-  <section class="idx-catalog">
+  <section class="idx-catalog" id="catalog">
     <p class="idx-section-label">ALL ENTRIES</p>
     <p class="idx-catalog-count" id="idx-catalog-count">{allCreatures.length} entries</p>
     <div class="idx-grid" id="idx-grid">
