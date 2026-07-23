@@ -3,6 +3,8 @@
 # フェーズ1必須タスク (要件書9-3)
 # スクリプト generate-content.mjs で自動生成。手動編集不要。
 
+/land.html  /labo.html  301
+
 /entry.html?no=001  /creatures/001-snyaggletooth/  301
 /entry.html?no=002  /creatures/002-black-nyanko-blue/  301
 /entry.html?no=003  /creatures/003-red-cat-meezle/  301

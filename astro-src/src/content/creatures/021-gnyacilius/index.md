@@ -2,6 +2,7 @@
 no: "021"
 status: "published"
 category: "creature"
+featured: true
 
 name_jp: "グニャキリス"
 name_en: "Gnyacilius"

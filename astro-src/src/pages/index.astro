@@ -17,6 +17,11 @@ const found = published.length;
 // 注目標本（featured: true かつ published）
 const featured = published.filter(e => e.data.featured);
 
+// 共生生物（category: symbiont）
+const symbionts = all
+  .filter(e => e.data.category === 'symbiont')
+  .sort((a, b) => a.data.no.localeCompare(b.data.no));
+
 // フィルター用：published の全タグ・シリーズ・レアリティを収集
 const allTags    = [...new Set(published.flatMap(e => e.data.tags))].sort();
 const allSeries  = [...new Set(published.flatMap(e => e.data.series))].filter(Boolean).sort();
@@ -106,16 +111,75 @@ const progressPct = Math.round((found / TOTAL) * 100);
         </div>
         <!-- World Link -->
         <div class="hero-world-link">
-          <a href="about.html">この世界について →</a>
+          <a href="/about/">この世界について →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── 注目標本 ──────────────────────────────────────────── -->
+  <!-- ── SECTION_00 鋸歯生物 譲渡局 ────────────────────────── -->
+  <section class="transfer-sec">
+    <div class="sec-hd reveal">
+      <div>
+        <div class="sec-no">SECTION_00</div>
+        <h2 class="sec-title">鋸歯生物 譲渡局</h2>
+        <p class="sec-subtitle">TRANSFER ARCHIVE</p>
+      </div>
+    </div>
+    <p class="reveal" style="font-size:13px;line-height:2.2;color:var(--ink2);max-width:900px;margin-bottom:36px;">
+      現在譲渡可能な個体、再観測予定個体、最新の移送情報を確認できます。
+    </p>
+    <div class="transfer-card-grid">
+      <a href="https://agavest.stores.jp/?utm_source=zukan&utm_medium=internal&utm_campaign=species_link" target="_blank" class="transfer-card reveal">
+        <div class="transfer-card-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect x="4" y="4" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M12 16L16 20L20 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 8V20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="transfer-card-content">
+          <div class="transfer-card-label">CURRENT SPECIMENS</div>
+          <div class="transfer-card-title">現存個体</div>
+          <p class="transfer-card-desc">現在譲渡可能な個体を閲覧</p>
+        </div>
+        <div class="transfer-card-arrow">→</div>
+      </a>
+      <a href="#symbiont" class="transfer-card reveal" style="transition-delay:0.2s">
+        <div class="transfer-card-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M16 4C9.373 4 4 9.373 4 16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16C28 9.373 22.627 4 16 4Z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M16 12V20M12 16H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="transfer-card-content">
+          <div class="transfer-card-label">SYMBIONTS</div>
+          <div class="transfer-card-title">共生生物</div>
+          <p class="transfer-card-desc">園芸支援個体を確認</p>
+        </div>
+        <div class="transfer-card-arrow">→</div>
+      </a>
+    </div>
+    <div class="transfer-cta reveal">
+      <a href="https://agavest.stores.jp/?utm_source=zukan&utm_medium=internal&utm_campaign=species_link" target="_blank" class="btn btn-p">
+        譲渡局へ移動
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+          <path d="M2 5.5H9M9 5.5L6 2.5M9 5.5L6 8.5" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── SECTION_01 注目標本 ──────────────────────────────── -->
   {featured.length > 0 && (
     <section class="idx-featured">
-      <p class="idx-section-label">FEATURED SPECIMENS / 研究員注目標本</p>
+      <div class="sec-hd reveal">
+        <div>
+          <div class="sec-no">SECTION_01</div>
+          <h2 class="sec-title">研究員注目標本</h2>
+          <p class="sec-subtitle">CURATOR'S PICKS</p>
+        </div>
+      </div>
       <div class="idx-featured-grid">
         {featured.map((entry) => {
           const slug = toSlug(entry.id);
@@ -205,9 +269,15 @@ const progressPct = Math.round((found / TOTAL) * 100);
     </div>
   </div>
 
-  <!-- ── 全個体一覧 ────────────────────────────────────────── -->
+  <!-- ── SECTION_02 標本目録 ──────────────────────────────── -->
   <section class="idx-catalog" id="catalog">
-    <p class="idx-section-label">ALL ENTRIES</p>
+    <div class="sec-hd reveal">
+      <div>
+        <div class="sec-no">SECTION_02</div>
+        <h2 class="sec-title">標本目録</h2>
+        <p class="sec-subtitle">ALL ENTRIES</p>
+      </div>
+    </div>
     <p class="idx-catalog-count" id="idx-catalog-count">{allCreatures.length} entries</p>
     <div class="idx-grid" id="idx-grid">
       {allCreatures.map((entry) => {
@@ -276,6 +346,187 @@ const progressPct = Math.round((found / TOTAL) * 100);
     </div>
   </section>
 
+  <!-- ── SECTION_03 共生生物観測記録 ──────────────────────── -->
+  {symbionts.length > 0 && (
+    <section class="symbiont-sec" id="symbiont">
+      <div class="sec-hd reveal">
+        <div>
+          <div class="sec-no">SECTION_03</div>
+          <h2 class="sec-title">共生生物観測記録</h2>
+        </div>
+      </div>
+      <p class="reveal" style="font-size:13px;line-height:2.2;color:var(--ink2);max-width:900px;margin-bottom:36px;">
+        鋸歯生物が生息する特殊環境において確認される補助生命体群。<br />
+        彼らは鋸歯生物そのものではなく、生態系のバランスを支える重要な共生者である。<br />
+        一部は園芸管理を補助する実用的な存在として観測されている。
+      </p>
+      <div class="card-grid">
+        {symbionts.map((entry, i) => {
+          const d = entry.data;
+          return (
+            <a
+              href={d.shopUrl ?? '#'}
+              target={d.shopUrl ? '_blank' : undefined}
+              class="ecard reveal"
+              style={i > 0 ? `transition-delay:${i * 0.1}s` : ''}
+            >
+              <div class="ct">
+                <span class="cno">SYM-{d.no}</span>
+                <div class="ct-badges">
+                  <span class={`rarity rar-${d.rarity.slice(0,1).toLowerCase()}`}>{d.rarity}</span>
+                </div>
+              </div>
+              <div class="cillus">
+                {d.cover
+                  ? <img src={d.cover} alt={d.name_jp} />
+                  : <img src="/images/unknown.png" alt={d.name_jp} />
+                }
+              </div>
+              <div class="cbody">
+                <div class="ctag">{d.tag}</div>
+                <div class="cnm-jp">{d.name_jp}</div>
+                <div class="cnm-en"><em>{d.name_en}</em></div>
+                <p class="cdesc">{d.notes ?? ''}</p>
+                <div class="cdata">
+                  <div class="dc">
+                    <div class="dk">HABITAT</div>
+                    <div class="dv">{d.habitat}</div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  )}
+
+  <!-- ── SECTION_04 共通生態特性 ────────────────────────────── -->
+  <section class="ab-sec">
+    <div class="sec-hd reveal">
+      <div>
+        <div class="sec-no">SECTION_04</div>
+        <h2 class="sec-title">共通生態特性</h2>
+      </div>
+    </div>
+    <div class="ab-grid">
+      <div class="ab-c reveal">
+        <div class="ab-ic">⬡</div>
+        <div class="ab-nm">光合成移動</div>
+        <p class="ab-desc">
+          植物性器官を展開しながら移動できる。体表の葉脈構造が光を集め、運動エネルギーに変換する。
+        </p>
+      </div>
+      <div class="ab-c reveal" style="transition-delay:0.1s">
+        <div class="ab-ic">⬡</div>
+        <div class="ab-nm">根系感知</div>
+        <p class="ab-desc">
+          地中に伸ばした細根から振動・水分・化学物質を感知する。地震の数時間前に行動変化が観察される。
+        </p>
+      </div>
+      <div class="ab-c reveal" style="transition-delay:0.2s">
+        <div class="ab-ic">⬡</div>
+        <div class="ab-nm">擬態静止</div>
+        <p class="ab-desc">
+          脅威を感じると完全に静止し、体表を周囲の植生と一致させる。最長静止記録は72時間。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION_05 世界観記録 ──────────────────────────────── -->
+  <section class="log-sec" id="world">
+    <div class="sec-hd reveal">
+      <div>
+        <div class="sec-no">SECTION_05</div>
+        <h2 class="sec-title">世界観記録</h2>
+        <p class="sec-subtitle">WORLD LOG</p>
+      </div>
+    </div>
+    <p class="log-q reveal">
+      分類できないものだけが、<br />本当に生きているのかもしれない。
+    </p>
+    <p class="log-b reveal">
+      鋸歯生物が生息するのは、植生と動物相が融合した架空の生態系。進化の過程で動植物の区別が失われた世界の自然誌として、アガベストはひとつひとつの標本を樹脂粘土で記録し続けている。これは作品集ではなく、観察記録である。
+    </p>
+    <div class="world-actions reveal">
+      <a href="/about/" class="world-btn">
+        <span class="world-btn-jp">世界観資料</span>
+        <span class="world-btn-en">OPEN ARCHIVE</span>
+      </a>
+      <a href="#catalog" class="world-btn ghost">
+        <span class="world-btn-jp">標本一覧</span>
+        <span class="world-btn-en">VIEW ENTRIES</span>
+      </a>
+    </div>
+    <div class="log-dr reveal">
+      <div class="log-dc"><div class="log-dk">WORLD STATUS</div><div class="log-dv">ONGOING</div></div>
+      <div class="log-dc"><div class="log-dk">MEDIUM</div><div class="log-dv">RESIN CLAY</div></div>
+      <div class="log-dc"><div class="log-dk">CLASSIFICATION</div><div class="log-dv">UNDEFINED</div></div>
+      <div class="log-dc"><div class="log-dk">COLLECTOR</div><div class="log-dv">PELICAN WORKS</div></div>
+    </div>
+  </section>
+
+  <!-- ── ARTIST PROFILE ─────────────────────────────────────── -->
+  <section class="mkr-sec" id="maker">
+    <div class="mkr-l reveal">
+      <div class="mkr-lbl">ARTIST PROFILE</div>
+      <div class="mkr-nm">アガベスト</div>
+      <div class="mkr-st">Pelican Works</div>
+      <p class="mkr-desc">
+        樹脂粘土を素材に、動物と植物が融合した架空の生物「鋸歯生物」を制作。観察記録・標本図鑑という形式を借りながら、既存の分類体系では捉えきれない命のかたちを探求している。
+      </p>
+      <table class="prof-tbl">
+        <tr><td>素材</td><td>樹脂粘土</td></tr>
+        <tr><td>ジャンル</td><td>フィギュア / 架空生物造形</td></tr>
+        <tr><td>活動</td><td>Pelican Works</td></tr>
+      </table>
+    </div>
+    <div class="mkr-div"></div>
+    <div class="mkr-r reveal">
+      <div class="mkr-lbl">LINKS</div>
+      <a href="https://www.instagram.com/pelican.works" target="_blank" class="ig-lnk">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+          <rect x="2" y="2" width="11" height="11" rx="3" stroke="currentColor" stroke-width="1.1"/>
+          <circle cx="7.5" cy="7.5" r="2.8" stroke="currentColor" stroke-width="1.1"/>
+          <circle cx="11" cy="4" r=".8" fill="currentColor"/>
+        </svg>
+        @pelican.works
+      </a>
+      <a href="https://www.instagram.com/aga.vest" target="_blank" class="ig-lnk">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+          <rect x="2" y="2" width="11" height="11" rx="3" stroke="currentColor" stroke-width="1.1"/>
+          <circle cx="7.5" cy="7.5" r="2.8" stroke="currentColor" stroke-width="1.1"/>
+          <circle cx="11" cy="4" r=".8" fill="currentColor"/>
+        </svg>
+        @aga.vest
+      </a>
+      <a href="https://www.youtube.com/@Pelican-Works" target="_blank" class="ig-lnk">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+          <rect x="2" y="3" width="11" height="9" rx="2" stroke="currentColor" stroke-width="1.1"/>
+          <path d="M6.5 5.5L9.5 7.5L6.5 9.5V5.5Z" fill="currentColor"/>
+        </svg>
+        @Pelican-Works
+      </a>
+    </div>
+  </section>
+
+  <!-- ── モバイル固定フッター ────────────────────────────────── -->
+  <div class="mobile-fixed-footer" id="mobile-fixed-footer">
+    <a href="#catalog" class="mobile-footer-link">
+      <span class="mobile-footer-icon">◈</span>
+      <span class="mobile-footer-text">標本目録</span>
+    </a>
+    <a href="/about/" class="mobile-footer-link">
+      <span class="mobile-footer-icon">◈</span>
+      <span class="mobile-footer-text">世界観</span>
+    </a>
+    <a href="https://agavest.stores.jp/?utm_source=zukan&utm_medium=internal&utm_campaign=species_link" target="_blank" class="mobile-footer-link">
+      <span class="mobile-footer-icon">◈</span>
+      <span class="mobile-footer-text">入手する</span>
+    </a>
+  </div>
+
 </BaseLayout>
 
 <!-- ── フィルター JS ──────────────────────────────────────── -->
@@ -343,6 +594,36 @@ const progressPct = Math.round((found / TOTAL) * 100);
     chips.forEach(c => c.classList.remove('is-active'));
     applyFilter();
   });
+</script>
+
+<script>
+  // Reveal animation
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Mobile footer scroll behavior
+  const bar = document.getElementById('mobile-fixed-footer');
+  if (bar) {
+    let lastY = 0;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > lastY && y > 80) {
+        bar.classList.remove('visible');
+      } else {
+        bar.classList.add('visible');
+      }
+      lastY = y;
+    }, { passive: true });
+    bar.classList.add('visible');
+  }
 </script>
 
 <style>
@@ -460,11 +741,14 @@ const progressPct = Math.round((found / TOTAL) * 100);
   transform: translateY(-2px);
 }
 .idx-feat-img {
-  aspect-ratio: 1;
+  position: relative;
+  min-height: 140px;
   overflow: hidden;
   background: var(--bg3);
 }
 .idx-feat-img img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -473,8 +757,8 @@ const progressPct = Math.round((found / TOTAL) * 100);
 }
 .idx-feat-card:hover .idx-feat-img img { filter: grayscale(0%); }
 .idx-feat-noimg {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -720,7 +1004,8 @@ const progressPct = Math.round((found / TOTAL) * 100);
   letter-spacing: 0.12em;
   font-weight: 700;
   padding: 2px 5px;
-  background: rgba(0,0,0,0.65);
+  background: rgba(255,255,255,0.92);
+  color: var(--ink);
   text-transform: uppercase;
 }
 .idx-card-badge.badge-denied { color: var(--red); }
