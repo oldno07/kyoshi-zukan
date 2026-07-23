@@ -1,0 +1,48 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  ogUrl?: string;
+}
+
+const { title, description = '鋸歯生物図鑑 — SAWTOOTH CREATURE OBSERVATION DATABASE', ogImage, ogUrl } = Astro.props;
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const canonicalUrl = ogUrl ?? (siteUrl + Astro.url.pathname);
+const ogImageAbsolute = ogImage ? (ogImage.startsWith('http') ? ogImage : siteUrl + ogImage) : undefined;
+---
+
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- OGP -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  {ogImageAbsolute && <meta property="og:image" content={ogImageAbsolute} />}
+  <meta property="og:site_name" content="鋸歯生物図鑑" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- GA4 (9-4: G-9MRML3BZ6M を正式採用) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MRML3BZ6M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9MRML3BZ6M');
+  </script>
+
+</head>
+<body>
+  <slot />
+</body>
+</html>

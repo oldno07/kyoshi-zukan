@@ -1,0 +1,217 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('creatures', ({ data }) => data.status === 'published');
+  return entries.map((entry) => {
+    // entry.id = "001-snyaggletooth/index.md" → slug = "001-snyaggletooth"
+    const slug = entry.id.replace(/\/index\.md$/, '').replace(/\.md$/, '');
+    return {
+      params: { slug },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { slug } = Astro.params;
+const { data } = entry;
+const { Content } = await render(entry);
+
+const ogTitle = `${data.name_jp} / ${data.name_en} | 鋸歯生物図鑑`;
+const ogDescription = data.notes
+  ? data.notes.slice(0, 100) + (data.notes.length > 100 ? '…' : '')
+  : `No.${data.no} ${data.name_jp} — 鋸歯生物観測記録`;
+---
+
+<BaseLayout
+  title={ogTitle}
+  description={ogDescription}
+  ogImage={data.cover}
+  ogUrl={`https://kyoshi-zukan.pages.dev/creatures/${slug}/`}
+>
+  <!-- breadcrumb strip -->
+  <nav class="cd-strip">
+    <a href="/" class="cd-strip-back">← FIELD DATABASE</a>
+    <div class="cd-strip-path">
+      <span>CREATURES</span>
+      <span class="cd-strip-sep">/</span>
+      <span class="cd-strip-id">No.{data.no}</span>
+    </div>
+  </nav>
+
+  <!-- hero -->
+  <section class="cd-hero">
+    <div class="cd-hero-l">
+      <div class="cd-hero-meta">
+        <span class="cd-no">No.{data.no}</span>
+        <span class={`cd-rarity ${data.rarity}`}>{data.rarity}</span>
+        <span class="cd-tag">{data.tag}</span>
+      </div>
+      <h1 class="cd-name-jp">{data.name_jp}</h1>
+      <p class="cd-name-en">{data.name_en}</p>
+
+      {data.status_label && (
+        <span
+          class="cd-status-badge"
+          style={`color: ${data.status_color ?? 'var(--g)'}`}
+        >
+          ● {data.status_label}
+        </span>
+      )}
+    </div>
+
+    <div class="cd-hero-r">
+      {data.cover
+        ? <img src={data.cover} alt={data.name_jp} class="cd-cover" loading="eager" />
+        : <div class="cd-cover" style="display:flex;align-items:center;justify-content:center;color:var(--ink3);font-family:var(--mono);font-size:11px;letter-spacing:0.2em;">NO VISUAL DATA</div>
+      }
+    </div>
+  </section>
+
+  <!-- status bars (数値系のみ。HABITAT/TYPE はここに置かない) -->
+  <section class="cd-status">
+    <p class="cd-status-title">BIOLOGICAL STATUS</p>
+    <div class="cd-bars">
+      <div class="cd-bar-row">
+        <span class="cd-bar-label">PLANT</span>
+        <div class="cd-bar-track">
+          <div class="cd-bar-fill plant" style={`width: ${data.plant}%`}></div>
+        </div>
+        <span class="cd-bar-val">{data.plant}</span>
+      </div>
+      <div class="cd-bar-row">
+        <span class="cd-bar-label">ANIMAL</span>
+        <div class="cd-bar-track">
+          <div class="cd-bar-fill animal" style={`width: ${data.animal}%`}></div>
+        </div>
+        <span class="cd-bar-val">{data.animal}</span>
+      </div>
+      <div class="cd-bar-row">
+        <span class="cd-bar-label">DANGER</span>
+        <div class="cd-bar-track">
+          <div class="cd-bar-fill danger" style={`width: ${data.danger}%`}></div>
+        </div>
+        <span class="cd-bar-val">{data.danger}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- body -->
+  <article class="cd-body">
+
+    <!-- desc (Markdown 本文) -->
+    <div class="cd-body-text">
+      <Content />
+    </div>
+
+    <!-- 研究員メモ -->
+    {data.notes && (
+      <div class="cd-note">
+        <p class="cd-note-label">
+          RESEARCH NOTE{data.namer ? ` — ${data.namer}` : ''}
+        </p>
+        <p class="cd-note-text">{data.notes}</p>
+      </div>
+    )}
+
+    <!-- アビリティ -->
+    {data.abilities.length > 0 && (
+      <div style="margin-bottom: 32px;">
+        <p class="cd-status-title" style="margin-bottom: 12px;">ABILITIES</p>
+        <div class="cd-abilities">
+          {data.abilities.map((a) => (
+            <span class="cd-ability">{a}</span>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- フィールドデータ（各値は1箇所のみ） -->
+    <div class="cd-data">
+      <div class="cd-data-row">
+        <span class="cd-data-key">HABITAT</span>
+        <span class="cd-data-val">{data.habitat}</span>
+      </div>
+      <div class="cd-data-row">
+        <span class="cd-data-key">SIZE</span>
+        <span class="cd-data-val">{data.size}</span>
+      </div>
+      <div class="cd-data-row">
+        <span class="cd-data-key">MOBILITY</span>
+        <span class="cd-data-val">{data.mobility}</span>
+      </div>
+      {data.top && (
+        <div class="cd-data-row">
+          <span class="cd-data-key">BASED ON</span>
+          <span class="cd-data-val">{data.top}</span>
+        </div>
+      )}
+    </div>
+
+    <!-- shop -->
+    {data.shopUrl && !data.soldOut && (
+      <a href={data.shopUrl} class="cd-shop" target="_blank" rel="noopener">
+        → ACQUISITION REQUEST
+      </a>
+    )}
+    {data.soldOut && (
+      <p style="font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--ink3);margin-bottom:40px;">
+        SOLD OUT
+      </p>
+    )}
+
+  </article>
+
+  <!-- gallery -->
+  {data.gallery.length > 0 && data.gallery.some(g => g.path) && (
+    <section class="cd-gallery">
+      <p class="cd-gallery-title">OBSERVATION GALLERY</p>
+      <div class="cd-gallery-grid">
+        {data.gallery.filter(g => g.path).map((g) => (
+          <div class="cd-gallery-item">
+            <img src={g.path} alt={g.title ?? ''} loading="lazy" />
+            {(g.title || g.desc) && (
+              <div class="cd-gallery-cap">
+                {g.title && <p class="cd-gallery-cap-title">{g.title}</p>}
+                {g.desc  && <p class="cd-gallery-cap-desc">{g.desc}</p>}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- videos -->
+  {data.videos.length > 0 && (
+    <section class="cd-videos">
+      <p class="cd-videos-title">OBSERVATION RECORDS</p>
+      <div class="cd-video-list">
+        {data.videos.map((v) => (
+          <div>
+            {v.title && <p class="cd-video-label">{v.observedAt ? `[${v.observedAt}] ` : ''}{v.title}</p>}
+            <div class="cd-video-embed">
+              <iframe
+                src={`https://www.youtube.com/embed/${v.youtubeId}`}
+                title={v.title ?? '観測動画'}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- sys divider (Section2: 関連情報差し替えポイント。Phase3でタグ/関連生物を挿入) -->
+  <div class="cd-sys">
+    <div class="cd-sys-line"></div>
+    <span class="cd-sys-label">END OF RECORD — No.{data.no}</span>
+    <div class="cd-sys-line"></div>
+  </div>
+
+</BaseLayout>

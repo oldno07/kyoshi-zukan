@@ -1,0 +1,10 @@
+# 鋸歯生物図鑑 — Cloudflare Pages Redirects
+# 旧URL (entry.html?no=XXX) → 新URL (/creatures/[slug]/) 301リダイレクト
+# フェーズ1必須タスク (要件書9-3)
+#
+# NOTE: Cloudflare Pages の _redirects はクエリパラメータマッチングをサポート。
+# 全25体+EX+MISSING分はフルPhase1実装時にスクリプトで自動生成する。
+# 以下はパイロット2体分。
+
+/entry.html?no=001  /creatures/001-snyaggletooth/  301
+/entry.html?no=021  /creatures/021-gnyacilius/  301
