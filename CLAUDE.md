@@ -19,10 +19,30 @@
 
 ## デプロイ
 
+### 現行フロー（フィーチャーブランチ運用）
+
+```
+feat-phase1-astro-pilot（開発）
+  → Cloudflare Pages プレビュー（動作確認）
+  → GitHub push（履歴管理）
+  → main へマージ（本番公開）
+  → Cloudflare Pages 本番デプロイ（一般公開）
+```
+
+**プレビューデプロイ（開発中の動作確認）**
 ```bash
 cd astro-src && npm run build
-npx wrangler pages deploy dist/ --project-name=kyoshi-zukan --branch=<branch-name> --commit-dirty=true
+npx wrangler pages deploy dist/ --project-name=kyoshi-zukan --branch=feat-phase1-astro-pilot --commit-dirty=true
 ```
+
+**本番デプロイ（main マージ後）**
+```bash
+cd astro-src && npm run build
+npx wrangler pages deploy dist/ --project-name=kyoshi-zukan --branch=main --commit-dirty=true
+```
+
+### 旧フロー（参考）
+`develop` → `main` → Cloudflare（一般公開）
 
 ## フェーズ管理
 

@@ -308,7 +308,7 @@ const progressPct = Math.round((found / TOTAL) * 100);
           >
             <div class="idx-card-img">
               {isHidden
-                ? <div class="idx-card-denied-img"><span>██</span></div>
+                ? <div class="idx-card-silhouette">{d.cover && <img src={d.cover} alt="" loading="lazy" />}</div>
                 : d.cover
                   ? <img src={d.cover} alt={d.name_jp} loading="lazy" />
                   : <div class="idx-card-noimg">NO VISUAL DATA</div>
@@ -645,6 +645,9 @@ const progressPct = Math.round((found / TOTAL) * 100);
 </script>
 
 <style>
+/* style.css の .hero-archive { margin-top: 52px } を打ち消す（global.css の body padding-top で十分） */
+.hero-archive { margin-top: 0; }
+
 /* ── 共通 ─────────────────────────────────────────────────── */
 .idx-section-label {
   font-family: var(--mono);
@@ -996,18 +999,31 @@ const progressPct = Math.round((found / TOTAL) * 100);
   letter-spacing: 0.12em;
   color: var(--ink3);
 }
-/* hidden 個体のプレースホルダー */
-.idx-card-denied-img {
+/* hidden 個体 — シルエット演出（旧デザイン踏襲） */
+.idx-card-silhouette {
+  position: absolute;
+  inset: 0;
+}
+.idx-card-silhouette img {
   width: 100%;
   height: 100%;
-  background: #111;
+  object-fit: cover;
+  filter: brightness(0) contrast(1.2);
+  opacity: 0.25;
+}
+.idx-card-silhouette::after {
+  content: "ACCESS DENIED";
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--mono);
-  font-size: 28px;
-  letter-spacing: 0.05em;
-  color: #333;
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  color: var(--red);
+  background: rgba(255, 255, 255, 0.88);
+  animation: access-denied-pulse 1.5s ease-in-out infinite;
 }
 .idx-card.is-hidden-entry { border-color: #c0392b44; }
 .idx-card.is-hidden-entry:hover { border-color: var(--red); }

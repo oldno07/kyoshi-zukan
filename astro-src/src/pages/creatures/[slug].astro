@@ -35,10 +35,18 @@ export async function getStaticPaths() {
       props: {
         entry,
         prev: prevEntry
-          ? { slug: toSlug(prevEntry.id), name_jp: prevEntry.data.name_jp, name_en: prevEntry.data.name_en }
+          ? {
+              slug: toSlug(prevEntry.id),
+              name_jp: prevEntry.data.status === 'hidden' ? 'UNKNOWN ENTITY' : prevEntry.data.name_jp,
+              name_en: prevEntry.data.status === 'hidden' ? '██████' : prevEntry.data.name_en,
+            }
           : null,
         next: nextEntry
-          ? { slug: toSlug(nextEntry.id), name_jp: nextEntry.data.name_jp, name_en: nextEntry.data.name_en }
+          ? {
+              slug: toSlug(nextEntry.id),
+              name_jp: nextEntry.data.status === 'hidden' ? 'UNKNOWN ENTITY' : nextEntry.data.name_jp,
+              name_en: nextEntry.data.status === 'hidden' ? '██████' : nextEntry.data.name_en,
+            }
           : null,
         relatedCreatures,
       },
@@ -65,7 +73,7 @@ const ogDescription = isHidden
 <BaseLayout
   title={ogTitle}
   description={ogDescription}
-  ogImage={data.cover}
+  ogImage={isHidden ? '/images/ogp.png' : data.cover}
   ogUrl={`https://kyoshi-zukan.pages.dev/creatures/${slug}/`}
 >
   <!-- breadcrumb strip -->
