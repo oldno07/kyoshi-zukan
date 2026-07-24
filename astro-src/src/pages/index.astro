@@ -1,6 +1,19 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import newsData from '../../public/data/news.json';
+
+const TYPE_LABEL: Record<string, string> = {
+  new: 'NEW',
+  event: 'EVENT',
+  shop: 'SHOP',
+  info: 'INFO',
+};
+
+// 開催予定・開催中のイベントを先頭に固定し、トップ3件のみ表示
+const pinnedNews = newsData.filter(n => n.type === 'event' && n.status && n.status !== 'ended');
+const otherNews  = newsData.filter(n => !(n.type === 'event' && n.status && n.status !== 'ended'));
+const topNews    = [...pinnedNews, ...otherNews].slice(0, 3);
 
 const all = await getCollection('creatures');
 
@@ -114,6 +127,33 @@ const progressPct = Math.round((found / TOTAL) * 100);
           <a href="/about/">この世界について →</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ── LATEST NEWS ──────────────────────────────────────── -->
+  <section class="top-news" id="top-news">
+    <div class="top-news-header">
+      <div class="top-news-left">
+        <span class="top-news-pulse"><span class="pulse"></span></span>
+        <span class="top-news-label">LATEST NEWS</span>
+      </div>
+      <a href="/news/" class="top-news-more">すべて見る →</a>
+    </div>
+    <div class="top-news-list" id="top-news-list">
+      {topNews.map((n) => {
+        const href = n.link || '/news/';
+        const isExternal = href.startsWith('http');
+        return (
+          <a href={href} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noopener' : undefined} class="top-news-item">
+            <span class="top-news-date">{n.date}</span>
+            <span class="top-news-type">
+              <span class={`type-badge type-${n.type}`}>{TYPE_LABEL[n.type] ?? n.type}</span>
+            </span>
+            <span class="top-news-title">{n.title}</span>
+            <span class="top-news-arrow">→</span>
+          </a>
+        );
+      })}
     </div>
   </section>
 
@@ -647,6 +687,12 @@ const progressPct = Math.round((found / TOTAL) * 100);
 <style>
 /* style.css の .hero-archive { margin-top: 52px } を打ち消す（global.css の body padding-top で十分） */
 .hero-archive { margin-top: 0; }
+
+/* LATEST NEWS type badge 配色（news.astro と同一） */
+.type-new   { color: var(--g);    border-color: var(--g);   background: var(--gp); }
+.type-event { color: var(--amb);  border-color: var(--amb); background: var(--ambp); }
+.type-shop  { color: var(--red);  border-color: var(--red); background: var(--redp); }
+.type-info  { color: var(--ink3); border-color: var(--br2); background: var(--bg2); }
 
 /* ── 共通 ─────────────────────────────────────────────────── */
 .idx-section-label {

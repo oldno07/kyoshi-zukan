@@ -50,5 +50,61 @@ const ogImageAbsolute = ogImage ? (ogImage.startsWith('http') ? ogImage : siteUr
     <slot />
   </main>
   <Footer />
+
+  <!-- SYSTEM CONNECTION OVERLAY（モバイルフッターリンクのページ遷移演出） -->
+  <div class="system-connection-overlay" id="system-connection-overlay">
+    <div class="system-connection-content">
+      <div class="system-connection-noise"></div>
+      <div class="system-connection-scanline"></div>
+      <div class="system-connection-text" id="system-connection-text">CONNECTING...</div>
+      <div class="system-connection-status" id="system-connection-status"></div>
+    </div>
+  </div>
+
+  <script>
+    function initSystemConnectionLinks() {
+      const systemLinks = document.querySelectorAll('.mobile-footer-link');
+      const overlay = document.getElementById('system-connection-overlay');
+      const textEl = document.getElementById('system-connection-text');
+      const statusEl = document.getElementById('system-connection-status');
+
+      if (!systemLinks.length || !overlay || !textEl || !statusEl) return;
+
+      systemLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          if (!href || href === '#') return;
+
+          e.preventDefault();
+          const isExternal = link.getAttribute('target') === '_blank';
+
+          const messages = ['CONNECTING...', 'OBSERVATION NODE ACTIVE'];
+          textEl.textContent = messages[Math.floor(Math.random() * messages.length)];
+          overlay.classList.add('active');
+
+          const delay = 400 + Math.random() * 200;
+
+          setTimeout(() => {
+            statusEl.textContent = 'SIGNAL CONFIRMED';
+            statusEl.classList.add('visible');
+          }, delay - 100);
+
+          setTimeout(() => {
+            if (isExternal) {
+              window.open(href, '_blank');
+            } else {
+              window.location.href = href;
+            }
+            setTimeout(() => {
+              overlay.classList.remove('active');
+              statusEl.classList.remove('visible');
+            }, 100);
+          }, delay);
+        });
+      });
+    }
+
+    initSystemConnectionLinks();
+  </script>
 </body>
 </html>

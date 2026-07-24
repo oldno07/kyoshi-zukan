@@ -5,8 +5,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 export async function getStaticPaths() {
   // hidden も含めて全件取得（欠番演出ページを生成するため）
   const all = await getCollection('creatures');
-  // no 番号順でソート
-  const sorted = all.sort((a, b) => a.data.no.localeCompare(b.data.no));
+  // creature を no 順に並べ、symbiont は全 creature の後ろにまとめる
+  const sorted = all.sort((a, b) => {
+    if (a.data.category !== b.data.category) {
+      return a.data.category === 'symbiont' ? 1 : -1;
+    }
+    return a.data.no.localeCompare(b.data.no);
+  });
 
   function toSlug(id: string) {
     return id.replace(/\/index\.md$/, '').replace(/\.md$/, '');
