@@ -8,12 +8,12 @@ import '../styles/global.css';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PelicanWorks</title>
-  <meta name="description" content="樹脂粘土で、生き物と植物のあわいを作っています。" />
+  <meta name="description" content="棚を見守る生き物が、そこにいます。" />
   <link rel="canonical" href="https://pelicanworks.site/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="PelicanWorks" />
-  <meta property="og:description" content="樹脂粘土で、生き物と植物のあわいを作っています。" />
+  <meta property="og:description" content="棚を見守る生き物が、そこにいます。" />
   <meta property="og:url" content="https://pelicanworks.site/" />
   <meta property="og:site_name" content="PelicanWorks" />
   <meta name="twitter:card" content="summary" />
@@ -32,17 +32,25 @@ import '../styles/global.css';
 <body class="hub-body">
   <main class="hub-main">
     <div class="hub-inner">
-      <span class="hub-brand-label">PELICAN WORKS</span>
       <h1 class="hub-brand">PelicanWorks</h1>
-      <p class="hub-tagline">樹脂粘土で、生き物と植物のはざまを作っています。</p>
+      <p class="hub-tagline">棚を見守る生き物が、そこにいます。</p>
 
       <div class="hub-cards">
         <article class="hub-card">
+          <div class="hub-card-photo">
+            <img
+              src="/images/hub-agave-cat.jpg"
+              alt="鉢の縁にぶら下がる鋸歯生物と斑入りアガベ"
+              width="640"
+              height="800"
+              loading="eager"
+            />
+          </div>
           <h2 class="hub-card-title">鋸歯生物</h2>
-          <p class="hub-card-desc">アガベ・塊根植物の棚に棲む生物たちの記録。</p>
+          <p class="hub-card-desc">アガベ・塊根植物の棚に棲む、住人たちの記録。</p>
           <div class="hub-card-links">
             <a href="/zukan/" class="hub-card-link">図鑑を見る →</a>
-            <a href="/labo.html" class="hub-card-link">研究所を覗く →</a>
+            <a href="/labo" class="hub-card-link">研究所を覗く →</a>
             <a
               href="https://agavest.stores.jp/"
               target="_blank"
@@ -82,14 +90,6 @@ import '../styles/global.css';
       max-width: 640px;
       width: 100%;
     }
-    .hub-brand-label {
-      display: block;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.35em;
-      color: var(--ink3);
-      margin-bottom: 16px;
-    }
     .hub-brand {
       font-family: var(--disp);
       font-size: clamp(32px, 6vw, 48px);
@@ -114,6 +114,19 @@ import '../styles/global.css';
       background: var(--bg2);
       padding: 28px;
     }
+    .hub-card-photo {
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      margin-bottom: 24px;
+      background: var(--bg3);
+    }
+    .hub-card-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
     .hub-card-title {
       font-family: var(--disp);
       font-size: 20px;
@@ -122,6 +135,7 @@ import '../styles/global.css';
       margin-bottom: 8px;
     }
     .hub-card-desc {
+      font-family: var(--sans);
       font-size: 13px;
       line-height: 1.8;
       color: var(--ink2);
@@ -133,9 +147,8 @@ import '../styles/global.css';
       gap: 10px;
     }
     .hub-card-link {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.1em;
+      font-family: var(--sans);
+      font-size: 14px;
       color: var(--g);
       text-decoration: none;
       transition: opacity 0.2s;
