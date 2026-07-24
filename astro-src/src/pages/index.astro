@@ -125,6 +125,7 @@ const channels = [
       --hub-ink:    #1a1a1a;
       --hub-ink2:   #3c3c38;
       --hub-line:   #e2e2db;
+      --hub-pill:   #f0f0ea;
       --hub-accent: #616731;
       --hub-accent-deep: #4d5327;
       /* Webフォント未読込時も縦書きメトリクスが崩れないよう和文システムフォントまで指定 */
@@ -199,11 +200,12 @@ const channels = [
     .hub-card-body {
       min-width: 0;
     }
+    /* ピルのみグレー地を許可（他要素の背景塗りは引き続き禁止） */
     .hub-card-tab {
       display: inline-block;
-      border: 1px solid var(--hub-line);
+      background: var(--hub-pill);
       border-radius: 999px;
-      padding: 5px 14px;
+      padding: 6px 15px;
       font-family: var(--hub-gothic);
       font-size: 12px;
       font-weight: 400;
