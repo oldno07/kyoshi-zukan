@@ -18,7 +18,12 @@ import '../styles/global.css';
   <meta property="og:site_name" content="PelicanWorks" />
   <meta name="twitter:card" content="summary" />
 
-  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
 
   <!-- GA4 (9-4: G-9MRML3BZ6M 正式採用) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MRML3BZ6M"></script>
@@ -32,32 +37,89 @@ import '../styles/global.css';
 <body class="hub-body">
   <main class="hub-main">
     <div class="hub-inner">
-      <h1 class="hub-brand">PelicanWorks</h1>
-      <p class="hub-tagline">棚を見守る生き物が、そこにいます。</p>
+      <header class="hub-head">
+        <h1 class="hub-brand">PelicanWorks</h1>
+        <div class="hub-tagline-wrap">
+          <p class="hub-tagline">棚を見守る生き物が、<br />そこにいます。</p>
+        </div>
+      </header>
 
       <div class="hub-cards">
         <article class="hub-card">
-          <div class="hub-card-photo">
-            <img
-              src="/images/hub-agave-cat.jpg"
-              alt="鉢の縁にぶら下がる鋸歯生物と斑入りアガベ"
-              width="640"
-              height="800"
-              loading="eager"
-            />
-          </div>
-          <h2 class="hub-card-title">鋸歯生物</h2>
+          <div class="hub-card-photo"></div>
+          <h2 class="hub-card-title">鋸歯生物図鑑</h2>
           <p class="hub-card-desc">アガベ・塊根植物の棚に棲む、住人たちの記録。</p>
-          <div class="hub-card-links">
-            <a href="/zukan/" class="hub-card-link">図鑑を見る →</a>
-            <a href="/labo" class="hub-card-link">研究所を覗く →</a>
-            <a
-              href="https://agavest.stores.jp/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hub-card-link"
-            >譲渡局へ →</a>
-          </div>
+          <a href="/zukan/" class="hub-card-btn">
+            <span class="hub-card-btn-label">図鑑を見る</span>
+            <svg
+              class="hub-card-btn-icon"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </a>
+        </article>
+
+        <article class="hub-card">
+          <div class="hub-card-photo"></div>
+          <h2 class="hub-card-title">鋸歯生物研究所</h2>
+          <p class="hub-card-desc">日々の観測記録を、そのまま届けます。</p>
+          <a href="/labo" class="hub-card-btn">
+            <span class="hub-card-btn-label">研究所を覗く</span>
+            <svg
+              class="hub-card-btn-icon"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </a>
+        </article>
+
+        <article class="hub-card">
+          <div class="hub-card-photo"></div>
+          <h2 class="hub-card-title">鋸歯生物譲渡局</h2>
+          <p class="hub-card-desc">新しい個体との出会いは、ここから。</p>
+          <a
+            href="https://agavest.stores.jp/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hub-card-btn"
+          >
+            <span class="hub-card-btn-label">譲渡局へ</span>
+            <svg
+              class="hub-card-btn-icon"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </a>
         </article>
       </div>
     </div>
@@ -73,105 +135,144 @@ import '../styles/global.css';
   </footer>
 
   <style>
+    /* ハブページ専用トークン（アクセントは掲載写真から抽出したアガベグリーン中間トーン） */
     .hub-body {
+      --hub-bg:     #fafaf8;
+      --hub-ink:    #1a1a1a;
+      --hub-ink2:   #3c3c38;
+      --hub-line:   #e2e2db;
+      --hub-accent: #616731;
+      --hub-accent-deep: #4d5327;
+      /* Webフォント未読込時も縦書きメトリクスが崩れないよう和文システムフォントまで指定 */
+      --hub-mincho: "Zen Old Mincho", "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+      --hub-gothic: "Zen Kaku Gothic New", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+
       padding-top: 0;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      background: var(--hub-bg);
+      color: var(--hub-ink);
+      font-family: var(--hub-gothic);
     }
+
     .hub-main {
       flex: 1;
       display: flex;
-      align-items: center;
       justify-content: center;
-      padding: 40px;
+      padding: 88px 24px 96px;
     }
     .hub-inner {
-      max-width: 640px;
       width: 100%;
+      max-width: 680px;
+    }
+
+    /* -- 第1層：ブランド名＋縦書きタグライン -- */
+    .hub-head {
+      text-align: center;
+      margin-bottom: 72px;
     }
     .hub-brand {
-      font-family: var(--disp);
-      font-size: clamp(32px, 6vw, 48px);
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      color: var(--ink);
-      margin-bottom: 16px;
+      font-family: var(--hub-mincho);
+      font-size: clamp(32px, 6.4vw, 46px);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      line-height: 1.3;
+      color: var(--hub-ink);
+    }
+    .hub-tagline-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 44px;
     }
     .hub-tagline {
-      font-size: 14px;
-      line-height: 1.9;
-      color: var(--ink2);
-      margin-bottom: 48px;
+      writing-mode: vertical-rl;
+      font-family: var(--hub-gothic);
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 2.4;
+      letter-spacing: 0.18em;
+      color: var(--hub-ink2);
     }
+
+    /* -- 第2層：3チャンネルカード（同一フォーマット・優先順位なし） -- */
     .hub-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    .hub-card {
-      border: 1px solid var(--br2);
-      background: var(--bg2);
-      padding: 28px;
-    }
-    .hub-card-photo {
-      border-radius: 18px;
-      overflow: hidden;
-      aspect-ratio: 4 / 5;
-      margin-bottom: 24px;
-      background: var(--bg3);
-    }
-    .hub-card-photo img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .hub-card-title {
-      font-family: var(--disp);
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 8px;
-    }
-    .hub-card-desc {
-      font-family: var(--sans);
-      font-size: 13px;
-      line-height: 1.8;
-      color: var(--ink2);
-      margin-bottom: 24px;
-    }
-    .hub-card-links {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 24px;
     }
-    .hub-card-link {
-      font-family: var(--sans);
+    .hub-card {
+      border: 1px solid var(--hub-line);
+      border-radius: 4px;
+      padding: 26px;
+    }
+    .hub-card-photo {
+      aspect-ratio: 4 / 3;
+      border: 1px solid var(--hub-line);
+      border-radius: 3px;
+      margin-bottom: 24px;
+    }
+    .hub-card-title {
+      font-family: var(--hub-mincho);
+      font-size: 21px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      line-height: 1.5;
+      color: var(--hub-ink);
+      margin-bottom: 12px;
+    }
+    .hub-card-desc {
+      font-family: var(--hub-gothic);
       font-size: 14px;
-      color: var(--g);
-      text-decoration: none;
-      transition: opacity 0.2s;
+      font-weight: 300;
+      line-height: 1.95;
+      letter-spacing: 0.04em;
+      color: var(--hub-ink2);
+      margin-bottom: 24px;
     }
-    .hub-card-link:hover { opacity: 0.6; }
+    .hub-card-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 18px;
+      border: 1px solid var(--hub-line);
+      border-radius: 4px;
+      font-family: var(--hub-gothic);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--hub-accent);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .hub-card-btn:hover {
+      border-color: var(--hub-accent);
+      color: var(--hub-accent-deep);
+    }
+    .hub-card-btn-icon { flex-shrink: 0; }
+
+    /* -- フッター -- */
     .hub-footer {
-      padding: 24px 40px;
-      border-top: 1px solid var(--br2);
+      border-top: 1px solid var(--hub-line);
+      padding: 26px 24px;
       text-align: center;
     }
     .hub-footer-link {
-      font-family: var(--mono);
-      font-size: 11px;
+      font-family: var(--hub-gothic);
+      font-size: 13px;
+      font-weight: 400;
       letter-spacing: 0.1em;
-      color: var(--ink3);
+      color: var(--hub-ink2);
       text-decoration: none;
       transition: color 0.2s;
     }
-    .hub-footer-link:hover { color: var(--g); }
+    .hub-footer-link:hover { color: var(--hub-accent); }
 
     @media (max-width: 640px) {
-      .hub-main { padding: 24px; }
-      .hub-footer { padding: 20px 24px; }
+      .hub-main { padding: 64px 20px 72px; }
+      .hub-head { margin-bottom: 56px; }
+      .hub-card { padding: 22px; }
     }
   </style>
 </body>
