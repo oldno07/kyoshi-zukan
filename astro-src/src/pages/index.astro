@@ -1,1168 +1,165 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import newsData from '../../public/data/news.json';
-
-const TYPE_LABEL: Record<string, string> = {
-  new: 'NEW',
-  event: 'EVENT',
-  shop: 'SHOP',
-  info: 'INFO',
-};
-
-// 開催予定・開催中のイベントを先頭に固定し、トップ3件のみ表示
-const pinnedNews = newsData.filter(n => n.type === 'event' && n.status && n.status !== 'ended');
-const otherNews  = newsData.filter(n => !(n.type === 'event' && n.status && n.status !== 'ended'));
-const topNews    = [...pinnedNews, ...otherNews].slice(0, 3);
-
-const all = await getCollection('creatures');
-
-// category: creature のみ（symbiont はカウント・表示ともに除外）
-const allCreatures = all
-  .filter(e => e.data.category === 'creature')
-  .sort((a, b) => a.data.no.localeCompare(b.data.no));
-
-// 発見数は published のみカウント（要件書4章：hidden は含めない）
-const published = allCreatures.filter(e => e.data.status === 'published');
-const TOTAL = 25;
-const found = published.length;
-
-// 注目標本（featured: true かつ published）
-const featured = published.filter(e => e.data.featured);
-
-// 共生生物（category: symbiont）
-const symbionts = all
-  .filter(e => e.data.category === 'symbiont')
-  .sort((a, b) => a.data.no.localeCompare(b.data.no));
-
-// フィルター用：published の全タグ・シリーズ・レアリティを収集
-const allTags    = [...new Set(published.flatMap(e => e.data.tags))].sort();
-const allSeries  = [...new Set(published.flatMap(e => e.data.series))].filter(Boolean).sort();
-const RARITY_ORDER = ['LEGEND','EPIC','RARE','UNCOMMON','COMMON'] as const;
-const allRarities = RARITY_ORDER.filter(r => published.some(e => e.data.rarity === r));
-
-function toSlug(id: string) {
-  return id.replace(/\/index\.md$/, '').replace(/\.md$/, '');
-}
-
-const progressPct = Math.round((found / TOTAL) * 100);
+import '../styles/global.css';
 ---
 
-<BaseLayout
-  title="鋸歯生物図鑑 — SAWTOOTH CREATURE OBSERVATION DATABASE"
-  description={`PELICAN WORKS / AGAVEST が観測・記録する鋸歯生物の図鑑データベース。現在 ${found} 体の観測記録を公開中。`}
->
-  <!-- style.css を head に注入（既存CSSをそのまま使用） -->
-  <link slot="head" rel="stylesheet" href="/css/style.css" />
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PelicanWorks</title>
+  <meta name="description" content="樹脂粘土で、生き物と植物のあわいを作っています。" />
+  <link rel="canonical" href="https://pelicanworks.site/" />
 
-  <!-- ── ヒーロー（本番index.html と同一構成・文言・クラス名） ── -->
-  <section class="hero-archive">
-    <!-- Layer 1: Video Background -->
-    <div class="hero-video-layer">
-      <video class="hero-video hero-video-main" autoplay muted loop playsinline>
-        <source src="/images/hero-video.mp4" type="video/mp4" />
-      </video>
-    </div>
-    <!-- Layer 2: Darkening & Saturation Overlay -->
-    <div class="hero-darken-overlay"></div>
-    <!-- Layer 3: Noise Overlay -->
-    <div class="hero-noise-overlay"></div>
-    <!-- Layer 4: Glass Blur Overlay -->
-    <div class="hero-glass-overlay"></div>
-    <!-- Layer 5: Text Content -->
-    <div class="hero-content-layer">
-      <div class="hero-archive-container">
-        <!-- Main Title -->
-        <div class="hero-title-group">
-          <h1 class="hero-main-title">
-            <span class="hero-title-en">KYOSHI CREATURE ARCHIVE</span>
-            <span class="hero-title-jp">鋸歯生物図鑑</span>
-          </h1>
-        </div>
-        <!-- Catch Copy -->
-        <p class="hero-catch-copy">
-          動物と植物の境界が溶け合う場所に、<br />
-          鋸歯生物は息づいている。
-        </p>
-        <!-- Sub Text -->
-        <p class="hero-sub-text">
-          光合成しながら移動し、根を張りながら眼を持つ。<br />
-          既存の分類学が届かぬ生命の、記録と標本。
-        </p>
-        <!-- Statistics（ビルド時算出：要件書4章） -->
-        <div class="hero-stats-grid">
-          <div class="hero-stat-item">
-            <div class="hero-stat-label">登録標本数</div>
-            <div class="hero-stat-value">{found}</div>
-          </div>
-        </div>
-        <!-- CTA Buttons -->
-        <div class="hero-cta-row">
-          <a href="#catalog" class="btn btn-p">
-            <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-              <rect x="1" y="1" width="3.5" height="3.5" stroke="currentColor" stroke-width="1"/>
-              <rect x="6.5" y="1" width="3.5" height="3.5" stroke="currentColor" stroke-width="1"/>
-              <rect x="1" y="6.5" width="3.5" height="3.5" stroke="currentColor" stroke-width="1"/>
-              <rect x="6.5" y="6.5" width="3.5" height="3.5" stroke="currentColor" stroke-width="1"/>
-            </svg>
-            標本目録を見る
-          </a>
-          <a href="https://agavest.stores.jp/?utm_source=zukan&utm_medium=internal&utm_campaign=species_link" target="_blank" class="btn btn-p">
-            譲渡局へ
-            <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-              <path d="M2 5.5H9M9 5.5L6 2.5M9 5.5L6 8.5" stroke="currentColor" stroke-width="1"/>
-            </svg>
-          </a>
-        </div>
-        <!-- Transfer Bureau Section -->
-        <div class="hero-transfer-bureau">
-          <div class="hero-transfer-bureau-title">譲渡局とは</div>
-          <p class="hero-transfer-bureau-text">
-            観測された個体の一部は、譲渡局を通じて新たな管理者へ引き継がれる。<br />
-            現在譲渡可能な個体や、再観測情報を確認できます。
-          </p>
-        </div>
-        <!-- World Link -->
-        <div class="hero-world-link">
-          <a href="/about/">この世界について →</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PelicanWorks" />
+  <meta property="og:description" content="樹脂粘土で、生き物と植物のあわいを作っています。" />
+  <meta property="og:url" content="https://pelicanworks.site/" />
+  <meta property="og:site_name" content="PelicanWorks" />
+  <meta name="twitter:card" content="summary" />
 
-  <!-- ── LATEST NEWS ──────────────────────────────────────── -->
-  <section class="top-news" id="top-news">
-    <div class="top-news-header">
-      <div class="top-news-left">
-        <span class="top-news-pulse"><span class="pulse"></span></span>
-        <span class="top-news-label">LATEST NEWS</span>
-      </div>
-      <a href="/news/" class="top-news-more">すべて見る →</a>
-    </div>
-    <div class="top-news-list" id="top-news-list">
-      {topNews.map((n) => {
-        const href = n.link || '/news/';
-        const isExternal = href.startsWith('http');
-        return (
-          <a href={href} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noopener' : undefined} class="top-news-item">
-            <span class="top-news-date">{n.date}</span>
-            <span class="top-news-type">
-              <span class={`type-badge type-${n.type}`}>{TYPE_LABEL[n.type] ?? n.type}</span>
-            </span>
-            <span class="top-news-title">{n.title}</span>
-            <span class="top-news-arrow">→</span>
-          </a>
-        );
-      })}
-    </div>
-  </section>
+  <link rel="stylesheet" href="/css/style.css" />
 
-  <!-- ── SECTION_00 鋸歯生物 譲渡局 ────────────────────────── -->
-  <section class="transfer-sec">
-    <div class="sec-hd reveal">
-      <div>
-        <div class="sec-no">SECTION_00</div>
-        <h2 class="sec-title">鋸歯生物 譲渡局</h2>
-        <p class="sec-subtitle">TRANSFER ARCHIVE</p>
-      </div>
-    </div>
-    <p class="reveal" style="font-size:13px;line-height:2.2;color:var(--ink2);max-width:900px;margin-bottom:36px;">
-      現在譲渡可能な個体、再観測予定個体、最新の移送情報を確認できます。
-    </p>
-    <div class="transfer-card-grid">
-      <a href="https://agavest.stores.jp/?utm_source=zukan&utm_medium=internal&utm_campaign=species_link" target="_blank" class="transfer-card reveal">
-        <div class="transfer-card-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <rect x="4" y="4" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M12 16L16 20L20 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M16 8V20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="transfer-card-content">
-          <div class="transfer-card-label">CURRENT SPECIMENS</div>
-          <div class="transfer-card-title">現存個体</div>
-          <p class="transfer-card-desc">現在譲渡可能な個体を閲覧</p>
-        </div>
-        <div class="transfer-card-arrow">→</div>
-      </a>
-      <a href="/news/" class="transfer-card reveal" style="transition-delay:0.1s">
-        <div class="transfer-card-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M16 8V16L20 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="transfer-card-content">
-          <div class="transfer-card-label">REDISCOVERY LOG</div>
-          <div class="transfer-card-title">再観測情報</div>
-          <p class="transfer-card-desc">再入荷・再観測情報を確認</p>
-        </div>
-        <div class="transfer-card-arrow">→</div>
-      </a>
-      <a href="#symbiont" class="transfer-card reveal" style="transition-delay:0.2s">
-        <div class="transfer-card-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <path d="M16 4C9.373 4 4 9.373 4 16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16C28 9.373 22.627 4 16 4Z" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M16 12V20M12 16H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="transfer-card-content">
-          <div class="transfer-card-label">SYMBIONTS</div>
-          <div class="transfer-card-title">共生生物</div>
-          <p class="transfer-card-desc">園芸支援個体を確認</p>
-        </div>
-        <div class="transfer-card-arrow">→</div>
-      </a>
-    </div>
-    <div class="transfer-cta reveal">
-      <a href="https://agavest.stores.jp/?utm_source=zukan&utm_medium=internal&utm_campaign=species_link" target="_blank" class="btn btn-p">
-        譲渡局へ移動
-        <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-          <path d="M2 5.5H9M9 5.5L6 2.5M9 5.5L6 8.5" stroke="currentColor" stroke-width="1"/>
-        </svg>
-      </a>
-    </div>
-  </section>
+  <!-- GA4 (9-4: G-9MRML3BZ6M 正式採用) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MRML3BZ6M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9MRML3BZ6M');
+  </script>
+</head>
+<body class="hub-body">
+  <main class="hub-main">
+    <div class="hub-inner">
+      <span class="hub-brand-label">PELICAN WORKS</span>
+      <h1 class="hub-brand">PelicanWorks</h1>
+      <p class="hub-tagline">樹脂粘土で、生き物と植物のあわいを作っています。</p>
 
-  <!-- ── SECTION_01 注目標本 ──────────────────────────────── -->
-  {featured.length > 0 && (
-    <section class="idx-featured">
-      <div class="sec-hd reveal">
-        <div>
-          <div class="sec-no">SECTION_01</div>
-          <h2 class="sec-title">研究員注目標本</h2>
-          <p class="sec-subtitle">CURATOR'S PICKS</p>
-        </div>
-      </div>
-      <div class="idx-featured-grid">
-        {featured.map((entry) => {
-          const slug = toSlug(entry.id);
-          const d = entry.data;
-          return (
-            <a href={`/creatures/${slug}/`} class="idx-feat-card">
-              <div class="idx-feat-img">
-                {d.cover
-                  ? <img src={d.cover} alt={d.name_jp} loading="lazy" />
-                  : <div class="idx-feat-noimg">NO VISUAL DATA</div>
-                }
-              </div>
-              <div class="idx-feat-info">
-                <div class="idx-feat-meta">
-                  <span class="idx-feat-no">No.{d.no}</span>
-                  <span class={`idx-feat-rarity rarity-${d.rarity}`}>{d.rarity}</span>
-                </div>
-                <p class="idx-feat-jp">{d.name_jp}</p>
-                <p class="idx-feat-en">{d.name_en}</p>
-                <p class="idx-feat-tag">{d.tag}</p>
-                <div class="idx-mini-bars">
-                  <div class="idx-mini-bar">
-                    <span class="idx-mini-label">PLANT</span>
-                    <div class="idx-mini-track">
-                      <div class="idx-mini-fill plant" style={`width:${d.plant}%`}></div>
-                    </div>
-                    <span class="idx-mini-val">{d.plant}</span>
-                  </div>
-                  <div class="idx-mini-bar">
-                    <span class="idx-mini-label">ANIMAL</span>
-                    <div class="idx-mini-track">
-                      <div class="idx-mini-fill animal" style={`width:${d.animal}%`}></div>
-                    </div>
-                    <span class="idx-mini-val">{d.animal}</span>
-                  </div>
-                  <div class="idx-mini-bar">
-                    <span class="idx-mini-label">DANGER</span>
-                    <div class="idx-mini-track">
-                      <div class="idx-mini-fill danger" style={`width:${d.danger}%`}></div>
-                    </div>
-                    <span class="idx-mini-val">{d.danger}</span>
-                  </div>
-                </div>
-                <span class="idx-feat-arrow">→ OPEN RECORD</span>
-              </div>
-            </a>
-          );
-        })}
-      </div>
-    </section>
-  )}
-
-  <!-- ── フィルター ────────────────────────────────────────── -->
-  <div class="idx-filter" id="idx-filter">
-    <div class="idx-filter-inner">
-      {allSeries.length > 0 && (
-        <div class="idx-filter-row">
-          <span class="idx-filter-key">SERIES</span>
-          <div class="idx-filter-chips">
-            {allSeries.map(s => (
-              <button class="idx-chip idx-chip-series" data-filter-type="series" data-filter-val={s}>{s}</button>
-            ))}
-          </div>
-        </div>
-      )}
-      {allRarities.length > 0 && (
-        <div class="idx-filter-row">
-          <span class="idx-filter-key">RARITY</span>
-          <div class="idx-filter-chips">
-            {allRarities.map(r => (
-              <button class={`idx-chip idx-chip-rarity rarity-${r}`} data-filter-type="rarity" data-filter-val={r}>{r}</button>
-            ))}
-          </div>
-        </div>
-      )}
-      {allTags.length > 0 && (
-        <div class="idx-filter-row">
-          <span class="idx-filter-key">TAGS</span>
-          <div class="idx-filter-chips">
-            {allTags.map(t => (
-              <button class="idx-chip" data-filter-type="tag" data-filter-val={t}>{t}</button>
-            ))}
-          </div>
-        </div>
-      )}
-      <button class="idx-filter-clear" id="idx-filter-clear" style="display:none">× CLEAR FILTER</button>
-    </div>
-  </div>
-
-  <!-- ── SECTION_02 標本目録 ──────────────────────────────── -->
-  <section class="idx-catalog" id="catalog">
-    <div class="sec-hd reveal">
-      <div>
-        <div class="sec-no">SECTION_02</div>
-        <h2 class="sec-title">標本目録</h2>
-        <p class="sec-subtitle">ALL ENTRIES</p>
-      </div>
-    </div>
-    <p class="idx-catalog-count" id="idx-catalog-count">{allCreatures.length} entries</p>
-    <div class="idx-grid" id="idx-grid">
-      {allCreatures.map((entry) => {
-        const slug = toSlug(entry.id);
-        const d = entry.data;
-        const isHidden = d.status === 'hidden';
-        return (
-          <a
-            href={`/creatures/${slug}/`}
-            class={`idx-card${isHidden ? ' is-hidden-entry' : ''}`}
-            data-tags={JSON.stringify(isHidden ? [] : d.tags)}
-            data-series={JSON.stringify(isHidden ? [] : d.series)}
-            data-rarity={isHidden ? '' : d.rarity}
-          >
-            <div class="idx-card-img">
-              {isHidden
-                ? <div class="idx-card-silhouette">{d.cover && <img src={d.cover} alt="" loading="lazy" />}</div>
-                : d.cover
-                  ? <img src={d.cover} alt={d.name_jp} loading="lazy" />
-                  : <div class="idx-card-noimg">NO VISUAL DATA</div>
-              }
-              <span class={`idx-card-badge${isHidden ? ' badge-denied' : ` rarity-${d.rarity}`}`}>
-                {isHidden ? 'ACCESS DENIED' : d.rarity}
-              </span>
-            </div>
-            <div class="idx-card-body">
-              <span class="idx-card-no">No.{d.no}</span>
-              {isHidden
-                ? (
-                  <>
-                    <p class="idx-card-jp denied-text">UNKNOWN ENTITY</p>
-                    <p class="idx-card-en denied-text">██████</p>
-                    <div class="idx-card-bars denied-bars">
-                      <div class="idx-mini-bar"><span class="idx-mini-label">PLANT</span><div class="idx-mini-track denied-track"></div></div>
-                      <div class="idx-mini-bar"><span class="idx-mini-label">ANIMAL</span><div class="idx-mini-track denied-track"></div></div>
-                      <div class="idx-mini-bar"><span class="idx-mini-label">DANGER</span><div class="idx-mini-track denied-track"></div></div>
-                    </div>
-                  </>
-                )
-                : (
-                  <>
-                    <p class="idx-card-jp">{d.name_jp}</p>
-                    <p class="idx-card-en">{d.name_en}</p>
-                    <p class="idx-card-tag">{d.tag}</p>
-                    <div class="idx-card-bars">
-                      <div class="idx-mini-bar">
-                        <span class="idx-mini-label">PL</span>
-                        <div class="idx-mini-track"><div class="idx-mini-fill plant" style={`width:${d.plant}%`}></div></div>
-                      </div>
-                      <div class="idx-mini-bar">
-                        <span class="idx-mini-label">AN</span>
-                        <div class="idx-mini-track"><div class="idx-mini-fill animal" style={`width:${d.animal}%`}></div></div>
-                      </div>
-                      <div class="idx-mini-bar">
-                        <span class="idx-mini-label">DG</span>
-                        <div class="idx-mini-track"><div class="idx-mini-fill danger" style={`width:${d.danger}%`}></div></div>
-                      </div>
-                    </div>
-                  </>
-                )
-              }
-            </div>
-          </a>
-        );
-      })}
-    </div>
-  </section>
-
-  <!-- ── SECTION_03 共生生物観測記録 ──────────────────────── -->
-  {symbionts.length > 0 && (
-    <section class="symbiont-sec" id="symbiont">
-      <div class="sec-hd reveal">
-        <div>
-          <div class="sec-no">SECTION_03</div>
-          <h2 class="sec-title">共生生物観測記録</h2>
-        </div>
-      </div>
-      <p class="reveal" style="font-size:13px;line-height:2.2;color:var(--ink2);max-width:900px;margin-bottom:36px;">
-        鋸歯生物が生息する特殊環境において確認される補助生命体群。<br />
-        彼らは鋸歯生物そのものではなく、生態系のバランスを支える重要な共生者である。<br />
-        一部は園芸管理を補助する実用的な存在として観測されている。
-      </p>
-      <div class="idx-grid">
-        {symbionts.map((entry, i) => {
-          const d = entry.data;
-          return (
+      <div class="hub-cards">
+        <article class="hub-card">
+          <h2 class="hub-card-title">鋸歯生物</h2>
+          <p class="hub-card-desc">アガベ・塊根植物の棚に棲む生物たちの記録。</p>
+          <div class="hub-card-links">
+            <a href="/zukan/" class="hub-card-link">図鑑を見る →</a>
+            <a href="/labo.html" class="hub-card-link">研究所を覗く →</a>
             <a
-              href={d.shopUrl ?? '#'}
-              target={d.shopUrl ? '_blank' : undefined}
-              rel={d.shopUrl ? 'noopener' : undefined}
-              class="idx-card reveal"
-              style={i > 0 ? `transition-delay:${i * 0.1}s` : ''}
-            >
-              <div class="idx-card-img">
-                {d.cover
-                  ? <img src={d.cover} alt={d.name_jp} loading="lazy" />
-                  : <div class="idx-card-noimg">NO VISUAL DATA</div>
-                }
-                <span class={`idx-card-badge rarity-${d.rarity}`}>{d.rarity}</span>
-              </div>
-              <div class="idx-card-body">
-                <span class="idx-card-no">SYM-{d.no}</span>
-                <p class="idx-card-jp">{d.name_jp}</p>
-                <p class="idx-card-en">{d.name_en}</p>
-                <p class="idx-card-tag">{d.tag}</p>
-                <div class="idx-card-bars">
-                  <div class="idx-mini-bar">
-                    <span class="idx-mini-label">PL</span>
-                    <div class="idx-mini-track"><div class="idx-mini-fill plant" style={`width:${d.plant}%`}></div></div>
-                  </div>
-                  <div class="idx-mini-bar">
-                    <span class="idx-mini-label">AN</span>
-                    <div class="idx-mini-track"><div class="idx-mini-fill animal" style={`width:${d.animal}%`}></div></div>
-                  </div>
-                  <div class="idx-mini-bar">
-                    <span class="idx-mini-label">DG</span>
-                    <div class="idx-mini-track"><div class="idx-mini-fill danger" style={`width:${d.danger}%`}></div></div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          );
-        })}
-      </div>
-    </section>
-  )}
-
-  <!-- ── SECTION_04 共通生態特性 ────────────────────────────── -->
-  <section class="ab-sec">
-    <div class="sec-hd reveal">
-      <div>
-        <div class="sec-no">SECTION_04</div>
-        <h2 class="sec-title">共通生態特性</h2>
+              href="https://agavest.stores.jp/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hub-card-link"
+            >譲渡局へ →</a>
+          </div>
+        </article>
       </div>
     </div>
-    <div class="ab-grid">
-      <div class="ab-c reveal">
-        <div class="ab-ic">⬡</div>
-        <div class="ab-nm">光合成移動</div>
-        <p class="ab-desc">
-          植物性器官を展開しながら移動できる。体表の葉脈構造が光を集め、運動エネルギーに変換する。
-        </p>
-      </div>
-      <div class="ab-c reveal" style="transition-delay:0.1s">
-        <div class="ab-ic">⬡</div>
-        <div class="ab-nm">根系感知</div>
-        <p class="ab-desc">
-          地中に伸ばした細根から振動・水分・化学物質を感知する。地震の数時間前に行動変化が観察される。
-        </p>
-      </div>
-      <div class="ab-c reveal" style="transition-delay:0.2s">
-        <div class="ab-ic">⬡</div>
-        <div class="ab-nm">擬態静止</div>
-        <p class="ab-desc">
-          脅威を感じると完全に静止し、体表を周囲の植生と一致させる。最長静止記録は72時間。
-        </p>
-      </div>
-    </div>
-  </section>
+  </main>
 
-  <!-- ── SECTION_05 世界観記録 ──────────────────────────────── -->
-  <section class="log-sec" id="world">
-    <div class="sec-hd reveal">
-      <div>
-        <div class="sec-no">SECTION_05</div>
-        <h2 class="sec-title">世界観記録</h2>
-        <p class="sec-subtitle">WORLD LOG</p>
-      </div>
-    </div>
-    <p class="log-q reveal">
-      分類できないものだけが、<br />本当に生きているのかもしれない。
-    </p>
-    <p class="log-b reveal">
-      鋸歯生物が生息するのは、植生と動物相が融合した架空の生態系。進化の過程で動植物の区別が失われた世界の自然誌として、アガベストはひとつひとつの標本を樹脂粘土で記録し続けている。これは作品集ではなく、観察記録である。
-    </p>
-    <div class="world-actions reveal">
-      <a href="/about/" class="world-btn">
-        <span class="world-btn-jp">世界観資料</span>
-        <span class="world-btn-en">OPEN ARCHIVE</span>
-      </a>
-      <a href="#catalog" class="world-btn ghost">
-        <span class="world-btn-jp">標本一覧</span>
-        <span class="world-btn-en">VIEW ENTRIES</span>
-      </a>
-    </div>
-    <div class="log-dr reveal">
-      <div class="log-dc"><div class="log-dk">WORLD STATUS</div><div class="log-dv">ONGOING</div></div>
-      <div class="log-dc"><div class="log-dk">MEDIUM</div><div class="log-dv">RESIN CLAY</div></div>
-      <div class="log-dc"><div class="log-dk">CLASSIFICATION</div><div class="log-dv">UNDEFINED</div></div>
-      <div class="log-dc"><div class="log-dk">COLLECTOR</div><div class="log-dv">PELICAN WORKS</div></div>
-    </div>
-  </section>
+  <footer class="hub-footer">
+    <a
+      href="https://www.instagram.com/pelican.works"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="hub-footer-link"
+    >Instagram: @pelican.works</a>
+  </footer>
 
-  <!-- ── ARTIST PROFILE ─────────────────────────────────────── -->
-  <section class="mkr-sec" id="maker">
-    <div class="mkr-l reveal">
-      <div class="mkr-lbl">ARTIST PROFILE</div>
-      <div class="mkr-nm">アガベスト</div>
-      <div class="mkr-st">Pelican Works</div>
-      <p class="mkr-desc">
-        樹脂粘土を素材に、動物と植物が融合した架空の生物「鋸歯生物」を制作。観察記録・標本図鑑という形式を借りながら、既存の分類体系では捉えきれない命のかたちを探求している。
-      </p>
-      <table class="prof-tbl">
-        <tr><td>素材</td><td>樹脂粘土</td></tr>
-        <tr><td>ジャンル</td><td>フィギュア / 架空生物造形</td></tr>
-        <tr><td>活動</td><td>Pelican Works</td></tr>
-      </table>
-    </div>
-    <div class="mkr-div"></div>
-    <div class="mkr-r reveal">
-      <div class="mkr-lbl">LINKS</div>
-      <a href="https://www.instagram.com/pelican.works" target="_blank" class="ig-lnk">
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-          <rect x="2" y="2" width="11" height="11" rx="3" stroke="currentColor" stroke-width="1.1"/>
-          <circle cx="7.5" cy="7.5" r="2.8" stroke="currentColor" stroke-width="1.1"/>
-          <circle cx="11" cy="4" r=".8" fill="currentColor"/>
-        </svg>
-        @pelican.works
-      </a>
-      <a href="https://www.instagram.com/aga.vest" target="_blank" class="ig-lnk">
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-          <rect x="2" y="2" width="11" height="11" rx="3" stroke="currentColor" stroke-width="1.1"/>
-          <circle cx="7.5" cy="7.5" r="2.8" stroke="currentColor" stroke-width="1.1"/>
-          <circle cx="11" cy="4" r=".8" fill="currentColor"/>
-        </svg>
-        @aga.vest
-      </a>
-      <a href="https://www.youtube.com/@Pelican-Works" target="_blank" class="ig-lnk">
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-          <rect x="2" y="3" width="11" height="9" rx="2" stroke="currentColor" stroke-width="1.1"/>
-          <path d="M6.5 5.5L9.5 7.5L6.5 9.5V5.5Z" fill="currentColor"/>
-        </svg>
-        @Pelican-Works
-      </a>
-    </div>
-  </section>
+  <style>
+    .hub-body {
+      padding-top: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .hub-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .hub-inner {
+      max-width: 640px;
+      width: 100%;
+    }
+    .hub-brand-label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      color: var(--ink3);
+      margin-bottom: 16px;
+    }
+    .hub-brand {
+      font-family: var(--disp);
+      font-size: clamp(32px, 6vw, 48px);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .hub-tagline {
+      font-size: 14px;
+      line-height: 1.9;
+      color: var(--ink2);
+      margin-bottom: 48px;
+    }
+    .hub-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .hub-card {
+      border: 1px solid var(--br2);
+      background: var(--bg2);
+      padding: 28px;
+    }
+    .hub-card-title {
+      font-family: var(--disp);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .hub-card-desc {
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--ink2);
+      margin-bottom: 24px;
+    }
+    .hub-card-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .hub-card-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--g);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .hub-card-link:hover { opacity: 0.6; }
+    .hub-footer {
+      padding: 24px 40px;
+      border-top: 1px solid var(--br2);
+      text-align: center;
+    }
+    .hub-footer-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--ink3);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .hub-footer-link:hover { color: var(--g); }
 
-  <!-- ── モバイル固定フッター ────────────────────────────────── -->
-  <div class="mobile-fixed-footer" id="mobile-fixed-footer">
-    <a href="#catalog" class="mobile-footer-link">
-      <span class="mobile-footer-icon">◈</span>
-      <span class="mobile-footer-text">標本目録</span>
-    </a>
-    <a href="/about/" class="mobile-footer-link">
-      <span class="mobile-footer-icon">◈</span>
-      <span class="mobile-footer-text">世界観</span>
-    </a>
-    <a href="https://agavest.stores.jp/?utm_source=zukan&utm_medium=internal&utm_campaign=species_link" target="_blank" class="mobile-footer-link">
-      <span class="mobile-footer-icon">◈</span>
-      <span class="mobile-footer-text">入手する</span>
-    </a>
-  </div>
-
-</BaseLayout>
-
-<!-- ── フィルター JS ──────────────────────────────────────── -->
-<script>
-  const grid    = document.getElementById('idx-grid');
-  const counter = document.getElementById('idx-catalog-count');
-  const clearBtn = document.getElementById('idx-filter-clear');
-  const chips   = document.querySelectorAll<HTMLButtonElement>('[data-filter-type]');
-
-  // アクティブフィルター状態: { series: Set, rarity: Set, tag: Set }
-  const active: Record<string, Set<string>> = {
-    series: new Set(),
-    rarity: new Set(),
-    tag: new Set(),
-  };
-
-  function applyFilter() {
-    if (!grid) return;
-    const cards = grid.querySelectorAll<HTMLElement>('.idx-card');
-    let visible = 0;
-
-    const hasSeriesFilter  = active.series.size > 0;
-    const hasRarityFilter  = active.rarity.size > 0;
-    const hasTagFilter     = active.tag.size > 0;
-    const anyActive        = hasSeriesFilter || hasRarityFilter || hasTagFilter;
-
-    cards.forEach(card => {
-      const tags   = JSON.parse(card.dataset.tags   || '[]') as string[];
-      const series = JSON.parse(card.dataset.series || '[]') as string[];
-      const rarity = card.dataset.rarity || '';
-
-      const matchSeries = !hasSeriesFilter || series.some(s => active.series.has(s));
-      const matchRarity = !hasRarityFilter || active.rarity.has(rarity);
-      const matchTag    = !hasTagFilter    || tags.some(t => active.tag.has(t));
-
-      const show = matchSeries && matchRarity && matchTag;
-      card.style.display = show ? '' : 'none';
-      if (show) visible++;
-    });
-
-    if (counter) counter.textContent = `${visible} entries`;
-    if (clearBtn) clearBtn.style.display = anyActive ? '' : 'none';
-  }
-
-  chips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      const type = chip.dataset.filterType!;
-      const val  = chip.dataset.filterVal!;
-
-      if (active[type].has(val)) {
-        active[type].delete(val);
-        chip.classList.remove('is-active');
-      } else {
-        active[type].add(val);
-        chip.classList.add('is-active');
-      }
-      applyFilter();
-    });
-  });
-
-  clearBtn?.addEventListener('click', () => {
-    active.series.clear();
-    active.rarity.clear();
-    active.tag.clear();
-    chips.forEach(c => c.classList.remove('is-active'));
-    applyFilter();
-  });
-</script>
-
-<script>
-  // Reveal animation
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  revealEls.forEach(el => io.observe(el));
-
-  // Mobile footer scroll behavior
-  const bar = document.getElementById('mobile-fixed-footer');
-  if (bar) {
-    let lastY = 0;
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      if (y > lastY && y > 80) {
-        bar.classList.remove('visible');
-      } else {
-        bar.classList.add('visible');
-      }
-      lastY = y;
-    }, { passive: true });
-    bar.classList.add('visible');
-  }
-</script>
-
-<style>
-/* style.css の .hero-archive { margin-top: 52px } を打ち消す（global.css の body padding-top で十分） */
-.hero-archive { margin-top: 0; }
-
-/* LATEST NEWS type badge 配色（news.astro と同一） */
-.type-new   { color: var(--g);    border-color: var(--g);   background: var(--gp); }
-.type-event { color: var(--amb);  border-color: var(--amb); background: var(--ambp); }
-.type-shop  { color: var(--red);  border-color: var(--red); background: var(--redp); }
-.type-info  { color: var(--ink3); border-color: var(--br2); background: var(--bg2); }
-
-/* ── 共通 ─────────────────────────────────────────────────── */
-.idx-section-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.35em;
-  color: var(--ink3);
-  margin-bottom: 20px;
-  text-transform: uppercase;
-}
-
-/* ── ヒーロー ─────────────────────────────────────────────── */
-.idx-hero {
-  border-bottom: 1px solid var(--br2);
-  padding: 56px 40px 48px;
-  background: var(--bg2);
-}
-.idx-hero-inner { max-width: 760px; }
-.idx-sys-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.35em;
-  color: var(--ink3);
-  margin-bottom: 24px;
-}
-.idx-title {
-  font-family: var(--disp);
-  font-size: clamp(26px, 5vw, 44px);
-  font-weight: 800;
-  color: var(--ink);
-  letter-spacing: 0.04em;
-  margin-bottom: 4px;
-}
-.idx-subtitle {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.28em;
-  color: var(--ink2);
-  margin-bottom: 36px;
-}
-
-/* 発見数 */
-.idx-discovery { max-width: 420px; }
-.idx-discovery-top {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  margin-bottom: 10px;
-}
-.idx-disc-text {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  color: var(--ink2);
-}
-.idx-disc-num {
-  font-family: var(--mono);
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--g);
-  line-height: 1;
-}
-.idx-disc-sep, .idx-disc-total {
-  font-family: var(--mono);
-  font-size: 16px;
-  color: var(--ink3);
-}
-.idx-disc-note {
-  font-family: var(--mono);
-  font-size: 8px;
-  letter-spacing: 0.1em;
-  color: var(--ink3);
-  margin-left: 4px;
-}
-.idx-disc-bar-track {
-  height: 4px;
-  background: var(--bg3);
-  border: 1px solid var(--br2);
-  margin-bottom: 6px;
-}
-.idx-disc-bar-fill {
-  height: 100%;
-  background: var(--g2);
-  transition: width 0.8s ease;
-}
-.idx-disc-label {
-  font-family: var(--mono);
-  font-size: 8px;
-  letter-spacing: 0.25em;
-  color: var(--ink3);
-}
-
-/* ── 注目標本 ─────────────────────────────────────────────── */
-.idx-featured {
-  padding: 40px;
-  border-bottom: 1px solid var(--br2);
-}
-.idx-featured-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-}
-.idx-feat-card {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  border: 1px solid var(--br2);
-  background: var(--bg2);
-  text-decoration: none;
-  transition: border-color 0.2s, transform 0.15s;
-}
-.idx-feat-card:hover {
-  border-color: var(--g);
-  transform: translateY(-2px);
-}
-.idx-feat-img {
-  position: relative;
-  min-height: 140px;
-  overflow: hidden;
-  background: var(--bg3);
-}
-.idx-feat-img img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(10%);
-  transition: filter 0.2s;
-}
-.idx-feat-card:hover .idx-feat-img img { filter: grayscale(0%); }
-.idx-feat-noimg {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--mono);
-  font-size: 7px;
-  letter-spacing: 0.15em;
-  color: var(--ink3);
-}
-.idx-feat-info {
-  padding: 16px 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.idx-feat-meta {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
-}
-.idx-feat-no {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.2em;
-  color: var(--ink3);
-}
-.idx-feat-jp {
-  font-family: var(--disp);
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.3;
-}
-.idx-feat-en {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.08em;
-  color: var(--ink2);
-}
-.idx-feat-tag {
-  font-family: var(--mono);
-  font-size: 8px;
-  letter-spacing: 0.1em;
-  color: var(--ink3);
-  text-transform: uppercase;
-  margin-top: 2px;
-  margin-bottom: 8px;
-}
-.idx-feat-arrow {
-  margin-top: auto;
-  font-family: var(--mono);
-  font-size: 8px;
-  letter-spacing: 0.2em;
-  color: var(--g);
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-.idx-feat-card:hover .idx-feat-arrow { opacity: 1; }
-
-/* ── ミニステータスバー（注目標本・カード共通） ──────────── */
-.idx-mini-bars {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 4px;
-}
-.idx-mini-bar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.idx-mini-label {
-  font-family: var(--mono);
-  font-size: 7px;
-  letter-spacing: 0.12em;
-  color: var(--ink3);
-  width: 36px;
-  flex-shrink: 0;
-}
-.idx-mini-track {
-  flex: 1;
-  height: 3px;
-  background: var(--bg3);
-  border: 1px solid var(--br);
-  overflow: hidden;
-}
-.idx-mini-fill {
-  height: 100%;
-  transition: width 0.4s;
-}
-.idx-mini-fill.plant  { background: var(--g2); }
-.idx-mini-fill.animal { background: var(--amb); }
-.idx-mini-fill.danger { background: var(--red); }
-.idx-mini-val {
-  font-family: var(--mono);
-  font-size: 7px;
-  color: var(--ink3);
-  width: 18px;
-  text-align: right;
-  flex-shrink: 0;
-}
-
-/* ── フィルター ─────────────────────────────────────────── */
-.idx-filter {
-  border-bottom: 1px solid var(--br2);
-  background: var(--bg2);
-}
-.idx-filter-inner {
-  padding: 20px 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.idx-filter-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-.idx-filter-key {
-  font-family: var(--mono);
-  font-size: 8px;
-  letter-spacing: 0.3em;
-  color: var(--ink3);
-  padding-top: 5px;
-  min-width: 48px;
-  flex-shrink: 0;
-}
-.idx-filter-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.idx-chip {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  color: var(--ink2);
-  background: var(--bg);
-  border: 1px solid var(--br2);
-  padding: 3px 10px;
-  cursor: pointer;
-  transition: border-color 0.15s, color 0.15s, background 0.15s;
-  text-transform: uppercase;
-}
-.idx-chip:hover { border-color: var(--ink2); }
-.idx-chip.is-active {
-  color: var(--bg);
-  background: var(--ink);
-  border-color: var(--ink);
-}
-.idx-chip-series.is-active { background: var(--g); border-color: var(--g); }
-.idx-filter-clear {
-  align-self: flex-start;
-  font-family: var(--mono);
-  font-size: 8px;
-  letter-spacing: 0.2em;
-  color: var(--red);
-  background: none;
-  border: 1px solid var(--red);
-  padding: 3px 10px;
-  cursor: pointer;
-  margin-top: 4px;
-  transition: background 0.15s, color 0.15s;
-}
-.idx-filter-clear:hover { background: var(--red); color: var(--bg); }
-
-/* ── カタロググリッド ─────────────────────────────────────── */
-.idx-catalog {
-  padding: 36px 40px;
-}
-.idx-catalog-count {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.2em;
-  color: var(--ink3);
-  margin-top: -12px;
-  margin-bottom: 24px;
-}
-.idx-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 16px;
-}
-
-/* ── 個体カード ─────────────────────────────────────────── */
-.idx-card {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--br2);
-  background: var(--bg2);
-  text-decoration: none;
-  transition: border-color 0.2s, transform 0.15s;
-}
-.idx-card:hover { border-color: var(--g); transform: translateY(-2px); }
-.idx-card-img {
-  position: relative;
-  aspect-ratio: 1;
-  overflow: hidden;
-  background: var(--bg3);
-}
-.idx-card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(10%);
-  transition: filter 0.2s;
-}
-.idx-card:hover .idx-card-img img { filter: grayscale(0%); }
-.idx-card-noimg {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--mono);
-  font-size: 7px;
-  letter-spacing: 0.12em;
-  color: var(--ink3);
-}
-/* hidden 個体 — シルエット演出（旧デザイン踏襲） */
-.idx-card-silhouette {
-  position: absolute;
-  inset: 0;
-}
-.idx-card-silhouette img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0) contrast(1.2);
-  opacity: 0.25;
-}
-.idx-card-silhouette::after {
-  content: "ACCESS DENIED";
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--mono);
-  font-size: 8px;
-  letter-spacing: 0.3em;
-  color: var(--red);
-  background: rgba(255, 255, 255, 0.88);
-  animation: access-denied-pulse 1.5s ease-in-out infinite;
-}
-.idx-card.is-hidden-entry { border-color: #c0392b44; }
-.idx-card.is-hidden-entry:hover { border-color: var(--red); }
-
-/* レアリティバッジ */
-.idx-card-badge {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  font-family: var(--mono);
-  font-size: 7px;
-  letter-spacing: 0.12em;
-  font-weight: 700;
-  padding: 2px 5px;
-  background: rgba(255,255,255,0.92);
-  color: var(--ink);
-  text-transform: uppercase;
-}
-.idx-card-badge.badge-denied { color: var(--red); }
-
-/* rarity color helpers（index + featured 共通） */
-.rarity-LEGEND,.idx-feat-rarity.rarity-LEGEND,.idx-card-badge.rarity-LEGEND  { color: var(--rar-l); }
-.rarity-EPIC  ,.idx-feat-rarity.rarity-EPIC  ,.idx-card-badge.rarity-EPIC    { color: var(--rar-e); }
-.rarity-RARE  ,.idx-feat-rarity.rarity-RARE  ,.idx-card-badge.rarity-RARE    { color: var(--rar-r); }
-.rarity-UNCOMMON,.idx-feat-rarity.rarity-UNCOMMON,.idx-card-badge.rarity-UNCOMMON { color: var(--rar-uc); }
-.rarity-COMMON,.idx-feat-rarity.rarity-COMMON,.idx-card-badge.rarity-COMMON  { color: var(--rar-c); }
-.idx-feat-rarity {
-  font-family: var(--mono);
-  font-size: 8px;
-  letter-spacing: 0.15em;
-  font-weight: 700;
-}
-/* rarity filter chips */
-.idx-chip-rarity.rarity-LEGEND.is-active  { background: var(--rar-l); border-color: var(--rar-l); }
-.idx-chip-rarity.rarity-EPIC.is-active    { background: var(--rar-e); border-color: var(--rar-e); }
-.idx-chip-rarity.rarity-RARE.is-active    { background: var(--rar-r); border-color: var(--rar-r); }
-.idx-chip-rarity.rarity-UNCOMMON.is-active{ background: var(--rar-uc); border-color: var(--rar-uc); }
-.idx-chip-rarity.rarity-COMMON.is-active  { background: var(--rar-c); border-color: var(--rar-c); }
-
-/* カード本体テキスト */
-.idx-card-body {
-  padding: 10px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.idx-card-no {
-  font-family: var(--mono);
-  font-size: 8px;
-  letter-spacing: 0.2em;
-  color: var(--ink3);
-}
-.idx-card-jp {
-  font-family: var(--disp);
-  font-size: 12px;
-  color: var(--ink);
-  margin-top: 3px;
-  line-height: 1.3;
-}
-.idx-card-en {
-  font-family: var(--mono);
-  font-size: 8px;
-  letter-spacing: 0.06em;
-  color: var(--ink2);
-}
-.idx-card-tag {
-  font-family: var(--mono);
-  font-size: 7px;
-  letter-spacing: 0.1em;
-  color: var(--ink3);
-  text-transform: uppercase;   /* 表記ゆれを CSS で吸収 */
-  margin-top: 3px;
-  padding-top: 5px;
-  border-top: 1px solid var(--br);
-}
-.idx-card-bars {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  margin-top: 6px;
-}
-/* hidden 個体のテキスト */
-.denied-text { color: var(--red) !important; letter-spacing: 0.1em; }
-.denied-track { background: #2a2a2a !important; border-color: #333 !important; }
-
-/* ── モバイル ─────────────────────────────────────────────── */
-@media (max-width: 640px) {
-  .idx-hero     { padding: 36px 24px 32px; }
-  .idx-featured { padding: 28px 24px; }
-  .idx-featured-grid { grid-template-columns: 1fr; }
-  .idx-feat-card { grid-template-columns: 120px 1fr; }
-  .idx-filter-inner { padding: 16px 24px; }
-  .idx-catalog  { padding: 28px 24px; }
-  .idx-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
-}
-</style>
+    @media (max-width: 640px) {
+      .hub-main { padding: 24px; }
+      .hub-footer { padding: 20px 24px; }
+    }
+  </style>
+</body>
+</html>

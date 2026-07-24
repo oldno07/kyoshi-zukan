@@ -1,32 +1,38 @@
 # 鋸歯生物図鑑 — Cloudflare Pages Redirects
-# 旧URL (entry.html?no=XXX) → 新URL (/creatures/[slug]/) 301リダイレクト
-# フェーズ1必須タスク (要件書9-3)
+# 旧URL (entry.html?no=XXX) → 新URL (/zukan/[slug]/) 301リダイレクト
+# フェーズ1必須タスク (要件書9-3) / pelicanworks.site ドメイン移行 (2026-07)
 # スクリプト generate-content.mjs で自動生成。手動編集不要。
 
+# 研究所（現状維持）
 /land.html  /labo.html  301
 
-/entry.html?no=001  /creatures/001-snyaggletooth/  301
-/entry.html?no=002  /creatures/002-black-nyanko-blue/  301
-/entry.html?no=003  /creatures/003-red-cat-meezle/  301
-/entry.html?no=004  /creatures/004-nyagabe-titanota/  301
-/entry.html?no=005  /creatures/005-gorillahorrida/  301
-/entry.html?no=006  /creatures/006-goldenball-magan/  301
-/entry.html?no=007  /creatures/007-sky-blue-nyanda-ho/  301
-/entry.html?no=008  /creatures/008-agave-kabutotokage/  301
-/entry.html?no=009  /creatures/009-filigrizzly/  301
-/entry.html?no=010  /creatures/010-filigrizzly-devil/  301
-/entry.html?no=011  /creatures/011-filigrizzly-monarch/  301
-/entry.html?no=012  /creatures/012-green-rhino/  301
-/entry.html?no=013  /creatures/013-hakugei-white-cetus/  301
-/entry.html?no=014  /creatures/014-kokugei-black-cetus/  301
-/entry.html?no=015  /creatures/015-metal-hakugei-cetus/  301
-/entry.html?no=016  /creatures/016-kingei-golden-cetus/  301
-/entry.html?no=017  /creatures/017-lions-nyaan/  301
-/entry.html?no=018  /creatures/018-goriborg-serrate-beast/  301
-/entry.html?no=019  /creatures/019-mochi-cetus/  301
-/entry.html?no=020  /creatures/020-graci-ris/  301
-/entry.html?no=021  /creatures/021-gnyacilius/  301
-/entry.html?no=022  /creatures/022-boophame/  301
-/entry.html?no=023  /creatures/023-beautiful-horn-deer/  301
-/entry.html?no=024  /creatures/024-bicacu-cow/  301
-/entry.html?no=025  /creatures/025-platybat-mosswing/  301
+/entry.html?no=001  /zukan/001-snyaggletooth/  301
+/entry.html?no=002  /zukan/002-black-nyanko-blue/  301
+/entry.html?no=003  /zukan/003-red-cat-meezle/  301
+/entry.html?no=004  /zukan/004-nyagabe-titanota/  301
+/entry.html?no=005  /zukan/005-gorillahorrida/  301
+/entry.html?no=006  /zukan/006-goldenball-magan/  301
+/entry.html?no=007  /zukan/007-sky-blue-nyanda-ho/  301
+/entry.html?no=008  /zukan/008-agave-kabutotokage/  301
+/entry.html?no=009  /zukan/009-filigrizzly/  301
+/entry.html?no=010  /zukan/010-filigrizzly-devil/  301
+/entry.html?no=011  /zukan/011-filigrizzly-monarch/  301
+/entry.html?no=012  /zukan/012-green-rhino/  301
+/entry.html?no=013  /zukan/013-hakugei-white-cetus/  301
+/entry.html?no=014  /zukan/014-kokugei-black-cetus/  301
+/entry.html?no=015  /zukan/015-metal-hakugei-cetus/  301
+/entry.html?no=016  /zukan/016-kingei-golden-cetus/  301
+/entry.html?no=017  /zukan/017-lions-nyaan/  301
+/entry.html?no=018  /zukan/018-goriborg-serrate-beast/  301
+/entry.html?no=019  /zukan/019-mochi-cetus/  301
+/entry.html?no=020  /zukan/020-graci-ris/  301
+/entry.html?no=021  /zukan/021-gnyacilius/  301
+/entry.html?no=022  /zukan/022-boophame/  301
+/entry.html?no=023  /zukan/023-beautiful-horn-deer/  301
+/entry.html?no=024  /zukan/024-bicacu-cow/  301
+/entry.html?no=025  /zukan/025-platybat-mosswing/  301
+
+# 旧Astro構造 → 新構造（既に公開済みのURLを救済）
+/creatures/*  /zukan/:splat  301
+/about/       /zukan/about/  301
+/news/        /zukan/news/   301
