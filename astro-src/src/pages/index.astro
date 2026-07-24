@@ -1,5 +1,32 @@
 ---
 import '../styles/global.css';
+
+const channels = [
+  {
+    tab: 'サンプル',
+    title: '鋸歯生物図鑑',
+    desc: 'アガベ・塊根植物の棚に棲む、住人たちの記録。',
+    label: '図鑑を見る',
+    href: '/zukan/',
+    external: false,
+  },
+  {
+    tab: 'サンプル',
+    title: '鋸歯生物研究所',
+    desc: '日々の観測記録を、そのまま届けます。',
+    label: '研究所を覗く',
+    href: '/labo',
+    external: false,
+  },
+  {
+    tab: 'サンプル',
+    title: '鋸歯生物譲渡局',
+    desc: '新しい個体との出会いは、ここから。',
+    label: '譲渡局へ',
+    href: 'https://agavest.stores.jp/',
+    external: true,
+  },
+];
 ---
 
 <!doctype html>
@@ -45,82 +72,39 @@ import '../styles/global.css';
       </header>
 
       <div class="hub-cards">
-        <article class="hub-card">
-          <div class="hub-card-photo"></div>
-          <h2 class="hub-card-title">鋸歯生物図鑑</h2>
-          <p class="hub-card-desc">アガベ・塊根植物の棚に棲む、住人たちの記録。</p>
-          <a href="/zukan/" class="hub-card-btn">
-            <span class="hub-card-btn-label">図鑑を見る</span>
-            <svg
-              class="hub-card-btn-icon"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <line x1="7" y1="17" x2="17" y2="7" />
-              <polyline points="7 7 17 7 17 17" />
-            </svg>
-          </a>
-        </article>
-
-        <article class="hub-card">
-          <div class="hub-card-photo"></div>
-          <h2 class="hub-card-title">鋸歯生物研究所</h2>
-          <p class="hub-card-desc">日々の観測記録を、そのまま届けます。</p>
-          <a href="/labo" class="hub-card-btn">
-            <span class="hub-card-btn-label">研究所を覗く</span>
-            <svg
-              class="hub-card-btn-icon"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <line x1="7" y1="17" x2="17" y2="7" />
-              <polyline points="7 7 17 7 17 17" />
-            </svg>
-          </a>
-        </article>
-
-        <article class="hub-card">
-          <div class="hub-card-photo"></div>
-          <h2 class="hub-card-title">鋸歯生物譲渡局</h2>
-          <p class="hub-card-desc">新しい個体との出会いは、ここから。</p>
-          <a
-            href="https://agavest.stores.jp/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="hub-card-btn"
-          >
-            <span class="hub-card-btn-label">譲渡局へ</span>
-            <svg
-              class="hub-card-btn-icon"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <line x1="7" y1="17" x2="17" y2="7" />
-              <polyline points="7 7 17 7 17 17" />
-            </svg>
-          </a>
-        </article>
+        {channels.map((ch) => (
+          <article class="hub-card">
+            <div class="hub-card-photo"></div>
+            <div class="hub-card-body">
+              <span class="hub-card-tab">{ch.tab}</span>
+              <h2 class="hub-card-title">{ch.title}</h2>
+              <p class="hub-card-desc">{ch.desc}</p>
+              <a
+                href={ch.href}
+                class="hub-card-btn"
+                target={ch.external ? '_blank' : undefined}
+                rel={ch.external ? 'noopener noreferrer' : undefined}
+              >
+                <span class="hub-card-btn-label">{ch.label}</span>
+                <svg
+                  class="hub-card-btn-icon"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="7" y1="17" x2="17" y2="7" />
+                  <polyline points="7 7 17 7 17 17" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   </main>
@@ -170,7 +154,7 @@ import '../styles/global.css';
     /* -- 第1層：ブランド名＋縦書きタグライン -- */
     .hub-head {
       text-align: center;
-      margin-bottom: 72px;
+      margin-bottom: 64px;
     }
     .hub-brand {
       font-family: var(--hub-mincho);
@@ -195,22 +179,38 @@ import '../styles/global.css';
       color: var(--hub-ink2);
     }
 
-    /* -- 第2層：3チャンネルカード（同一フォーマット・優先順位なし） -- */
-    .hub-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
+    /* -- 第2層：3チャンネルカード（画像左・内容右の横並び、同一フォーマット） -- */
     .hub-card {
+      display: grid;
+      grid-template-columns: 136px 1fr;
+      gap: 24px;
+      align-items: start;
+      padding: 32px 0;
+    }
+    .hub-card:first-child { padding-top: 0; }
+    .hub-card:last-child { padding-bottom: 0; }
+    .hub-card + .hub-card { border-top: 1px dashed var(--hub-line); }
+
+    .hub-card-photo {
+      aspect-ratio: 4 / 5;
       border: 1px solid var(--hub-line);
       border-radius: 4px;
-      padding: 26px;
     }
-    .hub-card-photo {
-      aspect-ratio: 4 / 3;
+    .hub-card-body {
+      min-width: 0;
+    }
+    .hub-card-tab {
+      display: inline-block;
       border: 1px solid var(--hub-line);
-      border-radius: 3px;
-      margin-bottom: 24px;
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-family: var(--hub-gothic);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      line-height: 1.5;
+      color: var(--hub-ink2);
+      margin-bottom: 16px;
     }
     .hub-card-title {
       font-family: var(--hub-mincho);
@@ -219,7 +219,7 @@ import '../styles/global.css';
       letter-spacing: 0.1em;
       line-height: 1.5;
       color: var(--hub-ink);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .hub-card-desc {
       font-family: var(--hub-gothic);
@@ -228,14 +228,14 @@ import '../styles/global.css';
       line-height: 1.95;
       letter-spacing: 0.04em;
       color: var(--hub-ink2);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .hub-card-btn {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      padding: 14px 18px;
+      padding: 13px 18px;
       border: 1px solid var(--hub-line);
       border-radius: 4px;
       font-family: var(--hub-gothic);
@@ -271,8 +271,14 @@ import '../styles/global.css';
 
     @media (max-width: 640px) {
       .hub-main { padding: 64px 20px 72px; }
-      .hub-head { margin-bottom: 56px; }
-      .hub-card { padding: 22px; }
+      .hub-head { margin-bottom: 48px; }
+      .hub-card {
+        grid-template-columns: 96px 1fr;
+        gap: 16px;
+        padding: 26px 0;
+      }
+      .hub-card-title { font-size: 19px; }
+      .hub-card-desc { font-size: 13.5px; }
     }
   </style>
 </body>
