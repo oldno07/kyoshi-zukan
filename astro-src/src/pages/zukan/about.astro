@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const all = await getCollection('creatures');
 const found = all.filter(e => e.data.status === 'published' && e.data.category === 'creature').length;
@@ -9,7 +9,7 @@ const found = all.filter(e => e.data.status === 'published' && e.data.category =
 <BaseLayout
   title="世界観 — 鋸歯生物図鑑"
   description="鋸歯生物とは何か。分類体系・生態・アーティストステートメント。動植物の境界が失われた架空の世界の自然誌。"
-  ogUrl="https://kyoshi-zukan.pages.dev/about/"
+  ogUrl="https://pelicanworks.site/zukan/about/"
   ogImage="/images/ogp.png"
 >
   <link slot="head" rel="stylesheet" href="/css/style.css" />
@@ -19,7 +19,7 @@ const found = all.filter(e => e.data.status === 'published' && e.data.category =
   <section class="page-hero">
     <div class="ph-left">
       <div class="breadcrumb">
-        <a href="/">HOME</a>
+        <a href="/zukan/">HOME</a>
         <span class="breadcrumb-sep">/</span>
         <span>WORLD</span>
       </div>
@@ -382,12 +382,12 @@ const found = all.filter(e => e.data.status === 'published' && e.data.category =
 
   <!-- NEXT PAGE LINKS -->
   <div class="next-sec">
-    <a href="/#catalog" class="next-cell">
+    <a href="/zukan/#catalog" class="next-cell">
       <span class="next-dir">← BACK</span>
       <span class="next-title">標本目録</span>
       <span class="next-en">CATALOG — All Specimens</span>
     </a>
-    <a href="/#maker" class="next-cell">
+    <a href="/zukan/#maker" class="next-cell">
       <span class="next-dir">LINK →</span>
       <span class="next-title">作者について</span>
       <span class="next-en">MAKER — Agavest / Pelican Works</span>
@@ -396,11 +396,11 @@ const found = all.filter(e => e.data.status === 'published' && e.data.category =
 
   <!-- MOBILE FIXED FOOTER BAR -->
   <div class="mobile-fixed-footer" id="mobile-fixed-footer">
-    <a href="/" class="mobile-footer-link">
+    <a href="/zukan/" class="mobile-footer-link">
       <span class="mobile-footer-icon">◈</span>
       <span class="mobile-footer-text">観測を続ける</span>
     </a>
-    <a href="/#catalog" class="mobile-footer-link">
+    <a href="/zukan/#catalog" class="mobile-footer-link">
       <span class="mobile-footer-icon">◈</span>
       <span class="mobile-footer-text">標本へ移動</span>
     </a>

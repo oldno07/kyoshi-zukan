@@ -170,15 +170,25 @@ for (const entry of MAIN_ENTRIES) {
 
 // ── _redirects 生成 ────────────────────────────────────────────────────────
 let redirects = `# 鋸歯生物図鑑 — Cloudflare Pages Redirects
-# 旧URL (entry.html?no=XXX) → 新URL (/creatures/[slug]/) 301リダイレクト
-# フェーズ1必須タスク (要件書9-3)
+# 旧URL (entry.html?no=XXX) → 新URL (/zukan/[slug]/) 301リダイレクト
+# フェーズ1必須タスク (要件書9-3) / pelicanworks.site ドメイン移行 (2026-07)
 # スクリプト generate-content.mjs で自動生成。手動編集不要。
+
+# 研究所（現状維持）
+/land.html  /labo.html  301
 
 `;
 
 for (const { no, slug } of slugMap) {
-  redirects += `/entry.html?no=${no}  /creatures/${slug}/  301\n`;
+  redirects += `/entry.html?no=${no}  /zukan/${slug}/  301\n`;
 }
+
+redirects += `
+# 旧Astro構造 → 新構造（既に公開済みのURLを救済）
+/creatures/*  /zukan/:splat  301
+/about/       /zukan/about/  301
+/news/        /zukan/news/   301
+`;
 
 writeFileSync(REDIRECTS, redirects);
 console.log(`  generated: public/_redirects (${slugMap.length}件)`);

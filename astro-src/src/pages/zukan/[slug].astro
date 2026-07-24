@@ -79,11 +79,11 @@ const ogDescription = isHidden
   title={ogTitle}
   description={ogDescription}
   ogImage={isHidden ? '/images/ogp.png' : data.cover}
-  ogUrl={`https://kyoshi-zukan.pages.dev/creatures/${slug}/`}
+  ogUrl={`https://pelicanworks.site/zukan/${slug}/`}
 >
   <!-- breadcrumb strip -->
   <nav class="cd-strip">
-    <a href="/" class="cd-strip-back">← FIELD DATABASE</a>
+    <a href="/zukan/" class="cd-strip-back">← FIELD DATABASE</a>
     <div class="cd-strip-path">
       <span>CREATURES</span>
       <span class="cd-strip-sep">/</span>
@@ -278,7 +278,7 @@ const ogDescription = isHidden
   <nav class="cd-prevnext">
     {prev
       ? (
-        <a href={`/creatures/${prev.slug}/`} class="cd-prevnext-btn">
+        <a href={`/zukan/${prev.slug}/`} class="cd-prevnext-btn">
           <span class="cd-prevnext-dir">← PREV</span>
           <span class="cd-prevnext-jp">{prev.name_jp}</span>
           <span class="cd-prevnext-en">{prev.name_en}</span>
@@ -288,7 +288,7 @@ const ogDescription = isHidden
     }
     {next
       ? (
-        <a href={`/creatures/${next.slug}/`} class="cd-prevnext-btn cd-prevnext-right">
+        <a href={`/zukan/${next.slug}/`} class="cd-prevnext-btn cd-prevnext-right">
           <span class="cd-prevnext-dir">NEXT →</span>
           <span class="cd-prevnext-jp">{next.name_jp}</span>
           <span class="cd-prevnext-en">{next.name_en}</span>
@@ -330,7 +330,7 @@ const ogDescription = isHidden
       <p class="cd-related-title">RELATED ENTITIES</p>
       <div class="cd-related-grid">
         {relatedCreatures.map((rc) => (
-          <a href={`/creatures/${rc.slug}/`} class="cd-related-card">
+          <a href={`/zukan/${rc.slug}/`} class="cd-related-card">
             <div class="cd-related-img">
               {rc.cover
                 ? <img src={rc.cover} alt={rc.name_jp} loading="lazy" />
@@ -360,7 +360,7 @@ const ogDescription = isHidden
   <div class="mobile-fixed-footer" id="mobile-fixed-footer">
     {prev
       ? (
-        <a href={`/creatures/${prev.slug}/`} class="mobile-footer-link">
+        <a href={`/zukan/${prev.slug}/`} class="mobile-footer-link">
           <span class="mobile-footer-icon">◈</span>
           <span class="mobile-footer-text">前の個体</span>
         </a>
@@ -370,13 +370,13 @@ const ogDescription = isHidden
           <span class="mobile-footer-text">前の個体</span>
         </span>
     }
-    <a href="/" class="mobile-footer-link">
+    <a href="/zukan/" class="mobile-footer-link">
       <span class="mobile-footer-icon">◈</span>
       <span class="mobile-footer-text">一覧へ戻る</span>
     </a>
     {next
       ? (
-        <a href={`/creatures/${next.slug}/`} class="mobile-footer-link">
+        <a href={`/zukan/${next.slug}/`} class="mobile-footer-link">
           <span class="mobile-footer-icon">◈</span>
           <span class="mobile-footer-text">次の個体</span>
         </a>

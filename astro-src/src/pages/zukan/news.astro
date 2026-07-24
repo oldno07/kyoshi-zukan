@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import newsData from '../../public/data/news.json';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import newsData from '../../../public/data/news.json';
 
 const TYPE_LABEL: Record<string, string> = {
   new: 'NEW FIGURE',
@@ -27,7 +27,7 @@ const latest = newsData[0]?.date ?? '—';
 <BaseLayout
   title="NEWS — 鋸歯生物図鑑"
   description="新作フィギュアの完成報告、イベント出展情報、通販開始のお知らせなど、Pelican Worksの最新活動記録。"
-  ogUrl="https://kyoshi-zukan.pages.dev/news/"
+  ogUrl="https://pelicanworks.site/zukan/news/"
 >
   <link slot="head" rel="stylesheet" href="/css/style.css" />
   <link slot="head" rel="stylesheet" href="/css/mobile-nav.css" />
@@ -36,7 +36,7 @@ const latest = newsData[0]?.date ?? '—';
   <div class="news-hero">
     <div class="news-hero-l">
       <div class="breadcrumb">
-        <a href="/">HOME</a>
+        <a href="/zukan/">HOME</a>
         <span class="breadcrumb-sep">/</span>
         <span>NEWS</span>
       </div>
@@ -131,11 +131,11 @@ const latest = newsData[0]?.date ?? '—';
 
   <!-- モバイル固定フッター -->
   <div class="mobile-fixed-footer" id="mobile-fixed-footer">
-    <a href="/" class="mobile-footer-link">
+    <a href="/zukan/" class="mobile-footer-link">
       <span class="mobile-footer-icon">◈</span>
       <span class="mobile-footer-text">図鑑トップ</span>
     </a>
-    <a href="/about/" class="mobile-footer-link">
+    <a href="/zukan/about/" class="mobile-footer-link">
       <span class="mobile-footer-icon">◈</span>
       <span class="mobile-footer-text">世界観</span>
     </a>
