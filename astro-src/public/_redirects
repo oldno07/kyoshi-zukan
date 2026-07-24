@@ -4,7 +4,7 @@
 # スクリプト generate-content.mjs で自動生成。手動編集不要。
 
 # 研究所（現状維持）
-/land.html  /labo.html  301
+/land.html  /labo  301
 
 /entry.html?no=001  /zukan/001-snyaggletooth/  301
 /entry.html?no=002  /zukan/002-black-nyanko-blue/  301
