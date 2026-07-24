@@ -175,7 +175,7 @@ let redirects = `# 鋸歯生物図鑑 — Cloudflare Pages Redirects
 # スクリプト generate-content.mjs で自動生成。手動編集不要。
 
 # 研究所（現状維持）
-/land.html  /labo.html  301
+/land.html  /labo  301
 
 `;
 
