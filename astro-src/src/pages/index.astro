@@ -155,7 +155,6 @@ const channels = [
     /* -- 第1層：ブランド名＋縦書きタグライン -- */
     .hub-head {
       text-align: center;
-      margin-bottom: 64px;
     }
     .hub-brand {
       font-family: var(--hub-mincho);
@@ -165,10 +164,11 @@ const channels = [
       line-height: 1.3;
       color: var(--hub-ink);
     }
+    /* キャッチの上下に余白を確保。下をやや広く取り、続くカード群との視覚的な重心を揃える */
     .hub-tagline-wrap {
       display: flex;
       justify-content: center;
-      margin-top: 44px;
+      padding: 84px 0 104px;
     }
     .hub-tagline {
       writing-mode: vertical-rl;
@@ -273,7 +273,7 @@ const channels = [
 
     @media (max-width: 640px) {
       .hub-main { padding: 64px 20px 72px; }
-      .hub-head { margin-bottom: 48px; }
+      .hub-tagline-wrap { padding: 60px 0 76px; }
       /* 右カラムの行間・余白を詰め、サムネイルを拡大して画像下の空きを抑える */
       .hub-card {
         grid-template-columns: 116px 1fr;
