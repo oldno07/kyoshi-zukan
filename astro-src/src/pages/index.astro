@@ -48,7 +48,7 @@ const channels = [
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=BIZ+UDMincho:wght@400;700&family=Zen+Old+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap"
     rel="stylesheet"
   />
 
@@ -130,6 +130,8 @@ const channels = [
       --hub-accent-deep: #4d5327;
       /* Webフォント未読込時も縦書きメトリクスが崩れないよう和文システムフォントまで指定 */
       --hub-mincho: "Zen Old Mincho", "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+      /* キャッチ専用：UD系明朝。Windowsは同名フォントを標準搭載しているため次点に置く */
+      --hub-catch:  "BIZ UDMincho", "BIZ UDPMincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
       --hub-gothic: "Zen Kaku Gothic New", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
 
       padding-top: 0;
@@ -172,7 +174,7 @@ const channels = [
     }
     .hub-tagline {
       writing-mode: vertical-rl;
-      font-family: var(--hub-gothic);
+      font-family: var(--hub-catch);
       font-size: 20px;
       font-weight: 400;
       line-height: 2.4;
@@ -207,7 +209,7 @@ const channels = [
       border-radius: 999px;
       padding: 6px 15px;
       font-family: var(--hub-gothic);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 400;
       letter-spacing: 0.1em;
       line-height: 1.5;
@@ -216,7 +218,7 @@ const channels = [
     }
     .hub-card-title {
       font-family: var(--hub-mincho);
-      font-size: 24px;
+      font-size: 21px;
       font-weight: 500;
       letter-spacing: 0.1em;
       line-height: 1.5;
@@ -225,7 +227,7 @@ const channels = [
     }
     .hub-card-desc {
       font-family: var(--hub-gothic);
-      font-size: 15.5px;
+      font-size: 14px;
       font-weight: 300;
       line-height: 1.95;
       letter-spacing: 0.04em;
@@ -241,7 +243,7 @@ const channels = [
       border: 1px solid var(--hub-line);
       border-radius: 4px;
       font-family: var(--hub-gothic);
-      font-size: 15.5px;
+      font-size: 14px;
       font-weight: 400;
       letter-spacing: 0.08em;
       color: var(--hub-accent);
@@ -262,7 +264,7 @@ const channels = [
     }
     .hub-footer-link {
       font-family: var(--hub-gothic);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 400;
       letter-spacing: 0.1em;
       color: var(--hub-ink2);
@@ -277,28 +279,28 @@ const channels = [
       /* 右カラムの行間・余白を詰め、サムネイルを拡大して画像下の空きを抑える */
       .hub-tagline { font-size: 17px; }
       .hub-card {
-        grid-template-columns: 124px 1fr;
+        grid-template-columns: 116px 1fr;
         gap: 14px;
         padding: 26px 0;
       }
       .hub-card-tab {
-        font-size: 12.5px;
+        font-size: 11.5px;
         padding: 5px 13px;
         margin-bottom: 10px;
       }
       .hub-card-title {
-        font-size: 21px;
+        font-size: 19px;
         line-height: 1.4;
         margin-bottom: 6px;
       }
       .hub-card-desc {
-        font-size: 14.5px;
+        font-size: 13.5px;
         line-height: 1.75;
         margin-bottom: 14px;
       }
       .hub-card-btn {
         padding: 11px 15px;
-        font-size: 14.5px;
+        font-size: 13.5px;
       }
     }
   </style>
