@@ -11,13 +11,30 @@
 ## プロジェクト概要
 
 - Astroプロジェクト: `astro-src/`
-- ホスティング: Cloudflare Pages（`kyoshi-zukan.pages.dev`）
+- ホスティング: Cloudflare Pages。正式ドメインは `pelicanworks.site`（2026年7月ドメイン移行）。
+  旧ドメイン `kyoshi-zukan.pages.dev` は同一プロジェクトに残存中（ドメイン単位のリダイレクトは別タスクで対応予定）
 - コンテンツ: `astro-src/src/content/creatures/[slug]/index.md`
 - スタイル:
   - `astro-src/src/styles/global.css` — Astroプロジェクト共通スタイル
   - `css/style.css` — 旧サイト共通スタイル（index.astroのヒーロー等で使用）
 
+### URL構造（2026年7月ドメイン移行後）
+
+```
+/                      ← PelicanWorks ハブページ
+/zukan/                ← 図鑑トップ
+/zukan/[slug]/         ← 各生物ページ（旧 /creatures/[slug]/ から移行、301リダイレクトあり）
+/zukan/about/          ← 世界観ページ
+/zukan/news/           ← NEWS
+/labo.html             ← 研究所（パス変更なし）
+```
+
 ## デプロイ
+
+Cloudflare Pages に Git リポジトリ（`oldno07/kyoshi-zukan`）は連携済みだが、
+ビルド構成（ビルドコマンド・出力ディレクトリ・ルートディレクトリ）が未設定のため、
+Git push による自動デプロイは意図的に停止中である。**デプロイは wrangler の手動実行のみが正**。
+ビルド構成を整備して自動デプロイへ一本化する作業は、別タスクとして予定されている。
 
 ### 現行フロー（フィーチャーブランチ運用）
 
