@@ -15,8 +15,12 @@
   旧ドメイン `kyoshi-zukan.pages.dev` は同一プロジェクトに残存中（ドメイン単位のリダイレクトは別タスクで対応予定）
 - コンテンツ: `astro-src/src/content/creatures/[slug]/index.md`
 - スタイル:
-  - `astro-src/src/styles/global.css` — Astroプロジェクト共通スタイル
-  - `css/style.css` — 旧サイト共通スタイル（index.astroのヒーロー等で使用）
+  - `astro-src/src/styles/global.css` — Astro共通スタイル（BaseLayout・`/zukan/` トップ・ハブページが読み込む）
+  - `astro-src/public/css/style.css` — 旧サイト共通スタイル（`/zukan/` の各Astroページが読み込む）
+  - `astro-src/public/css/land.css` — 研究所 `labo.html` 専用スタイル
+  - ハブページ `astro-src/src/pages/index.astro` は `style.css` を読み込まず、
+    ページ内の scoped style で自己完結している。`style.css` には素の `header {position:fixed}` や
+    `footer {background}` があり、読み込むとハブのレイアウトを壊すため戻さないこと
 
 ### URL構造（2026年7月ドメイン移行後）
 
@@ -26,40 +30,45 @@
 /zukan/[slug]/         ← 各生物ページ（旧 /creatures/[slug]/ から移行、301リダイレクトあり）
 /zukan/about/          ← 世界観ページ
 /zukan/news/           ← NEWS
-/labo.html             ← 研究所（パス変更なし）
+/labo                  ← 研究所（実体は astro-src/public/labo.html。Cloudflareのclean URL挙動で
+                          `.html` なしで配信。canonical / og:url / og:image / twitter:image も
+                          `/labo` に統一済み。旧 /land.html からは301リダイレクトあり）
 ```
 
 ## デプロイ
 
-Cloudflare Pages に Git リポジトリ（`oldno07/kyoshi-zukan`）は連携済みだが、
-ビルド構成（ビルドコマンド・出力ディレクトリ・ルートディレクトリ）が未設定のため、
-Git push による自動デプロイは意図的に停止中である。**デプロイは wrangler の手動実行のみが正**。
-ビルド構成を整備して自動デプロイへ一本化する作業は、別タスクとして予定されている。
+Cloudflare Pages に Git リポジトリ（`oldno07/kyoshi-zukan`）が連携済みで、ビルド構成も設定済みである。
+**`main` への push で本番へ自動デプロイされる。手動デプロイの操作は不要**（2026-07 時点で稼働確認済み）。
+
+> 以前は「ビルド構成が未設定のため自動デプロイは停止中、wrangler の手動実行のみが正」としていたが、
+> ビルド構成が整備されたため解消済み。
 
 ### 現行フロー（フィーチャーブランチ運用）
 
 ```
-feat-phase1-astro-pilot（開発）
-  → Cloudflare Pages プレビュー（動作確認）
-  → GitHub push（履歴管理）
-  → main へマージ（本番公開）
-  → Cloudflare Pages 本番デプロイ（一般公開）
+フィーチャーブランチ（開発）
+  → GitHub push（履歴管理・プレビュー確認）
+  → main へマージして push
+  → Cloudflare Pages が自動ビルド → 本番公開
 ```
 
-**プレビューデプロイ（開発中の動作確認）**
+マージ後は Cloudflare Pages のダッシュボードでビルド結果を確認すること。
+
+### ローカルでの確認
+
 ```bash
-cd astro-src && npm run build
-npx wrangler pages deploy dist/ --project-name=kyoshi-zukan --branch=feat-phase1-astro-pilot --commit-dirty=true
+cd astro-src && npm run dev        # 開発サーバ
+cd astro-src && npm run build      # 本番と同じ生成物を dist/ に出力
 ```
 
-**本番デプロイ（main マージ後）**
+### 手動デプロイ（フォールバック）
+
+自動ビルドが失敗した場合など、必要なときのみ使用する。実行には Cloudflare の認証が必要。
+
 ```bash
 cd astro-src && npm run build
 npx wrangler pages deploy dist/ --project-name=kyoshi-zukan --branch=main --commit-dirty=true
 ```
-
-### 旧フロー（参考）
-`develop` → `main` → Cloudflare（一般公開）
 
 ## フェーズ管理
 
@@ -69,5 +78,5 @@ npx wrangler pages deploy dist/ --project-name=kyoshi-zukan --branch=main --comm
 |---------|------|------|
 | 1 | creaturesコレクション移行・OGP・リダイレクト | ✅ 完了 |
 | 2 | 情報設計の再設計・タグ・関連生物表示 | ✅ 完了 |
-| 3 | シリーズ・発見数カウンター・一覧ページ | ✅ 完了（index.astro） |
+| 3 | シリーズ・発見数カウンター・一覧ページ | ✅ 完了（`zukan/index.astro`。ルートの `index.astro` はハブページなので混同しないこと） |
 | 4 | news/reports移行・EC連携 | 未着手 |
