@@ -17,7 +17,8 @@
 - スタイル:
   - `astro-src/src/styles/global.css` — Astro共通スタイル（BaseLayout・`/zukan/` トップ・ハブページが読み込む）
   - `astro-src/public/css/style.css` — 旧サイト共通スタイル（`/zukan/` の各Astroページが読み込む）
-  - `astro-src/public/css/land.css` — 研究所 `labo.html` 専用スタイル
+  - `astro-src/public/css/labo.css` — 研究所 `labo.html` 専用スタイル
+    （旧称 `land.css`。研究所まわりの名称を `labo` に統一するため 2026-07 にリネーム）
   - ハブページ `astro-src/src/pages/index.astro` は `style.css` を読み込まず、
     ページ内の scoped style で自己完結している。`style.css` には素の `header {position:fixed}` や
     `footer {background}` があり、読み込むとハブのレイアウトを壊すため戻さないこと
