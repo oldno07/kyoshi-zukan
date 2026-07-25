@@ -1,7 +1,10 @@
 # 鋸歯生物図鑑 — Cloudflare Pages Redirects
 # 旧URL (entry.html?no=XXX) → 新URL (/zukan/[slug]/) 301リダイレクト
 # フェーズ1必須タスク (要件書9-3) / pelicanworks.site ドメイン移行 (2026-07)
-# スクリプト generate-content.mjs で自動生成。手動編集不要。
+# 旧サイトからの転送表であり、対象は移行時点の25個体で確定している。
+# 以降に追加する個体は旧URLを持たないため、この表が増えることはない（例: SYM-001〜003）。
+# かつて generate-content.mjs で自動生成していたが、移行完了に伴い同スクリプトは
+# 2026-07 に削除済み。以後このファイルは手動管理とする。
 
 # 研究所（現状維持）
 /land.html  /labo  301

@@ -14,11 +14,13 @@
 - ホスティング: Cloudflare Pages。正式ドメインは `pelicanworks.site`（2026年7月ドメイン移行）。
   旧ドメイン `kyoshi-zukan.pages.dev` は同一プロジェクトに残存中（ドメイン単位のリダイレクトは別タスクで対応予定）
 - コンテンツ: `astro-src/src/content/creatures/[slug]/index.md`
-- `data/entries.js`（リポジトリルート）— **旧サイトの残骸ではなく現役の依存**。
-  `astro-src/scripts/generate-content.mjs` がこれを読んで creatures のmdと `public/_redirects` を生成する。
-  旧サイト一式を整理した際も、このファイルだけは残してある。削除しないこと
-- 旧サイトのHTML・JS一式（ルートの `*.html` `js/` `components/` `data/config.js` `data/news.js`）は
-  2026-07 に削除済み。資産は `astro-src/public/` へ一本化されている
+- **creatures の正は markdown**。`data/entries.js`（旧サイトの生物DB）と、それを読んで
+  markdown・`_redirects` を生成していた `generate-content.mjs` は移行完了により 2026-07 に削除済み。
+  新しい個体は `src/content/creatures/[slug]/index.md` を直接作成する
+  （SYM-001〜003 はこの方式で追加された。markdown には entries.js に無い
+  `tags` `series` `related` `category` `cover` 等がありスキーマが進化している）
+- 旧サイト一式（ルートの `*.html` `js/` `components/` `data/`）は 2026-07 に削除済み。
+  資産は `astro-src/public/` へ一本化されている
 - スタイル:
   - `astro-src/src/styles/global.css` — Astro共通スタイル（BaseLayout・`/zukan/` トップ・ハブページが読み込む）
   - `astro-src/public/css/style.css` — 旧サイト共通スタイル（`/zukan/` の各Astroページが読み込む）
