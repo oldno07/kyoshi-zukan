@@ -1,6 +1,13 @@
 ---
 import '../styles/global.css';
 
+/*
+ * カード画像の入れ方
+ *   1. 画像ファイルを astro-src/public/images/ に置く（実体。シンボリックリンク不可）
+ *   2. 下の image に "/images/ファイル名" を書く。public/ から先のパスを / 始まりで書く
+ *   3. image が null の間は罫線のみのプレースホルダーが表示される
+ * 推奨仕様：縦長 4:5、600×750px 程度、jpg。表示は最大136px幅なので2倍解像度で十分
+ */
 const channels = [
   {
     tab: 'サンプル',
@@ -9,6 +16,8 @@ const channels = [
     label: '図鑑を見る',
     href: '/zukan/',
     external: false,
+    image: null, // 例: '/images/hub-zukan.jpg'（hub-agave-cat.jpg が配置済み）
+    alt: '',
   },
   {
     tab: 'サンプル',
@@ -17,6 +26,8 @@ const channels = [
     label: '研究所を覗く',
     href: '/labo',
     external: false,
+    image: null, // 例: '/images/hub-labo.jpg'
+    alt: '',
   },
   {
     tab: 'サンプル',
@@ -25,6 +36,8 @@ const channels = [
     label: '譲渡局へ',
     href: 'https://agavest.stores.jp/',
     external: true,
+    image: null, // 例: '/images/hub-store.jpg'
+    alt: '',
   },
 ];
 ---
@@ -74,7 +87,11 @@ const channels = [
       <div class="hub-cards">
         {channels.map((ch) => (
           <article class="hub-card">
-            <div class="hub-card-photo"></div>
+            <div class="hub-card-photo">
+              {ch.image && (
+                <img src={ch.image} alt={ch.alt} width="600" height="750" loading="lazy" />
+              )}
+            </div>
             <div class="hub-card-body">
               <span class="hub-card-tab">{ch.tab}</span>
               <h2 class="hub-card-title">{ch.title}</h2>
@@ -198,6 +215,13 @@ const channels = [
       aspect-ratio: 4 / 5;
       border: 1px solid var(--hub-line);
       border-radius: 4px;
+      overflow: hidden;
+    }
+    .hub-card-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .hub-card-body {
       min-width: 0;
