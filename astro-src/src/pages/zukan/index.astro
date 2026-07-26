@@ -22,10 +22,12 @@ const allCreatures = all
   .filter(e => e.data.category === 'creature')
   .sort((a, b) => a.data.no.localeCompare(b.data.no));
 
-// 発見数は published のみカウント（要件書4章：hidden は含めない）
-const published = allCreatures.filter(e => e.data.status === 'published');
+// 発見数は hidden を含む登録個体すべてをカウント（archived のみ除外）
+const counted = allCreatures.filter(e => e.data.status !== 'archived');
 const TOTAL = 25;
-const found = published.length;
+const found = counted.length;
+
+const published = allCreatures.filter(e => e.data.status === 'published');
 
 // 注目標本（featured: true かつ published）
 const featured = published.filter(e => e.data.featured);
@@ -50,7 +52,7 @@ const progressPct = Math.round((found / TOTAL) * 100);
 
 <BaseLayout
   title="鋸歯生物図鑑 — SAWTOOTH CREATURE OBSERVATION DATABASE"
-  description={`PELICAN WORKS / AGAVEST が観測・記録する鋸歯生物の図鑑データベース。現在 ${found} 体の観測記録を公開中。`}
+  description={`PELICAN WORKS / AGAVEST が観測・記録する鋸歯生物の図鑑データベース。現在 ${found} 体の観測記録を登録済み。`}
 >
   <!-- style.css を head に注入（既存CSSをそのまま使用） -->
   <link slot="head" rel="stylesheet" href="/css/style.css" />

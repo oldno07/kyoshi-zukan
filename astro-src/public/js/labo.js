@@ -167,41 +167,31 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 // ============================================================
-// 8. NEWS: news.js からデータを動的描画
+// 8. NEWS: /data/news.json からデータを動的描画
+//    （旧 data/news.js は 2026-07 廃止。JSON を唯一の正とする）
 // ============================================================
 const newsList = document.getElementById("news-list");
-if (newsList && window.NEWS) {
-  const TYPE_LABEL = {
-    new: "NEW",
-    event: "EVENT",
-    shop: "SHOP",
-    info: "INFO",
-  };
-
-  const STATUS_LABEL = {
-    upcoming: "開催予定",
-    ongoing: "開催中",
-    ended: "終了",
-  };
-
+if (newsList) {
+  const TYPE_LABEL = { new: "NEW", event: "EVENT", shop: "SHOP", info: "INFO" };
+  const STATUS_LABEL = { upcoming: "開催予定", ongoing: "開催中", ended: "終了" };
   const formatDate = (str) => str.replace(/-/g, ".");
 
-  const items = window.NEWS.slice(0, 5);
+  const renderNews = (data) => {
+    newsList.innerHTML = data
+      .slice(0, 5)
+      .map((item) => {
+        const typeLabel = TYPE_LABEL[item.type] ?? item.type.toUpperCase();
+        const statusBadge = item.status
+          ? `<span class="news-badge news-badge--status news-badge--${item.status}">${STATUS_LABEL[item.status]}</span>`
+          : "";
+        const linkBtn = item.link
+          ? `<a href="${item.link}" class="news-link" target="_blank" rel="noopener">${item.linkLabel}</a>`
+          : "";
+        const thumb = item.image
+          ? `<div class="news-thumb"><img src="${item.image}" alt="${item.title}" class="news-thumb-img" /></div>`
+          : `<div class="news-thumb news-thumb--empty"></div>`;
 
-  newsList.innerHTML = items
-    .map((item) => {
-      const typeLabel = TYPE_LABEL[item.type] ?? item.type.toUpperCase();
-      const statusBadge = item.status
-        ? `<span class="news-badge news-badge--status news-badge--${item.status}">${STATUS_LABEL[item.status]}</span>`
-        : "";
-      const linkBtn = item.link
-        ? `<a href="${item.link}" class="news-link" target="_blank" rel="noopener">${item.linkLabel}</a>`
-        : "";
-      const thumb = item.image
-        ? `<div class="news-thumb"><img src="${item.image}" alt="${item.title}" class="news-thumb-img" /></div>`
-        : `<div class="news-thumb news-thumb--empty"></div>`;
-
-      return `
+        return `
       <div class="news-item">
         ${thumb}
         <div class="news-item-body">
@@ -215,8 +205,17 @@ if (newsList && window.NEWS) {
         ${linkBtn}
       </div>
     `;
+      })
+      .join("");
+  };
+
+  fetch("/data/news.json")
+    .then((res) => {
+      if (!res.ok) throw new Error(`news.json ${res.status}`);
+      return res.json();
     })
-    .join("");
+    .then(renderNews)
+    .catch((err) => console.error("[labo] NEWS読み込みに失敗しました:", err));
 }
 // カードフリップ
 document.querySelectorAll(".catalog-card").forEach((card) => {
