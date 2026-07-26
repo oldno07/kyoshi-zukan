@@ -968,7 +968,8 @@ body::after {
 }
 
 /* ============================================================
-   MOBILE FIXED FOOTER BAR
+   MOBILE FIXED FOOTER BAR — 画面下に追尾するフッター
+   ここが唯一の定義場所。style.css 側の重複は削除済み（2026-07-26 一本化）
    ============================================================ */
 .mobile-fixed-footer {
   display: none;
@@ -977,7 +978,7 @@ body::after {
   left: 0;
   right: 0;
   z-index: 190;
-  background: rgba(17,17,16,0.98);
+  background: rgba(17, 17, 16, 0.98);
   border-top: 1px solid var(--br2);
   padding: 8px 16px;
   padding-bottom: calc(8px + env(safe-area-inset-bottom));
@@ -989,6 +990,11 @@ body::after {
 }
 .mobile-fixed-footer.visible { transform: translateY(0); }
 
+/* PCでは常に非表示 */
+@media (min-width: 901px) {
+  .mobile-fixed-footer { display: none !important; }
+}
+
 .mobile-footer-link {
   flex: 1;
   display: flex;
@@ -997,19 +1003,30 @@ body::after {
   justify-content: center;
   padding: 8px 4px;
   text-decoration: none;
-  color: rgba(136,135,128,0.8);
+  color: var(--ink3);          /* 生rgbaからトークン参照へ統一 */
   transition: all 0.2s;
   cursor: crosshair;
   border-radius: 4px;
 }
-.mobile-footer-link:hover { color: var(--g2); background: rgba(59,109,17,0.1); }
+.mobile-footer-link:hover {
+  color: var(--g);              /* --g2(明緑)から--g(濃緑)へ統一 */
+  background: rgba(59, 109, 17, 0.1);
+}
+.mobile-footer-link:active {
+  color: var(--g);
+  background: rgba(59, 109, 17, 0.2);
+}
 .mobile-footer-disabled { opacity: 0.3; cursor: default; }
-.mobile-footer-disabled:hover { background: transparent; color: rgba(136,135,128,0.8); }
+.mobile-footer-disabled:hover { background: transparent; color: var(--ink3); }
+
 .mobile-footer-icon {
   font-size: 16px;
   margin-bottom: 4px;
+  color: var(--ink3);
   transition: color 0.2s;
 }
+.mobile-footer-link:hover .mobile-footer-icon { color: var(--g); }
+
 .mobile-footer-text {
   font-family: "Shippori Mincho", serif;
   font-size: 11px;
