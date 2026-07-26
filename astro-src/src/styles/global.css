@@ -978,8 +978,10 @@ body::after {
   left: 0;
   right: 0;
   z-index: 190;
-  background: rgba(17, 17, 16, 0.98);
-  border-top: 1px solid var(--br2);
+  background: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
+  border-top: 1px solid rgba(255, 255, 255, 0.7);
   padding: 8px 16px;
   padding-bottom: calc(8px + env(safe-area-inset-bottom));
   justify-content: space-around;
@@ -989,6 +991,11 @@ body::after {
   transition: transform 0.3s ease;
 }
 .mobile-fixed-footer.visible { transform: translateY(0); }
+
+/* backdrop-filter 非対応環境では透過させず、ほぼ不透明の白にする */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .mobile-fixed-footer { background: rgba(255, 255, 255, 0.94); }
+}
 
 /* PCでは常に非表示 */
 @media (min-width: 901px) {
@@ -1003,7 +1010,7 @@ body::after {
   justify-content: center;
   padding: 8px 4px;
   text-decoration: none;
-  color: var(--ink3);          /* 生rgbaからトークン参照へ統一 */
+  color: var(--ink2);          /* 生rgbaからトークン参照へ統一 */
   transition: all 0.2s;
   cursor: crosshair;
   border-radius: 4px;
@@ -1022,7 +1029,7 @@ body::after {
 .mobile-footer-icon {
   font-size: 16px;
   margin-bottom: 4px;
-  color: var(--ink3);
+  color: var(--ink2);
   transition: color 0.2s;
 }
 .mobile-footer-link:hover .mobile-footer-icon { color: var(--g); }
@@ -1054,9 +1061,11 @@ body::after {
     left: 10px;
     right: 10px;
     padding-bottom: 8px;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.75);
     border-radius: 10px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.95) inset,
+      0 8px 26px rgba(17, 17, 16, 0.14);
     transform: translateY(calc(100% + 30px));
   }
   .mobile-fixed-footer.visible { transform: translateY(0); }
