@@ -10,9 +10,19 @@ import '../styles/global.css';
  */
 const channels = [
   {
-    tab: '記録庫',
+    tab: 'コンセプト',
+    title: '鋸歯生物研究所',
+    desc: '鋸歯生物がどんな作品なのか、写真でご紹介します。',
+    label: '研究所を見る',
+    href: '/labo',
+    external: false,
+    image: '/images/hub-labo.jpg',
+    alt: '鉢の縁から顔をのぞかせる赤い鋸歯生物',
+  },
+  {
+    tab: '作品一覧',
     title: '鋸歯生物図鑑',
-    desc: 'アガベ・塊根植物の棚に棲む、住人たちの記録。',
+    desc: 'これまでに作った鋸歯生物を、一体ずつ掲載しています。',
     label: '図鑑を見る',
     href: '/zukan/',
     external: false,
@@ -20,19 +30,9 @@ const channels = [
     alt: 'アガベの鉢の縁にぶら下がる鋸歯生物',
   },
   {
-    tab: '入口',
-    title: '鋸歯生物研究所',
-    desc: '動物でも植物でもない。でも、たしかにいる。',
-    label: '研究所を覗く',
-    href: '/labo',
-    external: false,
-    image: '/images/hub-labo.jpg',
-    alt: '鉢の縁から顔をのぞかせる赤い鋸歯生物',
-  },
-  {
-    tab: '譲渡窓口',
+    tab: 'オンラインショップ',
     title: '鋸歯生物譲渡局',
-    desc: '新しい個体との出会いは、ここから。',
+    desc: '作品の販売はこちらから。入荷は不定期です。',
     label: '譲渡局へ',
     href: 'https://agavest.stores.jp/',
     external: true,
@@ -48,12 +48,12 @@ const channels = [
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PelicanWorks</title>
-  <meta name="description" content="棚を見守る生き物が、そこにいます。" />
+  <meta name="description" content="植物棚に置く生き物を、樹脂粘土で作っています。" />
   <link rel="canonical" href="https://pelicanworks.site/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="PelicanWorks" />
-  <meta property="og:description" content="棚を見守る生き物が、そこにいます。" />
+  <meta property="og:description" content="植物棚に置く生き物を、樹脂粘土で作っています。" />
   <meta property="og:url" content="https://pelicanworks.site/" />
   <meta property="og:site_name" content="PelicanWorks" />
   <meta name="twitter:card" content="summary" />
@@ -80,7 +80,7 @@ const channels = [
       <header class="hub-head">
         <h1 class="hub-brand">PelicanWorks</h1>
         <div class="hub-tagline-wrap">
-          <p class="hub-tagline">棚を見守る生き物が、<br />そこにいます。</p>
+          <p class="hub-tagline">植物棚に置く生き物を、<br />樹脂粘土で作っています。</p>
         </div>
       </header>
 
