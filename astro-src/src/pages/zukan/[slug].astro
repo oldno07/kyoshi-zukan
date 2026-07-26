@@ -1,7 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import FooterIcon from '../../components/FooterIcon.astro';
 
 export async function getStaticPaths() {
   // hidden も含めて全件取得（欠番演出ページを生成するため）
@@ -362,28 +361,28 @@ const ogDescription = isHidden
     {prev
       ? (
         <a href={`/zukan/${prev.slug}/`} class="mobile-footer-link">
-          <span class="mobile-footer-icon"><FooterIcon name="prev" /></span>
+          <span class="mobile-footer-icon">◈</span>
           <span class="mobile-footer-text">前の個体</span>
         </a>
       )
       : <span class="mobile-footer-link mobile-footer-disabled">
-          <span class="mobile-footer-icon"><FooterIcon name="prev" /></span>
+          <span class="mobile-footer-icon">◈</span>
           <span class="mobile-footer-text">前の個体</span>
         </span>
     }
     <a href="/zukan/" class="mobile-footer-link">
-      <span class="mobile-footer-icon"><FooterIcon name="ledger" /></span>
-      <span class="mobile-footer-text">図鑑トップ</span>
+      <span class="mobile-footer-icon">◈</span>
+      <span class="mobile-footer-text">一覧へ戻る</span>
     </a>
     {next
       ? (
         <a href={`/zukan/${next.slug}/`} class="mobile-footer-link">
-          <span class="mobile-footer-icon"><FooterIcon name="next" /></span>
+          <span class="mobile-footer-icon">◈</span>
           <span class="mobile-footer-text">次の個体</span>
         </a>
       )
       : <span class="mobile-footer-link mobile-footer-disabled">
-          <span class="mobile-footer-icon"><FooterIcon name="next" /></span>
+          <span class="mobile-footer-icon">◈</span>
           <span class="mobile-footer-text">次の個体</span>
         </span>
     }

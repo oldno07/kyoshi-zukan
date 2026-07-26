@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import newsData from '../../../public/data/news.json';
-import FooterIcon from '../../components/FooterIcon.astro';
 
 const TYPE_LABEL: Record<string, string> = {
   new: 'NEW',
@@ -575,15 +574,15 @@ const progressPct = Math.round((found / TOTAL) * 100);
   <!-- ── モバイル固定フッター ────────────────────────────────── -->
   <div class="mobile-fixed-footer" id="mobile-fixed-footer">
     <a href="#catalog" class="mobile-footer-link">
-      <span class="mobile-footer-icon"><FooterIcon name="catalog" /></span>
+      <span class="mobile-footer-icon">◈</span>
       <span class="mobile-footer-text">標本目録</span>
     </a>
     <a href="/zukan/about/" class="mobile-footer-link">
-      <span class="mobile-footer-icon"><FooterIcon name="world" /></span>
+      <span class="mobile-footer-icon">◈</span>
       <span class="mobile-footer-text">世界観</span>
     </a>
     <a href="https://agavest.stores.jp/?utm_source=zukan&utm_medium=internal&utm_campaign=species_link" target="_blank" class="mobile-footer-link">
-      <span class="mobile-footer-icon"><FooterIcon name="transfer" /></span>
+      <span class="mobile-footer-icon">◈</span>
       <span class="mobile-footer-text">入手する</span>
     </a>
   </div>

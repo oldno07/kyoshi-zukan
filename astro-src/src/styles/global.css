@@ -1031,12 +1031,6 @@ body::after {
   margin-bottom: 4px;
   color: var(--ink2);
   transition: color 0.2s;
-  line-height: 0;              /* ← 追加。インラインSVGの余白を除去 */
-}
-.mobile-footer-icon svg {      /* ← ブロックごと新規追加 */
-  width: 16px;
-  height: 16px;
-  display: block;
 }
 .mobile-footer-link:hover .mobile-footer-icon { color: var(--g); }
 
