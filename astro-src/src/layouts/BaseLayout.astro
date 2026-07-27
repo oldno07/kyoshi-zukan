@@ -51,7 +51,7 @@ const ogImageAbsolute = ogImage ? (ogImage.startsWith('http') ? ogImage : siteUr
   </main>
   <Footer />
 
-  <!-- SYSTEM CONNECTION OVERLAY（モバイルフッターリンクのページ遷移演出） -->
+  <!-- SYSTEM CONNECTION OVERLAY（モバイルフッターリンク・図鑑カードのページ遷移演出） -->
   <div class="system-connection-overlay" id="system-connection-overlay">
     <div class="system-connection-content">
       <div class="system-connection-noise"></div>
@@ -63,7 +63,7 @@ const ogImageAbsolute = ogImage ? (ogImage.startsWith('http') ? ogImage : siteUr
 
   <script>
     function initSystemConnectionLinks() {
-      const systemLinks = document.querySelectorAll('.mobile-footer-link');
+      const systemLinks = document.querySelectorAll('.mobile-footer-link, .idx-card, .idx-feat-card');
       const overlay = document.getElementById('system-connection-overlay');
       const textEl = document.getElementById('system-connection-text');
       const statusEl = document.getElementById('system-connection-status');
