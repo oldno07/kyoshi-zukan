@@ -24,7 +24,7 @@ tags: ["動物優性型", "ネコ型", "アガベ棚", "初期発見種"]
 series: []
 related: ["002-black-nyanko-blue", "004-nyagabe-titanota", "021-gnyacilius"]
 
-shopUrl: "https://agavest.stores.jp/?category_id=6a6070951886eb2a35f5bcdd&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_001"
+shopUrl: "https://agavest.stores.jp/?category_id=6a6070951886eb2a35f5bcdd"
 price: null
 soldOut: false
 

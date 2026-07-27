@@ -24,7 +24,7 @@ tags: ["多肉植物型", "塊根植物", "ネコ型", "乾燥地帯"]
 series: []
 related: ["020-graci-ris", "001-snyaggletooth"]
 
-shopUrl: "https://agavest.stores.jp/?category_id=6a3e0ce35d38e9155cdbef88&utm_source=zukan&utm_medium=internal&utm_campaign=species_link&utm_content=species_021"
+shopUrl: "https://agavest.stores.jp/?category_id=6a3e0ce35d38e9155cdbef88"
 price: null
 soldOut: false
 
