@@ -35,13 +35,27 @@ const ogImageAbsolute = ogImage ? (ogImage.startsWith('http') ? ogImage : siteUr
   <meta name="twitter:card" content="summary_large_image" />
   <slot name="head" />
 
-  <!-- GA4 (9-4: G-9MRML3BZ6M 正式採用) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MRML3BZ6M"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9MRML3BZ6M');
+  <!-- GA4 (9-4: G-9MRML3BZ6M 正式採用)。本番ホストのみ読み込む（開発・プレビューデプロイでの計測混入を防止） -->
+  <script is:inline>
+    (function () {
+      var ALLOWED = [
+        'pelicanworks.site',
+        'www.pelicanworks.site',
+        'kyoshi-zukan.pages.dev'
+      ];
+      if (ALLOWED.indexOf(location.hostname) === -1) return;
+
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9MRML3BZ6M';
+      document.head.appendChild(s);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ window.dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-9MRML3BZ6M');
+    })();
   </script>
 </head>
 <body>
