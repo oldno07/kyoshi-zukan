@@ -20,7 +20,7 @@ notes: "鋸歯生物の根圏周辺の土壌を掘り返し、通気性と排水
 
 cover: "/images/unknown.png"
 
-shopUrl: "https://agavest.stores.jp/?utm_source=zukan&utm_medium=internal&utm_campaign=species_link"
+shopUrl: "https://agavest.stores.jp/"
 soldOut: false
 ---
 

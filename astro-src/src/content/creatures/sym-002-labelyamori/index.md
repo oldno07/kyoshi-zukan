@@ -20,7 +20,7 @@ notes: "鋸歯生物の個体識別用に、特殊な粘液で標識ラベルを
 
 cover: "/images/unknown.png"
 
-shopUrl: "https://agavest.stores.jp/?utm_source=zukan&utm_medium=internal&utm_campaign=species_link"
+shopUrl: "https://agavest.stores.jp/"
 soldOut: false
 ---
 
