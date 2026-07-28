@@ -220,14 +220,24 @@ const ogDescription = isHidden
     </div>
 
     {!isHidden && data.shopUrl && !data.soldOut && (
-      <a href={data.shopUrl} class="cd-shop" target="_blank" rel="noopener">
-        → ACQUISITION REQUEST
+      <a href={data.shopUrl} class="cd-shop-panel" target="_blank" rel="noopener">
+        <div class="cd-shop-panel-title">
+          <span>TRANSFER FILE / 譲渡可能個体</span>
+          <span>→</span>
+        </div>
+        <div class="cd-shop-panel-price">
+          {data.price ? `¥${data.price.toLocaleString()}` : '入手条件：譲渡局で開示'}
+        </div>
+        <p class="cd-shop-panel-sub">STORESにて譲渡申請を受付</p>
+        <span class="cd-shop-panel-btn">この個体を迎え入れる →</span>
       </a>
     )}
     {!isHidden && data.soldOut && (
-      <p style="font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--ink3);margin-bottom:40px;">
-        SOLD OUT
-      </p>
+      <div class="cd-shop-soldout">
+        <div class="cd-shop-soldout-title">SPECIMEN / 標本</div>
+        <div class="cd-shop-soldout-price">SOLD OUT</div>
+        <p class="cd-shop-soldout-sub">この個体の販売は終了しました</p>
+      </div>
     )}
 
   </article>

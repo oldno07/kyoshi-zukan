@@ -373,22 +373,80 @@ body::after {
   letter-spacing: 0.2em;
 }
 
-/* -- shop link -- */
-.cd-shop {
-  display: inline-block;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  padding: 12px 24px;
-  border: 1px solid var(--g);
-  color: var(--g);
+/* -- shop panel: available -- */
+.cd-shop-panel {
+  display: block;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s;
+  background: var(--bg);
+  border: 1px solid var(--br2);
+  border-top: 3px solid var(--g);
+  padding: 20px 22px;
   margin-bottom: 40px;
 }
-.cd-shop:hover {
-  background: var(--g);
+.cd-shop-panel-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--g);
+  border-bottom: 1px solid var(--br2);
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+.cd-shop-panel-price {
+  font-family: var(--mono);
+  font-size: 19px;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.cd-shop-panel-sub {
+  font-size: 12px;
+  color: var(--ink3);
+  margin-bottom: 14px;
+}
+.cd-shop-panel-btn {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
   color: #fff;
+  background: var(--g);
+  padding: 9px 16px;
+  transition: opacity 0.2s;
+}
+.cd-shop-panel:hover .cd-shop-panel-btn {
+  opacity: 0.85;
+}
+
+/* -- shop panel: sold out -- */
+.cd-shop-soldout {
+  background: var(--bg);
+  border: 1px solid var(--br2);
+  padding: 18px 22px;
+  opacity: 0.7;
+  margin-bottom: 40px;
+}
+.cd-shop-soldout-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--g);
+  border-bottom: 1px solid var(--br2);
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+.cd-shop-soldout-price {
+  font-family: var(--mono);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--ink3);
+  text-decoration: line-through;
+  margin-bottom: 6px;
+}
+.cd-shop-soldout-sub {
+  font-size: 12px;
+  color: var(--ink3);
 }
 
 /* -- gallery -- */
