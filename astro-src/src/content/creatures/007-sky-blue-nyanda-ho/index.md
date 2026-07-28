@@ -5,7 +5,7 @@ category: "creature"
 
 name_jp: "スカイブルーニャンダホー"
 name_en: "Sky Blue Nyanda Ho"
-tag: "BEAST-DOMINANT Aerial Type"
+tag: "BEAST-DOMINANT"
 rarity: "UNCOMMON"
 
 plant: 10

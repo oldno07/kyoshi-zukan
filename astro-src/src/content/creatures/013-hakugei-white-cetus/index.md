@@ -5,7 +5,7 @@ category: "creature"
 
 name_jp: "白鯨 ハクゲイ"
 name_en: "Hakugei White Cetus"
-tag: "AQUATIC-SUCCULENT HYBRID"
+tag: "SUCCULENT-TYPE"
 rarity: "COMMON"
 
 plant: 20

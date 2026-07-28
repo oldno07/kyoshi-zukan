@@ -5,7 +5,7 @@ category: "creature"
 
 name_jp: "ビカクモリ"
 name_en: "Platybat Mosswing"
-tag: "Plant-Dominant Aerial Type"
+tag: "PLANT-DOMINANT"
 rarity: "UNCOMMON"
 
 plant: 68

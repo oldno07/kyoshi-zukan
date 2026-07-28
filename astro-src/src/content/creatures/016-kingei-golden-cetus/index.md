@@ -5,7 +5,7 @@ category: "creature"
 
 name_jp: "金鯨"
 name_en: "Kingei Golden Cetus"
-tag: "AQUATIC-SUCCULENT HYBRID"
+tag: "SUCCULENT-TYPE"
 rarity: "LEGEND"
 
 plant: 10

@@ -5,7 +5,7 @@ category: "creature"
 
 name_jp: "美角鹿 -ビカクシカ-"
 name_en: "Beautiful Horn Deer"
-tag: "Beast-Dominant"
+tag: "BEAST-DOMINANT"
 rarity: "RARE"
 
 plant: 74

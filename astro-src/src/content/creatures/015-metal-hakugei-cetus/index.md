@@ -5,7 +5,7 @@ category: "creature"
 
 name_jp: "メタル白鯨"
 name_en: "Metal Hakugei Cetus"
-tag: "AQUATIC-SUCCULENT HYBRID"
+tag: "SUCCULENT-TYPE"
 rarity: "RARE"
 
 plant: 5
