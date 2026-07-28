@@ -372,6 +372,8 @@ body::after {
   font-size: 11px;
   letter-spacing: 0.2em;
 }
+/* デスクトップでは写真エリアへのオーバーレイ版は非表示（名前エリア内の通常版のみ表示） */
+.cd-status-badge--overlay { display: none; }
 
 /* -- shop panel: available -- */
 .cd-shop-panel {
@@ -1162,10 +1164,25 @@ body::after {
   /* 最長の個体名（12文字）でも1行に収まるよう、hero-lの横パディング(24px×2)を
      差し引いた幅から逆算した可変フォントサイズにする（安全マージン込み） */
   .cd-name-jp { font-size: clamp(18px, calc(8.3vw - 6px), 30px); }
-  /* 英語名とSTATUSバッジ（● MONARCH等）の間が他の行間より広く空いていたのを詰める */
-  .cd-name-en { margin-bottom: 10px; }
+  /* 英語名が名前エリアの最後の要素になるため、余分な下余白を詰める
+     （STATUSバッジは写真のグレーエリアへ移設。下記 .cd-status-badge--overlay 参照） */
+  .cd-name-en { margin-bottom: 0; }
   .cd-hero-r { min-height: 0; padding: 16px 24px; }
   .cd-cover { max-height: 200px; }
+  /* STATUSバッジ（● MONARCH等）を名前エリアから写真のグレーエリアへ移し、
+     名前エリアをよりコンパクトにする */
+  .cd-status-badge--inline { display: none; }
+  .cd-status-badge--overlay {
+    display: inline-block;
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    z-index: 1;
+    background: var(--bg);
+    border: 1px solid var(--br2);
+    padding: 4px 10px;
+    font-size: 10px;
+  }
   .cd-status { padding: 16px 24px; }
   .cd-status-title { margin-bottom: 12px; }
   .cd-bars { gap: 8px; }

@@ -111,12 +111,12 @@ const ogDescription = isHidden
       </p>
 
       {!isHidden && data.status_label && (
-        <span class="cd-status-badge" style={`color: ${data.status_color ?? 'var(--g)'}`}>
+        <span class="cd-status-badge cd-status-badge--inline" style={`color: ${data.status_color ?? 'var(--g)'}`}>
           ● {data.status_label}
         </span>
       )}
       {isHidden && (
-        <span class="cd-status-badge" style="color:var(--red);">
+        <span class="cd-status-badge cd-status-badge--inline" style="color:var(--red);">
           ● ACCESS RESTRICTED
         </span>
       )}
@@ -129,6 +129,17 @@ const ogDescription = isHidden
           ? <img src={data.cover} alt={data.name_jp} class="cd-cover" loading="eager" />
           : <div class="cd-no-visual">NO VISUAL DATA</div>
       }
+      <!-- モバイルではSTATUSバッジを名前エリアではなく写真のグレーエリアに重ねて表示し、名前エリアをよりコンパクトにする -->
+      {!isHidden && data.status_label && (
+        <span class="cd-status-badge cd-status-badge--overlay" style={`color: ${data.status_color ?? 'var(--g)'}`}>
+          ● {data.status_label}
+        </span>
+      )}
+      {isHidden && (
+        <span class="cd-status-badge cd-status-badge--overlay" style="color:var(--red);">
+          ● ACCESS RESTRICTED
+        </span>
+      )}
     </div>
   </section>
 
