@@ -5,7 +5,7 @@ category: "creature"
 
 name_jp: "ブーファメ（仮）"
 name_en: "Boophame"
-tag: "beast-dominant"
+tag: "BEAST-DOMINANT"
 rarity: "RARE"
 
 plant: 92

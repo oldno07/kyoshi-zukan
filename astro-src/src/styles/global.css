@@ -188,6 +188,8 @@ body::after {
   color: var(--ink2);
   background: var(--bg2);
 }
+/* モバイル専用（英語名の横に並ぶ版）。デスクトップでは非表示 */
+.cd-tag--beside { display: none; }
 
 /* rarity badge */
 .cd-rarity {
@@ -203,6 +205,8 @@ body::after {
 .cd-rarity.RARE    { background: #e8f4fc; color: var(--rar-r); border: 1px solid var(--rar-r); }
 .cd-rarity.UNCOMMON { background: var(--gp);   color: var(--rar-uc); border: 1px solid var(--rar-uc); }
 .cd-rarity.COMMON  { background: var(--bg3); color: var(--rar-c); border: 1px solid var(--br2); }
+/* モバイル専用（写真エリアへの重ね表示版）。デスクトップでは非表示 */
+.cd-rarity--overlay { display: none; }
 
 /* hero right: image */
 .cd-hero-r {
@@ -1186,6 +1190,54 @@ body::after {
   .cd-status { padding: 16px 24px; }
   .cd-status-title { margin-bottom: 12px; }
   .cd-bars { gap: 8px; }
+
+  /* meta行（No. / レア度 / タグ）の再配置：
+     No.は上部パンくずと重複するため非表示、レア度は写真エリア右上、
+     タグは英語名と同じ行へ移す。結果、meta行自体は空になるため非表示にする */
+  .cd-hero-meta { display: none; }
+  .cd-rarity--overlay.LEGEND,
+  .cd-rarity--overlay.EPIC,
+  .cd-rarity--overlay.RARE,
+  .cd-rarity--overlay.UNCOMMON,
+  .cd-rarity--overlay.COMMON,
+  .cd-rarity--overlay.cd-rarity--denied {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    padding: 3px 7px;
+    background: rgba(255, 255, 255, 0.92);
+    border: none;
+    border-radius: 0;
+    text-transform: uppercase;
+  }
+  .cd-rarity--overlay.LEGEND    { color: var(--rar-l); }
+  .cd-rarity--overlay.EPIC      { color: var(--rar-e); }
+  .cd-rarity--overlay.RARE      { color: var(--rar-r); }
+  .cd-rarity--overlay.UNCOMMON  { color: var(--rar-uc); }
+  .cd-rarity--overlay.COMMON    { color: var(--rar-c); }
+  .cd-rarity--overlay.cd-rarity--denied { color: var(--red); }
+
+  .cd-name-en-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
+  /* タグは種別を問わず一律で小さくする（出し分けなし） */
+  .cd-tag--beside {
+    display: inline-block;
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    padding: 2px 6px;
+  }
   .cd-body { padding: 40px 24px; }
   .cd-gallery { padding: 32px 24px; }
   .cd-videos { padding: 32px 24px; }

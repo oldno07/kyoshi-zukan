@@ -5,7 +5,7 @@ category: "creature"
 
 name_jp: "もち鯨"
 name_en: "Mochi Cetus"
-tag: "AQUATIC-SUCCULENT HYBRID"
+tag: "SUCCULENT-TYPE"
 rarity: "UNCOMMON"
 
 plant: 25

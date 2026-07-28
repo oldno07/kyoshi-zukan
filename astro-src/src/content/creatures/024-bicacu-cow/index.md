@@ -5,7 +5,7 @@ category: "creature"
 
 name_jp: "ビカクウシ"
 name_en: "Bicacu Cow"
-tag: "Beast-Dominant"
+tag: "BEAST-DOMINANT"
 rarity: "COMMON"
 
 plant: 34

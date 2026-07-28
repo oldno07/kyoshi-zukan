@@ -98,17 +98,22 @@ const ogDescription = isHidden
       <div class="cd-hero-meta">
         <span class="cd-no">No.{data.no}</span>
         {isHidden
-          ? <span class="cd-rarity" style="background:var(--red);color:#fff;border-color:var(--red);">ACCESS DENIED</span>
-          : <span class={`cd-rarity ${data.rarity}`}>{data.rarity}</span>
+          ? <span class="cd-rarity cd-rarity--inline" style="background:var(--red);color:#fff;border-color:var(--red);">ACCESS DENIED</span>
+          : <span class={`cd-rarity cd-rarity--inline ${data.rarity}`}>{data.rarity}</span>
         }
-        {!isHidden && <span class="cd-tag">{data.tag}</span>}
+        {!isHidden && <span class="cd-tag cd-tag--inline">{data.tag}</span>}
       </div>
       <h1 class="cd-name-jp" style={isHidden ? 'color:var(--red);letter-spacing:0.1em;' : ''}>
         {isHidden ? 'UNKNOWN ENTITY' : data.name_jp}
       </h1>
-      <p class="cd-name-en" style={isHidden ? 'color:var(--ink3);' : ''}>
-        {isHidden ? '██████' : data.name_en}
-      </p>
+      <!-- モバイルでは英語名と種族タグを同じ行・右寄せに配置する（cd-name-en-rowは
+           デスクトップでは素通しのラッパーで見た目に影響しない） -->
+      <div class="cd-name-en-row">
+        <p class="cd-name-en" style={isHidden ? 'color:var(--ink3);' : ''}>
+          {isHidden ? '██████' : data.name_en}
+        </p>
+        {!isHidden && <span class="cd-tag cd-tag--beside">{data.tag}</span>}
+      </div>
 
       {!isHidden && data.status_label && (
         <span class="cd-status-badge cd-status-badge--inline" style={`color: ${data.status_color ?? 'var(--g)'}`}>
@@ -128,6 +133,11 @@ const ogDescription = isHidden
         : data.cover
           ? <img src={data.cover} alt={data.name_jp} class="cd-cover" loading="eager" />
           : <div class="cd-no-visual">NO VISUAL DATA</div>
+      }
+      <!-- モバイルではレア度バッジも名前エリアではなく写真のグレーエリア右上に重ねて表示する -->
+      {isHidden
+        ? <span class="cd-rarity cd-rarity--overlay cd-rarity--denied">ACCESS DENIED</span>
+        : <span class={`cd-rarity cd-rarity--overlay ${data.rarity}`}>{data.rarity}</span>
       }
       <!-- モバイルではSTATUSバッジを名前エリアではなく写真のグレーエリアに重ねて表示し、名前エリアをよりコンパクトにする -->
       {!isHidden && data.status_label && (
