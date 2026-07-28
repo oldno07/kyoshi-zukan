@@ -15,7 +15,7 @@ danger: 60
 habitat: "棚外縁重圧域"
 size: "2.4m"
 mobility: "重量型"
-status_label: "STABLE"
+status_label: "STABLE / 安定状態"
 top: "Agave Horrida"
 tags: ["動物優性型", "大型種", "高危険度"]
 series: []

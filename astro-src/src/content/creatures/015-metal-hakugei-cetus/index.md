@@ -15,7 +15,7 @@ danger: 56
 habitat: "棚水圏構造改変域"
 size: "18m+"
 mobility: "浮遊型"
-status_label: "MONARCH"
+status_label: "MONARCH / 支配個体"
 status_color: "#e0b94f"
 top: "Agave Titanota \"白鯨\""
 tags: ["水棲型", "多肉混合型", "機械融合", "鯨族"]

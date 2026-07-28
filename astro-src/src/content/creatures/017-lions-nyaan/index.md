@@ -15,7 +15,7 @@ danger: 35
 habitat: "草原地帯"
 size: "170mm"
 mobility: "緩慢"
-status_label: "ACTIVE"
+status_label: "ACTIVE / 活性状態"
 top: "Agave Titanota \"ライオンズメーン\""
 tags: ["動物優性型", "ネコ型", "草原種"]
 series: []

@@ -15,7 +15,7 @@ danger: 5
 habitat: "アガベ棚周辺"
 size: "166mm"
 mobility: "緩慢"
-status_label: "ACTIVE"
+status_label: "ACTIVE / 活性状態"
 status_color: "var(--g)"
 
 top: 'Agave Titanota "Snaggle Tooth"'

@@ -15,7 +15,7 @@ danger: 0
 habitat: "アガベ棚上層環境"
 size: "160mm"
 mobility: "高速飛行"
-status_label: "MONARCH"
+status_label: "MONARCH / 支配個体"
 status_color: "#e0b94f"
 top: "Agave Titanota \"Black &Blue\""
 tags: ["動物優性型", "飛行型", "アガベ棚"]

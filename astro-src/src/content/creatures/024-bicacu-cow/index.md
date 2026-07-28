@@ -15,7 +15,7 @@ danger: 3
 habitat: "湿潤森林"
 size: "1.8m"
 mobility: "重量突進型"
-status_label: "STABLE"
+status_label: "STABLE / 安定状態"
 top: "Platycerium"
 tags: ["動物優性型", "森林種", "ビカク族"]
 series: ["ビカク族"]

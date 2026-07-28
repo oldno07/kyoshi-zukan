@@ -15,7 +15,7 @@ danger: 85
 habitat: "棚禁域群体崩壊層"
 size: "2.7m"
 mobility: "重装型"
-status_label: "AGITATED"
+status_label: "AGITATED / 興奮状態"
 status_color: "#d65a5a"
 top: "Agave Titanota \"filigree\""
 tags: ["動物優性型", "群体種", "フィリグリズリー族"]

@@ -15,7 +15,7 @@ danger: 20
 habitat: "植物棚の水場"
 size: "12m〜18m"
 mobility: "遊泳型"
-status_label: "STABLE"
+status_label: "STABLE / 安定状態"
 top: "Agave Titanota 白鯨"
 tags: ["水棲型", "多肉混合型", "鯨族"]
 series: ["鯨族"]
