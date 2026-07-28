@@ -1155,10 +1155,15 @@ body::after {
 }
 
 @media (max-width: 768px) {
-  .cd-hero { grid-template-columns: 1fr; }
-  .cd-hero-l { padding: 40px 24px; border-right: none; border-bottom: 1px solid var(--br2); }
-  .cd-hero-r { min-height: 300px; padding: 32px 24px; }
-  .cd-status { padding: 24px; }
+  /* ファーストビュー圧縮：個体名・写真・BIOLOGICAL STATUSを画面内に収めるため
+     hero/status のパディングと写真の最大高さを縮小する */
+  .cd-hero { grid-template-columns: 1fr; min-height: 0; }
+  .cd-hero-l { padding: 24px 24px 20px; border-right: none; border-bottom: 1px solid var(--br2); }
+  .cd-hero-r { min-height: 0; padding: 16px 24px; }
+  .cd-cover { max-height: 200px; }
+  .cd-status { padding: 16px 24px; }
+  .cd-status-title { margin-bottom: 12px; }
+  .cd-bars { gap: 8px; }
   .cd-body { padding: 40px 24px; }
   .cd-gallery { padding: 32px 24px; }
   .cd-videos { padding: 32px 24px; }
