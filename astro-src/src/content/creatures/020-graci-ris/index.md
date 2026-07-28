@@ -15,7 +15,7 @@ danger: 10
 habitat: "乾燥地帯"
 size: "212mm"
 mobility: "緩慢"
-status_label: "THIRSTY"
+status_label: "THIRSTY / 渇水状態"
 status_color: "#d6b85a"
 top: "Pachypodium Gracilius"
 tags: ["多肉植物型", "乾燥地帯"]

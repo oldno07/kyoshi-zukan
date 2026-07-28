@@ -15,7 +15,7 @@ danger: 35
 habitat: "棚外縁環境"
 size: "248mm"
 mobility: "俊敏"
-status_label: "ACTIVE"
+status_label: "ACTIVE / 活性状態"
 top: "Agave Oteroi"
 tags: ["動物優性型", "爬虫類型", "アガベ棚"]
 series: []

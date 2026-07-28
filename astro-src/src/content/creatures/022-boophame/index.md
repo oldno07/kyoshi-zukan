@@ -15,7 +15,7 @@ danger: 18
 habitat: "乾燥棚"
 size: "320mm"
 mobility: "超緩慢"
-status_label: "DORMANT"
+status_label: "DORMANT / 休眠状態"
 status_color: "#d6b85a"
 top: "Boophane haemanthoides"
 tags: []

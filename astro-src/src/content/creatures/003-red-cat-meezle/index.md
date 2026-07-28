@@ -15,7 +15,7 @@ danger: 25
 habitat: "スポットライト直下"
 size: "164mm"
 mobility: "夜間活性"
-status_label: "ACTIVE"
+status_label: "ACTIVE / 活性状態"
 top: "Agave Titanota \"Red Catweezle\""
 tags: ["動物優性型", "ネコ型"]
 series: []

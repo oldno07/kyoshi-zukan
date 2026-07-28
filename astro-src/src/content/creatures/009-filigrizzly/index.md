@@ -15,7 +15,7 @@ danger: 30
 habitat: "棚外縁群体領域"
 size: "1.8m"
 mobility: "群行型"
-status_label: "STABLE"
+status_label: "STABLE / 安定状態"
 top: "Agave Titanota \"filigree\""
 tags: ["動物優性型", "群体種", "フィリグリズリー族"]
 series: ["フィリグリズリー"]

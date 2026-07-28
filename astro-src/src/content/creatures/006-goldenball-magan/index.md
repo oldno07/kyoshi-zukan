@@ -15,7 +15,7 @@ danger: 90
 habitat: "棚禁域"
 size: "4.1m"
 mobility: "群体統率"
-status_label: "MONARCH"
+status_label: "MONARCH / 支配個体"
 status_color: "#e0b94f"
 top: "Agave Titanota \"魔丸\""
 tags: ["動物優性型", "禁域種"]

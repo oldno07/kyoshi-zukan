@@ -15,7 +15,7 @@ danger: 75
 habitat: "棚水圏中枢干渉域"
 size: "18m級"
 mobility: "遊泳型"
-status_label: "MONITOR"
+status_label: "MONITOR / 監視個体"
 status_color: "#e0b94f"
 top: "Agave Titanota \"黒鯨\""
 tags: ["動物優性型", "水棲型", "鯨族"]

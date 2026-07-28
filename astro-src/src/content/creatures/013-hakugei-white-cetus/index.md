@@ -15,7 +15,7 @@ danger: 80
 habitat: "棚水圏"
 size: "18m+"
 mobility: "浮遊型"
-status_label: "MYTHIC"
+status_label: "MYTHIC / 神話級"
 status_color: "#e0b94f"
 top: "Agave Titanota \"白鯨\""
 tags: ["水棲型", "多肉混合型", "鯨族"]
