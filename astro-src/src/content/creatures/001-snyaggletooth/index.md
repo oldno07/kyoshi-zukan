@@ -25,7 +25,7 @@ series: []
 related: ["002-black-nyanko-blue", "004-nyagabe-titanota", "021-gnyacilius"]
 
 shopUrl: "https://agavest.stores.jp/?category_id=6a6070951886eb2a35f5bcdd"
-price: 4,000円
+price: null
 soldOut: false
 
 notes: "こんな生き物を見るのは初めてだ。猫のようにも見えるが、尻尾には植物のような鋸歯がある。いったい何者なのか、観測を続ける。"
