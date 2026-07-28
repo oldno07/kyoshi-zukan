@@ -160,6 +160,27 @@ const ogDescription = isHidden
     </div>
   </section>
 
+  <!-- mobile transfer teaser: compact EC entry point, shown only on narrow screens -->
+  {!isHidden && data.shopUrl && !data.soldOut && (
+    <a href={data.shopUrl} class="cd-transfer-mini" target="_blank" rel="noopener">
+      <div class="cd-transfer-mini-row">
+        <span class="cd-transfer-mini-tag">TRANSFER / 譲渡</span>
+        <span class="cd-transfer-mini-price">
+          {data.price ? `¥${data.price.toLocaleString()}` : '譲渡局で開示'}
+        </span>
+      </div>
+      <span class="cd-transfer-mini-cta">この個体を迎え入れる →</span>
+    </a>
+  )}
+  {!isHidden && data.soldOut && (
+    <div class="cd-transfer-mini cd-transfer-mini-soldout">
+      <div class="cd-transfer-mini-row">
+        <span class="cd-transfer-mini-tag">SPECIMEN / 標本</span>
+        <span class="cd-transfer-mini-price">SOLD OUT</span>
+      </div>
+    </div>
+  )}
+
   <!-- body -->
   <article class="cd-body">
 
