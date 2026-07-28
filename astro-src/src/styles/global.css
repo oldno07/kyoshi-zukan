@@ -449,6 +449,13 @@ body::after {
   color: var(--ink3);
 }
 
+/* -- mobile transfer teaser: compact EC entry below BIOLOGICAL STATUS -- */
+/* デスクトップでは非表示。実体は @media (max-width: 768px) 側で表示する */
+.cd-transfer-mini {
+  display: none;
+  text-decoration: none;
+}
+
 /* -- gallery -- */
 .cd-gallery {
   border-top: 1px solid var(--br2);
@@ -1160,6 +1167,49 @@ body::after {
   .cd-taxonomy { padding: 24px; }
   .cd-related { padding: 24px; }
   .cd-related-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
+
+  .cd-transfer-mini {
+    display: block;
+    background: var(--bg2);
+    border-top: 1px solid var(--br2);
+    border-bottom: 1px solid var(--br2);
+    padding: 12px 24px;
+    transition: opacity 0.2s;
+  }
+  .cd-transfer-mini:active { opacity: 0.8; }
+  .cd-transfer-mini-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .cd-transfer-mini-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--g);
+    white-space: nowrap;
+  }
+  .cd-transfer-mini-price {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink);
+    text-align: right;
+  }
+  .cd-transfer-mini-cta {
+    display: block;
+    margin-top: 6px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--g);
+    text-align: right;
+  }
+  .cd-transfer-mini-soldout { opacity: 0.7; }
+  .cd-transfer-mini-soldout .cd-transfer-mini-price {
+    text-decoration: line-through;
+    color: var(--ink3);
+  }
 }
 
 /* ============================================================
