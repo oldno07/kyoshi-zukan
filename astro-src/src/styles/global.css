@@ -427,6 +427,8 @@ body::after {
 
 /* -- shop panel: sold out -- */
 .cd-shop-soldout {
+  display: block;
+  text-decoration: none;
   background: var(--bg);
   border: 1px solid var(--br2);
   padding: 18px 22px;

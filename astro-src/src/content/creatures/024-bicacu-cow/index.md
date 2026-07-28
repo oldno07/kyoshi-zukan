@@ -20,7 +20,8 @@ top: "Platycerium"
 tags: ["動物優性型", "森林種", "ビカク族"]
 series: ["ビカク族"]
 related: ["023-beautiful-horn-deer", "025-platybat-mosswing"]
-soldOut: false
+shopUrl: "https://agavest.stores.jp/"
+soldOut: true
 notes: "ビカクシカ系幼体の標本化作業中、群れの中で明らかに異なる個体を確認した。体格や脚部構造はむしろ水牛に近い。アガベスト"
 namer: "@fukuboo"
 abilities:

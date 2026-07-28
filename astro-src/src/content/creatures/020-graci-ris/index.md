@@ -21,7 +21,8 @@ top: "Pachypodium Gracilius"
 tags: ["多肉植物型", "乾燥地帯"]
 series: []
 related: ["021-gnyacilius"]
-soldOut: false
+shopUrl: "https://agavest.stores.jp/"
+soldOut: true
 notes: "乾燥地帯で発見した小型個体。動きは極めて緩慢だが、水分を与えた直後だけ明確に活動量が増加した。塊根部分には想像以上の貯水能力があるらしく、環境変化そのものを蓄積しているようにも見える。アガベスト"
 abilities:
   - "デザートストレージコア"

@@ -21,7 +21,8 @@ top: "Agave Titanota \"Black &Blue\""
 tags: ["動物優性型", "飛行型", "アガベ棚"]
 series: []
 related: ["001-snyaggletooth", "025-platybat-mosswing"]
-soldOut: false
+shopUrl: "https://agavest.stores.jp/"
+soldOut: true
 notes: "領空域で浮遊する鋸歯ネコ型生物を確認。体表に空色変化あり。"
 namer: "@fukuboo"
 abilities:

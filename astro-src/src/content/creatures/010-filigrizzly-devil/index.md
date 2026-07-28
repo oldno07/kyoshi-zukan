@@ -21,7 +21,8 @@ top: "Agave Titanota \"filigree\""
 tags: ["動物優性型", "群体種", "フィリグリズリー族"]
 series: ["フィリグリズリー"]
 related: ["009-filigrizzly", "011-filigrizzly-monarch"]
-soldOut: false
+shopUrl: "https://agavest.stores.jp/"
+soldOut: true
 notes: "背部に視線反応。観測中に瞬き同期あり。アガベスト"
 abilities:
   - "ハイパーインシデント"

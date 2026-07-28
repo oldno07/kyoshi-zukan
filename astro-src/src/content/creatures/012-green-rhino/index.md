@@ -20,6 +20,7 @@ top: "Agave Titanota \"緑犀牛\""
 tags: ["動物優性型", "大型種"]
 series: []
 related: ["005-gorillahorrida"]
+shopUrl: "https://agavest.stores.jp/"
 soldOut: true
 notes: "岩状の大型鋸歯生物を確認。移動に伴い周辺植物群が活性化。アガベスト"
 abilities:

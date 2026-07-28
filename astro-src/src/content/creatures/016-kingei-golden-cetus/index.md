@@ -21,7 +21,8 @@ featured: true
 tags: ["水棲型", "多肉混合型", "鯨族"]
 series: ["鯨族"]
 related: ["013-hakugei-white-cetus", "015-metal-hakugei-cetus"]
-soldOut: false
+shopUrl: "https://agavest.stores.jp/"
+soldOut: true
 notes: "金色発光を伴う巨大個体が海底を通過。通過後、鉱物粒子の沈殿帯が形成された。アガベスト"
 abilities:
   - "オーロラミネラルフロー"
