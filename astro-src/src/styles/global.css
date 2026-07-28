@@ -1159,6 +1159,9 @@ body::after {
      hero/status のパディングと写真の最大高さを縮小する */
   .cd-hero { grid-template-columns: 1fr; min-height: 0; }
   .cd-hero-l { padding: 24px 24px 20px; border-right: none; border-bottom: 1px solid var(--br2); }
+  /* 最長の個体名（12文字）でも1行に収まるよう、hero-lの横パディング(24px×2)を
+     差し引いた幅から逆算した可変フォントサイズにする（安全マージン込み） */
+  .cd-name-jp { font-size: clamp(18px, calc(8.3vw - 6px), 30px); }
   .cd-hero-r { min-height: 0; padding: 16px 24px; }
   .cd-cover { max-height: 200px; }
   .cd-status { padding: 16px 24px; }
