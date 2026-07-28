@@ -20,7 +20,8 @@ top: "Agave Titanota \"filigree\""
 tags: ["動物優性型", "群体種", "フィリグリズリー族"]
 series: ["フィリグリズリー"]
 related: ["010-filigrizzly-devil", "011-filigrizzly-monarch"]
-soldOut: false
+shopUrl: "https://agavest.stores.jp/"
+soldOut: true
 notes: "クマ型の群体鋸歯生物を確認。二足歩行および集団行動あり。"
 namer: "@craft_seventy"
 abilities:

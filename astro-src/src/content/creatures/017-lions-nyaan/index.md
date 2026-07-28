@@ -20,7 +20,8 @@ top: "Agave Titanota \"ライオンズメーン\""
 tags: ["動物優性型", "ネコ型", "草原種"]
 series: []
 related: ["002-black-nyanko-blue", "003-red-cat-meezle"]
-soldOut: false
+shopUrl: "https://agavest.stores.jp/"
+soldOut: true
 notes: "草原でこちらを見つめる小型個体を確認した。ライオンのような鬣を持つが、近づいて観察すると葉そのものだった。風が吹くたびに葉同士が微かに共鳴しており、周囲の植物群も同調するように揺れていた。アガベスト"
 abilities:
   - "センサリーフラクタル"

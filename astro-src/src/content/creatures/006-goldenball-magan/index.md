@@ -21,6 +21,7 @@ top: "Agave Titanota \"魔丸\""
 tags: ["動物優性型", "禁域種"]
 series: []
 related: []
+shopUrl: "https://agavest.stores.jp/"
 soldOut: true
 notes: "ある日荒野を歩いていると、私はそれを見つけました。あまりにも大きなキンタマを持つそいつに私は名付けました。キンタ魔丸。その名の通り。恐ろしくデカいです。クラフトセブンティ"
 namer: "@craft_seventy"

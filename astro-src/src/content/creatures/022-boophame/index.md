@@ -21,7 +21,8 @@ top: "Boophane haemanthoides"
 tags: []
 series: []
 related: []
-soldOut: false
+shopUrl: "https://agavest.stores.jp/"
+soldOut: true
 notes: "遠目には完全に植物だった。しかし近づいた瞬間、岩だと思っていた塊がゆっくり動き出した。甲羅部分はブーファンの葉そのもので構成されており、乾燥時には完全に閉じて休眠状態へ入るらしい。アガベスト"
 abilities:
   - "いわ擬態"

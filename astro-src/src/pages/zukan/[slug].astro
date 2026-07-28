@@ -193,7 +193,16 @@ const ogDescription = isHidden
       <span class="cd-transfer-mini-cta">この個体を迎え入れる →</span>
     </a>
   )}
-  {!isHidden && data.soldOut && (
+  {!isHidden && data.soldOut && data.shopUrl && (
+    <a href={data.shopUrl} class="cd-transfer-mini cd-transfer-mini-soldout" target="_blank" rel="noopener">
+      <div class="cd-transfer-mini-row">
+        <span class="cd-transfer-mini-tag">SPECIMEN / 標本</span>
+        <span class="cd-transfer-mini-price">SOLD OUT</span>
+      </div>
+      <span class="cd-transfer-mini-cta">ほかの個体を見る →</span>
+    </a>
+  )}
+  {!isHidden && data.soldOut && !data.shopUrl && (
     <div class="cd-transfer-mini cd-transfer-mini-soldout">
       <div class="cd-transfer-mini-row">
         <span class="cd-transfer-mini-tag">SPECIMEN / 標本</span>
@@ -274,7 +283,14 @@ const ogDescription = isHidden
         <span class="cd-shop-panel-btn">この個体を迎え入れる →</span>
       </a>
     )}
-    {!isHidden && data.soldOut && (
+    {!isHidden && data.soldOut && data.shopUrl && (
+      <a href={data.shopUrl} class="cd-shop-soldout" target="_blank" rel="noopener">
+        <div class="cd-shop-soldout-title">SPECIMEN / 標本</div>
+        <div class="cd-shop-soldout-price">SOLD OUT</div>
+        <p class="cd-shop-soldout-sub">この個体の販売は終了しました。ほかの個体はこちら →</p>
+      </a>
+    )}
+    {!isHidden && data.soldOut && !data.shopUrl && (
       <div class="cd-shop-soldout">
         <div class="cd-shop-soldout-title">SPECIMEN / 標本</div>
         <div class="cd-shop-soldout-price">SOLD OUT</div>

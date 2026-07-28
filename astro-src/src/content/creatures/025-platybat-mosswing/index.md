@@ -20,7 +20,8 @@ top: "Platycerium \"ellisii\""
 tags: ["植物優性型", "飛行型", "ビカク族"]
 series: ["ビカク族"]
 related: ["023-beautiful-horn-deer", "024-bicacu-cow"]
-soldOut: false
+shopUrl: "https://agavest.stores.jp/"
+soldOut: true
 notes: "プレステラ周辺で定着する吊り鉢擬態型個体群の中から確認された、ビカクシダとコウモリの中間的特徴を持つ独立種。"
 namer: "@agadai_6213"
 abilities:

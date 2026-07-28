@@ -20,7 +20,8 @@ top: "Agave Oteroi"
 tags: ["動物優性型", "爬虫類型", "アガベ棚"]
 series: []
 related: ["001-snyaggletooth", "004-nyagabe-titanota"]
-soldOut: false
+shopUrl: "https://agavest.stores.jp/"
+soldOut: true
 notes: "草食傾向を持つトカゲ型個体を確認。体表に葉状構造あり。"
 abilities:
   - "リーフアーマーフュージョン"
