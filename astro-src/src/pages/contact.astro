@@ -1,0 +1,314 @@
+---
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>お問い合わせ | PelicanWorks</title>
+  <meta
+    name="description"
+    content="Pelican Worksへのお問い合わせはこちらから。鋸歯生物に関するお問い合わせ、作品についてのご連絡、イベント・展示などのお問い合わせを受け付けています。"
+  />
+  <link rel="canonical" href="https://pelicanworks.site/contact/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="お問い合わせ | PelicanWorks" />
+  <meta
+    property="og:description"
+    content="Pelican Worksへのお問い合わせはこちらから。鋸歯生物に関するお問い合わせ、作品についてのご連絡、イベント・展示などのお問い合わせを受け付けています。"
+  />
+  <meta property="og:url" content="https://pelicanworks.site/contact/" />
+  <meta property="og:site_name" content="PelicanWorks" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=BIZ+UDMincho:wght@400;700&family=Zen+Old+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- GA4 (9-4: G-9MRML3BZ6M 正式採用) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MRML3BZ6M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9MRML3BZ6M');
+  </script>
+</head>
+<body class="hub-body">
+  <main class="hub-main">
+    <div class="hub-inner">
+      <header class="hub-head">
+        <h1 class="hub-brand">CONTACT</h1>
+        <div class="hub-tagline-wrap contact-lead-wrap">
+          <p class="contact-lead">
+            Pelican Worksへのお問い合わせはこちらからお願いいたします。<br />
+            鋸歯生物に関するお問い合わせ、<br />
+            作品についてのご連絡、<br />
+            イベント・展示などのお問い合わせを受け付けています。
+          </p>
+        </div>
+      </header>
+
+      <form
+        id="contact-form"
+        class="contact-form"
+        action="https://docs.google.com/forms/d/e/1FAIpQLScG_A15ZJWlGHiDClTG-STz7bHYe5MI7CQM8VU-Cerk3x_4vw/formResponse"
+        method="POST"
+        target="hidden_iframe"
+      >
+        <div class="cf-row">
+          <label class="cf-label" for="cf-name">お名前</label>
+          <input class="cf-input" type="text" id="cf-name" name="entry.1455355428" autocomplete="name" required />
+        </div>
+
+        <div class="cf-row">
+          <label class="cf-label" for="cf-email">メールアドレス</label>
+          <input class="cf-input" type="email" id="cf-email" name="entry.1634570503" autocomplete="email" required />
+        </div>
+
+        <div class="cf-row">
+          <label class="cf-label" for="cf-message">内容</label>
+          <textarea class="cf-input cf-textarea" id="cf-message" name="entry.376131245" rows="6" required></textarea>
+        </div>
+
+        <div class="cf-row">
+          <label class="cf-label" for="cf-code">観測確認用コード 「りんご」と入力してください</label>
+          <input class="cf-input" type="text" id="cf-code" name="entry.1667568044" required />
+        </div>
+
+        <button type="submit" class="cf-submit">
+          <span>送信する</span>
+          <svg
+            class="cf-submit-icon"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg>
+        </button>
+      </form>
+
+      <div id="contact-confirm" class="contact-confirm" hidden>
+        送信しました。お問い合わせありがとうございます。内容を確認のうえ、折り返しご連絡いたします。
+      </div>
+
+      <iframe name="hidden_iframe" id="hidden_iframe" class="cf-hidden-iframe" title="送信結果"></iframe>
+    </div>
+  </main>
+
+  <footer class="hub-footer">
+    <a
+      href="https://www.instagram.com/pelican.works"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="hub-footer-link"
+    >Instagram: @pelican.works</a>
+    <a href="/contact/" class="hub-footer-link">CONTACT / お問い合わせ</a>
+  </footer>
+
+  <style>
+    /* ハブページ専用トークン（index.astroと同一定義。ページ単体で完結させるため複製） */
+    .hub-body {
+      --hub-bg:     #fafaf8;
+      --hub-ink:    #1a1a1a;
+      --hub-ink2:   #3c3c38;
+      --hub-line:   #e2e2db;
+      --hub-pill:   #f0f0ea;
+      --hub-accent: #616731;
+      --hub-accent-deep: #4d5327;
+      --hub-mincho: "Zen Old Mincho", "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+      --hub-catch:  "BIZ UDMincho", "BIZ UDPMincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+      --hub-gothic: "Zen Kaku Gothic New", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+
+      padding-top: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--hub-bg);
+      color: var(--hub-ink);
+      font-family: var(--hub-gothic);
+    }
+
+    .hub-main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 88px 24px 96px;
+    }
+    .hub-inner {
+      width: 100%;
+      max-width: 680px;
+    }
+
+    .hub-head {
+      text-align: center;
+    }
+    .hub-brand {
+      font-family: var(--hub-mincho);
+      font-size: clamp(32px, 6.4vw, 46px);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      line-height: 1.3;
+      color: var(--hub-ink);
+    }
+    .hub-tagline-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* -- フッター（index.astroと同一クラス、リンク2つに対応してgapのみ追加） -- */
+    .hub-footer {
+      border-top: 1px solid var(--hub-line);
+      padding: 26px 24px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+    }
+    .hub-footer-link {
+      font-family: var(--hub-gothic);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--hub-ink2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .hub-footer-link:hover { color: var(--hub-accent); }
+
+    /* -- CONTACT固有：説明文（縦書きは使わず横書きに。フォント・行間トーンはhub-taglineを踏襲） -- */
+    .contact-lead-wrap {
+      padding: 40px 0 64px;
+    }
+    .contact-lead {
+      font-family: var(--hub-gothic);
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 2.1;
+      letter-spacing: 0.04em;
+      color: var(--hub-ink2);
+      text-align: center;
+    }
+
+    /* -- CONTACT固有：フォーム（カードUI・ボタンUIの余白/罫線/フォントトーンを踏襲） -- */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .cf-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cf-label {
+      font-family: var(--hub-gothic);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--hub-ink);
+    }
+    .cf-input {
+      font-family: var(--hub-gothic);
+      font-size: 14px;
+      color: var(--hub-ink);
+      background: #ffffff;
+      border: 1px solid var(--hub-line);
+      border-radius: 4px;
+      padding: 13px 16px;
+      transition: border-color 0.2s;
+    }
+    .cf-input:focus {
+      outline: none;
+      border-color: var(--hub-accent);
+    }
+    .cf-textarea {
+      resize: vertical;
+      line-height: 1.8;
+      font-family: inherit;
+    }
+    .cf-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      align-self: flex-start;
+      padding: 13px 22px;
+      border: 1px solid var(--hub-line);
+      border-radius: 4px;
+      font-family: var(--hub-gothic);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--hub-accent);
+      background: none;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .cf-submit:hover {
+      border-color: var(--hub-accent);
+      color: var(--hub-accent-deep);
+    }
+    .cf-submit-icon { flex-shrink: 0; }
+
+    .contact-confirm {
+      margin-top: 32px;
+      padding: 20px;
+      border: 1px solid var(--hub-line);
+      border-radius: 4px;
+      background: var(--hub-pill);
+      font-family: var(--hub-gothic);
+      font-size: 14px;
+      line-height: 1.9;
+      color: var(--hub-ink2);
+      text-align: center;
+    }
+
+    .cf-hidden-iframe {
+      display: none;
+    }
+
+    @media (max-width: 640px) {
+      .hub-main { padding: 64px 20px 72px; }
+      .contact-lead-wrap { padding: 32px 0 48px; }
+      .contact-lead { font-size: 14px; }
+    }
+  </style>
+
+  <script>
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
+    const confirmBox = document.getElementById('contact-confirm');
+    const iframe = document.getElementById('hidden_iframe');
+    let submitting = false;
+
+    form?.addEventListener('submit', () => {
+      submitting = true;
+    });
+
+    iframe?.addEventListener('load', () => {
+      if (!submitting) return;
+      submitting = false;
+      if (form) form.hidden = true;
+      if (confirmBox) {
+        confirmBox.hidden = false;
+        confirmBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -406,6 +406,8 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
   background: var(--bg2);
 }
 .ft-logo {
@@ -420,6 +422,13 @@ footer {
   letter-spacing: 0.1em;
   color: var(--ink3);
   opacity: 0.45;
+}
+.ft-contact-link {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--ink3);
+  text-decoration: none;
 }
 
 /* ============================================================
