@@ -1,0 +1,291 @@
+---
+import '../styles/global.css';
+
+// 住所（将来的にSTORES側住所貸与サービス利用時に変更可能な箇所）
+const ADDRESS = '愛媛県新居浜市中萩町4-27';
+const MAIL_SENDER = 'old.no16@gmail.com';
+---
+
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>プライバシーポリシー | PelicanWorks</title>
+  <meta
+    name="description"
+    content="Pelican Worksのプライバシーポリシー。当サイトで取得する情報の利用目的、第三者提供、配信停止についてのご説明です。"
+  />
+  <link rel="canonical" href="https://pelicanworks.site/privacy/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="プライバシーポリシー | PelicanWorks" />
+  <meta
+    property="og:description"
+    content="Pelican Worksのプライバシーポリシー。当サイトで取得する情報の利用目的、第三者提供、配信停止についてのご説明です。"
+  />
+  <meta property="og:url" content="https://pelicanworks.site/privacy/" />
+  <meta property="og:site_name" content="PelicanWorks" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=BIZ+UDMincho:wght@400;700&family=Zen+Old+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- GA4 (9-4: G-9MRML3BZ6M 正式採用) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MRML3BZ6M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9MRML3BZ6M');
+  </script>
+</head>
+<body class="hub-body">
+  <main class="hub-main">
+    <div class="hub-inner">
+      <header class="hub-head">
+        <h1 class="hub-brand">PRIVACY POLICY</h1>
+        <div class="hub-tagline-wrap privacy-lead-wrap">
+          <p class="privacy-lead">
+            Pelican Worksのプライバシーポリシーです。<br />
+            ご質問やご不明な点がございましたら、<br />
+            <a href="/contact/" class="privacy-lead-link">お問い合わせページ</a>までお気軽にご連絡ください。
+          </p>
+        </div>
+      </header>
+
+      <article class="privacy-content">
+        <section class="pp-section">
+          <h2 class="pp-heading">1. 取得する情報</h2>
+          <p class="pp-text">
+            本サイト（pelicanworks.site）では、SOLD OUT個体の再入荷通知登録の際に、<br />
+            メールアドレスのみを取得します。
+          </p>
+        </section>
+
+        <section class="pp-section">
+          <h2 class="pp-heading">2. 利用目的</h2>
+          <p class="pp-text">
+            取得したメールアドレスは、対象個体が再び譲渡可能になった際の<br />
+            お知らせメール送信にのみ使用します。
+          </p>
+        </section>
+
+        <section class="pp-section">
+          <h2 class="pp-heading">3. 第三者提供</h2>
+          <p class="pp-text">
+            取得した情報を第三者に提供することはありません。<br />
+            メール配信には<a href="https://www.brevo.com/" target="_blank" rel="noopener noreferrer" class="pp-link">Brevo（Sendinblue SAS）</a>を利用しています。
+          </p>
+        </section>
+
+        <section class="pp-section">
+          <h2 class="pp-heading">4. 配信停止</h2>
+          <p class="pp-text">
+            配信中のメールに記載のリンクから、いつでも配信停止できます。
+          </p>
+        </section>
+
+        <section class="pp-section">
+          <h2 class="pp-heading">5. 運営者情報</h2>
+          <div class="pp-text">
+            <p><strong>4K WORKS</strong></p>
+            <p>{ADDRESS}</p>
+            <p><a href="mailto:{MAIL_SENDER}" class="pp-link">{MAIL_SENDER}</a></p>
+            <p><a href="/contact/" class="pp-link">お問い合わせ</a></p>
+          </div>
+        </section>
+
+        <section class="pp-section">
+          <h2 class="pp-heading">6. EC（譲渡局）をご利用の場合</h2>
+          <p class="pp-text">
+            商品購入等に伴う個人情報の取扱いについては、<br />
+            <a href="https://agavest.stores.jp/" target="_blank" rel="noopener noreferrer" class="pp-link">譲渡局（agavest.stores.jp）</a>のプライバシーポリシーが適用されます。
+          </p>
+        </section>
+      </article>
+
+      <div class="privacy-updated">
+        最終更新：2026年7月29日
+      </div>
+    </div>
+  </main>
+
+  <footer class="hub-footer">
+    <a
+      href="https://www.instagram.com/pelican.works"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="hub-footer-link"
+    >Instagram: @pelican.works</a>
+    <a href="/contact/" class="hub-footer-link">CONTACT / お問い合わせ</a>
+    <a href="/privacy/" class="hub-footer-link">PRIVACY / プライバシーポリシー</a>
+  </footer>
+
+  <style>
+    /* ハブページ専用トークン（index.astroと同一定義。ページ単体で完結させるため複製） */
+    .hub-body {
+      --hub-bg:     #fafaf8;
+      --hub-ink:    #1a1a1a;
+      --hub-ink2:   #3c3c38;
+      --hub-line:   #e2e2db;
+      --hub-pill:   #f0f0ea;
+      --hub-accent: #616731;
+      --hub-accent-deep: #4d5327;
+      --hub-mincho: "Zen Old Mincho", "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+      --hub-catch:  "BIZ UDMincho", "BIZ UDPMincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+      --hub-gothic: "Zen Kaku Gothic New", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+
+      padding-top: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--hub-bg);
+      color: var(--hub-ink);
+      font-family: var(--hub-gothic);
+    }
+
+    .hub-main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 88px 24px 96px;
+    }
+    .hub-inner {
+      width: 100%;
+      max-width: 680px;
+    }
+
+    .hub-head {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .hub-brand {
+      font-family: var(--hub-mincho);
+      font-size: clamp(32px, 6.4vw, 46px);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      line-height: 1.3;
+      color: var(--hub-ink);
+    }
+    .hub-tagline-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* -- PRIVACY固有：説明文 -- */
+    .privacy-lead-wrap {
+      padding: 32px 0 48px;
+    }
+    .privacy-lead {
+      font-family: var(--hub-gothic);
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 2.0;
+      letter-spacing: 0.04em;
+      color: var(--hub-ink2);
+      text-align: center;
+    }
+    .privacy-lead-link {
+      color: var(--hub-accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--hub-accent);
+      transition: color 0.2s;
+    }
+    .privacy-lead-link:hover {
+      color: var(--hub-accent-deep);
+      border-bottom-color: var(--hub-accent-deep);
+    }
+
+    /* -- PRIVACY固有：コンテンツ（ポリシー本文） -- */
+    .privacy-content {
+      margin-bottom: 48px;
+    }
+    .pp-section {
+      margin-bottom: 36px;
+    }
+    .pp-section:first-child {
+      margin-top: 0;
+    }
+    .pp-heading {
+      font-family: var(--hub-mincho);
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      line-height: 1.6;
+      color: var(--hub-ink);
+      margin-bottom: 14px;
+    }
+    .pp-text {
+      font-family: var(--hub-gothic);
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.85;
+      letter-spacing: 0.02em;
+      color: var(--hub-ink2);
+      margin: 0;
+    }
+    .pp-text p {
+      margin-bottom: 12px;
+    }
+    .pp-text p:last-child {
+      margin-bottom: 0;
+    }
+    .pp-text strong {
+      font-weight: 400;
+      color: var(--hub-ink);
+    }
+    .pp-link {
+      color: var(--hub-accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--hub-accent);
+      transition: color 0.2s;
+    }
+    .pp-link:hover {
+      color: var(--hub-accent-deep);
+      border-bottom-color: var(--hub-accent-deep);
+    }
+
+    .privacy-updated {
+      text-align: right;
+      font-family: var(--hub-gothic);
+      font-size: 12px;
+      color: var(--hub-ink2);
+      opacity: 0.7;
+    }
+
+    /* -- フッター（index.astroと同一クラス、リンク3つに対応） -- */
+    .hub-footer {
+      border-top: 1px solid var(--hub-line);
+      padding: 26px 24px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+    }
+    .hub-footer-link {
+      font-family: var(--hub-gothic);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--hub-ink2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .hub-footer-link:hover { color: var(--hub-accent); }
+
+    @media (max-width: 640px) {
+      .hub-main { padding: 64px 20px 72px; }
+      .privacy-lead-wrap { padding: 24px 0 36px; }
+      .privacy-lead { font-size: 13px; }
+      .pp-heading { font-size: 15px; }
+      .pp-text { font-size: 13px; }
+    }
+  </style>
+</body>
+</html>
