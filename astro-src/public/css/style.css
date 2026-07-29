@@ -430,6 +430,13 @@ footer {
   color: var(--ink3);
   text-decoration: none;
 }
+.ft-privacy-link {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--ink3);
+  text-decoration: none;
+}
 
 /* ============================================================
    COMMON COMPONENTS
