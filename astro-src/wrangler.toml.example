@@ -1,0 +1,22 @@
+# wrangler.toml のローカル用雛形。
+#
+# 本番の Pages プロジェクト設定（ビルド構成・D1バインディング・環境変数）は
+# Cloudflare ダッシュボード側が正なので、このファイルをコピーした実体の
+# wrangler.toml は「wrangler pages dev」と「wrangler d1 migrations apply」の
+# ローカル用途のみに限定して使うこと。
+#
+# 使い方：
+#   cp wrangler.toml.example wrangler.toml
+#   # database_id を自分の環境の値に書き換える（wrangler d1 create の出力を貼る）
+#
+# wrangler.toml はリポジトリにコミットしない（.gitignore 対象）。
+# BREVO_API_KEY 等のシークレットはここに書かず .dev.vars に置くこと。
+
+name = "kyoshi-zukan"
+compatibility_date = "2026-07-29"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "kyoshi-zukan-notifications"
+database_id = ""

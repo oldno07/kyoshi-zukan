@@ -1,0 +1,75 @@
+---
+// このページは pelicanworks.site/admin/* として Cloudflare Access で
+// 保護される想定（ダッシュボード側設定。アプリ側の追加認証は行わない）。
+import { getCollection } from 'astro:content';
+
+const all = await getCollection('creatures', ({ data }) => data.status === 'published');
+const creatures = all
+  .sort((a, b) => a.data.no.localeCompare(b.data.no))
+  .map((e) => ({
+    no: e.data.no,
+    name_jp: e.data.name_jp,
+    soldOut: e.data.soldOut,
+  }));
+---
+
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>通知管理 | 鋸歯生物図鑑</title>
+  <style>
+    :root {
+      --bg: #ffffff; --bg2: #f7f7f5; --ink: #111110; --ink2: #444441; --ink3: #888780;
+      --g: #3b6d11; --red: #d85a30; --br: rgba(17,17,16,0.10);
+      --mono: "Share Tech Mono", monospace; --sans: "Noto Sans JP", sans-serif;
+    }
+    body { font-family: var(--sans); background: var(--bg2); color: var(--ink); margin: 0; padding: 32px; }
+    h1 { font-family: var(--mono); font-size: 15px; letter-spacing: 0.08em; margin-bottom: 24px; }
+    table { width: 100%; max-width: 900px; border-collapse: collapse; background: var(--bg); }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--br); font-size: 13px; }
+    th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--g); }
+    .soldout { color: var(--red); }
+    button {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em;
+      background: var(--g); color: #fff; border: none; padding: 6px 14px; cursor: pointer;
+    }
+    button:disabled { opacity: 0.4; cursor: default; }
+    .msg { font-size: 11px; margin: 4px 0 0; }
+    .msg.is-error { color: var(--red); }
+  </style>
+</head>
+<body>
+  <h1>NOTIFICATION MANAGEMENT / 通知管理</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>個体名</th>
+        <th>状態</th>
+        <th>通知待ち</th>
+        <th>最終通知</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="admin-rows">
+      {creatures.map((c) => (
+        <tr data-species-id={c.no}>
+          <td>No.{c.no}</td>
+          <td>{c.name_jp}</td>
+          <td class={c.soldOut ? 'soldout' : ''}>{c.soldOut ? 'SOLD OUT' : '販売中'}</td>
+          <td class="js-count">—</td>
+          <td class="js-last">—</td>
+          <td>
+            <button type="button" class="js-notify-btn" disabled>通知送信</button>
+            <p class="msg js-msg" hidden></p>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  <script is:inline src="/js/admin.js"></script>
+</body>
+</html>

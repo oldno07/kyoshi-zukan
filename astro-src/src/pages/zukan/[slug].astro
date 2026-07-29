@@ -65,6 +65,7 @@ const { slug } = Astro.params;
 const { data } = entry;
 const isHidden = data.status === 'hidden';
 const { Content } = await render(entry);
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 
 const ogTitle = isHidden
   ? `No.${data.no} UNKNOWN ENTITY | 鋸歯生物図鑑`
@@ -199,6 +200,16 @@ const ogDescription = isHidden
         <span class="cd-transfer-mini-tag">SPECIMEN / 標本</span>
         <span class="cd-transfer-mini-price">SOLD OUT</span>
       </div>
+      {turnstileSiteKey && (
+        <div class="cd-notify cd-notify--mini" data-species-id={data.no}>
+          <form class="cd-notify-form" novalidate>
+            <input type="email" class="cd-notify-input" name="email" placeholder="メールアドレス" required />
+            <button type="submit" class="cd-notify-btn">通知を受け取る</button>
+            <div class="cd-notify-turnstile" data-sitekey={turnstileSiteKey}></div>
+          </form>
+          <p class="cd-notify-msg" role="status" hidden></p>
+        </div>
+      )}
     </div>
   )}
 
@@ -278,11 +289,29 @@ const ogDescription = isHidden
       <div class="cd-shop-soldout">
         <div class="cd-shop-soldout-title">SPECIMEN / 標本</div>
         <div class="cd-shop-soldout-price">SOLD OUT</div>
-        <p class="cd-shop-soldout-sub">この個体の販売は終了しました</p>
+        <p class="cd-shop-soldout-sub">譲渡可能な個体をご用意でき次第、お知らせします。</p>
+        {turnstileSiteKey && (
+          <div class="cd-notify" data-species-id={data.no}>
+            <form class="cd-notify-form" novalidate>
+              <input type="email" class="cd-notify-input" name="email" placeholder="メールアドレス" required />
+              <button type="submit" class="cd-notify-btn">通知を受け取る</button>
+              <div class="cd-notify-turnstile" data-sitekey={turnstileSiteKey}></div>
+            </form>
+            <p class="cd-notify-note">無料・1分で登録できます。</p>
+            <p class="cd-notify-msg" role="status" hidden></p>
+          </div>
+        )}
       </div>
     )}
 
   </article>
+
+  {!isHidden && data.soldOut && turnstileSiteKey && (
+    <>
+      <script is:inline src="/js/notify.js"></script>
+      <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" async defer></script>
+    </>
+  )}
 
   <!-- gallery -->
   {!isHidden && data.gallery.length > 0 && data.gallery.some(g => g.path) && (
