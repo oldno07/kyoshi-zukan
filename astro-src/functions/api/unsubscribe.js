@@ -75,14 +75,20 @@ export async function onRequestGet(context) {
 export async function onRequestPost(context) {
   const { request, env } = context;
 
+  // トークンは (1) 確認画面のフォーム送信ではPOSTボディ、
+  // (2) RFC 8058 List-Unsubscribe-Post によるメールクライアントの自動POSTでは
+  // List-Unsubscribeヘッダに入れたURLのクエリ文字列、の2箇所どちらかに入る。
   let token = '';
   const contentType = request.headers.get('content-type') ?? '';
   if (contentType.includes('application/json')) {
     const body = await request.json().catch(() => ({}));
     token = typeof body?.token === 'string' ? body.token : '';
   } else {
-    const form = await request.formData();
-    token = String(form.get('token') ?? '');
+    const form = await request.formData().catch(() => null);
+    token = form ? String(form.get('token') ?? '') : '';
+  }
+  if (!token) {
+    token = new URL(request.url).searchParams.get('token') ?? '';
   }
 
   if (!token) {
