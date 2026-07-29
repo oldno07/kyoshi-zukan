@@ -455,6 +455,57 @@ body::after {
   color: var(--ink3);
 }
 
+/* -- soldout notify: 譲渡通知登録フォーム（.cd-shop-soldout 内側に収める） -- */
+.cd-notify {
+  margin-top: 14px;
+}
+.cd-notify-form {
+  display: flex;
+  gap: 8px;
+}
+.cd-notify-input {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--br2);
+  padding: 9px 12px;
+}
+.cd-notify-btn {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: #fff;
+  background: var(--g);
+  border: none;
+  padding: 9px 16px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.cd-notify-btn:hover {
+  opacity: 0.85;
+}
+.cd-notify-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.cd-notify-note {
+  font-size: 11px;
+  color: var(--ink3);
+  margin-top: 8px;
+}
+.cd-notify-msg {
+  font-size: 12px;
+  color: var(--g);
+  margin-top: 10px;
+}
+.cd-notify-msg.is-error {
+  color: var(--red);
+}
+
 /* -- mobile transfer teaser: compact EC entry below BIOLOGICAL STATUS -- */
 /* デスクトップでは非表示。実体は @media (max-width: 768px) 側で表示する */
 .cd-transfer-mini {
@@ -1288,6 +1339,17 @@ body::after {
   .cd-transfer-mini-soldout .cd-transfer-mini-price {
     text-decoration: line-through;
     color: var(--ink3);
+  }
+  .cd-notify--mini {
+    margin-top: 10px;
+  }
+  .cd-notify--mini .cd-notify-input,
+  .cd-notify--mini .cd-notify-btn {
+    font-size: 11px;
+    padding: 7px 10px;
+  }
+  .cd-notify--mini .cd-notify-msg {
+    font-size: 11px;
   }
 }
 
