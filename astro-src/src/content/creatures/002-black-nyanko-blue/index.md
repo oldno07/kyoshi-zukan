@@ -21,7 +21,7 @@ tags: ["動物優性型", "ネコ型", "アガベ棚"]
 series: []
 related: ["001-snyaggletooth", "003-red-cat-meezle", "004-nyagabe-titanota"]
 shopUrl: "https://agavest.stores.jp/?category_id=6a6070f263f5f62ab963b36c"
-soldOut: false
+soldOut: true
 notes: "青色毛玉は定期的に排出される。回収された毛玉の用途について質問されることが多いが、研究所としてはコメントを控える。また脱走した。アガベスト"
 abilities:
   - "青化反応"

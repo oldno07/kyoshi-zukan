@@ -21,7 +21,7 @@ tags: ["動物優性型", "ネコ型"]
 series: []
 related: ["002-black-nyanko-blue", "017-lions-nyaan"]
 shopUrl: "https://agavest.stores.jp/?category_id=6a6070fd85f6343462161171"
-soldOut: false
+soldOut: true
 notes: "ストレス時に赤色化を確認。"
 abilities:
   - "ストレスカラーシフト"

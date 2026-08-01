@@ -22,7 +22,7 @@ tags: ["水棲型", "多肉混合型", "機械融合", "鯨族"]
 series: ["鯨族"]
 related: ["013-hakugei-white-cetus", "014-kokugei-black-cetus", "016-kingei-golden-cetus"]
 shopUrl: "https://agavest.stores.jp/?category_id=6a6071ee1f0e7e31e90ec72f"
-soldOut: false
+soldOut: true
 notes: "海底で金属反応が検出された直後、巨大な白鯨型個体を確認。通過後の地形が変形している。これは生物というより構造物に近い。アガベスト"
 abilities:
   - "メタルバイオシフト"

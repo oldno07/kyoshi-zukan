@@ -3,7 +3,8 @@
 // 保護される想定（ダッシュボード側設定。アプリ側の追加認証は行わない）。
 import { getCollection } from 'astro:content';
 
-const all = await getCollection('creatures', ({ data }) => data.status === 'published');
+// symbiont（共生生物）は譲渡通知の対象外のため除外する
+const all = await getCollection('creatures', ({ data }) => data.status === 'published' && data.category === 'creature');
 const creatures = all
   .sort((a, b) => a.data.no.localeCompare(b.data.no))
   .map((e) => ({

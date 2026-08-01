@@ -21,7 +21,7 @@ tags: ["動物優性型", "アガベ棚", "植物共生"]
 series: []
 related: ["001-snyaggletooth", "002-black-nyanko-blue"]
 shopUrl: "https://agavest.stores.jp/?category_id=6a60710b96e1cb31a1d07965"
-soldOut: false
+soldOut: true
 notes: "植物と動物の特徴を併せ持つ個体群を確認。鋸歯構造との関連性あり。"
 abilities:
   - "エコシステムアダプト"

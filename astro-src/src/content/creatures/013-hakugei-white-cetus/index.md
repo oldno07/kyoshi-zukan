@@ -22,7 +22,7 @@ tags: ["水棲型", "多肉混合型", "鯨族"]
 series: ["鯨族"]
 related: ["014-kokugei-black-cetus", "015-metal-hakugei-cetus", "016-kingei-golden-cetus", "019-mochi-cetus"]
 shopUrl: "https://agavest.stores.jp/?category_id=6a6071297008332d33f47c5a"
-soldOut: false
+soldOut: true
 notes: "深海から白色の大型個体が浮上。周囲海流に変化を確認。アガベスト"
 abilities:
   - "鋸歯飛ばし"
