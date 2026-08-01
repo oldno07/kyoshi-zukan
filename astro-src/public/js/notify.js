@@ -30,7 +30,11 @@
 
     const widgetId = window.turnstile.render(turnstileEl, {
       sitekey: turnstileEl.dataset.sitekey,
-      size: 'invisible',
+      // invisibleモード相当：size ではなく execution/appearance で指定する。
+      // execution: 'execute' で render() 時点の自動実行を止め、
+      // appearance: 'interaction-only' でチャレンジ不要時は非表示にする。
+      execution: 'execute',
+      appearance: 'interaction-only',
       callback: (token) => { if (tokenResolve) tokenResolve(token); },
       'error-callback': () => { if (tokenReject) tokenReject(new Error('turnstile_error')); },
     });
