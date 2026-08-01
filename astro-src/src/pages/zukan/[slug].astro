@@ -203,8 +203,10 @@ const ogDescription = isHidden
       {turnstileSiteKey && (
         <div class="cd-notify cd-notify--mini" data-species-id={data.no}>
           <form class="cd-notify-form" novalidate>
-            <input type="email" class="cd-notify-input" name="email" placeholder="メールアドレス" required />
-            <button type="submit" class="cd-notify-btn">通知を受け取る</button>
+            <div class="cd-notify-row">
+              <input type="email" class="cd-notify-input" name="email" placeholder="メールアドレス" required />
+              <button type="submit" class="cd-notify-btn">通知を受け取る</button>
+            </div>
             <div class="cd-notify-turnstile" data-sitekey={turnstileSiteKey}></div>
           </form>
           <p class="cd-notify-msg" role="status" hidden></p>
@@ -293,8 +295,10 @@ const ogDescription = isHidden
         {turnstileSiteKey && (
           <div class="cd-notify" data-species-id={data.no}>
             <form class="cd-notify-form" novalidate>
-              <input type="email" class="cd-notify-input" name="email" placeholder="メールアドレス" required />
-              <button type="submit" class="cd-notify-btn">通知を受け取る</button>
+              <div class="cd-notify-row">
+                <input type="email" class="cd-notify-input" name="email" placeholder="メールアドレス" required />
+                <button type="submit" class="cd-notify-btn">通知を受け取る</button>
+              </div>
               <div class="cd-notify-turnstile" data-sitekey={turnstileSiteKey}></div>
             </form>
             <p class="cd-notify-note">無料・10秒で登録できます。</p>

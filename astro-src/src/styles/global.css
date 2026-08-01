@@ -461,7 +461,11 @@ body::after {
 }
 .cd-notify-form {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 8px;
+}
+.cd-notify-row {
+  display: flex;
   gap: 8px;
 }
 .cd-notify-input {
@@ -494,9 +498,9 @@ body::after {
   cursor: default;
 }
 .cd-notify-turnstile {
-  /* flex-basis:100% は wrap 中のflexアイテムを強制的に次の行へ送るCSSの定石。
-     ボタンと横並びにならず、常に単独の行に収まる */
-  flex-basis: 100%;
+  /* input/buttonの行（.cd-notify-row）とは別の独立したflexアイテムとして
+     formの外側（縦積みのcolumn）に置くことで、Turnstileが実際に描画する
+     内容がinput/buttonの横並びレイアウトに一切影響しないようにする */
   max-width: 300px;
   /* 通常時（自動通過するユーザー）はスペースを取らない。
      インタラクティブなチャレンジが実際に表示される時だけ
