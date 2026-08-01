@@ -38,6 +38,11 @@
       // 標準サイズ(normal)は幅300px固定でモバイル版の狭いパネル幅からはみ出すため、
       // 親要素の幅に追従する flexible を使う
       size: 'flexible',
+      // 実際にチェックボックス等のインタラクティブなチャレンジが画面に
+      // 出るタイミングでのみ .cd-notify-turnstile--visible を付与し、
+      // 自動通過するユーザーには不要な空白を出さない
+      'before-interactive-callback': () => { turnstileEl.classList.add('cd-notify-turnstile--visible'); },
+      'after-interactive-callback': () => { turnstileEl.classList.remove('cd-notify-turnstile--visible'); },
       callback: (token) => { if (tokenResolve) tokenResolve(token); },
       'error-callback': () => { if (tokenReject) tokenReject(new Error('turnstile_error')); },
     });
@@ -87,6 +92,7 @@
       } finally {
         btn.disabled = false;
         window.turnstile.reset(widgetId);
+        turnstileEl.classList.remove('cd-notify-turnstile--visible');
       }
     });
   }

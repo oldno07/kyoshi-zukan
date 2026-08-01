@@ -498,8 +498,13 @@ body::after {
      ボタンと横並びにならず、常に単独の行に収まる */
   flex-basis: 100%;
   max-width: 300px;
-  /* Turnstile未読込・チャレンジ非表示時もレイアウトが動かないよう
-     標準サイズ(flexibleモードの下限)ぶんの高さを確保しておく */
+  /* 通常時（自動通過するユーザー）はスペースを取らない。
+     インタラクティブなチャレンジが実際に表示される時だけ
+     --visible が付き、高さを確保する */
+  min-height: 0;
+  transition: min-height 0.2s ease;
+}
+.cd-notify-turnstile--visible {
   min-height: 65px;
 }
 .cd-notify-note {
