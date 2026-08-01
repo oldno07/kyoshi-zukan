@@ -104,8 +104,11 @@ async function sendBrevoEmail(env, creature, pageUrl, recipient) {
     `https://pelicanworks.site/api/unsubscribe?token=${encodeURIComponent(recipient.unsubscribe_token)}`;
 
   const footerName = env.MAIL_SENDER_DISPLAY_NAME ?? env.BREVO_SENDER_EMAIL;
-  const footerAddress = env.MAIL_FOOTER_ADDRESS ?? ''; // 要確認：管理者に住所を確認
-  const footerContact = env.MAIL_FOOTER_CONTACT ?? ''; // 要確認：管理者に問い合わせ先を確認
+  // 特定電子メール法の「住所表示」要件はメール本文への直書きではなく、
+  // /privacy/ ページ側で満たす方針（D項）。住所・問い合わせ先を環境変数で
+  // 個別管理せず、privacy/contactページへの固定リンクで代替する
+  const privacyUrl = 'https://pelicanworks.site/privacy/';
+  const contactUrl = 'https://pelicanworks.site/contact/';
 
   const html = `
     <p>${escapeHtml(creature.name_jp)}（${escapeHtml(creature.name_en)}）の
@@ -113,8 +116,9 @@ async function sendBrevoEmail(env, creature, pageUrl, recipient) {
     <p><a href="${pageUrl}">${pageUrl}</a></p>
     <hr>
     <p style="font-size:12px;color:#888;">
-      ${escapeHtml(footerName)}${footerAddress ? ' / ' + escapeHtml(footerAddress) : ''}<br>
-      ${footerContact ? escapeHtml(footerContact) + '<br>' : ''}
+      ${escapeHtml(footerName)}<br>
+      配信元情報：<a href="${privacyUrl}">${privacyUrl}</a><br>
+      お問い合わせ：<a href="${contactUrl}">${contactUrl}</a><br>
       配信停止をご希望の場合は<a href="${unsubscribeUrl}">こちら</a>
     </p>
   `;
