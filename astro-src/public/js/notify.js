@@ -35,6 +35,9 @@
       // appearance: 'interaction-only' でチャレンジ不要時は非表示にする。
       execution: 'execute',
       appearance: 'interaction-only',
+      // 標準サイズ(normal)は幅300px固定でモバイル版の狭いパネル幅からはみ出すため、
+      // 親要素の幅に追従する flexible を使う
+      size: 'flexible',
       callback: (token) => { if (tokenResolve) tokenResolve(token); },
       'error-callback': () => { if (tokenReject) tokenReject(new Error('turnstile_error')); },
     });

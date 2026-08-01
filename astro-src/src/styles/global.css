@@ -461,6 +461,7 @@ body::after {
 }
 .cd-notify-form {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 .cd-notify-input {
@@ -491,6 +492,15 @@ body::after {
 .cd-notify-btn:disabled {
   opacity: 0.5;
   cursor: default;
+}
+.cd-notify-turnstile {
+  /* flex-basis:100% は wrap 中のflexアイテムを強制的に次の行へ送るCSSの定石。
+     ボタンと横並びにならず、常に単独の行に収まる */
+  flex-basis: 100%;
+  max-width: 300px;
+  /* Turnstile未読込・チャレンジ非表示時もレイアウトが動かないよう
+     標準サイズ(flexibleモードの下限)ぶんの高さを確保しておく */
+  min-height: 65px;
 }
 .cd-notify-note {
   font-size: 11px;
