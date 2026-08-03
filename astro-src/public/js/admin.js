@@ -1,5 +1,6 @@
 (function () {
-  const rows = document.querySelectorAll('#admin-rows tr');
+  const rows = document.querySelectorAll('#admin-rows tr[data-species-id]:not(.sub-row)');
+  const subscriberCache = new Map();
 
   function formatDate(iso) {
     if (!iso) return '未送信';
@@ -10,6 +11,113 @@
     el.textContent = text;
     el.hidden = false;
     el.classList.toggle('is-error', !!isError);
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, (c) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+    }[c]));
+  }
+
+  function renderSubscribers(container, speciesId, subscribers) {
+    if (subscribers.length === 0) {
+      container.innerHTML = '<p class="sub-empty">購読者はいません。</p>';
+      return;
+    }
+
+    const rowsHtml = subscribers.map((s) => {
+      const isUnsubscribed = !!s.unsubscribed_at;
+      return `
+        <tr data-subscription-id="${s.id}">
+          <td>${escapeHtml(s.email)}</td>
+          <td>${formatDate(s.created_at)}</td>
+          <td>${formatDate(s.unsubscribed_at)}</td>
+          <td>${formatDate(s.last_notified_at)}</td>
+          <td>
+            ${isUnsubscribed
+              ? '<span class="unsubscribed">停止済み</span>'
+              : '<button type="button" class="js-unsub-btn">配信停止</button>'}
+            <p class="msg js-sub-msg" hidden></p>
+          </td>
+        </tr>`;
+    }).join('');
+
+    container.innerHTML = `
+      <table class="sub-table">
+        <thead>
+          <tr>
+            <th>メールアドレス</th>
+            <th>登録日</th>
+            <th>配信停止日</th>
+            <th>最終通知日</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>${rowsHtml}</tbody>
+      </table>`;
+
+    container.querySelectorAll('.js-unsub-btn').forEach((btn) => {
+      btn.addEventListener('click', () => unsubscribe(btn, speciesId));
+    });
+  }
+
+  async function unsubscribe(btn, speciesId) {
+    const tr = btn.closest('tr');
+    const subscriptionId = Number(tr.dataset.subscriptionId);
+    const msg = tr.querySelector('.js-sub-msg');
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('/api/admin/unsubscribe', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ subscriptionId }),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && (data.status === 'unsubscribed' || data.status === 'not_found')) {
+        const cell = btn.parentElement;
+        cell.innerHTML = '<span class="unsubscribed">停止済み</span>';
+        const cached = subscriberCache.get(speciesId);
+        const sub = cached && cached.find((s) => s.id === subscriptionId);
+        if (sub) sub.unsubscribed_at = sub.unsubscribed_at || new Date().toISOString();
+      } else {
+        showMsg(msg, '配信停止に失敗しました。', true);
+        btn.disabled = false;
+      }
+    } catch {
+      showMsg(msg, '配信停止に失敗しました。', true);
+      btn.disabled = false;
+    }
+  }
+
+  async function toggleDetail(row, speciesId) {
+    const subRow = document.querySelector(`.sub-row[data-species-id="${speciesId}"]`);
+    if (!subRow) return;
+
+    if (subRow.classList.contains('is-open')) {
+      subRow.classList.remove('is-open');
+      return;
+    }
+
+    const container = subRow.querySelector('.js-sub-content');
+
+    if (!subscriberCache.has(speciesId)) {
+      container.innerHTML = '<p class="sub-empty">読み込み中...</p>';
+      subRow.classList.add('is-open');
+      try {
+        const res = await fetch(`/api/admin/subscribers/${encodeURIComponent(speciesId)}`);
+        const data = await res.json();
+        subscriberCache.set(speciesId, data.subscribers || []);
+      } catch {
+        container.innerHTML = '<p class="sub-empty">読み込みに失敗しました。</p>';
+        return;
+      }
+    } else {
+      subRow.classList.add('is-open');
+    }
+
+    renderSubscribers(container, speciesId, subscriberCache.get(speciesId));
   }
 
   async function sendNotify(row, speciesId, count) {
@@ -67,6 +175,8 @@
       const btn = row.querySelector('.js-notify-btn');
       btn.disabled = count === 0;
       btn.addEventListener('click', () => sendNotify(row, speciesId, count));
+
+      row.querySelector('.js-detail-btn').addEventListener('click', () => toggleDetail(row, speciesId));
     });
   }
 

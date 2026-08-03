@@ -40,6 +40,16 @@ const creatures = all
     button:disabled { opacity: 0.4; cursor: default; }
     .msg { font-size: 11px; margin: 4px 0 0; }
     .msg.is-error { color: var(--red); }
+    .js-detail-btn { background: var(--ink3); }
+    .sub-row { display: none; }
+    .sub-row.is-open { display: table-row; }
+    .sub-row td { background: var(--bg2); padding: 12px; }
+    .sub-table { width: 100%; border-collapse: collapse; background: var(--bg); }
+    .sub-table th, .sub-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--br); font-size: 12px; }
+    .sub-table th { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; color: var(--g); }
+    .sub-table .js-unsub-btn { background: var(--red); padding: 4px 10px; font-size: 10px; }
+    .sub-table .unsubscribed { color: var(--ink3); }
+    .sub-empty { font-size: 12px; color: var(--ink3); padding: 8px 0; }
   </style>
 </head>
 <body>
@@ -57,17 +67,25 @@ const creatures = all
     </thead>
     <tbody id="admin-rows">
       {creatures.map((c) => (
-        <tr data-species-id={c.no}>
-          <td>No.{c.no}</td>
-          <td>{c.name_jp}</td>
-          <td class={c.soldOut ? 'soldout' : ''}>{c.soldOut ? 'SOLD OUT' : '販売中'}</td>
-          <td class="js-count">—</td>
-          <td class="js-last">—</td>
-          <td>
-            <button type="button" class="js-notify-btn" disabled>通知送信</button>
-            <p class="msg js-msg" hidden></p>
-          </td>
-        </tr>
+        <>
+          <tr data-species-id={c.no}>
+            <td>No.{c.no}</td>
+            <td>{c.name_jp}</td>
+            <td class={c.soldOut ? 'soldout' : ''}>{c.soldOut ? 'SOLD OUT' : '販売中'}</td>
+            <td class="js-count">—</td>
+            <td class="js-last">—</td>
+            <td>
+              <button type="button" class="js-notify-btn" disabled>通知送信</button>
+              <button type="button" class="js-detail-btn">詳細</button>
+              <p class="msg js-msg" hidden></p>
+            </td>
+          </tr>
+          <tr class="sub-row" data-species-id={c.no}>
+            <td colspan="6">
+              <div class="js-sub-content"></div>
+            </td>
+          </tr>
+        </>
       ))}
     </tbody>
   </table>
