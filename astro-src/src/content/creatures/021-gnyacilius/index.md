@@ -28,7 +28,7 @@ shopUrl: "https://agavest.stores.jp/?category_id=6a3e0ce35d38e9155cdbef88"
 price: null
 soldOut: true
 
-namer: "@miyamoyo0520"
+namer: "@miyamoto0520"
 notes: "見た目は完全にネコだが、触れると塊根植物に近い弾力を持っていた。水分状態によって機嫌が極端に変化するらしく、水切れ直前には明確な威嚇反応を示した。"
 abilities: ["すり抜け脱走", "なんちゃって足根"]
 

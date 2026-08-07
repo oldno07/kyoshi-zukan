@@ -4,7 +4,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import FooterIcon from '../../components/FooterIcon.astro';
 
 const all = await getCollection('creatures');
-const found = all.filter(e => e.data.status === 'published' && e.data.category === 'creature').length;
+// 発見数の定義は zukan/index.astro と揃える（hidden含む・archivedのみ除外・共生生物除外）
+const found = all.filter(e => e.data.status !== 'archived' && e.data.category === 'creature').length;
 ---
 
 <BaseLayout
