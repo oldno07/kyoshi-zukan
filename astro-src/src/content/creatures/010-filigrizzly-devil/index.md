@@ -13,7 +13,7 @@ animal: 95
 danger: 85
 
 habitat: "棚禁域群体崩壊層"
-size: "2.7m"
+size: "XLARGE"
 mobility: "重装型"
 status_label: "AGITATED / 興奮状態"
 status_color: "#d65a5a"

@@ -13,7 +13,7 @@ animal: 90
 danger: 75
 
 habitat: "棚水圏中枢干渉域"
-size: "18m級"
+size: "SMALL"
 mobility: "遊泳型"
 status_label: "MONITOR / 監視個体"
 status_color: "#e0b94f"

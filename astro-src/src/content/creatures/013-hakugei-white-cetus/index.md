@@ -13,7 +13,7 @@ animal: 95
 danger: 80
 
 habitat: "棚水圏"
-size: "18m+"
+size: "SMALL"
 mobility: "浮遊型"
 status_label: "MYTHIC / 神話級"
 status_color: "#e0b94f"

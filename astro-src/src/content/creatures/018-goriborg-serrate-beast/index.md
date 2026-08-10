@@ -13,7 +13,7 @@ animal: 85
 danger: 70
 
 habitat: "境界地帯"
-size: "2.6m"
+size: "LARGE"
 mobility: "機械歩行型"
 status_label: "MONITOR / 監視個体"
 status_color: "#e0b94f"

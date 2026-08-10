@@ -13,7 +13,7 @@ animal: 65
 danger: 18
 
 habitat: "乾燥棚"
-size: "320mm"
+size: "MEDIUM"
 mobility: "超緩慢"
 status_label: "DORMANT / 休眠状態"
 status_color: "#d6b85a"

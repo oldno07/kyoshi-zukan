@@ -13,7 +13,7 @@ animal: 95
 danger: 95
 
 habitat: "棚禁域群体中枢"
-size: "4.1m"
+size: "COLOSSAL"
 mobility: "群体統率"
 status_label: "MONARCH / 支配個体"
 status_color: "#e0b94f"

@@ -13,7 +13,7 @@ animal: 88
 danger: 20
 
 habitat: "植物棚の水場"
-size: "12m〜18m"
+size: "SMALL"
 mobility: "遊泳型"
 status_label: "STABLE / 安定状態"
 top: "Agave Titanota 白鯨"

@@ -13,7 +13,7 @@ animal: 60
 danger: 0
 
 habitat: "アガベ棚上層環境"
-size: "160mm"
+size: "SMALL"
 mobility: "高速飛行"
 status_label: "MONARCH / 支配個体"
 status_color: "#e0b94f"
