@@ -235,7 +235,7 @@ const ogDescription = isHidden
     {!isHidden && data.notes && (
       <div class="cd-note">
         <p class="cd-note-label">
-          RESEARCH NOTE{data.namer ? ` — ${data.namer}` : ''}
+          RESEARCH NOTE
         </p>
         <p class="cd-note-text">{data.notes}</p>
       </div>
@@ -255,21 +255,27 @@ const ogDescription = isHidden
     <!-- フィールドデータ -->
     <div class="cd-data">
       <div class="cd-data-row">
-        <span class="cd-data-key">HABITAT</span>
+        <span class="cd-data-key">HABITAT<span class="cd-data-key-jp">生息域</span></span>
         <span class="cd-data-val">{isHidden ? '██████' : data.habitat}</span>
       </div>
       <div class="cd-data-row">
-        <span class="cd-data-key">SIZE</span>
+        <span class="cd-data-key">SIZE<span class="cd-data-key-jp">全長</span></span>
         <span class="cd-data-val">{isHidden ? '██████' : data.size}</span>
       </div>
       <div class="cd-data-row">
-        <span class="cd-data-key">MOBILITY</span>
+        <span class="cd-data-key">MOBILITY<span class="cd-data-key-jp">移動性</span></span>
         <span class="cd-data-val">{isHidden ? '██████' : data.mobility}</span>
       </div>
       {!isHidden && data.top && (
         <div class="cd-data-row">
-          <span class="cd-data-key">BASED ON</span>
+          <span class="cd-data-key">BASED ON<span class="cd-data-key-jp">原型植物</span></span>
           <span class="cd-data-val">{data.top}</span>
+        </div>
+      )}
+      {!isHidden && data.namer && (
+        <div class="cd-data-row">
+          <span class="cd-data-key">NAMER<span class="cd-data-key-jp">命名者</span></span>
+          <span class="cd-data-val">{data.namer}</span>
         </div>
       )}
     </div>
