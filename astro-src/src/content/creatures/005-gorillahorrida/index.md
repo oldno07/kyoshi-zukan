@@ -12,7 +12,7 @@ plant: 25
 animal: 90
 danger: 60
 
-habitat: "棚外縁重圧域"
+habitat: "棚外縁"
 size: "LARGE"
 mobility: "重量型"
 status_label: "STABLE / 安定状態"
