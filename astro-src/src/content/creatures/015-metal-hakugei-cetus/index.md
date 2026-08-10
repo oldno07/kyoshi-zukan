@@ -13,7 +13,7 @@ animal: 90
 danger: 56
 
 habitat: "棚水圏構造改変域"
-size: "18m+"
+size: "SMALL"
 mobility: "浮遊型"
 status_label: "MONARCH / 支配個体"
 status_color: "#e0b94f"

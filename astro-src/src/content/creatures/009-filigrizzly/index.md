@@ -13,7 +13,7 @@ animal: 80
 danger: 30
 
 habitat: "棚外縁群体領域"
-size: "1.8m"
+size: "LARGE"
 mobility: "群行型"
 status_label: "STABLE / 安定状態"
 top: "Agave Titanota \"filigree\""

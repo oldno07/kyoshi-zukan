@@ -13,7 +13,7 @@ animal: 90
 danger: 70
 
 habitat: "棚水圏沈殿域"
-size: "18m+"
+size: "SMALL"
 mobility: "浮遊型"
 status_label: "STABLE / 安定状態"
 top: "Agave Titanota \"金鯨\""

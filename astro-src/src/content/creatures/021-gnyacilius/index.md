@@ -14,7 +14,7 @@ animal: 20
 danger: 15
 
 habitat: "乾燥棚地帯"
-size: "112mm"
+size: "SMALL"
 mobility: "緩慢"
 status_label: "THIRSTY / 渇水状態"
 status_color: "#d6b85a"

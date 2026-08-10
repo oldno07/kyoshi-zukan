@@ -13,7 +13,7 @@ animal: 91
 danger: 68
 
 habitat: "湿潤森林"
-size: "3.4m"
+size: "LARGE"
 mobility: "突進型"
 status_label: "AGITATED / 興奮状態"
 status_color: "#d65a5a"

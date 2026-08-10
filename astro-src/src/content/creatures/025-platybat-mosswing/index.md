@@ -13,7 +13,7 @@ animal: 42
 danger: 4
 
 habitat: "アガベ棚・湿潤吊り鉢環境"
-size: "180mm"
+size: "SMALL"
 mobility: "吊下型低速移動"
 status_label: "STABLE / 安定状態"
 top: "Platycerium \"ellisii\""

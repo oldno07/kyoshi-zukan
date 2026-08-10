@@ -13,7 +13,7 @@ animal: 70
 danger: 15
 
 habitat: "アガベ棚全域"
-size: "172mm"
+size: "SMALL"
 mobility: "夜間活性"
 status_label: "ACTIVE / 活性状態"
 top: "Agave Titanota \"No Name\""

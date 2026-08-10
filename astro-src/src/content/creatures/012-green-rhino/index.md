@@ -13,7 +13,7 @@ animal: 85
 danger: 30
 
 habitat: "棚外縁地表層"
-size: "2.1m"
+size: "LARGE"
 mobility: "重量型"
 status_label: "ACTIVE / 活性状態"
 top: "Agave Titanota \"緑犀牛\""

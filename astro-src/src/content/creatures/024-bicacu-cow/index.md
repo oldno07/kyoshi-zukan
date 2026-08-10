@@ -13,7 +13,7 @@ animal: 55
 danger: 3
 
 habitat: "湿潤森林"
-size: "1.8m"
+size: "LARGE"
 mobility: "重量突進型"
 status_label: "STABLE / 安定状態"
 top: "Platycerium"
