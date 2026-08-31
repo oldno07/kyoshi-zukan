@@ -12,7 +12,7 @@ plant: 92
 animal: 65
 danger: 18
 
-habitat: "乾燥棚"
+habitat: "断水域"
 size: "MEDIUM"
 mobility: "超緩慢"
 status_label: "DORMANT / 休眠状態"
