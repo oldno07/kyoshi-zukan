@@ -422,9 +422,7 @@ const progressPct = Math.round((found / TOTAL) * 100);
           const d = entry.data;
           return (
             <a
-              href={d.shopUrl ?? '#'}
-              target={d.shopUrl ? '_blank' : undefined}
-              rel={d.shopUrl ? 'noopener' : undefined}
+              href={`/zukan/${entry.slug}/`}
               class="idx-card reveal"
               style={i > 0 ? `transition-delay:${i * 0.1}s` : ''}
             >
