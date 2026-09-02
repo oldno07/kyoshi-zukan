@@ -12,13 +12,13 @@ plant: 30
 animal: 75
 danger: 5
 
-habitat: "アガベ棚周辺"
+habitat: "株間域"
 size: "SMALL"
 mobility: "緩慢"
 status_label: "ACTIVE / 活性状態"
 status_color: "var(--g)"
 
-top: 'Agave Titanota "Snaggle Tooth"'
+top: "Agave Titanota \"Snaggle Tooth\""
 featured: true
 tags: ["ネコ型"]
 series: []

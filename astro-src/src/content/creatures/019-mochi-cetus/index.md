@@ -16,7 +16,7 @@ habitat: "腰水域・水面"
 size: "SMALL"
 mobility: "遊泳型"
 status_label: "STABLE / 安定状態"
-top: "Agave Titanota 白鯨"
+top: "Agave Titanota \"白鯨\""
 tags: []
 series: ["鯨系"]
 related: ["013-hakugei-white-cetus", "014-kokugei-black-cetus"]

@@ -12,7 +12,7 @@ plant: 25
 animal: 80
 danger: 20
 
-habitat: "アガベ棚周辺"
+habitat: "株間域"
 size: "SMALL"
 mobility: "夜間活性"
 status_label: "ACTIVE / 活性状態"
