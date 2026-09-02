@@ -44,6 +44,28 @@ const allSeries  = [...new Set(published.flatMap(e => e.data.series))].filter(Bo
 const RARITY_ORDER = ['LEGEND','EPIC','RARE','UNCOMMON','COMMON'] as const;
 const allRarities = RARITY_ORDER.filter(r => published.some(e => e.data.rarity === r));
 
+// top の先頭語（属）を和名へ変換する表。無い属が現れた場合はフィルタに出さず握りつぶす
+const GENUS_JP: Record<string, string> = {
+  'Agave': 'アガベ',
+  'Platycerium': 'ビカクシダ',
+  'Pachypodium': 'パキポディウム',
+  'Boophane': 'ブーファン',
+};
+
+function genusOf(top: string | null | undefined): string | undefined {
+  if (!top) return undefined;
+  return GENUS_JP[top.split(' ')[0]];
+}
+
+// フィルター用：全登録個体（category: creature）の属を体数の多い順に収集
+const genusCount = new Map<string, number>();
+for (const e of allCreatures) {
+  const g = genusOf(e.data.top);
+  if (!g) continue;
+  genusCount.set(g, (genusCount.get(g) ?? 0) + 1);
+}
+const allGenus = [...genusCount.entries()].sort((a, b) => b[1] - a[1]).map(([g]) => g);
+
 function toSlug(id: string) {
   return id.replace(/\/index\.md$/, '').replace(/\.md$/, '');
 }
@@ -302,6 +324,16 @@ const progressPct = Math.round((found / TOTAL) * 100);
           </div>
         </div>
       )}
+      {allGenus.length > 0 && (
+        <div class="idx-filter-row">
+          <span class="idx-filter-key">GENUS / 由来植物</span>
+          <div class="idx-filter-chips">
+            {allGenus.map(g => (
+              <button class="idx-chip idx-chip-genus" data-filter-type="genus" data-filter-val={g}>{g}</button>
+            ))}
+          </div>
+        </div>
+      )}
       {allRarities.length > 0 && (
         <div class="idx-filter-row">
           <span class="idx-filter-key">RARITY</span>
@@ -347,6 +379,7 @@ const progressPct = Math.round((found / TOTAL) * 100);
             class={`idx-card${isHidden ? ' is-hidden-entry' : ''}`}
             data-tags={JSON.stringify(isHidden ? [] : d.tags)}
             data-series={JSON.stringify(isHidden ? [] : d.series)}
+            data-genus={isHidden ? '' : (genusOf(d.top) ?? '')}
             data-rarity={isHidden ? '' : d.rarity}
           >
             <div class="idx-card-img">
@@ -595,9 +628,10 @@ const progressPct = Math.round((found / TOTAL) * 100);
   const clearBtn = document.getElementById('idx-filter-clear');
   const chips   = document.querySelectorAll<HTMLButtonElement>('[data-filter-type]');
 
-  // アクティブフィルター状態: { series: Set, rarity: Set, tag: Set }
+  // アクティブフィルター状態: { series: Set, genus: Set, rarity: Set, tag: Set }
   const active: Record<string, Set<string>> = {
     series: new Set(),
+    genus: new Set(),
     rarity: new Set(),
     tag: new Set(),
   };
@@ -608,20 +642,23 @@ const progressPct = Math.round((found / TOTAL) * 100);
     let visible = 0;
 
     const hasSeriesFilter  = active.series.size > 0;
+    const hasGenusFilter   = active.genus.size > 0;
     const hasRarityFilter  = active.rarity.size > 0;
     const hasTagFilter     = active.tag.size > 0;
-    const anyActive        = hasSeriesFilter || hasRarityFilter || hasTagFilter;
+    const anyActive        = hasSeriesFilter || hasGenusFilter || hasRarityFilter || hasTagFilter;
 
     cards.forEach(card => {
       const tags   = JSON.parse(card.dataset.tags   || '[]') as string[];
       const series = JSON.parse(card.dataset.series || '[]') as string[];
+      const genus  = card.dataset.genus || '';
       const rarity = card.dataset.rarity || '';
 
       const matchSeries = !hasSeriesFilter || series.some(s => active.series.has(s));
+      const matchGenus  = !hasGenusFilter  || active.genus.has(genus);
       const matchRarity = !hasRarityFilter || active.rarity.has(rarity);
       const matchTag    = !hasTagFilter    || tags.some(t => active.tag.has(t));
 
-      const show = matchSeries && matchRarity && matchTag;
+      const show = matchSeries && matchGenus && matchRarity && matchTag;
       card.style.display = show ? '' : 'none';
       if (show) visible++;
     });
@@ -648,6 +685,7 @@ const progressPct = Math.round((found / TOTAL) * 100);
 
   clearBtn?.addEventListener('click', () => {
     active.series.clear();
+    active.genus.clear();
     active.rarity.clear();
     active.tag.clear();
     chips.forEach(c => c.classList.remove('is-active'));
