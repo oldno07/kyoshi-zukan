@@ -5,11 +5,11 @@ category: "creature"
 
 name_jp: "アガベカブトトカゲ"
 name_en: "Agave Kabutotokage"
-tag: "BEAST-DOMINANT"
+tag: "BALANCED"
 rarity: "RARE"
 
-plant: 70
-animal: 85
+plant: 80
+animal: 70
 danger: 35
 
 habitat: "棚外縁"
@@ -17,7 +17,7 @@ size: "MEDIUM"
 mobility: "俊敏"
 status_label: "ACTIVE / 活性状態"
 top: "Agave Oteroi"
-tags: ["動物優性型", "爬虫類型", "アガベ棚"]
+tags: []
 series: []
 related: ["001-snyaggletooth", "004-nyagabe-titanota"]
 shopUrl: "https://agavest.stores.jp/"

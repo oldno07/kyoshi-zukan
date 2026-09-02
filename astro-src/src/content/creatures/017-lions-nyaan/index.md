@@ -5,11 +5,11 @@ category: "creature"
 
 name_jp: "ライオンズニャーン"
 name_en: "Lions Nyaan"
-tag: "BEAST-DOMINANT"
+tag: "PLANT-DOMINANT"
 rarity: "UNCOMMON"
 
-plant: 55
-animal: 75
+plant: 70
+animal: 45
 danger: 35
 
 habitat: "株間域"
@@ -17,7 +17,7 @@ size: "SMALL"
 mobility: "緩慢"
 status_label: "ACTIVE / 活性状態"
 top: "Agave Titanota \"ライオンズメーン\""
-tags: ["動物優性型", "ネコ型"]
+tags: ["ネコ型"]
 series: []
 related: ["002-black-nyanko-blue", "003-red-cat-meezle", "012-green-rhino"]
 shopUrl: "https://agavest.stores.jp/"

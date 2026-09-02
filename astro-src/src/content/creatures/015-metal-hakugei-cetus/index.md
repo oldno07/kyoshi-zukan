@@ -5,11 +5,11 @@ category: "creature"
 
 name_jp: "メタル白鯨"
 name_en: "Metal Hakugei Cetus"
-tag: "SUCCULENT-TYPE"
+tag: "BEAST-DOMINANT"
 rarity: "RARE"
 
-plant: 5
-animal: 90
+plant: 40
+animal: 60
 danger: 25
 
 habitat: "腰水域・底層"
@@ -18,8 +18,8 @@ mobility: "浮遊型"
 status_label: "STABLE / 安定状態"
 status_color: "#e0b94f"
 top: "Agave Titanota \"白鯨\""
-tags: ["水棲型", "多肉混合型", "機械融合", "鯨族"]
-series: ["鯨族"]
+tags: ["機械融合"]
+series: ["鯨系"]
 related: ["013-hakugei-white-cetus", "014-kokugei-black-cetus", "016-kingei-golden-cetus"]
 shopUrl: "https://agavest.stores.jp/?category_id=6a6071ee1f0e7e31e90ec72f"
 soldOut: true

@@ -8,8 +8,8 @@ name_en: "Filigrizzly"
 tag: "BEAST-DOMINANT"
 rarity: "COMMON"
 
-plant: 35
-animal: 80
+plant: 40
+animal: 70
 danger: 30
 
 habitat: "棚外縁"
@@ -17,8 +17,8 @@ size: "LARGE"
 mobility: "群行型"
 status_label: "STABLE / 安定状態"
 top: "Agave Titanota \"filigree\""
-tags: ["動物優性型", "群体種", "フィリグリズリー族"]
-series: ["フィリグリズリー"]
+tags: []
+series: ["フィリグリズリー系"]
 related: ["010-filigrizzly-devil", "011-filigrizzly-monarch"]
 shopUrl: "https://agavest.stores.jp/"
 soldOut: true

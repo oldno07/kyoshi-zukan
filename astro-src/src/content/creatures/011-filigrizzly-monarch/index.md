@@ -8,7 +8,7 @@ name_en: "Filigrizzly Monarch"
 tag: "BEAST-DOMINANT"
 rarity: "EPIC"
 
-plant: 15
+plant: 45
 animal: 95
 danger: 95
 
@@ -19,8 +19,8 @@ status_label: "MONARCH / 支配個体"
 status_color: "#e0b94f"
 top: "Agave Titanota \"filigree\""
 featured: true
-tags: ["動物優性型", "群体種", "フィリグリズリー族"]
-series: ["フィリグリズリー"]
+tags: []
+series: ["フィリグリズリー系"]
 related: ["009-filigrizzly", "010-filigrizzly-devil"]
 shopUrl: "https://agavest.stores.jp/"
 soldOut: true

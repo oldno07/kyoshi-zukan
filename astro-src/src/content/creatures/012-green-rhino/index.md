@@ -5,11 +5,11 @@ category: "creature"
 
 name_jp: "緑犀牛"
 name_en: "Green Rhino"
-tag: "BEAST-DOMINANT"
+tag: "PLANT-DOMINANT"
 rarity: "UNCOMMON"
 
-plant: 60
-animal: 85
+plant: 75
+animal: 55
 danger: 30
 
 habitat: "株間域"
@@ -17,7 +17,7 @@ size: "LARGE"
 mobility: "重量型"
 status_label: "ACTIVE / 活性状態"
 top: "Agave Titanota \"緑犀牛\""
-tags: ["動物優性型", "大型種"]
+tags: ["角のある", "擬態する"]
 series: []
 related: ["005-gorillahorrida", "017-lions-nyaan"]
 shopUrl: "https://agavest.stores.jp/"

@@ -8,8 +8,8 @@ name_en: "Black Nyanko Blue"
 tag: "BEAST-DOMINANT"
 rarity: "COMMON"
 
-plant: 10
-animal: 85
+plant: 25
+animal: 80
 danger: 20
 
 habitat: "アガベ棚周辺"
@@ -17,7 +17,7 @@ size: "SMALL"
 mobility: "夜間活性"
 status_label: "ACTIVE / 活性状態"
 top: "Agave Titanota \"Black &Blue\""
-tags: ["動物優性型", "ネコ型", "アガベ棚"]
+tags: ["ネコ型"]
 series: []
 related: ["001-snyaggletooth", "003-red-cat-meezle", "004-nyagabe-titanota", "007-sky-blue-nyanda-ho"]
 shopUrl: "https://agavest.stores.jp/?category_id=6a6070f263f5f62ab963b36c"

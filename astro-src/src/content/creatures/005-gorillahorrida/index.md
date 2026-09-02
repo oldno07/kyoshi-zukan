@@ -8,8 +8,8 @@ name_en: "Gorillahorrida"
 tag: "BEAST-DOMINANT"
 rarity: "RARE"
 
-plant: 25
-animal: 90
+plant: 50
+animal: 60
 danger: 60
 
 habitat: "棚外縁"
@@ -17,7 +17,7 @@ size: "LARGE"
 mobility: "重量型"
 status_label: "STABLE / 安定状態"
 top: "Agave Horrida"
-tags: ["動物優性型", "大型種", "高危険度"]
+tags: ["角のある"]
 series: []
 related: ["012-green-rhino", "018-goriborg-serrate-beast", "003-red-cat-meezle"]
 shopUrl: "https://agavest.stores.jp/"

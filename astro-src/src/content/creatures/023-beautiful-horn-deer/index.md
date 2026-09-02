@@ -5,11 +5,11 @@ category: "creature"
 
 name_jp: "美角鹿 -ビカクシカ-"
 name_en: "Beautiful Horn Deer"
-tag: "BEAST-DOMINANT"
+tag: "BALANCED"
 rarity: "RARE"
 
-plant: 74
-animal: 91
+plant: 70
+animal: 85
 danger: 68
 
 habitat: "着生域"
@@ -18,8 +18,8 @@ mobility: "突進型"
 status_label: "AGITATED / 興奮状態"
 status_color: "#d65a5a"
 top: "Platycerium"
-tags: ["動物優性型", "森林種", "ビカク族"]
-series: ["ビカク族"]
+tags: ["角のある"]
+series: ["ビカク系"]
 related: ["024-bicacu-cow", "025-platybat-mosswing"]
 shopUrl: "https://agavest.stores.jp/"
 soldOut: true

@@ -5,11 +5,11 @@ category: "creature"
 
 name_jp: "鋸歯機獣ゴリボーグ"
 name_en: "Goriborg Serrate Beast"
-tag: "MECHA-BEAST-JOINT"
+tag: "BEAST-DOMINANT"
 rarity: "RARE"
 
-plant: 30
-animal: 85
+plant: 20
+animal: 80
 danger: 70
 
 habitat: "資材域"
@@ -19,7 +19,7 @@ status_label: "MONITOR / 監視個体"
 status_color: "#e0b94f"
 top: "Agave Titanota \"FO-76\""
 featured: true
-tags: ["機械融合型", "高危険度"]
+tags: ["機械融合"]
 series: []
 related: ["005-gorillahorrida"]
 shopUrl: "https://agavest.stores.jp/"

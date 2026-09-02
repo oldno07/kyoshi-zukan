@@ -8,7 +8,7 @@ name_en: "NyAgabe titanota"
 tag: "BEAST-DOMINANT"
 rarity: "COMMON"
 
-plant: 40
+plant: 45
 animal: 70
 danger: 15
 
@@ -17,7 +17,7 @@ size: "SMALL"
 mobility: "夜間活性"
 status_label: "ACTIVE / 活性状態"
 top: "Agave Titanota \"No Name\""
-tags: ["動物優性型", "アガベ棚", "植物共生"]
+tags: ["ネコ型"]
 series: []
 related: ["001-snyaggletooth", "002-black-nyanko-blue"]
 shopUrl: "https://agavest.stores.jp/?category_id=6a60710b96e1cb31a1d07965"

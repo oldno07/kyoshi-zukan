@@ -9,7 +9,7 @@ tag: "BEAST-DOMINANT"
 rarity: "UNCOMMON"
 
 plant: 30
-animal: 78
+animal: 75
 danger: 5
 
 habitat: "アガベ棚周辺"
@@ -20,7 +20,7 @@ status_color: "var(--g)"
 
 top: 'Agave Titanota "Snaggle Tooth"'
 featured: true
-tags: ["動物優性型", "ネコ型", "アガベ棚", "初期発見種"]
+tags: ["ネコ型"]
 series: []
 related: ["002-black-nyanko-blue", "004-nyagabe-titanota", "021-gnyacilius"]
 

@@ -5,11 +5,11 @@ category: "creature"
 
 name_jp: "金鯨"
 name_en: "Kingei Golden Cetus"
-tag: "SUCCULENT-TYPE"
+tag: "BEAST-DOMINANT"
 rarity: "LEGEND"
 
-plant: 10
-animal: 90
+plant: 45
+animal: 50
 danger: 20
 
 habitat: "腰水域・沈殿層"
@@ -18,8 +18,8 @@ mobility: "浮遊型"
 status_label: "STABLE / 安定状態"
 top: "Agave Titanota \"金鯨\""
 featured: true
-tags: ["水棲型", "多肉混合型", "鯨族"]
-series: ["鯨族"]
+tags: []
+series: ["鯨系"]
 related: ["013-hakugei-white-cetus", "015-metal-hakugei-cetus"]
 shopUrl: "https://agavest.stores.jp/"
 soldOut: true

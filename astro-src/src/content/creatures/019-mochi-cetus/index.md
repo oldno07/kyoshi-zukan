@@ -5,11 +5,11 @@ category: "creature"
 
 name_jp: "もち鯨"
 name_en: "Mochi Cetus"
-tag: "SUCCULENT-TYPE"
+tag: "BEAST-DOMINANT"
 rarity: "UNCOMMON"
 
-plant: 25
-animal: 88
+plant: 45
+animal: 40
 danger: 10
 
 habitat: "腰水域・水面"
@@ -17,8 +17,8 @@ size: "SMALL"
 mobility: "遊泳型"
 status_label: "STABLE / 安定状態"
 top: "Agave Titanota 白鯨"
-tags: ["水棲型", "多肉混合型", "鯨族"]
-series: ["鯨族"]
+tags: []
+series: ["鯨系"]
 related: ["013-hakugei-white-cetus", "014-kokugei-black-cetus"]
 shopUrl: "https://agavest.stores.jp/?category_id=6a60720510525137d1036206"
 soldOut: true
