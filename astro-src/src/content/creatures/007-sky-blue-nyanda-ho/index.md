@@ -8,8 +8,8 @@ name_en: "Sky Blue Nyanda Ho"
 tag: "BEAST-DOMINANT"
 rarity: "UNCOMMON"
 
-plant: 10
-animal: 60
+plant: 30
+animal: 85
 danger: 0
 
 habitat: "灯層"
@@ -18,7 +18,7 @@ mobility: "高速飛行"
 status_label: "MONARCH / 支配個体"
 status_color: "#e0b94f"
 top: "Agave Titanota \"Black &Blue\""
-tags: ["動物優性型", "飛行型", "アガベ棚"]
+tags: ["ネコ型", "飛ぶ", "色が変わる"]
 series: []
 related: ["001-snyaggletooth", "025-platybat-mosswing", "003-red-cat-meezle", "002-black-nyanko-blue"]
 shopUrl: "https://agavest.stores.jp/"

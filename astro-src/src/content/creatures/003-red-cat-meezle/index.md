@@ -8,8 +8,8 @@ name_en: "Red Cat meezle"
 tag: "BEAST-DOMINANT"
 rarity: "UNCOMMON"
 
-plant: 20
-animal: 80
+plant: 40
+animal: 75
 danger: 25
 
 habitat: "スポットライト直下"
@@ -17,7 +17,7 @@ size: "SMALL"
 mobility: "夜間活性"
 status_label: "ACTIVE / 活性状態"
 top: "Agave Titanota \"Red Catweezle\""
-tags: ["動物優性型", "ネコ型"]
+tags: ["ネコ型", "色が変わる"]
 series: []
 related: ["002-black-nyanko-blue", "017-lions-nyaan", "005-gorillahorrida"]
 shopUrl: "https://agavest.stores.jp/?category_id=6a6070fd85f6343462161171"

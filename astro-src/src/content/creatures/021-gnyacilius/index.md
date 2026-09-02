@@ -9,8 +9,8 @@ name_en: "Gnyacilius"
 tag: "SUCCULENT-TYPE"
 rarity: "COMMON"
 
-plant: 75
-animal: 20
+plant: 80
+animal: 45
 danger: 15
 
 habitat: "断水域"
@@ -20,7 +20,7 @@ status_label: "THIRSTY / 渇水状態"
 status_color: "#d6b85a"
 
 top: "Pachypodium Gracilius"
-tags: ["多肉植物型", "塊根植物", "ネコ型", "乾燥地帯"]
+tags: ["ネコ型"]
 series: []
 related: ["020-graci-ris", "001-snyaggletooth"]
 

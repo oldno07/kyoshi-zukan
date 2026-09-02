@@ -8,8 +8,8 @@ name_en: "Platybat Mosswing"
 tag: "PLANT-DOMINANT"
 rarity: "UNCOMMON"
 
-plant: 68
-animal: 42
+plant: 75
+animal: 30
 danger: 4
 
 habitat: "着生域"
@@ -17,8 +17,8 @@ size: "SMALL"
 mobility: "吊下型低速移動"
 status_label: "STABLE / 安定状態"
 top: "Platycerium \"ellisii\""
-tags: ["植物優性型", "飛行型", "ビカク族"]
-series: ["ビカク族"]
+tags: ["飛ぶ"]
+series: ["ビカク系"]
 related: ["023-beautiful-horn-deer", "024-bicacu-cow"]
 shopUrl: "https://agavest.stores.jp/"
 soldOut: true

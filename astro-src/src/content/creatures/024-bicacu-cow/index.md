@@ -5,11 +5,11 @@ category: "creature"
 
 name_jp: "ビカクウシ"
 name_en: "Bicacu Cow"
-tag: "BEAST-DOMINANT"
+tag: "PLANT-DOMINANT"
 rarity: "COMMON"
 
-plant: 34
-animal: 55
+plant: 65
+animal: 40
 danger: 3
 
 habitat: "着生域"
@@ -17,8 +17,8 @@ size: "LARGE"
 mobility: "重量突進型"
 status_label: "STABLE / 安定状態"
 top: "Platycerium"
-tags: ["動物優性型", "森林種", "ビカク族"]
-series: ["ビカク族"]
+tags: ["角のある", "擬態する"]
+series: ["ビカク系"]
 related: ["023-beautiful-horn-deer", "025-platybat-mosswing"]
 shopUrl: "https://agavest.stores.jp/"
 soldOut: true

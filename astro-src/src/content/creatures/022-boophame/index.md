@@ -5,11 +5,11 @@ category: "creature"
 
 name_jp: "ブーファメ（仮）"
 name_en: "Boophame"
-tag: "BEAST-DOMINANT"
+tag: "PLANT-DOMINANT"
 rarity: "RARE"
 
-plant: 92
-animal: 65
+plant: 90
+animal: 30
 danger: 18
 
 habitat: "断水域"
@@ -18,7 +18,7 @@ mobility: "超緩慢"
 status_label: "DORMANT / 休眠状態"
 status_color: "#d6b85a"
 top: "Boophane haemanthoides"
-tags: []
+tags: ["擬態する"]
 series: []
 related: []
 shopUrl: "https://agavest.stores.jp/"

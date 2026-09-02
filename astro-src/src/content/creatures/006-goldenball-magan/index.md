@@ -8,7 +8,7 @@ name_en: "GoldenBall Magan"
 tag: "BEAST-DOMINANT"
 rarity: "LEGEND"
 
-plant: 15
+plant: 35
 animal: 95
 danger: 90
 
@@ -18,7 +18,7 @@ mobility: "群体統率"
 status_label: "MONARCH / 支配個体"
 status_color: "#e0b94f"
 top: "Agave Titanota \"魔丸\""
-tags: ["動物優性型", "禁域種"]
+tags: []
 series: []
 related: []
 shopUrl: "https://agavest.stores.jp/"

@@ -8,8 +8,8 @@ name_en: "Kokugei Black Cetus"
 tag: "BEAST-DOMINANT"
 rarity: "UNCOMMON"
 
-plant: 25
-animal: 90
+plant: 45
+animal: 55
 danger: 20
 
 habitat: "腰水域・深部"
@@ -18,8 +18,8 @@ mobility: "遊泳型"
 status_label: "MONITOR / 監視個体"
 status_color: "#e0b94f"
 top: "Agave Titanota \"黒鯨\""
-tags: ["動物優性型", "水棲型", "鯨族"]
-series: ["鯨族"]
+tags: []
+series: ["鯨系"]
 related: ["013-hakugei-white-cetus", "015-metal-hakugei-cetus", "019-mochi-cetus"]
 shopUrl: "https://agavest.stores.jp/"
 soldOut: true
