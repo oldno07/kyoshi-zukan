@@ -57,9 +57,9 @@ function genusOf(top: string | null | undefined): string | undefined {
   return GENUS_JP[top.split(' ')[0]];
 }
 
-// フィルター用：全登録個体（category: creature）の属を体数の多い順に収集
+// フィルター用：published の属を体数の多い順に収集
 const genusCount = new Map<string, number>();
-for (const e of allCreatures) {
+for (const e of published) {
   const g = genusOf(e.data.top);
   if (!g) continue;
   genusCount.set(g, (genusCount.get(g) ?? 0) + 1);
