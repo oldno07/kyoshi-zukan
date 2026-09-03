@@ -27,7 +27,7 @@ notes: "遠目には完全に植物だった。しかし近づいた瞬間、岩
 abilities:
   - "いわ擬態"
   - "ハイマンカメデス"
-missingState: "ACCESS_DENIED"
+missingState: "PENDING_ANALYSIS"
 
 cover: "/images/no_022.png"
 gallery: []
