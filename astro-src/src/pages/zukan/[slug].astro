@@ -64,6 +64,19 @@ const { entry, prev, next, relatedCreatures } = Astro.props;
 const { slug } = Astro.params;
 const { data } = entry;
 const isHidden = data.status === 'hidden';
+
+const MISSING_STATE_JP = {
+  'ACCESS_DENIED': '閲覧制限',
+  'SIGNAL_LOST': '信号途絶',
+  'DATA_LOST': '記録欠損',
+  'PENDING_ANALYSIS': '解析待ち',
+  'CONTAINMENT': '隔離中',
+  'IN_TRANSIT': '移送中',
+};
+
+const missingCode = (data.missingState ?? 'ACCESS_DENIED').replace(/_/g, ' ');
+const missingJp = MISSING_STATE_JP[data.missingState ?? 'ACCESS_DENIED'] ?? null;
+
 const { Content } = await render(entry);
 const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 
@@ -99,7 +112,7 @@ const ogDescription = isHidden
       <div class="cd-hero-meta">
         <span class="cd-no">No.{data.no}</span>
         {isHidden
-          ? <span class="cd-rarity cd-rarity--inline" style="background:var(--red);color:#fff;border-color:var(--red);">ACCESS DENIED</span>
+          ? <span class="cd-rarity cd-rarity--inline" style="background:var(--red);color:#fff;border-color:var(--red);">{missingCode}</span>
           : <span class={`cd-rarity cd-rarity--inline ${data.rarity}`}>{data.rarity}</span>
         }
         {!isHidden && <span class="cd-tag cd-tag--inline">{data.tag}</span>}
@@ -137,7 +150,7 @@ const ogDescription = isHidden
       }
       <!-- モバイルではレア度バッジも名前エリアではなく写真のグレーエリア右上に重ねて表示する -->
       {isHidden
-        ? <span class="cd-rarity cd-rarity--overlay cd-rarity--denied">ACCESS DENIED</span>
+        ? <span class="cd-rarity cd-rarity--overlay cd-rarity--denied">{missingCode}</span>
         : <span class={`cd-rarity cd-rarity--overlay ${data.rarity}`}>{data.rarity}</span>
       }
       <!-- モバイルではSTATUSバッジを名前エリアではなく写真のグレーエリアに重ねて表示し、名前エリアをよりコンパクトにする -->
@@ -238,6 +251,18 @@ const ogDescription = isHidden
           RESEARCH NOTE
         </p>
         <p class="cd-note-text">{data.notes}</p>
+      </div>
+    )}
+
+    {isHidden && (
+      <div class="cd-note">
+        <p class="cd-note-label">RESEARCH NOTE</p>
+        <p class="cd-note-text" style="color:var(--ink3);letter-spacing:0.05em;">
+          ████████████████████<br />██████████████
+        </p>
+        <p class="cd-note-text" style="margin-top:12px;color:var(--red);">
+          STATUS　{missingCode}{missingJp ? ` / ${missingJp}` : ''}
+        </p>
       </div>
     )}
 
